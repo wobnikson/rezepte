@@ -320,7 +320,9 @@ window.REZEPTE = [
   "id": "udon-nudeln",
   "title": "Udon-Nudeln",
   "cat": "Mittagessen",
-  "tags": [],
+  "tags": [
+   "vegan"
+  ],
   "servings": 2,
   "unit": "Portionen",
   "difficulty": 1,
@@ -461,7 +463,7 @@ window.REZEPTE = [
      {
       "m": 1,
       "u": "EL",
-      "t": "Margarine oder Butter"
+      "t": "Margarine oder vegane Butter"
      },
      {
       "m": 200,
@@ -513,7 +515,9 @@ window.REZEPTE = [
   "id": "flammkuchenteig",
   "title": "Flammkuchenteig",
   "cat": "Mittagessen",
-  "tags": [],
+  "tags": [
+   "vegan"
+  ],
   "servings": null,
   "unit": null,
   "difficulty": null,
@@ -1555,7 +1559,7 @@ window.REZEPTE = [
      {
       "m": 0.5,
       "u": "EL",
-      "t": "Butter"
+      "t": "vegane Butter"
      },
      {
       "m": 50,
@@ -1599,7 +1603,8 @@ window.REZEPTE = [
   "title": "Vegetarisches Buchweizen-Risotto",
   "cat": "Mittagessen",
   "tags": [
-   "vegetarisch"
+   "vegetarisch",
+   "vegan"
   ],
   "servings": 2,
   "unit": "Personen",
@@ -2214,7 +2219,7 @@ window.REZEPTE = [
      {
       "m": 130,
       "u": "g",
-      "t": "weiche Butter oder Margarine"
+      "t": "weiche vegane Butter oder Margarine"
      },
      {
       "m": 2,
@@ -2249,7 +2254,7 @@ window.REZEPTE = [
      {
       "m": 200,
       "u": "g",
-      "t": "Butter"
+      "t": "vegane Butter oder Margarine"
      },
      {
       "m": 120,
@@ -2606,7 +2611,9 @@ window.REZEPTE = [
   "id": "erdnuss-haferflocken-riegel",
   "title": "Erdnuss-Haferflocken-Riegel",
   "cat": "Snacks",
-  "tags": [],
+  "tags": [
+   "vegan"
+  ],
   "servings": null,
   "unit": null,
   "difficulty": 1,
@@ -2662,7 +2669,9 @@ window.REZEPTE = [
    "Die Masse in eine Form geben und für 30 min in den Tiefkühler stellen.",
    "Schokolade im Wasserbad schmelzen und auf die Masse geben."
   ],
-  "notes": []
+  "notes": [
+   "Vegan nur mit Zartbitterschokolade ohne Milchzusatz, das steht auf der Zutatenliste der Packung."
+  ]
  },
  {
   "id": "gefuellte-paprika-couscous-feta",
