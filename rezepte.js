@@ -4758,5 +4758,134 @@ window.REZEPTE = [
    "Cornflakes in einem Gefrierbeutel mit dem Nudelholz zerdrücken, dann werden die Brösel gleichmäßig.",
    "Niveau laut Vorlage: mittel."
   ]
+ },
+ {
+  "id": "quesadillas-guacamole",
+  "title": "Quesadillas mit Guacamole",
+  "cat": "Mittagessen",
+  "tags": [],
+  "servings": 2,
+  "unit": "Portionen",
+  "difficulty": null,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "title": "Für die Quesadillas",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "Chilischote"
+     },
+     {
+      "m": 100,
+      "u": "g",
+      "t": "braune Champignons"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "rote Paprika"
+     },
+     {
+      "m": 100,
+      "u": "g",
+      "t": "Cherrytomaten"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Olivenöl"
+     },
+     {
+      "m": 15,
+      "u": "g",
+      "t": "Tomatenmark"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Paprikapulver, geräuchert"
+     },
+     {
+      "m": 3,
+      "u": "EL",
+      "t": "Wasser"
+     },
+     {
+      "m": 60,
+      "u": "g",
+      "t": "Mais"
+     },
+     {
+      "m": 80,
+      "u": "g",
+      "t": "Gouda"
+     },
+     {
+      "m": 2,
+      "u": "",
+      "t": "Wraps"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     }
+    ]
+   },
+   {
+    "title": "Für die Guacamole",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "Knoblauchzehe"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "rote Zwiebel"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Avocado"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Limette"
+     },
+     {
+      "m": 10,
+      "u": "g",
+      "t": "Koriander, frisch"
+     },
+     {
+      "t": "Salz"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Chili waschen, entkernen und fein würfeln.",
+   "Champignons putzen und in Scheiben schneiden.",
+   "Paprika waschen, entkernen und in dünne Streifen schneiden.",
+   "Cherrytomaten waschen und vierteln.",
+   "Öl in einer Pfanne erhitzen, Chili und Gemüse bei hoher Hitze ca. 5 min braten. Gelegentlich wenden.",
+   "Währenddessen den Käse reiben.",
+   "Tomatenmark in die Pfanne geben und mischen. Mit Paprikapulver würzen, Wasser zugeben und bei mittlerer Hitze 2–3 min köcheln lassen.",
+   "Mais zugeben und mit Salz und Pfeffer würzen.",
+   "Pilz-Paprika-Gemüse auf eine Hälfte der Tortilla geben, Käse darauf verteilen und zusammenklappen.",
+   "Eine Pfanne ohne Öl erhitzen und die Quesadilla bei mittlerer Hitze ca. 3–5 min von jeder Seite goldbraun braten.",
+   "Währenddessen Knoblauch schälen und reiben.",
+   "Zwiebel schälen und fein würfeln.",
+   "Avocado halbieren, Kern herauslösen und das Fruchtfleisch in der Schale in Stücke schneiden. Dann mit einem Löffel aus der Schale lösen.",
+   "Limette halbieren und den Saft auspressen.",
+   "Avocado, Limettensaft, Knoblauch und Zwiebel in eine Schüssel geben und mit einer Gabel zu einer cremigen Guacamole zerdrücken.",
+   "Koriander dazugeben, mischen und mit Salz würzen.",
+   "Quesadilla in Stücke schneiden und mit der Guacamole servieren."
+  ],
+  "notes": []
  }
 ];
