@@ -2663,5 +2663,197 @@ window.REZEPTE = [
    "Schokolade im Wasserbad schmelzen und auf die Masse geben."
   ],
   "notes": []
+ },
+ {
+  "id": "gefuellte-paprika-couscous-feta",
+  "title": "Gefüllte Paprika mit Couscous & Feta",
+  "cat": "Mittagessen",
+  "tags": [],
+  "servings": 2,
+  "unit": "Personen",
+  "difficulty": null,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 2,
+      "u": "",
+      "t": "rote Paprikas"
+     },
+     {
+      "m": 100,
+      "u": "g",
+      "t": "Couscous"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "rote Zwiebel"
+     },
+     {
+      "m": 100,
+      "u": "g",
+      "t": "Feta"
+     },
+     {
+      "m": 10,
+      "u": "g",
+      "t": "Petersilie, frisch"
+     },
+     {
+      "m": 10,
+      "u": "g",
+      "t": "Tomatenmark"
+     },
+     {
+      "m": 80,
+      "u": "g",
+      "t": "Mozzarella, gerieben"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Zitrone"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Knoblauchzehe"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Paprikapulver, geräuchert"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Olivenöl"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Couscous nach Packungsanleitung kochen.",
+   "Währenddessen die Paprika waschen, den oberen Teil abschneiden und alles entkernen. Den Paprika-Deckel aufheben.",
+   "Rote Zwiebel schälen und würfeln.",
+   "Feta zerbröseln.",
+   "Petersilie waschen, trocken schütteln und fein hacken.",
+   "Knoblauch schälen und fein hacken.",
+   "Zitrone halbieren und den Saft auspressen.",
+   "Couscous mit roten Zwiebeln, Feta, Knoblauch, Tomatenmark, Paprikapulver, Zitronensaft (½ TL pro Person), der Hälfte der Petersilie und Olivenöl mischen. Mit Salz und Pfeffer würzen.",
+   "Die Couscous-Mischung in die Paprikaschoten füllen.",
+   "Mozzarella darüberstreuen und im Airfryer bei 160 °C ca. 15 min goldbraun backen. Alternativ im Ofen bei 180 °C ca. 35–45 min backen.",
+   "Mit der restlichen Petersilie bestreuen."
+  ],
+  "notes": []
+ },
+ {
+  "id": "suesskartoffelsalat-kichererbsen-feta",
+  "title": "Süßkartoffelsalat mit Kichererbsen, Kräuterdressing & Feta",
+  "cat": "Salat",
+  "tags": [],
+  "servings": 2,
+  "unit": "Personen",
+  "difficulty": null,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 2,
+      "u": "",
+      "t": "Süßkartoffeln"
+     },
+     {
+      "m": 220,
+      "u": "g",
+      "t": "Kichererbsen"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Olivenöl"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Kreuzkümmel (Cumin), gemahlen"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Romana-Salatherz"
+     },
+     {
+      "m": 100,
+      "u": "g",
+      "t": "geröstete Paprika, im Glas"
+     },
+     {
+      "m": 30,
+      "u": "g",
+      "t": "Feta"
+     }
+    ]
+   },
+   {
+    "title": "Kräuterdressing",
+    "items": [
+     {
+      "m": 50,
+      "u": "g",
+      "t": "griechischer Joghurt"
+     },
+     {
+      "m": 2,
+      "u": "",
+      "t": "Limetten"
+     },
+     {
+      "m": 15,
+      "u": "g",
+      "t": "Koriander, frisch"
+     },
+     {
+      "m": 15,
+      "u": "g",
+      "t": "Jalapeños (Dose oder Glas)"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Olivenöl"
+     }
+    ]
+   },
+   {
+    "items": [
+     {
+      "t": "Salz, Pfeffer"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Backofen auf 200 °C Umluft (empfohlen) oder 220 °C Ober-/Unterhitze vorheizen.",
+   "Währenddessen die Süßkartoffeln in 2 cm dicke Würfel schneiden.",
+   "Süßkartoffeln und abgetropfte Kichererbsen auf ein Backblech geben. Mit etwas Olivenöl beträufeln und mit Kreuzkümmel, Salz und Pfeffer würzen. 25–30 min rösten, bis die Süßkartoffeln goldbraun und die Kichererbsen knusprig sind.",
+   "Währenddessen den Salat waschen, abtropfen lassen und in Streifen schneiden.",
+   "Koriander waschen, trocken schütteln und grob hacken.",
+   "Limetten halbieren und den Saft auspressen.",
+   "Geröstete Paprika abtropfen lassen und in Streifen schneiden.",
+   "Griechischen Joghurt, Limettensaft, Koriander, Jalapeños und restliches Olivenöl in einen Mixer geben. Glatt pürieren und mit Salz und Pfeffer würzen.",
+   "Romana-Salat und geröstete Paprika mit Süßkartoffeln und Kichererbsen mischen.",
+   "Feta zerbröseln.",
+   "Salat mit dem Dressing und dem Feta servieren."
+  ],
+  "notes": []
  }
 ];
