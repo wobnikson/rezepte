@@ -926,5 +926,1742 @@ window.REZEPTE = [
   "notes": [
    "Für Royal Icing (Option 2) steht auf dem Zettel keine eigene Anleitung."
   ]
+ },
+ {
+  "id": "dinkelvollkornpancakes",
+  "title": "Dinkelvollkornpancakes",
+  "cat": "Frühstück",
+  "tags": [],
+  "servings": 2,
+  "unit": "Personen",
+  "difficulty": 1,
+  "prep": "ca. 5 min",
+  "time": "10 min",
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 250,
+      "u": "ml",
+      "t": "ungesüßte Hafermilch"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Chiasamen"
+     },
+     {
+      "m": 3,
+      "u": "EL",
+      "t": "Haferflocken"
+     },
+     {
+      "m": 120,
+      "u": "g",
+      "t": "Dinkelvollkornmehl"
+     },
+     {
+      "m": 2,
+      "u": "TL",
+      "t": "Weinsteinbackpulver"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Salz"
+     },
+     {
+      "t": "Rapsöl zum Braten"
+     }
+    ]
+   },
+   {
+    "title": "Topping",
+    "items": [
+     {
+      "t": "Ahornsirup"
+     },
+     {
+      "t": "Joghurt, Apfelmark"
+     },
+     {
+      "t": "Beeren, Obst"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Hafermilch, Chiasamen und Haferflocken vermischen und quellen lassen.",
+   "Mehl, Backpulver und Salz mischen.",
+   "Hafer-Chia-Mischung hinzufügen und alles vermischen.",
+   "Öl (Rapsöl) in einer Pfanne erhitzen und die Pancakes anbraten.",
+   "Mit Toppings servieren: Apfelmark, Obst, Ahornsirup, Beeren, Joghurt."
+  ],
+  "notes": []
+ },
+ {
+  "id": "veganer-griessbrei",
+  "title": "Veganer Grießbrei",
+  "cat": "Frühstück",
+  "tags": [
+   "vegan"
+  ],
+  "servings": null,
+  "unit": null,
+  "difficulty": 1,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 500,
+      "u": "ml",
+      "t": "Hafermilch"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Ahornsirup"
+     },
+     {
+      "m": 0.25,
+      "u": "TL",
+      "t": "Zimt"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Salz"
+     },
+     {
+      "m": 60,
+      "u": "g",
+      "t": "Dinkelgrieß"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Mandelmus"
+     }
+    ]
+   },
+   {
+    "title": "Topping",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "Apfel"
+     },
+     {
+      "t": "vegane Butter"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Ahornsirup"
+     },
+     {
+      "m": 1,
+      "u": "Msp.",
+      "t": "Zimt"
+     },
+     {
+      "t": "evtl. Walnüsse"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Hafermilch mit Ahornsirup, Zimt und Salz in einen kleinen Topf füllen und unter Rühren aufkochen.",
+   "Hitze auf die geringste Stufe reduzieren.",
+   "Grieß nach und nach einrieseln lassen, währenddessen mit dem Schneebesen umrühren. 5 min köcheln lassen.",
+   "Mandelmus unterrühren.",
+   "Topping: Butter erhitzen, Apfelstücke, Ahornsirup und Zimt dazugeben. Bei mittlerer Hitze anbraten und karamellisieren."
+  ],
+  "notes": []
+ },
+ {
+  "id": "feldsalat-rote-bete-granatapfel",
+  "title": "Feldsalat mit Roter Bete und Granatapfel",
+  "cat": "Salat",
+  "tags": [],
+  "servings": 2,
+  "unit": "Personen",
+  "difficulty": 1,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 100,
+      "u": "g",
+      "t": "Feldsalat"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Granatapfel"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "rohe Rote Bete"
+     },
+     {
+      "m": 80,
+      "u": "g",
+      "t": "Feta"
+     }
+    ]
+   },
+   {
+    "title": "Dressing",
+    "items": [
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Apfelessig"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Olivenöl"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Joghurt"
+     },
+     {
+      "t": "Pfeffer, Salz"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Salat waschen und trocken schütteln.",
+   "Kerne aus dem Granatapfel herauslösen.",
+   "Rote Bete putzen und waschen, bei Bedarf schälen. Anschließend vierteln und auf einer Reibe oder mit der Küchenmaschine fein raspeln.",
+   "Alle Zutaten vermischen."
+  ],
+  "notes": []
+ },
+ {
+  "id": "gnocchi-spinat-auflauf-gorgonzola",
+  "title": "Italienischer Gnocchi-Spinat-Auflauf mit Gorgonzola",
+  "cat": "Mittagessen",
+  "tags": [],
+  "servings": 3,
+  "unit": "Personen",
+  "difficulty": null,
+  "prep": "15 min",
+  "time": "50 min",
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 600,
+      "u": "g",
+      "t": "Gnocchi"
+     },
+     {
+      "m": 450,
+      "u": "g",
+      "t": "Blattspinat (TK)"
+     },
+     {
+      "m": 2,
+      "u": "",
+      "t": "Zwiebeln (oder 1 große)"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Gorgonzola"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Schmand"
+     },
+     {
+      "m": 100,
+      "u": "g",
+      "t": "Käse, gerieben"
+     },
+     {
+      "t": "Sahne (bei Bedarf)"
+     },
+     {
+      "t": "Cherrytomaten (optional)"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     },
+     {
+      "t": "Kräuter (optional)"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Als Erstes den Ofen auf 180 °C vorheizen.",
+   "Den tiefgekühlten Blattspinat auftauen lassen und die Gnocchi nach Packungsbeilage kochen.",
+   "Die Zwiebeln in kleine Würfel schneiden und in einer Pfanne goldbraun anbraten. Anschließend den Blattspinat dazugeben.",
+   "Nun den Gorgonzola ebenfalls in kleine Würfel schneiden und in die Pfanne geben. Den Schmand ebenfalls mit in die Pfanne rühren.",
+   "Evtl. mit etwas Sahne cremiger machen. Jetzt erst mit Salz und Pfeffer würzen.",
+   "Gnocchi und zuletzt den Pfanneninhalt in eine Auflaufform geben. Alternativ noch Tomaten unterrühren und Kräuter hinzugeben.",
+   "Nach ca. 30 min den Käse darüberstreuen.",
+   "Nach 45 min den Auflauf herausnehmen."
+  ],
+  "notes": []
+ },
+ {
+  "id": "kaese-schinken-pasta",
+  "title": "Käse-Schinken-Pasta",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": null,
+  "unit": null,
+  "difficulty": 1,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 400,
+      "u": "g",
+      "t": "Nudeln (+ etwas Nudelwasser)"
+     },
+     {
+      "m": 60,
+      "u": "g",
+      "t": "Schinkenwürfel (Billie Green)"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "vegane Margarine"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Knoblauchzehe"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Zwiebel"
+     },
+     {
+      "m": 4,
+      "u": "EL",
+      "t": "Hefeflocken"
+     },
+     {
+      "m": 3,
+      "u": "EL",
+      "t": "Speisestärke"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Oregano"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Senf"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Zitronensaft"
+     },
+     {
+      "m": [
+       300,
+       400
+      ],
+      "u": "ml",
+      "t": "Pflanzenmilch (oder Soja Cuisine)",
+      "ca": true
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Bockshornklee (optional)"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Nudeln kochen.",
+   "In einer Pfanne die Margarine zerlassen und die Schinkenwürfel knusprig anbraten.",
+   "Knoblauch hacken, Zwiebel in kleine Würfel schneiden und mit in die Pfanne geben.",
+   "Sind die Zwiebeln glasig geworden, kommen Speisestärke, Hefeflocken, Pfeffer und ordentlich Salz dazu.",
+   "Nun ca. 50 ml Pflanzenmilch dazugeben und ordentlich rühren, bis eine dicke Konsistenz entsteht.",
+   "Senf und Zitronensaft hinzugeben und wieder mit etwas Pflanzenmilch verrühren.",
+   "Oregano hinzufügen und nach und nach die restliche Pflanzenmilch hinzugeben, ggf. Nudelwasser hinzufügen."
+  ],
+  "notes": []
+ },
+ {
+  "id": "thai-curry",
+  "title": "Thai-Curry",
+  "cat": "Mittagessen",
+  "tags": [],
+  "servings": null,
+  "unit": null,
+  "difficulty": 3,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "große Knoblauchzehe"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "geriebener Ingwer"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Zitronengras, fein gehackt"
+     },
+     {
+      "m": 50,
+      "u": "g",
+      "t": "rote Currypaste"
+     },
+     {
+      "m": 250,
+      "u": "ml",
+      "t": "Gemüsefond"
+     },
+     {
+      "m": 500,
+      "u": "ml",
+      "t": "Kokosmilch"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Rohrzucker"
+     },
+     {
+      "m": 1,
+      "u": "Handvoll",
+      "t": "Thai-Basilikum"
+     },
+     {
+      "t": "Öl, Salz"
+     }
+    ]
+   },
+   {
+    "title": "Gemüse (optional)",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "Karotte"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Paprika"
+     },
+     {
+      "t": "Zuckerschoten"
+     }
+    ]
+   },
+   {
+    "title": "Dazu",
+    "items": [
+     {
+      "t": "Reis"
+     },
+     {
+      "t": "frittierter Tofu"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Öl in einer Pfanne erhitzen. Knoblauch fein hacken, Ingwer reiben, Zitronengras klein schneiden und kurz im Öl anschwitzen.",
+   "Currypaste dazugeben und weitere 3 Minuten anschwitzen.",
+   "Mit Gemüsefond ablöschen und ca. 5 Minuten köcheln lassen.",
+   "Kokosmilch sowie Rohrzucker ergänzen, alles gut verrühren und die Soße ca. 10 Minuten bei geschlossenem Deckel köcheln lassen.",
+   "Gemüse nach Wahl hinzufügen und köcheln lassen, bis das Gemüse gar ist.",
+   "Zum Schluss mit Salz abschmecken. Thai-Basilikum in kleine Stücke reißen und dazugeben.",
+   "Auf Reis mit frittiertem Tofu servieren."
+  ],
+  "notes": []
+ },
+ {
+  "id": "beef-and-broccoli",
+  "title": "Beef & Broccoli",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": 2,
+  "unit": "Personen",
+  "difficulty": 2,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 80,
+      "u": "g",
+      "t": "Sojageschnetzeltes"
+     },
+     {
+      "m": 300,
+      "u": "g",
+      "t": "Brokkoli"
+     },
+     {
+      "t": "etwas Öl zum Braten"
+     }
+    ]
+   },
+   {
+    "title": "Marinade für die Sojastücke",
+    "items": [
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Tomatenmark"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Sojasoße (dunkel)"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Öl"
+     }
+    ]
+   },
+   {
+    "title": "Sauce",
+    "items": [
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Ingwer, gerieben"
+     },
+     {
+      "m": 2,
+      "u": "",
+      "t": "Knoblauchzehen, gerieben"
+     },
+     {
+      "t": "helle Sojasoße",
+      "m": 5,
+      "u": "EL"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Ahornsirup"
+     },
+     {
+      "m": 0.75,
+      "u": "EL",
+      "t": "Speisestärke"
+     },
+     {
+      "t": "etwas Pfeffer"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Sesamöl"
+     },
+     {
+      "m": 120,
+      "u": "ml",
+      "t": "Wasser",
+      "ca": true
+     }
+    ]
+   },
+   {
+    "title": "Dazu",
+    "items": [
+     {
+      "t": "Reis"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Sojageschnetzeltes ca. 3–5 min in kochendem Wasser einweichen, absieben, auspressen und in eine Schüssel geben.",
+   "Zutaten für die Marinade hinzugeben und 10 Minuten stehen lassen.",
+   "Brokkoli in etwas Öl von allen Seiten anbraten, bis er stellenweise dunkelbraun und etwas weicher wird. Zur Seite stellen.",
+   "Das marinierte Sojageschnetzelte in etwas Öl von allen Seiten ca. 5–8 min kross anbraten.",
+   "Alle Zutaten für die Soße miteinander vermischen, über das Sojageschnetzelte geben und kurz eindicken lassen.",
+   "Brokkoli hinzugeben, gut verrühren und auf Reis servieren."
+  ],
+  "notes": []
+ },
+ {
+  "id": "kohlrabi-gemuese",
+  "title": "Kohlrabi-Gemüse",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": 2,
+  "unit": "Personen",
+  "difficulty": null,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "Kohlrabi"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Zwiebel oder Schalotte"
+     },
+     {
+      "m": 0.5,
+      "u": "EL",
+      "t": "Butter"
+     },
+     {
+      "m": 50,
+      "u": "ml",
+      "t": "Wasser"
+     },
+     {
+      "m": 50,
+      "u": "ml",
+      "t": "Soja Cuisine"
+     },
+     {
+      "t": "Pfeffer, Salz"
+     },
+     {
+      "t": "Muskat"
+     },
+     {
+      "t": "evtl. Brühe"
+     },
+     {
+      "t": "evtl. Mehl zum Binden"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Zwiebel würfeln.",
+   "Kohlrabi schälen, waschen und klein würfeln oder in Stifte schneiden.",
+   "Zwiebel in Butter anbraten.",
+   "Von der Herdplatte nehmen, Kohlrabi hinzufügen.",
+   "Salz, Pfeffer, Muskat, Wasser und Soja Cuisine hinzufügen, evtl. auch Brühe.",
+   "Aufkochen lassen. Bei kleiner bis mittlerer Hitze mit Deckel ca. 15–20 min kochen."
+  ],
+  "notes": [
+   "Die Mengen für Wasser und Soja Cuisine stimmen nicht ganz, es muss mehr Flüssigkeit sein."
+  ]
+ },
+ {
+  "id": "buchweizen-risotto",
+  "title": "Vegetarisches Buchweizen-Risotto",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegetarisch"
+  ],
+  "servings": 2,
+  "unit": "Personen",
+  "difficulty": 1,
+  "prep": null,
+  "time": "30 min",
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 140,
+      "u": "g",
+      "t": "Buchweizen"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Speisezwiebel"
+     },
+     {
+      "t": "⅓ Zucchini"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "rote Paprika"
+     },
+     {
+      "m": 80,
+      "u": "g",
+      "t": "TK-Erbsen"
+     },
+     {
+      "t": "⅓ Aubergine"
+     },
+     {
+      "m": 300,
+      "u": "ml",
+      "t": "Gemüsebrühe"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Olivenöl"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Gemüse zerkleinern.",
+   "2 EL Olivenöl in einem Topf erhitzen. Zwiebeln und Aubergine darin ca. 3 min anbraten.",
+   "Zucchini und Paprika dazugeben und weitere 2 min braten.",
+   "Erbsen und Buchweizen in den Topf geben, Gemüsebrühe darüber gießen und alles 15–20 min köcheln lassen.",
+   "Mit Salz und Pfeffer abschmecken."
+  ],
+  "notes": []
+ },
+ {
+  "id": "mie-nudeln-gebraten",
+  "title": "Mie-Nudeln gebraten",
+  "cat": "Mittagessen",
+  "tags": [],
+  "servings": 2,
+  "unit": "Personen",
+  "difficulty": null,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 125,
+      "u": "g",
+      "t": "Mie-Nudeln"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Knoblauchzehe"
+     },
+     {
+      "t": "Karotten",
+      "m": 250,
+      "u": "g"
+     },
+     {
+      "t": "Zucchini"
+     },
+     {
+      "t": "Paprika"
+     },
+     {
+      "t": "Sojasauce"
+     },
+     {
+      "t": "Chilisauce"
+     },
+     {
+      "t": "Sambal Oelek"
+     },
+     {
+      "t": "Currypulver"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Gemüse zerkleinern.",
+   "Mie-Nudeln in kochendem Wasser ziehen lassen.",
+   "Gemüse anbraten.",
+   "Nudeln hinzufügen und mit Chilisauce, Sojasauce, Currypulver etc. würzen."
+  ],
+  "notes": []
+ },
+ {
+  "id": "vegane-gaensekeulen",
+  "title": "Vegane Gänsekeulen",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": null,
+  "unit": null,
+  "difficulty": null,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 500,
+      "u": "g",
+      "t": "Austernpilze"
+     },
+     {
+      "m": 4,
+      "u": "Lagen",
+      "t": "Reispapier"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Speisestärke"
+     },
+     {
+      "m": 4,
+      "u": "EL",
+      "t": "kaltes Wasser"
+     }
+    ]
+   },
+   {
+    "title": "Gewürzmischung",
+    "items": [
+     {
+      "m": 3,
+      "u": "EL",
+      "t": "Sojasoße"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Beifuß"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Kreuzkümmel (Kumin)"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Paprikapulver"
+     },
+     {
+      "m": 3,
+      "u": "EL",
+      "t": "Öl"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Knoblauchpulver"
+     }
+    ]
+   },
+   {
+    "title": "Marinade",
+    "items": [
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Öl"
+     },
+     {
+      "m": [
+       0.5,
+       1
+      ],
+      "u": "TL",
+      "t": "Salz"
+     },
+     {
+      "m": 0.5,
+      "u": "EL",
+      "t": "Tomatenmark"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "schwarzer Pfeffer"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Ahornsirup"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Austernpilze putzen, in dünne Fäden zupfen und in eine große Schüssel geben.",
+   "Alle Zutaten für die Gewürzmischung miteinander verrühren, über die Austernpilze geben und alles gut vermischen.",
+   "Die Austernpilze in einer Pfanne ca. 8 min anbraten.",
+   "Speisestärke mit kaltem Wasser vermischen, in die Pfanne geben und kurz mit anbraten, bis die Masse zusammenkommt.",
+   "Reispapier mit Wasser befeuchten, die Hälfte der Pilzmasse drauflegen, dann erst von oben nach unten und dann seitlich zusammenfalten.",
+   "Dann eine weitere Reispapierschicht hinzufügen.",
+   "Marinade verrühren und die Keulen damit einstreichen.",
+   "Bei 190 °C ca. 30–40 min backen."
+  ],
+  "notes": []
+ },
+ {
+  "id": "carrot-cake",
+  "title": "Carrot Cake",
+  "cat": "Backen",
+  "tags": [],
+  "servings": 1,
+  "unit": "Kuchen",
+  "difficulty": null,
+  "prep": "30 min",
+  "time": "50 min backen",
+  "groups": [
+   {
+    "title": "Für den Teig",
+    "items": [
+     {
+      "m": 350,
+      "u": "g",
+      "t": "Karotten"
+     },
+     {
+      "m": 5,
+      "u": "",
+      "t": "Eier (Gr. M)"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Salz"
+     },
+     {
+      "m": 100,
+      "u": "ml",
+      "t": "neutrales Speiseöl (z. B. Sonnenblumenöl)"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "brauner Zucker"
+     },
+     {
+      "m": 1,
+      "u": "Pck.",
+      "t": "Vanillezucker"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Zimt"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Muskat"
+     },
+     {
+      "m": 150,
+      "u": "g",
+      "t": "Weizenmehl (Type 405)"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Backpulver"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "gemahlene Mandeln"
+     }
+    ]
+   },
+   {
+    "title": "Für das Frosting",
+    "items": [
+     {
+      "m": 120,
+      "u": "g",
+      "t": "weiche Butter"
+     },
+     {
+      "m": 100,
+      "u": "g",
+      "t": "Puderzucker"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Vanilleextrakt"
+     },
+     {
+      "m": 400,
+      "u": "g",
+      "t": "Frischkäse"
+     }
+    ]
+   },
+   {
+    "title": "Außerdem",
+    "items": [
+     {
+      "t": "etwas Fett für die Form"
+     },
+     {
+      "m": 3,
+      "u": "EL",
+      "t": "gehackte Nüsse zum Garnieren"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Eine Springform (26 cm Ø) mit Backpapier auslegen und den Rand einfetten. Backofen auf 180 °C Ober-/Unterhitze (Umluft 160 °C) vorheizen.",
+   "Karotten schälen und mit einer Küchenreibe fein raspeln.",
+   "Für den Teig zwei der Eier trennen und das Eiweiß mit einer Prise Salz steif schlagen.",
+   "Öl mit braunem Zucker, Vanillezucker, Zimt und Muskat schaumig rühren. Die restlichen Eier und die Eigelbe dazugeben und cremig aufschlagen.",
+   "Nach und nach das Mehl mit dem Backpulver dazusieben und verrühren. Gemahlene Mandeln und geraspelte Karotten unter den Teig rühren. Anschließend das Eiweiß vorsichtig unterheben.",
+   "In die vorbereitete Springform füllen, im vorgeheizten Ofen ca. 50 Minuten backen und danach komplett auskühlen lassen.",
+   "Für das Frosting Butter mit Puderzucker und Vanilleextrakt cremig rühren. Nach und nach den zimmerwarmen Frischkäse hinzufügen und verrühren.",
+   "Den ausgekühlten Boden halbieren und etwa die Hälfte der Creme auf den unteren Boden streichen. Deckel aufsetzen und den Kuchen mit der restlichen Creme einstreichen.",
+   "Mit gehackten Nüssen dekorieren und bis zum Servieren kalt stellen."
+  ],
+  "notes": [
+   "Ergibt ca. 16 Stücke und hält sich mindestens 3 Tage im Kühlschrank.",
+   "Niveau laut Vorlage: einfach."
+  ]
+ },
+ {
+  "id": "zwetschgen-streuselkuchen",
+  "title": "Zwetschgen-Streuselkuchen",
+  "cat": "Backen",
+  "tags": [],
+  "servings": null,
+  "unit": null,
+  "difficulty": null,
+  "prep": "30 min",
+  "time": "40 min",
+  "groups": [
+   {
+    "title": "Mürbteig",
+    "items": [
+     {
+      "m": 250,
+      "u": "g",
+      "t": "Mehl"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Salz"
+     },
+     {
+      "m": 70,
+      "u": "g",
+      "t": "Zucker"
+     },
+     {
+      "m": 125,
+      "u": "g",
+      "t": "Butter"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Ei"
+     },
+     {
+      "m": 3,
+      "u": "EL",
+      "t": "Semmelbrösel"
+     }
+    ]
+   },
+   {
+    "title": "Belag",
+    "items": [
+     {
+      "m": 700,
+      "u": "g",
+      "t": "Zwetschgen"
+     }
+    ]
+   },
+   {
+    "title": "Für die Streusel",
+    "items": [
+     {
+      "m": 125,
+      "u": "g",
+      "t": "Butter"
+     },
+     {
+      "m": 100,
+      "u": "g",
+      "t": "Zucker"
+     },
+     {
+      "m": 1,
+      "u": "Pck.",
+      "t": "Bourbon-Vanillezucker"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Salz"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Zimt"
+     },
+     {
+      "m": 180,
+      "u": "g",
+      "t": "Mehl"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Mehl, Salz und Zucker vermischen. Butter und Ei hinzugeben und alles kurz zu einem glatten Teig verkneten.",
+   "Teig in Folie 30 min kalt stellen.",
+   "Zwetschgen waschen und halbieren.",
+   "Backofen auf 200 °C Ober-/Unterhitze vorheizen.",
+   "Mürbteig dünn ausrollen. Die Form damit auslegen und einen ca. 3 cm hohen Rand andrücken.",
+   "Teigboden mehrmals mit einer Gabel einstechen. Semmelbrösel auf den Teigboden streuen.",
+   "Zwetschgen hochkant in die Form stellen, sodass der Boden komplett bedeckt ist.",
+   "Für die Streusel Butter, Zucker, Vanillezucker, Salz und Zimt verkneten. Mehl zugeben und zu groben Streuseln verarbeiten.",
+   "Ca. 40 min backen."
+  ],
+  "notes": []
+ },
+ {
+  "id": "pfannkuchen-grundrezept",
+  "title": "Pfannkuchen (Grundrezept)",
+  "cat": "Backen",
+  "tags": [],
+  "servings": 4,
+  "unit": "Personen",
+  "difficulty": 1,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 400,
+      "u": "g",
+      "t": "Mehl"
+     },
+     {
+      "m": 750,
+      "u": "ml",
+      "t": "Milch"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Salz"
+     },
+     {
+      "m": 3,
+      "u": "",
+      "t": "Eier (groß)"
+     },
+     {
+      "m": 1,
+      "u": "Schuss",
+      "t": "Mineralwasser"
+     },
+     {
+      "t": "Butter zum Backen"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Mehl, Milch, Eier und Salz zu einem glatten Teig verrühren, bis dieser Blasen wirft.",
+   "Teig ca. 30 min im Kühlschrank ruhen lassen.",
+   "Teig aus dem Kühlschrank nehmen, einen guten Schuss Mineralwasser zufügen und nochmals kurz durchrühren."
+  ],
+  "notes": []
+ },
+ {
+  "id": "schokokuchen",
+  "title": "Schokokuchen",
+  "cat": "Backen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": null,
+  "unit": null,
+  "difficulty": 1,
+  "prep": "10 min",
+  "time": "35 min backen",
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Mehl"
+     },
+     {
+      "m": 35,
+      "u": "g",
+      "t": "Backkakao"
+     },
+     {
+      "m": 180,
+      "u": "g",
+      "t": "Zucker"
+     },
+     {
+      "m": 0.5,
+      "u": "Pck.",
+      "t": "Backpulver"
+     },
+     {
+      "m": 240,
+      "u": "ml",
+      "t": "Wasser"
+     },
+     {
+      "m": 100,
+      "u": "ml",
+      "t": "Sonnenblumenöl"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Backform, z. B. eine 20-cm-Springform, mit Öl einfetten.",
+   "Backofen auf 180 °C Ober-/Unterhitze vorheizen.",
+   "Mehl, Kakao, Backpulver und Zucker in einer Schüssel kurz vermengen.",
+   "Anschließend Wasser und Öl dazugeben und gut umrühren, bis ein glatter Teig entsteht.",
+   "In die Form füllen.",
+   "35–40 min backen."
+  ],
+  "notes": []
+ },
+ {
+  "id": "vegane-nussecken",
+  "title": "Vegane Nussecken",
+  "cat": "Backen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": null,
+  "unit": null,
+  "difficulty": 2,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "title": "Für den Teig",
+    "items": [
+     {
+      "m": 300,
+      "u": "g",
+      "t": "Mehl"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Backpulver"
+     },
+     {
+      "m": 60,
+      "u": "g",
+      "t": "Kokosblütenzucker"
+     },
+     {
+      "m": 1,
+      "u": "Pck.",
+      "t": "Vanillezucker"
+     },
+     {
+      "m": 130,
+      "u": "g",
+      "t": "weiche Butter oder Margarine"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Leinsamen (für 2 Flax-Eier)"
+     },
+     {
+      "m": 6,
+      "u": "EL",
+      "t": "Wasser (für die Flax-Eier)"
+     },
+     {
+      "m": 1,
+      "u": "Glas",
+      "t": "Aprikosenmarmelade"
+     }
+    ]
+   },
+   {
+    "title": "Für den Belag",
+    "items": [
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Mandeln, gemahlen"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Haselnüsse, gemahlen"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Butter"
+     },
+     {
+      "m": 120,
+      "u": "g",
+      "t": "Kokosblütenzucker"
+     },
+     {
+      "t": "etwas Wasser"
+     }
+    ]
+   },
+   {
+    "title": "Außerdem",
+    "items": [
+     {
+      "t": "Kuvertüre"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Backofen auf 175 °C Ober-/Unterhitze vorheizen.",
+   "Sämtliche Zutaten für den Teig in eine Schüssel geben, mixen und auf einem mit Backpapier ausgelegten Blech (rechteckig) verteilen.",
+   "Teig mit Marmelade bestreichen.",
+   "Butter für den Belag zusammen mit dem Zucker im Topf schmelzen, bis der Zucker aufgelöst ist. Nüsse und Wasser dazugeben und umrühren.",
+   "Die Masse auf dem Teig verteilen.",
+   "30–35 min backen.",
+   "In Dreiecke schneiden."
+  ],
+  "notes": [
+   "Die Kuvertüre steht auf dem Zettel ohne Anleitung."
+  ]
+ },
+ {
+  "id": "zitronenmuffins",
+  "title": "Zitronenmuffins",
+  "cat": "Backen",
+  "tags": [],
+  "servings": 12,
+  "unit": "Muffins",
+  "difficulty": null,
+  "prep": "20 min",
+  "time": "25 min backen",
+  "groups": [
+   {
+    "title": "Für die Muffins",
+    "items": [
+     {
+      "m": 150,
+      "u": "g",
+      "t": "weiche Butter"
+     },
+     {
+      "m": 120,
+      "u": "g",
+      "t": "Zucker"
+     },
+     {
+      "m": 1,
+      "u": "Pck.",
+      "t": "Vanillezucker"
+     },
+     {
+      "m": 2,
+      "u": "",
+      "t": "Eier (Gr. M)"
+     },
+     {
+      "m": 2,
+      "u": "",
+      "t": "Zitronen"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Salz"
+     },
+     {
+      "m": 250,
+      "u": "g",
+      "t": "Weizenmehl (Type 405)"
+     },
+     {
+      "m": 2,
+      "u": "TL",
+      "t": "Backpulver"
+     }
+    ]
+   },
+   {
+    "title": "Für den Guss",
+    "items": [
+     {
+      "m": 3,
+      "u": "EL",
+      "t": "Zitronensaft"
+     },
+     {
+      "m": 100,
+      "u": "g",
+      "t": "Puderzucker"
+     },
+     {
+      "t": "etwas Zitronenabrieb zur Deko (optional)"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Butter mit Zucker und Vanillezucker verrühren. Eier nach und nach unterrühren.",
+   "Schale der Zitronen abreiben und den Saft auspressen. Beides zur Butter-Zucker-Mischung geben und verrühren.",
+   "Salz mit Mehl und Backpulver mischen, zum Teig geben und unterrühren.",
+   "Ofen auf 180 °C (Umluft 160 °C) vorheizen. Die Mulden eines Muffinblechs mit Muffinförmchen auslegen.",
+   "Mit einem Eisportionierer oder zwei Teelöffeln den Teig auf die Förmchen verteilen. Im vorgeheizten Ofen ca. 25 min backen. Vollständig abkühlen lassen.",
+   "Für den Guss Zitronensaft in eine Schüssel geben und Puderzucker hinzugeben. Gut verrühren, bis keine Klümpchen mehr zu sehen sind. Ist die Masse zu dick oder zu dünn, noch etwas Zitronensaft oder Puderzucker hinzugeben.",
+   "Guss mit einem Teelöffel auf den Muffins verteilen und fest werden lassen."
+  ],
+  "notes": [
+   "Niveau laut Vorlage: einfach."
+  ]
+ },
+ {
+  "id": "erdnuss-cupcakes",
+  "title": "Erdnuss-Cupcakes",
+  "cat": "Backen",
+  "tags": [],
+  "servings": 12,
+  "unit": "Cupcakes",
+  "difficulty": null,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "title": "Für den Teig",
+    "items": [
+     {
+      "m": 125,
+      "u": "g",
+      "t": "Weizenmehl (Type 405)"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Salz"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Natron"
+     },
+     {
+      "m": 75,
+      "u": "g",
+      "t": "Butter"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "brauner Zucker"
+     },
+     {
+      "m": 160,
+      "u": "g",
+      "t": "Erdnussmus (creamy, aus 100 % Erdnüssen)"
+     },
+     {
+      "m": 2,
+      "u": "",
+      "t": "Eier (Gr. M)"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Eigelb (Gr. M)"
+     },
+     {
+      "m": 80,
+      "u": "ml",
+      "t": "Buttermilch"
+     },
+     {
+      "m": 1.5,
+      "u": "TL",
+      "t": "Vanilleextrakt"
+     }
+    ]
+   },
+   {
+    "title": "Für das Frosting",
+    "items": [
+     {
+      "m": 180,
+      "u": "g",
+      "t": "Puderzucker"
+     },
+     {
+      "m": 90,
+      "u": "g",
+      "t": "weiche Butter"
+     },
+     {
+      "m": 90,
+      "u": "g",
+      "t": "Erdnussmus (creamy, aus 100 % Erdnüssen)"
+     },
+     {
+      "m": 0.25,
+      "u": "TL",
+      "t": "Salz"
+     },
+     {
+      "m": 125,
+      "u": "g",
+      "t": "weicher Doppelrahmfrischkäse"
+     },
+     {
+      "m": 1.5,
+      "u": "TL",
+      "t": "Vanilleextrakt"
+     }
+    ]
+   },
+   {
+    "title": "Außerdem",
+    "items": [
+     {
+      "m": 60,
+      "u": "g",
+      "t": "Zartbitterschokolade"
+     },
+     {
+      "m": 30,
+      "u": "g",
+      "t": "geröstete, gesalzene Erdnüsse"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Backofen auf 200 °C Ober-/Unterhitze (Umluft 180 °C) vorheizen. Ein Muffinblech (12 Mulden) mit Papierförmchen auslegen.",
+   "Für den Teig Mehl, Salz und Natron in einer Schüssel vermischen.",
+   "Butter in einem kleinen Topf auf mittlerer Stufe schmelzen lassen. Unter gelegentlichem Rühren ca. 5–7 Minuten weiter erhitzen, bis sie erst schäumt und sich dann kleine braune Flecken bilden.",
+   "Braune Butter, Zucker und Erdnussmus mit einem Schneebesen in einer großen Schüssel verrühren und kurz abkühlen lassen. Eier und Eigelb unterrühren, bis eine glatte Mischung entsteht, dann Buttermilch und Vanilleextrakt untermischen. Die Mehlmischung mit einem Teigschaber kurz unterrühren.",
+   "Teig mit zwei Löffeln oder einem Eisportionierer gleichmäßig auf die Förmchen verteilen. Im vorgeheizten Ofen ca. 18–25 Minuten backen, bis die Stäbchenprobe gelingt. 5 Minuten in der Form abkühlen lassen, dann herauslösen und auf einem Gitter vollständig abkühlen lassen.",
+   "Für das Frosting Puderzucker, weiche Butter, Erdnussmus und Salz auf niedriger Stufe mit der Küchenmaschine oder dem Handrührgerät vermischen, bis kein Puderzucker mehr zu sehen ist.",
+   "Auf hohe Stufe schalten und das Frosting ca. 5 Minuten cremig-hell aufschlagen. Frischkäse und Vanilleextrakt möglichst kurz auf mittlerer Stufe unterrühren, bis eine glatte Mischung entsteht.",
+   "Frosting in einen Spritzbeutel mit Sterntülle füllen und auf die abgekühlten Muffins spritzen. Schokolade fein hacken und über einem leicht köchelnden Wasserbad schmelzen. Flüssige Schokolade in einen kleinen Spritzbeutel füllen, die Spitze abschneiden und mit Zick-Zack-Bewegungen über die Cupcakes fahren, um sie mit Schokostreifen zu dekorieren.",
+   "Erdnüsse hacken und über die Cupcakes streuen."
+  ],
+  "notes": [
+   "Die Cupcakes halten sich abgedeckt im Kühlschrank mindestens 4 Tage."
+  ]
+ },
+ {
+  "id": "tahini-bites",
+  "title": "Tahini Bites",
+  "cat": "Snacks",
+  "tags": [],
+  "servings": null,
+  "unit": null,
+  "difficulty": null,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "title": "Für den Boden",
+    "items": [
+     {
+      "m": 70,
+      "u": "g",
+      "t": "feine Haferflocken"
+     },
+     {
+      "m": 50,
+      "u": "g",
+      "t": "gemahlene Mandeln"
+     },
+     {
+      "m": [
+       6,
+       8
+      ],
+      "u": "",
+      "t": "Datteln, entsteint"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Kokosöl"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Salz"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Zimt oder Vanille"
+     }
+    ]
+   },
+   {
+    "title": "Für die Tahini-Creme",
+    "items": [
+     {
+      "m": 40,
+      "u": "g",
+      "t": "weiche Butter"
+     },
+     {
+      "m": 80,
+      "u": "g",
+      "t": "helles Tahini"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "feines Salz"
+     }
+    ]
+   },
+   {
+    "title": "Finish",
+    "items": [
+     {
+      "m": 50,
+      "u": "g",
+      "t": "Pistazienkerne, grob gehackt"
+     },
+     {
+      "m": 150,
+      "u": "g",
+      "t": "Zartbitterschokolade"
+     },
+     {
+      "t": "Meersalzflocken"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Boden vorbereiten: Datteln kurz in heißem Wasser einweichen, dann abtropfen lassen.",
+   "Alle Zutaten für den Boden in einem Mixer zu einer formbaren Masse verarbeiten, in die Form geben und festdrücken.",
+   "Tahini-Schicht auftragen: Butter mit Tahini und Salz cremig rühren. Über den Boden geben und glatt streichen.",
+   "Pistazien einarbeiten: Einen Teil (ca. 30 g) der gehackten Pistazien gleichmäßig über die Tahini-Schicht streuen und leicht andrücken.",
+   "Schokolade schmelzen und darübergießen.",
+   "Toppings aufbringen.",
+   "In den Gefrierschrank geben, bis die Schokolade komplett fest ist."
+  ],
+  "notes": []
+ },
+ {
+  "id": "erdnuss-haferflocken-riegel",
+  "title": "Erdnuss-Haferflocken-Riegel",
+  "cat": "Snacks",
+  "tags": [],
+  "servings": null,
+  "unit": null,
+  "difficulty": 1,
+  "prep": "15 min",
+  "time": null,
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 100,
+      "u": "g",
+      "t": "Cashews"
+     },
+     {
+      "m": 70,
+      "u": "g",
+      "t": "Haferflocken"
+     },
+     {
+      "m": 90,
+      "u": "g",
+      "t": "Datteln"
+     },
+     {
+      "m": 80,
+      "u": "g",
+      "t": "Erdnussmus"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Ahornsirup"
+     },
+     {
+      "t": "Zimt"
+     },
+     {
+      "t": "Salz"
+     },
+     {
+      "m": 50,
+      "u": "g",
+      "t": "Zartbitterschokolade"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Haferflocken im Mixer zu Mehl mahlen.",
+   "Cashews 10 min in heißem Wasser einweichen, dann im Mixer pürieren.",
+   "Datteln im Mixer pürieren. Anschließend Erdnussmus, Cashews und Zimt dazugeben.",
+   "Wenn alles eine klebrige Masse ist, die Haferflocken, Salz und die Masse aus dem Mixer vermengen.",
+   "Die Masse in eine Form geben und für 30 min in den Tiefkühler stellen.",
+   "Schokolade im Wasserbad schmelzen und auf die Masse geben."
+  ],
+  "notes": []
  }
 ];
