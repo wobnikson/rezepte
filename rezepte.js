@@ -2855,5 +2855,1899 @@ window.REZEPTE = [
    "Salat mit dem Dressing und dem Feta servieren."
   ],
   "notes": []
+ },
+ {
+  "id": "gnocchi-cashew-pesto",
+  "title": "Gnocchi mit crunchy Cashew-Pesto",
+  "cat": "Mittagessen",
+  "tags": [],
+  "servings": 2,
+  "unit": "Personen",
+  "difficulty": null,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 400,
+      "u": "g",
+      "t": "Gnocchi"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Butter"
+     },
+     {
+      "m": 10,
+      "u": "g",
+      "t": "Basilikum"
+     }
+    ]
+   },
+   {
+    "title": "Cashew-Pesto",
+    "items": [
+     {
+      "m": 40,
+      "u": "g",
+      "t": "getrocknete Tomaten in Öl"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Chiliflocken"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Knoblauchzehe"
+     },
+     {
+      "m": 20,
+      "u": "g",
+      "t": "Parmesan"
+     },
+     {
+      "m": 30,
+      "u": "g",
+      "t": "Cashewkerne, ungesalzen"
+     },
+     {
+      "m": 60,
+      "u": "ml",
+      "t": "Olivenöl"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Parmesan reiben.",
+   "Getrocknete Tomaten, Chiliflocken, geschälte Knoblauchzehe, Parmesan, Cashews und Olivenöl im Mixer zerkleinern. Mit Salz und Pfeffer würzen.",
+   "Gnocchi nach Packungsanleitung kochen.",
+   "Währenddessen Basilikum waschen, trocken schütteln und die Blätter in feine Streifen schneiden.",
+   "Butter in einer Pfanne zerlassen und die Gnocchi darin 3–4 min goldbraun braten.",
+   "Pesto in die Pfanne geben und gut mit den Gnocchi mischen.",
+   "Gnocchi mit Basilikum bestreuen und genießen."
+  ],
+  "notes": []
+ },
+ {
+  "id": "cashew-creme",
+  "title": "Cashew-Creme (der Alleskönner)",
+  "cat": "Saucen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": 10,
+  "unit": "EL",
+  "difficulty": null,
+  "prep": null,
+  "time": "15 min",
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 50,
+      "u": "g",
+      "t": "Cashews"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Misopaste"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Apfelessig"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Zitronensaft"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Olivenöl"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Ahornsirup"
+     },
+     {
+      "m": 70,
+      "u": "ml",
+      "t": "Pflanzenmilch"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     }
+    ]
+   },
+   {
+    "title": "Optional",
+    "items": [
+     {
+      "m": [
+       1,
+       2
+      ],
+      "u": "",
+      "t": "Jalapeño-Ringe"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Cashews in einen Topf geben, mit Wasser bedecken und zum Kochen bringen.",
+   "10 min auf kleiner Stufe köcheln lassen.",
+   "Wasser abgießen. Cashews mit Misopaste, Apfelessig, Zitronensaft, Olivenöl und Ahornsirup in einen Messbecher geben und pürieren.",
+   "Nach und nach die Pflanzenmilch zugeben.",
+   "Pürieren, bis eine feine, klumpenfreie Creme entsteht."
+  ],
+  "notes": [
+   "Ergibt ca. 160 g. Im Kühlschrank bis zu 5 Tage haltbar.",
+   "Statt Misopaste geht auch 1 EL Hefeflocken. Für mehr Schärfe Jalapeño-Ringe mitpürieren.",
+   "Niveau laut Vorlage: leicht."
+  ]
+ },
+ {
+  "id": "tofu-sandwich",
+  "title": "Tofu-Sandwich mit Gewürz-Tofu",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": 2,
+  "unit": "Portionen",
+  "difficulty": null,
+  "prep": null,
+  "time": "15 min",
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 2,
+      "u": "",
+      "t": "dicke Scheiben Sauerteigbrot"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Tofu"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Paprikapulver"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Ras el-Hanout"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Tomate"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Gurke"
+     },
+     {
+      "t": "Salatblätter"
+     },
+     {
+      "m": 100,
+      "u": "g",
+      "t": "Hummus"
+     },
+     {
+      "t": "Öl zum Braten"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Brot in Scheiben schneiden und nach Wunsch kurz mit etwas Öl in der Pfanne anrösten.",
+   "Tofu in Scheiben schneiden und mit Paprikapulver, Ras el-Hanout, Salz und Pfeffer würzen.",
+   "Tofuscheiben in Öl von beiden Seiten goldbraun braten.",
+   "Tomate, Gurke und Salat waschen. Salat trocknen, Tomate und Gurke in Scheiben schneiden.",
+   "Brot mit Hummus bestreichen und mit Tofu und Gemüse belegen."
+  ],
+  "notes": [
+   "Guten Hummus gibt es in arabischen Supermärkten, oder selbst machen.",
+   "Niveau laut Vorlage: leicht."
+  ]
+ },
+ {
+  "id": "breakfast-burrito",
+  "title": "Breakfast Burrito mit Tofu Scramble",
+  "cat": "Frühstück",
+  "tags": [
+   "vegan"
+  ],
+  "servings": null,
+  "unit": null,
+  "difficulty": null,
+  "prep": null,
+  "time": "45 min",
+  "groups": [
+   {
+    "title": "Für die Kartoffeln",
+    "items": [
+     {
+      "m": 2,
+      "u": "",
+      "t": "mittelgroße Kartoffeln"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Paprikapulver"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Currypulver"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     },
+     {
+      "t": "Öl zum Braten"
+     }
+    ]
+   },
+   {
+    "title": "Für den Rest",
+    "items": [
+     {
+      "t": "Tofu Scramble"
+     },
+     {
+      "t": "Tortilla-Wraps"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Tomate, gewürfelt"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Paprika, gewürfelt"
+     },
+     {
+      "m": 0.25,
+      "u": "",
+      "t": "Gurke, gewürfelt"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Frühlingszwiebel, in Ringen"
+     },
+     {
+      "m": 2,
+      "u": "Stängel",
+      "t": "Koriander, gehackt"
+     },
+     {
+      "m": [
+       3,
+       4
+      ],
+      "u": "EL",
+      "t": "Cashew-Creme"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Limette"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Kartoffeln schälen und klein würfeln. In einem Sieb abspülen und mit einem Küchentuch trocknen.",
+   "Kartoffeln mit etwas Öl in der Pfanne ca. 15 min auf mittlerer Stufe goldbraun braten, dann vom Herd nehmen.",
+   "Paprikapulver, Currypulver, Salz und Pfeffer mischen und über die Kartoffeln geben.",
+   "Tofu Scramble zubereiten.",
+   "Tortilla-Wraps 30 Sekunden in einer Pfanne erwärmen.",
+   "Kartoffeln, Tofu Scramble, Tomate, Paprika, Gurke und Frühlingszwiebel auf die Wraps geben.",
+   "Mit Koriander bestreuen, etwas Cashew-Creme darauf verteilen und die Limette darüber auspressen.",
+   "Wraps zusammenrollen.",
+   "Die Burritos noch einmal kurz von beiden Seiten in der Pfanne anbraten."
+  ],
+  "notes": [
+   "Ergibt 2–3 Portionen.",
+   "Die Kartoffeln erst nach dem Braten salzen, sonst werden sie nicht knusprig.",
+   "Tofu Scramble: siehe eigenes Rezept „Tofu Scramble auf Brot“.",
+   "Niveau laut Vorlage: mittel."
+  ]
+ },
+ {
+  "id": "crispy-tofu-burger",
+  "title": "Crispy Tofu Burger mit paniertem Tofu",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": 2,
+  "unit": "Portionen",
+  "difficulty": null,
+  "prep": null,
+  "time": "30 min",
+  "groups": [
+   {
+    "title": "Für das Tofu-Patty",
+    "items": [
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Tofu"
+     },
+     {
+      "m": 40,
+      "u": "g",
+      "t": "feines Panko (oder Semmelbrösel)"
+     },
+     {
+      "t": "Öl zum Braten"
+     }
+    ]
+   },
+   {
+    "title": "Für die Marinade",
+    "items": [
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Ketchup"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Tomatenmark"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Sojasoße"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Wasser"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Smoked Paprika"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     }
+    ]
+   },
+   {
+    "title": "Für den Burger",
+    "items": [
+     {
+      "t": "Burgerbrötchen"
+     },
+     {
+      "t": "Ketchup, Senf"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Tomate, in Scheiben"
+     },
+     {
+      "m": 0.25,
+      "u": "",
+      "t": "Gurke, in Scheiben"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Zwiebel, in Scheiben"
+     },
+     {
+      "m": [
+       3,
+       4
+      ],
+      "u": "",
+      "t": "Salatblätter"
+     },
+     {
+      "t": "Cashew-Creme (optional)"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Tofu der Länge nach halbieren.",
+   "Ketchup, Tomatenmark, Sojasoße und Wasser zur Marinade verrühren. Mit Smoked Paprika, Salz und Pfeffer abschmecken.",
+   "Tofuscheiben rundum mit der Marinade bestreichen und mindestens 10 min ziehen lassen.",
+   "Marinierten Tofu in Panko wälzen und beiseitelegen.",
+   "Burgerbrötchen aufschneiden und mit den Innenseiten nach unten in etwas Öl kurz anrösten.",
+   "Tofu-Pattys in reichlich Öl von beiden Seiten braten. Vorsichtig wenden, damit die Panade hält.",
+   "Brötchen mit Ketchup und Senf bestreichen. Tofu, Tomate, Gurke, Zwiebel, Salat und Cashew-Creme daraufstapeln."
+  ],
+  "notes": [
+   "Je länger der Tofu mariniert, desto kräftiger der Geschmack. Gerne schon einige Stunden vorher einlegen.",
+   "Niveau laut Vorlage: mittel."
+  ]
+ },
+ {
+  "id": "pasta-bolognese-tofuhack",
+  "title": "Pasta Bolognese mit Tofuhack",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": null,
+  "unit": null,
+  "difficulty": null,
+  "prep": null,
+  "time": "45 min",
+  "groups": [
+   {
+    "title": "Für das Tofuhack",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "mittlere Zwiebel, gewürfelt"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Tofu, fein gebröselt"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Ketchup"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Tomatenmark"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Sojasoße"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Wasser"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Smoked Paprika (geräuchertes Paprikapulver)"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     },
+     {
+      "t": "Öl zum Braten"
+     }
+    ]
+   },
+   {
+    "title": "Für die Soße",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "Karotte, geraspelt"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Knoblauchzehe, gewürfelt"
+     },
+     {
+      "m": 50,
+      "u": "g",
+      "t": "rote Linsen"
+     },
+     {
+      "m": 400,
+      "u": "g",
+      "t": "passierte Tomaten (1 Dose)"
+     },
+     {
+      "m": 200,
+      "u": "ml",
+      "t": "Wasser"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Oregano"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Basilikum"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Sojasoße"
+     }
+    ]
+   },
+   {
+    "title": "Dazu",
+    "items": [
+     {
+      "m": 250,
+      "u": "g",
+      "t": "Nudeln (z. B. Tagliatelle)"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Zwiebel mit Öl in die Pfanne geben und 5 min auf mittlerer Stufe anbraten.",
+   "Tofu dazugeben und großzügig salzen. Unter gelegentlichem Rühren ca. 10 min braten, bis der Tofu knusprig ist.",
+   "Ketchup, Tomatenmark, Sojasoße, Wasser, Smoked Paprika, Salz und Pfeffer verrühren. Zum Tofu geben und das Tofuhack 5–10 min auf mittlerer Stufe goldbraun braten.",
+   "Karotte, Knoblauch und Linsen dazugeben und unterrühren.",
+   "Passierte Tomaten und Wasser zugeben.",
+   "Mit Salz, Pfeffer, Oregano und Basilikum würzen, Sojasoße zugeben.",
+   "Zugedeckt unter gelegentlichem Rühren mindestens 20 min auf niedriger Stufe köcheln lassen.",
+   "Nudeln nach Packungsanleitung kochen."
+  ],
+  "notes": [
+   "Ergibt 2–3 Portionen.",
+   "Wird die Soße zu dick, ein paar Löffel Nudelwasser einrühren.",
+   "Niveau laut Vorlage: mittel."
+  ]
+ },
+ {
+  "id": "chili-con-tofu",
+  "title": "Chili con Tofu mit Tofuhack",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": 4,
+  "unit": "Portionen",
+  "difficulty": null,
+  "prep": null,
+  "time": "45 min",
+  "groups": [
+   {
+    "title": "Für das Tofuhack",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "mittlere Zwiebel, gewürfelt"
+     },
+     {
+      "m": 400,
+      "u": "g",
+      "t": "Tofu, fein gebröselt"
+     },
+     {
+      "m": 4,
+      "u": "EL",
+      "t": "Ketchup"
+     },
+     {
+      "m": 2,
+      "u": "TL",
+      "t": "Tomatenmark"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Sojasoße"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Wasser"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Smoked Paprika (geräuchertes Paprikapulver)"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     },
+     {
+      "t": "Öl zum Braten"
+     }
+    ]
+   },
+   {
+    "title": "Für den Eintopf",
+    "items": [
+     {
+      "m": 2,
+      "u": "",
+      "t": "Knoblauchzehen, fein gewürfelt"
+     },
+     {
+      "m": 400,
+      "u": "g",
+      "t": "schwarze Bohnen (1 Dose)"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "rote Paprika, gewürfelt"
+     },
+     {
+      "m": 150,
+      "u": "g",
+      "t": "Mais (1 kleine Dose)"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Tomatenmark"
+     },
+     {
+      "m": 400,
+      "u": "g",
+      "t": "passierte Tomaten (1 Dose)"
+     },
+     {
+      "m": 400,
+      "u": "ml",
+      "t": "Wasser"
+     }
+    ]
+   },
+   {
+    "title": "Sonstiges",
+    "items": [
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Oregano"
+     },
+     {
+      "m": 1,
+      "u": "Msp.",
+      "t": "Zimt"
+     },
+     {
+      "m": 2,
+      "u": "Stücke",
+      "t": "Zartbitterschokolade (80 %)"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Zwiebel mit Öl in einen großen Topf geben und 5 min auf mittlerer Stufe anbraten.",
+   "Tofu dazugeben und großzügig salzen. Unter gelegentlichem Rühren ca. 10 min braten, bis er knusprig ist.",
+   "Ketchup, Tomatenmark, Sojasoße, Wasser, Smoked Paprika, Salz und Pfeffer verrühren. Zum Tofu geben und das Tofuhack 5–10 min auf mittlerer Stufe goldbraun braten.",
+   "Knoblauch, Bohnen, Paprika, Mais und Tomatenmark zugeben, gut verrühren und ca. 3 min braten.",
+   "Passierte Tomaten und Wasser zugeben.",
+   "Oregano, Zimt und Schokolade zugeben, mit Salz abschmecken und aufkochen.",
+   "Zugedeckt mindestens 30 min auf niedriger Stufe köcheln lassen, gelegentlich umrühren. Vor dem Servieren abschmecken."
+  ],
+  "notes": [
+   "Statt Schokolade geht auch ½ TL Backkakao plus ½ TL Ahornsirup.",
+   "Niveau laut Vorlage: mittel."
+  ]
+ },
+ {
+  "id": "wokpfanne-sesamtofu",
+  "title": "Wokpfanne mit Sesamtofu",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": null,
+  "unit": null,
+  "difficulty": null,
+  "prep": null,
+  "time": "30 min",
+  "groups": [
+   {
+    "title": "Für den Tofu",
+    "items": [
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Tofu"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Erdnussbutter"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Tahin"
+     },
+     {
+      "m": 2,
+      "u": "TL",
+      "t": "Zitronensaft"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Ahornsirup"
+     },
+     {
+      "m": 4,
+      "u": "EL",
+      "t": "Wasser"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     },
+     {
+      "m": 50,
+      "u": "g",
+      "t": "Sesam"
+     },
+     {
+      "t": "Öl zum Braten"
+     }
+    ]
+   },
+   {
+    "title": "Für die Wokpfanne",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "kleine Zwiebel, in Streifen"
+     },
+     {
+      "m": 2,
+      "u": "",
+      "t": "Karotten, gestiftelt"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Paprika, gestiftelt"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Zucchini, gestiftelt"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "kleiner Brokkoli, in Röschen"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Woknudeln"
+     },
+     {
+      "m": 3,
+      "u": "EL",
+      "t": "Sojasoße"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "brauner Zucker"
+     },
+     {
+      "m": 1,
+      "u": "Msp.",
+      "t": "Sambal Oelek"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Currypaste (mild)"
+     },
+     {
+      "m": 2,
+      "u": "TL",
+      "t": "Zitronensaft"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Tofu der Länge nach halbieren und in Rechtecke schneiden.",
+   "Erdnussbutter, Tahin, Zitronensaft, Ahornsirup und Wasser verrühren, mit Salz und Pfeffer würzen. Die Soße soll vom Löffel laufen.",
+   "Tofustücke in die Erdnusssoße tunken, dann in Sesam wälzen und beiseitestellen.",
+   "Öl in den Wok geben und die Zwiebel 5 min auf mittlerer Stufe anbraten.",
+   "Karotten, Paprika, Zucchini und Brokkoli zugeben und unter Rühren weitere 5 min braten. Salzen und pfeffern.",
+   "Woknudeln nach Packungsanleitung separat zubereiten.",
+   "Sesamtofu in einer zweiten Pfanne in reichlich Öl rundum goldbraun braten.",
+   "Woknudeln zum Gemüse geben und gut unterheben.",
+   "Sojasoße, Zucker, Sambal Oelek, Currypaste und Zitronensaft verrühren, in den Wok geben und alles gut vermischen.",
+   "Mit dem Sesamtofu servieren."
+  ],
+  "notes": [
+   "Ergibt 2–3 Portionen.",
+   "Übrige Erdnusssoße einfach am Schluss mit in den Wok geben.",
+   "Niveau laut Vorlage: mittel."
+  ]
+ },
+ {
+  "id": "burrito-tofuhack",
+  "title": "Burrito mit Tofuhack",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": null,
+  "unit": null,
+  "difficulty": null,
+  "prep": null,
+  "time": "30 min",
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 150,
+      "u": "g",
+      "t": "Reis"
+     }
+    ]
+   },
+   {
+    "title": "Für das Tofuhack",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "kleine Zwiebel, gewürfelt"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Tofu, fein gebröselt"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Ketchup"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Tomatenmark"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Sojasoße"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Wasser"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Smoked Paprika (geräuchertes Paprikapulver)"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     },
+     {
+      "t": "Öl zum Braten"
+     }
+    ]
+   },
+   {
+    "title": "Für den Salat",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "kleine Zwiebel, gewürfelt"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Paprika, gewürfelt"
+     },
+     {
+      "m": 0.25,
+      "u": "",
+      "t": "Gurke, gewürfelt"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Avocado, gewürfelt"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Tomate, gewürfelt"
+     },
+     {
+      "m": 150,
+      "u": "g",
+      "t": "Mais (1 kleine Dose)"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Limettensaft"
+     },
+     {
+      "m": 2,
+      "u": "Stängel",
+      "t": "Koriander, gehackt"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     }
+    ]
+   },
+   {
+    "title": "Sonstiges",
+    "items": [
+     {
+      "t": "Tortilla-Wraps"
+     },
+     {
+      "t": "Cashew-Creme"
+     },
+     {
+      "t": "Tortilla-Chips"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Reis nach Packungsanleitung zubereiten.",
+   "Zwiebel mit Öl in die Pfanne geben und 5 min auf mittlerer Stufe anbraten.",
+   "Tofu dazugeben und großzügig salzen. Unter gelegentlichem Rühren ca. 10 min braten, bis er knusprig ist.",
+   "Ketchup, Tomatenmark, Sojasoße, Wasser, Smoked Paprika, Salz und Pfeffer verrühren. Zum Tofu geben und das Tofuhack 5–10 min auf mittlerer Stufe goldbraun braten.",
+   "Für den Salat Zwiebel, Paprika, Gurke, Avocado, Tomate und Mais mit Limettensaft und Koriander mischen. Mit Salz und Pfeffer abschmecken.",
+   "Tortilla-Wraps 30 Sekunden in einer Pfanne erwärmen.",
+   "Reis, Tofuhack, Salat, Cashew-Creme und Tortilla-Chips auf den Wraps verteilen und zusammenrollen."
+  ],
+  "notes": [
+   "Ergibt 2–3 Portionen.",
+   "Tipp: Alles in Schüsseln auf den Tisch stellen, dann baut sich jeder seinen Burrito selbst.",
+   "Niveau laut Vorlage: mittel."
+  ]
+ },
+ {
+  "id": "fruchtiges-curry-tofu",
+  "title": "Fruchtiges Curry mit gekochtem Tofu",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": null,
+  "unit": null,
+  "difficulty": null,
+  "prep": null,
+  "time": "40 min",
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 150,
+      "u": "g",
+      "t": "Reis"
+     }
+    ]
+   },
+   {
+    "title": "Für den Tofu",
+    "items": [
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Tofu, gewürfelt"
+     },
+     {
+      "m": 3,
+      "u": "EL",
+      "t": "Sojasoße"
+     },
+     {
+      "t": "Öl zum Braten"
+     }
+    ]
+   },
+   {
+    "title": "Für das Curry",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "kleine Zwiebel, in breiten Streifen"
+     },
+     {
+      "m": 2,
+      "u": "cm",
+      "t": "frischer Ingwer, fein gewürfelt"
+     },
+     {
+      "m": 8,
+      "u": "",
+      "t": "Champignons, gewürfelt"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Paprika, gestiftelt"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Karotte, gestiftelt"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Zucchini, in halben Scheiben"
+     },
+     {
+      "t": "Öl, Salz"
+     }
+    ]
+   },
+   {
+    "title": "Für die Soße",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "kleine Mango, gewürfelt"
+     },
+     {
+      "m": 400,
+      "u": "g",
+      "t": "Kokosmilch (1 Dose)"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Kurkuma"
+     },
+     {
+      "m": 0.25,
+      "u": "TL",
+      "t": "Sambal Oelek"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Ahornsirup"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Currypaste (mild)"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Sojasoße"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Reis nach Packungsanleitung zubereiten.",
+   "Tofu in einen Topf geben, mit Wasser bedecken, Sojasoße zugeben und aufkochen. Zugedeckt 10 min auf niedriger Stufe köcheln lassen. Dann auf einem Küchentuch abtropfen lassen.",
+   "Für das Curry Öl in eine Pfanne geben, Zwiebel und Ingwer 5 min auf mittlerer Stufe anbraten.",
+   "Champignons zugeben und weitere 10 min braten, bis sie braun sind.",
+   "Restliches Gemüse zugeben, großzügig salzen und 5 min auf mittlerer Stufe braten.",
+   "Für die Soße Mango, Kokosmilch und Kurkuma glatt pürieren und zum Gemüse geben.",
+   "Sambal Oelek, Ahornsirup, Currypaste und Sojasoße zugeben. Aufkochen und 5 min auf niedriger Stufe köcheln lassen.",
+   "Tofu in einer zweiten Pfanne in Öl rundum braun braten, zum Curry geben und servieren."
+  ],
+  "notes": [
+   "Ergibt 2–3 Portionen.",
+   "Ist die Mango sehr reif, 1 TL Zitronensaft zugeben. Ist sie noch etwas unreif, mit 1 TL Ahornsirup nachsüßen.",
+   "Niveau laut Vorlage: schwer."
+  ]
+ },
+ {
+  "id": "tofubaellchen-tomatensosse",
+  "title": "Tofubällchen in Tomatensoße",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": null,
+  "unit": null,
+  "difficulty": null,
+  "prep": null,
+  "time": "45 min",
+  "groups": [
+   {
+    "title": "Für die Bällchen",
+    "items": [
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Zwiebel, fein gewürfelt"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Tofu, fein gebröselt"
+     },
+     {
+      "m": 5,
+      "u": "EL",
+      "t": "Kichererbsenmehl"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Ketchup"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Tomatenmark"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Senf"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Sojasoße"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Wasser"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Smoked Paprika"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     },
+     {
+      "t": "reichlich Öl zum Braten"
+     }
+    ]
+   },
+   {
+    "title": "Für die Tomatensoße",
+    "items": [
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Zwiebel, fein gewürfelt"
+     },
+     {
+      "m": 0.25,
+      "u": "TL",
+      "t": "Chiliflocken (nach Geschmack)"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Paprikapulver"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Knoblauchzehe, fein gewürfelt"
+     },
+     {
+      "m": 400,
+      "u": "g",
+      "t": "passierte Tomaten (1 Dose)"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Ahornsirup"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Basilikum, getrocknet"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Zwiebel mit Öl in die Pfanne geben und 5 min auf mittlerer Stufe anbraten.",
+   "Tofu dazugeben und großzügig salzen. Unter gelegentlichem Rühren ca. 10 min braten, bis er knusprig ist.",
+   "Kichererbsenmehl, Ketchup, Tomatenmark, Senf, Sojasoße, Wasser, Smoked Paprika, Salz und Pfeffer in einer Schüssel verrühren.",
+   "Tofu dazugeben und gut durchkneten, bis eine formbare Masse entsteht.",
+   "Jeweils einen gehäuften EL der Masse in der Hand zu einem festen Bällchen rollen und beiseitelegen.",
+   "Für die Soße die Zwiebel 5 min auf mittlerer Stufe glasig braten. Chiliflocken und Paprikapulver zugeben und weitere 5 min braten.",
+   "Knoblauch und passierte Tomaten zugeben und mindestens 10 min köcheln lassen. Mit Salz, Pfeffer, Ahornsirup und Basilikum würzen.",
+   "Tofubällchen in reichlich Öl goldbraun braten und in der Tomatensoße servieren."
+  ],
+  "notes": [
+   "Ergibt 2–3 Portionen.",
+   "Beim Braten nicht am Öl sparen, dann werden die Bällchen schön braun und knusprig. Dazu passen Nudeln oder Reis.",
+   "Niveau laut Vorlage: schwer."
+  ]
+ },
+ {
+  "id": "juicy-burger-tofupatty",
+  "title": "Juicy Burger mit Tofupatty",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": 2,
+  "unit": "Portionen",
+  "difficulty": null,
+  "prep": null,
+  "time": "45 min",
+  "groups": [
+   {
+    "title": "Für das Patty",
+    "items": [
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Zwiebel, fein gewürfelt"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Tofu, fein gebröselt"
+     },
+     {
+      "m": 5,
+      "u": "EL",
+      "t": "Kichererbsenmehl"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Ketchup"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Tomatenmark"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Senf"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Sojasoße"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Wasser"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Smoked Paprika"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Kreuzkümmel"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Currypulver"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     },
+     {
+      "t": "Öl zum Braten"
+     }
+    ]
+   },
+   {
+    "title": "Für den Rest",
+    "items": [
+     {
+      "m": 2,
+      "u": "",
+      "t": "Burgerbrötchen"
+     },
+     {
+      "t": "Ketchup, Senf"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Tomate, in Scheiben"
+     },
+     {
+      "m": [
+       2,
+       3
+      ],
+      "u": "",
+      "t": "Gewürzgurken, in Scheiben"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Zwiebel, in Scheiben"
+     },
+     {
+      "m": 2,
+      "u": "",
+      "t": "Salatblätter"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Zwiebel fein würfeln, mit Öl in die Pfanne geben und 5 min auf mittlerer Stufe anbraten.",
+   "Tofu fein bröseln, zu den Zwiebeln geben und großzügig salzen. Unter gelegentlichem Rühren ca. 10 min braten, bis er knusprig ist.",
+   "Kichererbsenmehl, Ketchup, Tomatenmark, Senf, Sojasoße, Wasser, Smoked Paprika, Kreuzkümmel und Currypulver verrühren. Mit Salz und Pfeffer abschmecken.",
+   "Tofu zugeben und gut durchkneten, bis eine formbare Masse entsteht.",
+   "Masse halbieren und mit den Händen zu zwei Pattys formen.",
+   "Burgerbrötchen aufschneiden und mit den Innenseiten nach unten in etwas Öl kurz anrösten.",
+   "Öl in die Pfanne geben und die Pattys auf niedriger bis mittlerer Stufe ca. 5 min goldbraun braten.",
+   "Brötchen mit Ketchup und Senf bestreichen und mit Pattys und Gemüse belegen."
+  ],
+  "notes": [
+   "Als Beilage passen knusprige Kartoffelspalten (siehe Rezept „Tofu-Nuggets mit Kartoffelspalten“).",
+   "Niveau laut Vorlage: schwer."
+  ]
+ },
+ {
+  "id": "tofu-scramble",
+  "title": "Tofu Scramble auf Brot",
+  "cat": "Frühstück",
+  "tags": [
+   "vegan"
+  ],
+  "servings": 2,
+  "unit": "Portionen",
+  "difficulty": null,
+  "prep": null,
+  "time": "15 min",
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Tofu, zerbröselt"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Kichererbsenmehl"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Kurkuma, gemahlen"
+     },
+     {
+      "m": 10,
+      "u": "EL",
+      "t": "Pflanzenmilch"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     },
+     {
+      "t": "Öl zum Braten"
+     },
+     {
+      "m": [
+       2,
+       3
+      ],
+      "u": "",
+      "t": "Scheiben Brot"
+     },
+     {
+      "t": "Frühlingszwiebeln"
+     }
+    ]
+   },
+   {
+    "title": "Optional",
+    "items": [
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Kala Namak (Schwefelsalz)"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Tofu in einer Schüssel zerbröseln.",
+   "Kichererbsenmehl, Kurkuma, Pflanzenmilch, Salz und Pfeffer in einer Tasse klumpenfrei verrühren.",
+   "Die Flüssigkeit zum Tofu geben und gut unterrühren.",
+   "Tofu mit Öl in der Pfanne ca. 10 min goldbraun braten.",
+   "Mit Brot und Frühlingszwiebeln servieren."
+  ],
+  "notes": [
+   "Kala Namak schmeckt nach Ei. Wer den Ei-Geschmack vermisst, nimmt es statt normalem Salz.",
+   "Niveau laut Vorlage: leicht."
+  ]
+ },
+ {
+  "id": "spaghetti-carbonara-raeuchertofu",
+  "title": "Spaghetti Carbonara mit Räuchertofu",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": null,
+  "unit": null,
+  "difficulty": null,
+  "prep": null,
+  "time": "25 min",
+  "groups": [
+   {
+    "title": "Für die Cashew-Soße",
+    "items": [
+     {
+      "m": 50,
+      "u": "g",
+      "t": "Cashews"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "vegane Butter"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Misopaste"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Apfelessig"
+     },
+     {
+      "m": 3,
+      "u": "TL",
+      "t": "Zitronensaft"
+     },
+     {
+      "m": 2,
+      "u": "TL",
+      "t": "Ahornsirup"
+     },
+     {
+      "m": 200,
+      "u": "ml",
+      "t": "Pflanzenmilch"
+     }
+    ]
+   },
+   {
+    "title": "Für den Rest",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "kleine Zwiebel, gewürfelt"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Knoblauchzehe, fein gewürfelt"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Räuchertofu, fein gewürfelt"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     },
+     {
+      "t": "Öl zum Braten"
+     },
+     {
+      "m": 250,
+      "u": "g",
+      "t": "Nudeln"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Cashews in einem kleinen Topf mit Wasser bedecken und 10 min köcheln lassen.",
+   "Cashews abschöpfen und mit veganer Butter, Misopaste, Apfelessig, Zitronensaft und Ahornsirup pürieren. Nach und nach die Pflanzenmilch zugeben, bis eine feine, klumpenfreie Creme entsteht. Großzügig salzen und pfeffern.",
+   "Zwiebel mit Öl 5 min auf mittlerer Stufe anbraten.",
+   "Knoblauch und Tofu zugeben und weitere 5 min braten. Nach Geschmack salzen und regelmäßig umrühren.",
+   "Nudeln nach Packungsanleitung kochen.",
+   "Cashew-Soße zum Tofu in die Pfanne geben und 5 min auf mittlerer Stufe köcheln lassen.",
+   "Nudeln zugeben und mit der Soße vermischen."
+  ],
+  "notes": [
+   "Ergibt 2–3 Portionen.",
+   "Wird die Soße zu dick, einen Schluck Pflanzenmilch zugeben und evtl. nachwürzen.",
+   "Niveau laut Vorlage: mittel."
+  ]
+ },
+ {
+  "id": "quinoa-bowl-tofu",
+  "title": "Quinoa Bowl mit Tofuwürfeln",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": null,
+  "unit": null,
+  "difficulty": null,
+  "prep": null,
+  "time": "20 min",
+  "groups": [
+   {
+    "title": "Für den Tofu",
+    "items": [
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Tofu, klein gewürfelt"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Sojasoße"
+     },
+     {
+      "m": 30,
+      "u": "g",
+      "t": "Speisestärke"
+     },
+     {
+      "t": "Salz"
+     },
+     {
+      "t": "Öl zum Braten"
+     }
+    ]
+   },
+   {
+    "title": "Für die Bowl",
+    "items": [
+     {
+      "m": 100,
+      "u": "g",
+      "t": "Quinoa"
+     },
+     {
+      "m": 100,
+      "u": "g",
+      "t": "Babyspinat"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Tomate, gewürfelt"
+     },
+     {
+      "m": 0.5,
+      "u": "",
+      "t": "Gurke, gewürfelt"
+     }
+    ]
+   },
+   {
+    "title": "Für das Dressing",
+    "items": [
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Erdnussbutter"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Tahin"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Zitronensaft"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Ahornsirup"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Rosmarin"
+     },
+     {
+      "m": 5,
+      "u": "TL",
+      "t": "Wasser"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Tofuwürfel auf einen Teller legen, mit Sojasoße beträufeln und 10 min ziehen lassen.",
+   "Speisestärke mit etwas Salz auf einem flachen Teller mischen und die Tofuwürfel rundum darin wälzen.",
+   "Quinoa nach Packungsanleitung zubereiten.",
+   "Öl in der Pfanne erhitzen und die Tofuwürfel auf mittlerer Stufe rundum knusprig braten.",
+   "Alle Zutaten für das Dressing in einer Tasse verrühren.",
+   "Quinoa, Spinat, Tomate und Gurke auf zwei Bowls verteilen, Tofu dazugeben und großzügig mit Dressing beträufeln."
+  ],
+  "notes": [
+   "Ergibt 2–3 Portionen.",
+   "Die Bowls schon vorbereiten, während der Tofu brät, und sofort servieren. So bleibt der Tofu knusprig.",
+   "Niveau laut Vorlage: mittel."
+  ]
+ },
+ {
+  "id": "crispy-tofu-sticks",
+  "title": "Crispy Tofu Sticks mit Tomaten-Dip",
+  "cat": "Snacks",
+  "tags": [
+   "vegan"
+  ],
+  "servings": null,
+  "unit": null,
+  "difficulty": null,
+  "prep": null,
+  "time": "20 min",
+  "groups": [
+   {
+    "title": "Für den Tofu",
+    "items": [
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Tofu"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Mehl"
+     },
+     {
+      "m": 5,
+      "u": "EL",
+      "t": "Wasser"
+     },
+     {
+      "t": "Salz"
+     },
+     {
+      "m": 30,
+      "u": "g",
+      "t": "Panko (oder Semmelbrösel)"
+     },
+     {
+      "t": "Öl zum Braten"
+     }
+    ]
+   },
+   {
+    "title": "Für den Dip",
+    "items": [
+     {
+      "m": 3,
+      "u": "EL",
+      "t": "Tomatenmark"
+     },
+     {
+      "m": 2,
+      "u": "TL",
+      "t": "Ahornsirup"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Currypulver"
+     },
+     {
+      "m": 3,
+      "u": "EL",
+      "t": "Wasser"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Tofu in längliche Streifen schneiden.",
+   "Mehl und Wasser zu einem flüssigen Teig verrühren. Kräftig salzen, da der Tofu sonst nicht gesalzen wird.",
+   "Tofu-Sticks in den Teig tunken und danach in Panko wälzen.",
+   "Öl in die Pfanne geben und die Sticks auf mittlerer Stufe braten. Regelmäßig wenden, bis alle Seiten knusprig braun sind.",
+   "Für den Dip Tomatenmark, Ahornsirup, Currypulver und Wasser verrühren. Mit Salz und Pfeffer abschmecken.",
+   "Tofu-Sticks heiß servieren."
+  ],
+  "notes": [
+   "Ergibt 2–3 Portionen.",
+   "Eine Hand für den Teig, die andere für die Panade nehmen. So klumpt das Panko nicht.",
+   "Niveau laut Vorlage: leicht."
+  ]
+ },
+ {
+  "id": "tofu-nuggets-kartoffelspalten",
+  "title": "Tofu-Nuggets mit Kartoffelspalten",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": null,
+  "unit": null,
+  "difficulty": null,
+  "prep": null,
+  "time": "45 min",
+  "groups": [
+   {
+    "title": "Für die Kartoffelspalten",
+    "items": [
+     {
+      "m": 4,
+      "u": "",
+      "t": "mittlere Kartoffeln"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Olivenöl"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Salz"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Paprikapulver"
+     },
+     {
+      "m": 0.25,
+      "u": "TL",
+      "t": "Currypulver"
+     },
+     {
+      "t": "Pfeffer"
+     },
+     {
+      "t": "Ketchup"
+     }
+    ]
+   },
+   {
+    "title": "Für die Nuggets",
+    "items": [
+     {
+      "m": 400,
+      "u": "g",
+      "t": "Tofu"
+     },
+     {
+      "m": 4,
+      "u": "EL",
+      "t": "Mehl"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Salz"
+     },
+     {
+      "m": 0.5,
+      "u": "TL",
+      "t": "Paprikapulver"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Ahornsirup"
+     },
+     {
+      "m": 8,
+      "u": "EL",
+      "t": "Wasser"
+     },
+     {
+      "m": 80,
+      "u": "g",
+      "t": "Cornflakes, ungezuckert"
+     },
+     {
+      "t": "Öl zum Braten"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Kartoffeln schälen und in Spalten schneiden. In einer Schüssel mit Wasser abspülen, dann auf einem Küchentuch ca. 20 min trocknen lassen.",
+   "Spalten in der trockenen Schüssel mit dem Öl mischen, auf ein Blech mit Backpapier geben und bei 200 °C ca. 30 min backen.",
+   "Salz, Paprikapulver, Currypulver und Pfeffer mischen. Die knusprigen Kartoffeln in eine Schüssel geben und mit der Gewürzmischung vermengen.",
+   "Für die Nuggets den Tofu in 4 Streifen schneiden und jeden Streifen in 3–4 Stücke zerrupfen.",
+   "Mehl, Salz, Paprikapulver, Ahornsirup und Wasser zu einer Masse verrühren.",
+   "Cornflakes fein zerbröseln.",
+   "Tofustücke in die Masse tunken und dann in den Cornflakes wälzen.",
+   "Nuggets mit Öl ca. 10 min in der Pfanne goldbraun und knusprig braten.",
+   "Mit Ketchup servieren."
+  ],
+  "notes": [
+   "Ergibt 3–4 Portionen.",
+   "Cornflakes in einem Gefrierbeutel mit dem Nudelholz zerdrücken, dann werden die Brösel gleichmäßig.",
+   "Niveau laut Vorlage: mittel."
+  ]
  }
 ];
