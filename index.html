@@ -13,6 +13,20 @@
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Rezeptordner</title>
+<script>
+// Zeigt Fehler direkt auf der Seite an (hilft bei der Fehlersuche auf dem Handy)
+window.addEventListener('error', function (e) {
+  var t = e.target && e.target !== window && (e.target.src || e.target.href);
+  if (t && String(t).indexOf(location.origin) !== 0) return; // fremde Dateien (Schriften) ignorieren
+  var msg = t ? 'Datei konnte nicht geladen werden: ' + String(t).split('/').pop()
+              : 'Fehler: ' + (e.message || '?') + ' (Zeile ' + (e.lineno || '?') + ')';
+  var d = document.getElementById('err');
+  if (!d) { d = document.createElement('div'); d.id = 'err';
+    d.style.cssText = 'position:fixed;left:8px;right:8px;bottom:8px;z-index:99;background:#B3261E;color:#fff;padding:10px 12px;border-radius:10px;font:14px/1.4 system-ui,sans-serif';
+    (document.body || document.documentElement).appendChild(d); }
+  d.textContent = msg;
+}, true);
+</script>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}img{max-width:100%}</style>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -101,7 +115,19 @@ button{font:inherit;color:inherit}
 .ing input{appearance:none;flex:none;width:20px;height:20px;margin-top:3px;border:1.5px solid var(--muted);border-radius:5px;display:grid;place-items:center;cursor:pointer;background:var(--sheet)}
 .ing input:checked{background:var(--pen);border-color:var(--pen)}
 .ing input:checked::after{content:"";width:5px;height:10px;border:solid var(--sheet);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
-.ing input:checked+span{color:var(--done);text-decoration:line-through}
+.ing:not(.picking) input:checked+span{color:var(--done);text-decoration:line-through}
+.picking input:checked{background:var(--leaf);border-color:var(--leaf)}
+.picking li.basic{color:var(--done)}
+.picking li.basic input{opacity:.35;cursor:default}
+.picking li.basic label{cursor:default}
+.picking small{color:var(--muted);font-size:.8rem}
+.pickhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 12px;background:var(--pen-soft);border-radius:10px;padding:8px 12px;margin:4px 0 6px;font-weight:700;color:var(--pen)}
+.linkbtn{border:0;background:none;color:var(--pen);text-decoration:underline;cursor:pointer;padding:4px 2px;font-weight:400}
+.pickbar{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom,0px));display:flex;gap:8px;flex-wrap:nowrap;margin-top:12px;padding:8px;background:var(--sheet);border:1px solid var(--rule);border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.12);z-index:4}
+.pickbar .btn{padding:9px 12px;white-space:nowrap}
+.pickbar .primary{flex:1;justify-content:center}
+.btn.primary{background:var(--leaf);border-color:var(--leaf);color:#fff;font-weight:700}
+.btn:disabled{opacity:.5;cursor:default}
 .q{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
 .steps{list-style:none;margin:0;padding:0;counter-reset:s}
 .steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:12px;padding:10px 0;border-bottom:1.5px dotted var(--rule);cursor:pointer}
@@ -178,7 +204,9 @@ a.btn{text-decoration:none;color:var(--ink)}
 <script src="rezepte.js"></script>
 <script>
 (function(){
-const R = window.REZEPTE || JSON.parse(document.getElementById('data').textContent);
+const dataEl=document.getElementById('data');
+const R = window.REZEPTE || (dataEl ? JSON.parse(dataEl.textContent) : null);
+if(!R){ document.getElementById('groups').innerHTML='<p class="empty">Die Rezepte konnten nicht geladen werden. Bitte mit Internet neu öffnen.</p>'; return; }
 const ORDER = ['Frühstück','Salat','Mittagessen','Saucen','Backen','Snacks'];
 const cats = [...new Set(R.map(r=>r.cat))].sort((a,b)=>(ORDER.indexOf(a)+99)%99 - (ORDER.indexOf(b)+99)%99 || a.localeCompare(b));
 const $ = s=>document.querySelector(s);
@@ -231,12 +259,12 @@ $('#groups').addEventListener('click',e=>{const b=e.target.closest('.row'); if(b
 
 /* ---------- Rezeptansicht ---------- */
 const FACTORS=[0.5,1,1.5,2,3,4];
-let cur=null, amount=1;
+let cur=null, amount=1, cooked=new Set(), pick=null;
 function stepSize(r){ return r.servings>=10 ? 5 : 1; }
 function amountLabel(r){ return r.servings ? amount+' '+r.unit : (amount===1?'1× Rezept':String(amount).replace('.',',')+'× Rezept'); }
 function factor(r){ return r.servings ? amount/r.servings : amount; }
 function renderDetail(r){
-  cur=r; amount = r.servings || 1;
+  cur=r; amount = r.servings || 1; cooked=new Set(); pick=null;
   const facts = [
     r.difficulty?['Schwierigkeit',dots(r.difficulty)]:null,
     r.prep?['Vorbereitung',esc(r.prep)]:null,
@@ -253,7 +281,7 @@ function renderDetail(r){
     '<div class="scale"><span class="lbl">'+(r.servings?'Menge':'Rezeptmenge')+'</span><div class="step"><button type="button" id="minus" aria-label="weniger">−</button><output id="amt"></output><button type="button" id="plus" aria-label="mehr">+</button></div><button class="reset" type="button" id="reset" hidden>zurücksetzen</button></div>'+
     '<div class="cols"><section><h2>Zutaten</h2><div id="ings"></div>'+
     '<button class="btn cartadd" type="button" id="toCart"></button>'+
-    '<p class="addnote" id="addnote">Abgehakte Zutaten hast du schon, die kommen nicht auf die Liste.</p></section>'+
+    '<p class="addnote" id="addnote" hidden></p></section>'+
     '<section><h2>Zubereitung</h2><ol class="steps" id="steps">'+r.steps.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ol><p class="hint">Tipp: Schritt antippen, um ihn abzuhaken.</p>'+
     (r.notes.length?'<div class="notes"><span class="nh">Notizen</span>'+r.notes.map(n=>'<p>'+esc(n)+'</p>').join('')+'</div>':'')+
     '</section></div></div><p class="foot">Abgetippt vom Zettel im Rezeptordner.</p>';
@@ -261,8 +289,9 @@ function renderDetail(r){
 }
 function renderCartBtn(){
   const on = cur && shop.items.some(i=>i.parts.some(p=>p.rid===cur.id));
-  $('#toCart').textContent = on ? '🛒 Nochmal auf die Einkaufsliste' : '🛒 Auf die Einkaufsliste';
-  $('#addnote').textContent = on ? 'Dieses Rezept steht schon auf der Liste. Nochmal hinzufügen zählt die Mengen dazu.' : 'Abgehakte Zutaten hast du schon, die kommen nicht auf die Liste.';
+  $('#toCart').textContent = on ? '🛒 Nochmal zur Einkaufsliste' : '🛒 Zur Einkaufsliste';
+  $('#addnote').textContent = on ? 'Dieses Rezept steht schon auf der Liste. Nochmal hinzufügen zählt die Mengen dazu.' : '';
+  $('#toCart').hidden = pick!=null; $('#addnote').hidden = pick!=null || !on;
 }
 function renderIngs(){
   const r=cur, f=factor(r);
@@ -270,27 +299,48 @@ function renderIngs(){
   $('#minus').disabled = r.servings ? amount-stepSize(r)<1 : amount<=FACTORS[0];
   $('#plus').disabled = !r.servings && amount>=FACTORS[FACTORS.length-1];
   $('#reset').hidden = amount === (r.servings||1);
-  let k=0;
-  $('#ings').innerHTML = r.groups.map(g=>(g.title?'<h3 class="lbl">'+esc(g.title)+'</h3>':'')+'<ul class="ing">'+
-    g.items.map(it=>{const id='i'+(k++); const q=qty(it,f); return '<li><label for="'+id+'"><input type="checkbox" id="'+id+'"><span>'+(q?'<span class="q">'+esc(q)+'</span> ':'')+esc(it.t)+'</span></label></li>';}).join('')+'</ul>').join('');
+  let k=0; const picking = pick!=null;
+  $('#ings').innerHTML =
+    (picking?'<div class="pickhead"><span>Was musst du kaufen?</span><span><button class="linkbtn" type="button" data-pick="all">Alle</button> · <button class="linkbtn" type="button" data-pick="none">Keine</button></span></div>':'')+
+    r.groups.map(g=>(g.title?'<h3 class="lbl">'+esc(g.title)+'</h3>':'')+'<ul class="ing'+(picking?' picking':'')+'">'+
+    g.items.map(it=>{
+      const idx=k++, id='i'+idx, q=qty(it,f), basic=picking && itemBasic(it);
+      const on = picking ? pick.has(idx) : cooked.has(idx);
+      return '<li'+(basic?' class="basic"':'')+'><label for="'+id+'"><input type="checkbox" id="'+id+'" data-i="'+idx+'"'+(on?' checked':'')+(basic?' disabled':'')+'><span>'+(q?'<span class="q">'+esc(q)+'</span> ':'')+esc(it.t)+(basic?' <small>· hast du meist da</small>':'')+'</span></label></li>';
+    }).join('')+'</ul>').join('')+
+    (picking?'<div class="pickbar"><button class="btn primary" type="button" id="pickAdd"></button><button class="btn" type="button" id="pickCancel">Abbrechen</button></div>':'');
+  if(picking) updatePickBar();
+  renderCartBtn();
 }
+function itemBasic(it){ const names = it.m==null ? it.t.split(',') : [it.t.split(',')[0]]; return names.every(n=>isBasic(n.trim())); }
+function selectable(){ let k=0, out=[]; cur.groups.forEach(g=>g.items.forEach(it=>{ const i=k++; if(!itemBasic(it)) out.push(i); })); return out; }
+function updatePickBar(){ const n=pick.size, b=$('#pickAdd'); b.disabled=!n; b.textContent = n ? n+(n===1?' Zutat':' Zutaten')+' hinzufügen' : 'Zutaten auswählen'; }
+$('#detail').addEventListener('change',e=>{
+  const c=e.target; if(!c.matches('.ing input')) return;
+  const i=+c.dataset.i, set = pick!=null ? pick : cooked;
+  if(c.checked) set.add(i); else set.delete(i);
+  if(pick!=null) updatePickBar();
+});
 $('#detail').addEventListener('click',e=>{
   const t=e.target;
   if(t.closest('#back')){ goBack(); return; }
   if(t.closest('#wake')){ toggleWake(); return; }
   const r=cur; if(!r) return;
-  if(t.closest('#toCart')){
-    const skip=new Set([...document.querySelectorAll('.ing input')].map((c,i)=>c.checked?i:-1).filter(i=>i>=0));
-    const n=addRecipe(r,factor(r),skip); renderCartBtn();
-    toast(n? n+(n===1?' Zutat':' Zutaten')+' auf der Einkaufsliste.' : 'Nichts hinzugefügt, alle Zutaten sind abgehakt oder Grundzutaten.', n?'#einkauf':null);
+  if(t.closest('#toCart')){ pick=new Set(); renderIngs(); $('#ings').scrollIntoView({behavior:'smooth',block:'start'}); return; }
+  if(t.closest('#pickCancel')){ pick=null; renderIngs(); return; }
+  const pb=t.closest('[data-pick]');
+  if(pb){ pick = pb.dataset.pick==='all' ? new Set(selectable()) : new Set(); renderIngs(); return; }
+  if(t.closest('#pickAdd')){
+    if(!pick.size) return;
+    const n=addRecipe(r,factor(r),pick); pick=null; renderIngs();
+    toast(n+(n===1?' Zutat':' Zutaten')+' auf der Einkaufsliste.','#einkauf');
     return;
   }
   if(t.closest('#minus')||t.closest('#plus')){
     const up=!!t.closest('#plus');
     if(r.servings){ amount=Math.max(stepSize(r), amount+(up?1:-1)*stepSize(r)); }
     else { const i=FACTORS.indexOf(amount); amount=FACTORS[Math.min(FACTORS.length-1,Math.max(0,i+(up?1:-1)))]; }
-    const checked=[...document.querySelectorAll('.ing input')].map(c=>c.checked);
-    renderIngs(); document.querySelectorAll('.ing input').forEach((c,i)=>c.checked=checked[i]); return;
+    renderIngs(); return;
   }
   if(t.closest('#reset')){ amount=r.servings||1; renderIngs(); return; }
   const li=t.closest('.steps li'); if(li) li.classList.toggle('done');
@@ -338,10 +388,10 @@ function addPart(name,u,n,a,r){
   if(hit) hit.parts.push(part);
   else shop.items.push({id:shop.seq++,name:name,u:u,parts:[part],done:false});
 }
-function addRecipe(r,f,skip){
+function addRecipe(r,f,sel){
   let k=0,n=0;
   r.groups.forEach(g=>g.items.forEach(it=>{
-    const idx=k++; if(skip.has(idx)) return;
+    const idx=k++; if(!sel.has(idx)) return;
     const names = it.m==null ? it.t.split(',').map(s=>s.trim()) : [it.t.split(',')[0].trim()];
     names.forEach(name=>{
       name=name.replace(/\s*\((\d+ )?(kleine |große )?Dose[^)]*\)/i,'').trim();
@@ -428,7 +478,7 @@ $('#shop').addEventListener('keydown',e=>{
   if(e.key==='Enter'){ e.preventDefault(); finishEdit(); }
   if(e.key==='Escape'){ editId=null; renderShop(); }
 });
-$('#shop').addEventListener('focusout',e=>{ if(e.target.id==='editIn' && editId!=null) setTimeout(()=>{ if(editId!=null && document.activeElement?.id!=='editIn') finishEdit(); },0); });
+$('#shop').addEventListener('focusout',e=>{ if(e.target.id==='editIn' && editId!=null) setTimeout(()=>{ if(editId!=null && (document.activeElement||{}).id!=='editIn') finishEdit(); },0); });
 
 let toastT=null;
 function toast(msg,link){
