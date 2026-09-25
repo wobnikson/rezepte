@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#26358C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Rezepte">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Rezeptordner</title>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}img{max-width:100%}</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Caveat:wght@600;700&family=Montserrat:wght@700&display=swap">
+<style>
+:root{
+  --paper:#F3F5F2; --sheet:#FFFFFF; --ink:#23262D; --muted:#5F6571;
+  --pen:#26358C; --pen-soft:#E6E9F6; --leaf:#557257; --rule:#C9CEDA; --done:#9AA0AC;
+  --hand:"Caveat","Segoe Print","Bradley Hand",cursive;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --label:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#10131A; --sheet:#191D27; --ink:#E6E8EE; --muted:#9CA2AF;
+    --pen:#A7B5FF; --pen-soft:#232A46; --leaf:#8DB08E; --rule:#343A4B; --done:#646A78;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#10131A; --sheet:#191D27; --ink:#E6E8EE; --muted:#9CA2AF;
+  --pen:#A7B5FF; --pen-soft:#232A46; --leaf:#8DB08E; --rule:#343A4B; --done:#646A78;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:17px/1.55 var(--body);margin:0;-webkit-text-size-adjust:100%}
+.wrap{max-width:980px;margin:0 auto;padding-inline:16px;padding-block:8px 48px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--pen);outline-offset:2px;border-radius:6px}
+.lbl{font:700 .7rem/1.2 var(--label);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* Kopf */
+.head{display:flex;align-items:flex-end;gap:12px;padding-top:18px}
+.head h1{font:700 3rem/1 var(--hand);color:var(--pen);margin:0;text-wrap:balance}
+.head svg{width:74px;height:30px;flex:none;color:var(--leaf);margin-bottom:8px}
+.count{margin:4px 0 18px;color:var(--muted);font-size:.95rem}
+.search{position:relative;margin-bottom:16px}
+.search input{width:100%;font:inherit;font-size:1.05rem;padding:12px 14px 12px 42px;border:1.5px solid var(--rule);border-radius:12px;background:var(--sheet);color:var(--ink)}
+.search input:focus{outline:none;border-color:var(--pen)}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--muted)}
+
+/* Registerreiter */
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;border-bottom:1.5px solid var(--rule);margin-bottom:8px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;border:1.5px solid var(--rule);border-bottom:none;border-radius:10px 10px 0 0;background:transparent;padding:8px 14px 6px;font:700 .72rem/1.2 var(--label);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;margin-bottom:-1.5px}
+.tab[aria-pressed="true"]{background:var(--sheet);color:var(--pen);border-color:var(--rule);border-bottom:1.5px solid var(--sheet)}
+
+/* Liste */
+.group{margin-top:22px}
+.group>.lbl{margin:0 0 4px 2px}
+.list{list-style:none;margin:0;padding:0 16px;background:var(--sheet);border-radius:14px;border:1px solid var(--rule)}
+.list li+li{border-top:1.5px dotted var(--rule)}
+.row{display:block;width:100%;text-align:left;background:none;border:0;padding:12px 0;cursor:pointer}
+.row .t{font:700 1.75rem/1.1 var(--hand);color:var(--pen)}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-top:4px;font-size:.88rem;color:var(--muted)}
+.dots{display:inline-flex;gap:3px;vertical-align:middle}
+.dots i{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--muted)}
+.dots i.on{background:var(--pen);border-color:var(--pen)}
+.tag{font:700 .64rem/1 var(--label);letter-spacing:.08em;text-transform:uppercase;color:var(--leaf);border:1.5px solid currentColor;border-radius:99px;padding:4px 7px 3px}
+.empty{padding:28px 4px;color:var(--muted)}
+
+/* Rezept */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);display:flex;justify-content:space-between;align-items:center;gap:8px;padding-block:10px;border-bottom:1px solid var(--rule)}
+.btn{border:1.5px solid var(--rule);background:var(--sheet);border-radius:99px;padding:7px 14px;font-size:.92rem;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.btn[aria-pressed="true"]{border-color:var(--pen);background:var(--pen-soft);color:var(--pen);font-weight:700}
+.back{border:0;background:none;padding:7px 0;color:var(--pen);font-weight:700;cursor:pointer}
+.sheet{background:var(--sheet);border:1px solid var(--rule);border-radius:16px;padding:20px 18px 26px;margin-top:16px}
+.rtitle{font:700 2.7rem/1.02 var(--hand);color:var(--pen);margin:6px 0 14px;text-wrap:balance}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;padding:14px 0;border-block:1.5px dotted var(--rule)}
+.facts div{display:flex;flex-direction:column;gap:4px}
+.facts b{font-weight:700;font-size:1rem}
+.scale{display:flex;align-items:center;gap:12px;margin:18px 0 4px;flex-wrap:wrap}
+.step{display:inline-flex;align-items:center;border:1.5px solid var(--rule);border-radius:99px;overflow:hidden}
+.step button{border:0;background:none;width:42px;height:40px;font-size:1.3rem;cursor:pointer;color:var(--pen)}
+.step button:disabled{color:var(--done);cursor:default}
+.step output{min-width:108px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.reset{border:0;background:none;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:.9rem}
+.cols{display:grid;gap:8px 40px;margin-top:10px}
+@media (min-width:760px){.cols{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}}
+.cols h2{font:700 2.1rem/1 var(--hand);margin:18px 0 6px;color:var(--ink)}
+.cols h3{margin:16px 0 2px}
+.ing{list-style:none;margin:0;padding:0}
+.ing li{border-bottom:1.5px dotted var(--rule)}
+.ing label{display:flex;gap:12px;align-items:flex-start;padding:9px 0;cursor:pointer}
+.ing input{appearance:none;flex:none;width:20px;height:20px;margin-top:3px;border:1.5px solid var(--muted);border-radius:5px;display:grid;place-items:center;cursor:pointer;background:var(--sheet)}
+.ing input:checked{background:var(--pen);border-color:var(--pen)}
+.ing input:checked::after{content:"";width:5px;height:10px;border:solid var(--sheet);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.ing input:checked+span{color:var(--done);text-decoration:line-through}
+.q{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:12px;padding:10px 0;border-bottom:1.5px dotted var(--rule);cursor:pointer}
+.steps li::before{content:counter(s);width:30px;height:30px;border:1.5px solid var(--pen);color:var(--pen);border-radius:50%;display:grid;place-items:center;font:700 1.25rem/1 var(--hand)}
+.steps li.done{color:var(--done)}
+.steps li.done::before{background:var(--pen-soft);border-color:var(--done);color:var(--done)}
+.hint{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.notes{margin-top:26px;border:1.5px solid var(--ink);border-radius:4px;padding:10px 14px 12px;position:relative}
+.notes .nh{font:700 1.7rem/1 var(--hand);background:var(--sheet);padding:0 6px;position:absolute;top:-.8rem;left:12px}
+.notes p{margin:10px 0 0}
+.foot{margin-top:28px;color:var(--muted);font-size:.85rem;text-align:center}
+@media (prefers-reduced-motion:no-preference){.row,.btn,.tab{transition:background-color .15s,color .15s}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <main id="home">
+    <div class="head">
+      <h1>Rezeptordner</h1>
+      <svg viewBox="0 0 74 30" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 20 Q36 16 72 12"/><path d="M14 19c-3-7 1-12 6-13 1 6-2 10-6 13Z"/><path d="M14 19c4 6 10 7 13 6-3-5-8-7-13-6Z"/><path d="M30 17c-3-7 1-12 6-13 1 6-2 10-6 13Z"/><path d="M30 17c4 6 10 7 13 6-3-5-8-7-13-6Z"/><path d="M46 15c-3-7 1-12 6-13 1 6-2 10-6 13Z"/><path d="M46 15c4 6 10 7 13 6-3-5-8-7-13-6Z"/></svg>
+    </div>
+    <p class="count" id="count"></p>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <input id="q" type="search" placeholder="Rezept oder Zutat suchen …" autocomplete="off" aria-label="Rezept oder Zutat suchen">
+    </div>
+    <nav class="tabs" id="tabs" aria-label="Kategorien"></nav>
+    <div id="groups"></div>
+  </main>
+  <article id="detail" hidden></article>
+</div>
+
+<script src="rezepte.js"></script>
+<script>
+(function(){
+const R = window.REZEPTE || JSON.parse(document.getElementById('data').textContent);
+const ORDER = ['Frühstück','Salat','Mittagessen','Saucen','Backen'];
+const cats = [...new Set(R.map(r=>r.cat))].sort((a,b)=>(ORDER.indexOf(a)+99)%99 - (ORDER.indexOf(b)+99)%99 || a.localeCompare(b));
+const $ = s=>document.querySelector(s);
+const esc = s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let cat = 'Alle';
+try{ cat = localStorage.getItem('rz-cat') || 'Alle'; if(cat!=='Alle' && !cats.includes(cat)) cat='Alle'; }catch(e){}
+
+/* ---------- Mengen ---------- */
+const FR = {0.25:'¼',0.5:'½',0.75:'¾'};
+function num(n,u){
+  if(['g','ml'].includes(u)){
+    if(n>=100) return String(Math.round(n/5)*5);
+    if(n>=10) return String(Math.round(n));
+    n = Math.round(n*2)/2; return String(n).replace('.',',');
+  }
+  const q = Math.round(n*4)/4;
+  if(q===0) return '¼';
+  const w = Math.floor(q), f = +(q-w).toFixed(2);
+  return (w? String(w):'') + (FR[f]||'');
+}
+function qty(it,f){
+  if(it.m==null) return '';
+  const u = it.u||'';
+  const v = Array.isArray(it.m) ? it.m.map(x=>num(x*f,u)).join('–') : num(it.m*f,u);
+  return (it.ca?'ca. ':'') + v + (u?' '+u:'');
+}
+function dots(n){ if(!n) return ''; let h='<span class="dots" aria-label="Schwierigkeit '+n+' von 5">'; for(let i=1;i<=5;i++) h+='<i class="'+(i<=n?'on':'')+'"></i>'; return h+'</span>'; }
+function yieldText(r){ return r.servings ? r.servings+' '+r.unit : ''; }
+
+/* ---------- Übersicht ---------- */
+function renderTabs(){
+  $('#tabs').innerHTML = ['Alle',...cats].map(c=>'<button class="tab" type="button" aria-pressed="'+(c===cat)+'" data-c="'+esc(c)+'">'+esc(c)+'</button>').join('');
+}
+function hay(r){ return [r.title,r.cat,...r.tags,...r.groups.flatMap(g=>[g.title||'',...g.items.map(i=>i.t)])].join(' ').toLowerCase(); }
+function renderList(){
+  const q = $('#q').value.trim().toLowerCase();
+  const hits = R.filter(r=>(cat==='Alle'||r.cat===cat) && (!q || q.split(/\s+/).every(w=>hay(r).includes(w))));
+  $('#count').textContent = R.length+' Rezepte in '+cats.length+' Kategorien';
+  if(!hits.length){ $('#groups').innerHTML='<p class="empty">Kein Rezept passt zu „'+esc(q)+'“. Versuch es mit einer Zutat, z. B. „Pilze“.</p>'; return; }
+  $('#groups').innerHTML = cats.filter(c=>hits.some(r=>r.cat===c)).map(c=>
+    '<section class="group"><h2 class="lbl">'+esc(c)+'</h2><ul class="list">'+
+    hits.filter(r=>r.cat===c).sort((a,b)=>a.title.localeCompare(b.title,'de')).map(r=>{
+      const m = [dots(r.difficulty), r.time?'<span>⏱ '+esc(r.time)+'</span>':'', yieldText(r)?'<span>'+esc(yieldText(r))+'</span>':'', ...r.tags.map(t=>'<span class="tag">'+esc(t)+'</span>')].filter(Boolean).join('');
+      return '<li><button class="row" type="button" data-id="'+r.id+'"><div class="t">'+esc(r.title)+'</div>'+(m?'<div class="meta">'+m+'</div>':'')+'</button></li>';
+    }).join('')+'</ul></section>').join('');
+}
+$('#tabs').addEventListener('click',e=>{const b=e.target.closest('.tab'); if(!b) return; cat=b.dataset.c; try{localStorage.setItem('rz-cat',cat)}catch(_){} renderTabs(); renderList();});
+$('#q').addEventListener('input',renderList);
+$('#groups').addEventListener('click',e=>{const b=e.target.closest('.row'); if(b) location.hash=b.dataset.id;});
+
+/* ---------- Rezeptansicht ---------- */
+const FACTORS=[0.5,1,1.5,2,3,4];
+let cur=null, amount=1;
+function stepSize(r){ return r.servings>=10 ? 5 : 1; }
+function amountLabel(r){ return r.servings ? amount+' '+r.unit : (amount===1?'1× Rezept':String(amount).replace('.',',')+'× Rezept'); }
+function factor(r){ return r.servings ? amount/r.servings : amount; }
+function renderDetail(r){
+  cur=r; amount = r.servings || 1;
+  const facts = [
+    r.difficulty?['Schwierigkeit',dots(r.difficulty)]:null,
+    r.prep?['Vorbereitung',esc(r.prep)]:null,
+    r.time?['Zeit',esc(r.time)]:null,
+    r.servings?['Ergibt',esc(yieldText(r))]:null
+  ].filter(Boolean);
+  $('#detail').innerHTML =
+    '<div class="bar"><button class="back" type="button" id="back">‹ Alle Rezepte</button>'+
+    '<button class="btn" type="button" id="wake" aria-pressed="'+wakeOn+'">☀ Bildschirm anlassen</button></div>'+
+    '<div class="sheet"><div class="lbl">'+esc(r.cat)+(r.tags.length?' · '+r.tags.map(esc).join(' · '):'')+'</div>'+
+    '<h1 class="rtitle">'+esc(r.title)+'</h1>'+
+    (facts.length?'<div class="facts">'+facts.map(f=>'<div><span class="lbl">'+f[0]+'</span><b>'+f[1]+'</b></div>').join('')+'</div>':'')+
+    '<div class="scale"><span class="lbl">'+(r.servings?'Menge':'Rezeptmenge')+'</span><div class="step"><button type="button" id="minus" aria-label="weniger">−</button><output id="amt"></output><button type="button" id="plus" aria-label="mehr">+</button></div><button class="reset" type="button" id="reset" hidden>zurücksetzen</button></div>'+
+    '<div class="cols"><section><h2>Zutaten</h2><div id="ings"></div></section>'+
+    '<section><h2>Zubereitung</h2><ol class="steps" id="steps">'+r.steps.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ol><p class="hint">Tipp: Schritt antippen, um ihn abzuhaken.</p>'+
+    (r.notes.length?'<div class="notes"><span class="nh">Notizen</span>'+r.notes.map(n=>'<p>'+esc(n)+'</p>').join('')+'</div>':'')+
+    '</section></div></div><p class="foot">Abgetippt vom Zettel im Rezeptordner.</p>';
+  renderIngs();
+}
+function renderIngs(){
+  const r=cur, f=factor(r);
+  $('#amt').textContent = amountLabel(r);
+  $('#minus').disabled = r.servings ? amount-stepSize(r)<1 : amount<=FACTORS[0];
+  $('#plus').disabled = !r.servings && amount>=FACTORS[FACTORS.length-1];
+  $('#reset').hidden = amount === (r.servings||1);
+  let k=0;
+  $('#ings').innerHTML = r.groups.map(g=>(g.title?'<h3 class="lbl">'+esc(g.title)+'</h3>':'')+'<ul class="ing">'+
+    g.items.map(it=>{const id='i'+(k++); const q=qty(it,f); return '<li><label for="'+id+'"><input type="checkbox" id="'+id+'"><span>'+(q?'<span class="q">'+esc(q)+'</span> ':'')+esc(it.t)+'</span></label></li>';}).join('')+'</ul>').join('');
+}
+$('#detail').addEventListener('click',e=>{
+  const t=e.target;
+  if(t.closest('#back')){ history.length>1 && location.hash ? history.back() : (location.hash=''); return; }
+  if(t.closest('#wake')){ toggleWake(); return; }
+  const r=cur; if(!r) return;
+  if(t.closest('#minus')||t.closest('#plus')){
+    const up=!!t.closest('#plus');
+    if(r.servings){ amount=Math.max(stepSize(r), amount+(up?1:-1)*stepSize(r)); }
+    else { const i=FACTORS.indexOf(amount); amount=FACTORS[Math.min(FACTORS.length-1,Math.max(0,i+(up?1:-1)))]; }
+    const checked=[...document.querySelectorAll('.ing input')].map(c=>c.checked);
+    renderIngs(); document.querySelectorAll('.ing input').forEach((c,i)=>c.checked=checked[i]); return;
+  }
+  if(t.closest('#reset')){ amount=r.servings||1; renderIngs(); return; }
+  const li=t.closest('.steps li'); if(li) li.classList.toggle('done');
+});
+
+/* ---------- Bildschirm anlassen ---------- */
+let wakeOn=false, lock=null;
+async function acquire(){ try{ lock = await navigator.wakeLock.request('screen'); lock.addEventListener('release',()=>{lock=null}); return true; }catch(e){ return false; } }
+async function toggleWake(){
+  const b=$('#wake');
+  if(wakeOn){ wakeOn=false; try{ lock && await lock.release(); }catch(e){} lock=null; }
+  else { wakeOn = ('wakeLock' in navigator) && await acquire();
+    if(!wakeOn && b){ b.textContent='Nicht verfügbar'; setTimeout(()=>{ if($('#wake')) $('#wake').textContent='☀ Bildschirm anlassen'; },2200); } }
+  if($('#wake')) $('#wake').setAttribute('aria-pressed',wakeOn);
+}
+document.addEventListener('visibilitychange',()=>{ if(wakeOn && !lock && document.visibilityState==='visible') acquire(); });
+
+/* ---------- Navigation ---------- */
+function route(){
+  const id=decodeURIComponent(location.hash.slice(1));
+  const r=R.find(x=>x.id===id);
+  if(r){ renderDetail(r); $('#home').hidden=true; $('#detail').hidden=false; window.scrollTo(0,0); }
+  else { cur=null; $('#detail').hidden=true; $('#home').hidden=false; }
+}
+window.addEventListener('hashchange',route);
+renderTabs(); renderList(); route();
+})();
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
+</script>
+</body>
+</html>
