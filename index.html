@@ -14,6 +14,17 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Rezeptordner</title>
 <script>
+// Einstellungen für die gemeinsame Einkaufsliste (Firebase). Diese Werte sind nicht geheim.
+window.FIREBASE_CONFIG = {
+  apiKey: "AIzaSyAEG1HZwG1GM0M9npwfnfZKmC3wLqa4xIc",
+  authDomain: "rezepte-a9dd4.firebaseapp.com",
+  projectId: "rezepte-a9dd4",
+  storageBucket: "rezepte-a9dd4.firebasestorage.app",
+  messagingSenderId: "906072606394",
+  appId: "1:906072606394:web:71c65683795aead2c9a483"
+};
+</script>
+<script>
 // Zeigt Fehler direkt auf der Seite an (hilft bei der Fehlersuche auf dem Handy)
 window.addEventListener('error', function (e) {
   var t = e.target && e.target !== window && (e.target.src || e.target.href);
@@ -175,6 +186,16 @@ a.btn{text-decoration:none;color:var(--ink)}
 .btn.warn{border-color:#B3261E;color:#B3261E}
 .sempty{color:var(--muted);padding:18px 0 6px}
 #sharetxt{width:100%;min-height:140px;margin-top:12px;font:inherit;font-size:.9rem;border:1.5px solid var(--rule);border-radius:10px;padding:10px;background:var(--sheet);color:var(--ink)}
+.sharebox{margin-top:26px;padding:14px;border:1.5px dashed var(--rule);border-radius:12px}
+.sharebox p{margin:6px 0 10px;font-size:.92rem;color:var(--muted)}
+.sharebox .small{font-size:.85rem}
+.sharebox details{margin-top:12px}
+.sharebox summary{cursor:pointer;color:var(--pen);font-weight:700}
+.syncline{display:flex;align-items:center;gap:6px;font-size:.88rem;color:var(--muted);margin:-8px 0 14px}
+.sdot{width:9px;height:9px;border-radius:50%;background:var(--done);flex:none}
+.s-online .sdot{background:var(--leaf)}
+.s-offline .sdot{background:#C48A1A}
+.s-error .sdot{background:#B3261E}
 .toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:20;background:var(--ink);color:var(--paper);border-radius:12px;padding:10px 14px;display:flex;gap:12px;align-items:center;max-width:calc(100% - 32px);box-shadow:0 6px 20px rgba(0,0,0,.2);font-size:.95rem}
 .toast a{color:var(--paper);font-weight:700;white-space:nowrap}
 @media (prefers-reduced-motion:no-preference){.row,.btn,.tab{transition:background-color .15s,color .15s}}
@@ -359,11 +380,89 @@ async function toggleWake(){
 document.addEventListener('visibilitychange',()=>{ if(wakeOn && !lock && document.visibilityState==='visible') acquire(); });
 
 /* ---------- Einkaufsliste ---------- */
-const SK='rz-einkauf-v1';
-let shop={seq:1,items:[]};
+const SK='rz-einkauf-v1', LK='rz-liste-id';
+const FB = window.FIREBASE_CONFIG || null;   // nur in der GitHub-Fassung gesetzt
+let shop={items:[]};
 try{ const s=JSON.parse(localStorage.getItem(SK)||'null'); if(s && Array.isArray(s.items)) shop=s; }catch(e){}
-function save(){ try{ localStorage.setItem(SK,JSON.stringify(shop)); }catch(e){} updateCartCount(); }
+shop.items.forEach((i,k)=>{ i.id=String(i.id); if(i.t==null) i.t=k; });
+let listId=null; try{ listId=FB && localStorage.getItem(LK); }catch(e){}
+let sync={state:'local'};               // local | connecting | online | offline | error
+let db=null, unsub=null, tSeq=0;
+
+function newId(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
+function stamp(){ return Date.now()*1000+(tSeq++%1000); }
+function randomListId(){ const a=new Uint8Array(24); crypto.getRandomValues(a); return Array.from(a,x=>'abcdefghijklmnopqrstuvwxyz0123456789'[x%36]).join(''); }
+function saveLocal(){ try{ localStorage.setItem(SK,JSON.stringify(shop)); }catch(e){} updateCartCount(); }
 function updateCartCount(){ const n=shop.items.filter(i=>!i.done).length; document.querySelectorAll('[data-cartn]').forEach(el=>el.textContent=n||''); }
+function plain(it){ const o={name:it.name,u:it.u||'',parts:it.parts||[],done:!!it.done,t:it.t||stamp()}; if(it.text!=null) o.text=it.text; if(it.custom) o.custom=true; return o; }
+function col(){ return db.collection('listen').doc(listId).collection('eintraege'); }
+// Änderungen speichern: immer auf dem Gerät, bei gemeinsamer Liste zusätzlich in Firebase
+function commit(changed,removed){
+  saveLocal();
+  if(listId && db){
+    const c=col(), b=db.batch();
+    (changed||[]).forEach(it=>b.set(c.doc(it.id),plain(it)));
+    (removed||[]).forEach(it=>b.delete(c.doc(it.id)));
+    b.commit().catch(err=>{ console.warn(err); toast('Speichern in der gemeinsamen Liste hat nicht geklappt.'); });
+  }
+}
+
+/* Firebase nur laden, wenn eine gemeinsame Liste benutzt wird */
+const FBV='10.14.1';
+function loadScript(src){ return new Promise((ok,no)=>{ const s=document.createElement('script'); s.src=src; s.onload=ok; s.onerror=()=>no(new Error('Laden fehlgeschlagen')); document.head.appendChild(s); }); }
+let fbReady=null;
+function initFirebase(){
+  if(fbReady) return fbReady;
+  fbReady=(async()=>{
+    const base='https://www.gstatic.com/firebasejs/'+FBV+'/';
+    await loadScript(base+'firebase-app-compat.js');
+    await loadScript(base+'firebase-auth-compat.js');
+    await loadScript(base+'firebase-firestore-compat.js');
+    if(!firebase.apps.length) firebase.initializeApp(FB);
+    const d=firebase.firestore();
+    try{ await d.enablePersistence({synchronizeTabs:true}); }catch(e){}
+    const user=await new Promise(res=>{ const off=firebase.auth().onAuthStateChanged(u=>{ off(); res(u); }); });
+    if(!user) await firebase.auth().signInAnonymously();
+    db=d; return d;
+  })();
+  fbReady.catch(()=>{ fbReady=null; });
+  return fbReady;
+}
+async function connect(id,uploadLocal){
+  listId=id; try{ localStorage.setItem(LK,id); }catch(e){}
+  sync={state:'connecting'}; refresh();
+  try{ await initFirebase(); }
+  catch(e){ sync={state:'error',msg:'Keine Verbindung zu Firebase.'}; refresh(); return; }
+  if(listId!==id) return;
+  if(uploadLocal && shop.items.length) commit(shop.items,[]);
+  if(unsub) unsub();
+  unsub=col().onSnapshot({includeMetadataChanges:true}, snap=>{
+    shop.items=snap.docs.map(d=>Object.assign({},d.data(),{id:d.id})).sort((a,b)=>(a.t||0)-(b.t||0));
+    sync={state: snap.metadata.fromCache ? 'offline' : 'online', pending: snap.metadata.hasPendingWrites};
+    saveLocal(); refresh();
+  }, err=>{ sync={state:'error',msg:(err&&err.code)||'Fehler'}; refresh(); });
+}
+function disconnect(){
+  if(unsub) unsub(); unsub=null; listId=null;
+  try{ localStorage.removeItem(LK); }catch(e){}
+  sync={state:'local'}; saveLocal(); refresh();
+}
+function refresh(){
+  updateCartCount();
+  if(!$('#shop').hidden && editId==null) renderShop();
+  if(!$('#detail').hidden && cur) renderCartBtn();
+}
+function parseListId(v){ const m=String(v).match(/liste=([a-z0-9]{20,})/) || String(v).trim().match(/^([a-z0-9]{20,})$/); return m?m[1]:null; }
+function listLink(){ return location.origin+location.pathname+'?liste='+listId+'#einkauf'; }
+async function shareLink(){
+  const url=listLink(), text='Unsere gemeinsame Einkaufsliste:';
+  if(navigator.share){ try{ await navigator.share({title:'Einkaufsliste',text:text,url:url}); return; }catch(e){ if(e && e.name==='AbortError') return; } }
+  try{ await navigator.clipboard.writeText(url); toast('Link kopiert. Jetzt z. B. in WhatsApp einfügen.'); }
+  catch(e){ shareFallback=url; renderShop(); toast('Link unten markieren und kopieren.'); }
+}
+// Einladungslink aus der Adresse übernehmen (…?liste=abc#einkauf)
+let pendingJoin=null;
+if(FB){ const id=parseListId(location.search); if(id){ pendingJoin=id; history.replaceState(null,'',location.pathname+'#einkauf'); } }
 
 // Grundzutaten, die man meistens zu Hause hat
 function isBasic(name){
@@ -381,15 +480,15 @@ function sumText(it){
 function itemText(it){ if(it.text!=null) return it.text; const a=sumText(it); return (a?a+' ':'')+it.name; }
 function addPart(name,u,n,a,r){
   const key=name.toLowerCase()+'|'+u;
-  const plain = n==null && !a;
+  const plainAmt = n==null && !a;
   const hit=shop.items.find(i=>!i.done && i.text==null && (i.name.toLowerCase()+'|'+i.u)===key &&
-    (n!=null ? i.parts.every(p=>p.n!=null) : plain && i.parts.every(p=>p.n==null && !p.a)));
+    (n!=null ? i.parts.every(p=>p.n!=null) : plainAmt && i.parts.every(p=>p.n==null && !p.a)));
   const part={rid:r.id,rt:r.title,n:n,a:a};
-  if(hit) hit.parts.push(part);
-  else shop.items.push({id:shop.seq++,name:name,u:u,parts:[part],done:false});
+  if(hit){ hit.parts.push(part); return hit; }
+  const it={id:newId(),t:stamp(),name:name,u:u,parts:[part],done:false}; shop.items.push(it); return it;
 }
 function addRecipe(r,f,sel){
-  let k=0,n=0;
+  let k=0,n=0; const changed=new Set();
   r.groups.forEach(g=>g.items.forEach(it=>{
     const idx=k++; if(!sel.has(idx)) return;
     const names = it.m==null ? it.t.split(',').map(s=>s.trim()) : [it.t.split(',')[0].trim()];
@@ -398,22 +497,42 @@ function addRecipe(r,f,sel){
       if(isBasic(name)) return;
       const u=it.u||''; let v=null,a='';
       if(it.m!=null){ if(Array.isArray(it.m)) a=qty(it,f).replace(/^ca\. /,''); else v=it.m*f; }
-      addPart(name,u,v,a,r); n++;
+      changed.add(addPart(name,u,v,a,r)); n++;
     });
   }));
-  if(n) save();
+  if(n) commit([...changed],[]);
   return n;
 }
 let editId=null, confirmClear=false, shareFallback='';
+function syncLine(){
+  if(!listId) return '';
+  const t={connecting:'Verbinde …', online:'Verbunden. Änderungen sehen alle sofort.',
+    offline:'Offline. Änderungen werden abgeglichen, sobald wieder Internet da ist.',
+    error:'Verbindung fehlgeschlagen'+(sync.msg?' ('+sync.msg+')':'')+'. Die Liste zeigt den zuletzt gespeicherten Stand.'}[sync.state]||'';
+  return '<p class="syncline s-'+sync.state+'"><span class="sdot"></span>👥 Gemeinsame Liste · '+esc(t)+'</p>';
+}
+function shareBox(){
+  if(!FB) return '';
+  if(listId) return '<div class="sharebox"><h2 class="lbl">Gemeinsame Liste</h2>'+
+    '<p>Alle, die den Link geöffnet haben, sehen und bearbeiten dieselbe Liste.</p>'+
+    '<div class="sactions" style="margin-top:8px"><button class="btn" type="button" data-act="sharelink">Link an andere schicken</button>'+
+    '<button class="btn" type="button" data-act="leave">Auf diesem Gerät trennen</button></div></div>';
+  return '<div class="sharebox"><h2 class="lbl">Gemeinsam nutzen</h2>'+
+    '<p>Teile die Liste mit anderen. Abhaken und Ergänzen sehen dann alle sofort.</p>'+
+    '<button class="btn" type="button" data-act="startshare">👥 Liste gemeinsam nutzen</button>'+
+    '<details><summary>Du hast einen Link bekommen?</summary>'+
+    '<p class="small">Füge ihn hier ein. Auf dem iPhone ist das der sichere Weg, wenn die Rezepte als App auf dem Home-Bildschirm liegen.</p>'+
+    '<form class="addform" id="joinform"><input id="joinIn" placeholder="Link hier einfügen" autocomplete="off" aria-label="Link zur gemeinsamen Liste"><button type="submit">Beitreten</button></form></details></div>';
+}
 function renderShop(){
   const open=shop.items.filter(i=>!i.done), done=shop.items.filter(i=>i.done);
   const recs=new Map(); shop.items.forEach(i=>i.parts.forEach(p=>recs.set(p.rid,p.rt)));
   const row=i=>{
-    if(i.id===editId) return '<li class="editing" data-id="'+i.id+'"><input class="edit-in" id="editIn" value="'+esc(itemText(i))+'" aria-label="Eintrag bearbeiten"><button class="ic" type="button" data-act="save" aria-label="Speichern">✓</button></li>';
+    if(i.id===editId) return '<li class="editing" data-id="'+esc(i.id)+'"><input class="edit-in" id="editIn" value="'+esc(itemText(i))+'" aria-label="Eintrag bearbeiten"><button class="ic" type="button" data-act="save" aria-label="Speichern">✓</button></li>';
     const a=i.text==null?sumText(i):'';
     const txt=i.text!=null?esc(i.text):(a?'<b>'+esc(a)+'</b> ':'')+esc(i.name);
     const from=[...new Set(i.parts.map(p=>p.rt))];
-    return '<li class="'+(i.done?'done':'')+'" data-id="'+i.id+'">'+
+    return '<li class="'+(i.done?'done':'')+'" data-id="'+esc(i.id)+'">'+
       '<button class="chk" type="button" data-act="toggle" aria-label="'+(i.done?'Wieder offen':'Abhaken')+'"></button>'+
       '<button class="it" type="button" data-act="toggle"><span class="txt">'+txt+'</span>'+(from.length?'<small>für '+from.map(esc).join(', ')+'</small>':'')+'</button>'+
       '<button class="ic" type="button" data-act="edit" aria-label="Bearbeiten">✎</button>'+
@@ -421,26 +540,30 @@ function renderShop(){
   };
   $('#shop').innerHTML=
     '<div class="bar"><button class="back" type="button" data-act="back">‹ Alle Rezepte</button>'+
-    '<button class="btn" type="button" data-act="share"'+(open.length?'':' disabled')+'>Teilen</button></div>'+
+    '<button class="btn" type="button" data-act="share"'+(open.length?'':' disabled')+'>Als Text teilen</button></div>'+
     '<div class="sheet"><h1 class="stitle">Einkaufsliste</h1>'+
     '<p class="sstat">'+(shop.items.length? open.length+' offen'+(done.length?' · '+done.length+' erledigt':'') : 'Noch leer.')+'</p>'+
+    syncLine()+
     '<form class="addform" id="addform"><input id="addIn" placeholder="Hinzufügen, z. B. 2 l Milch" autocomplete="off" aria-label="Eintrag hinzufügen"><button type="submit">+</button></form>'+
     (recs.size?'<div class="lbl">Rezepte auf der Liste</div><div class="chips" style="margin-top:6px">'+[...recs].map(([id,t])=>'<span class="chip">'+esc(t)+'<button type="button" data-act="rmrec" data-rid="'+esc(id)+'" aria-label="'+esc(t)+' von der Liste nehmen">✕</button></span>').join('')+'</div>':'')+
     (open.length?'<ul class="shop">'+open.map(row).join('')+'</ul>':
-      '<p class="sempty">'+(done.length?'Alles erledigt. ':'')+'Öffne ein Rezept und tippe auf „Auf die Einkaufsliste“, oder schreib oben selbst etwas dazu.</p>')+
+      '<p class="sempty">'+(done.length?'Alles erledigt. ':'')+'Öffne ein Rezept und tippe auf „Zur Einkaufsliste“, oder schreib oben selbst etwas dazu.</p>')+
     (done.length?'<h2 class="lbl dhead">Erledigt</h2><ul class="shop">'+done.map(row).join('')+'</ul>':'')+
     (shop.items.length?'<div class="sactions">'+
       (done.length?'<button class="btn" type="button" data-act="cleardone">Erledigte entfernen</button>':'')+
-      (confirmClear?'<span>Wirklich alles löschen?</span><button class="btn warn" type="button" data-act="clearyes">Ja, leeren</button><button class="btn" type="button" data-act="clearno">Abbrechen</button>'
+      (confirmClear?'<span>'+(listId?'Wirklich alles löschen, für alle?':'Wirklich alles löschen?')+'</span><button class="btn warn" type="button" data-act="clearyes">Ja, leeren</button><button class="btn" type="button" data-act="clearno">Abbrechen</button>'
                    :'<button class="btn warn" type="button" data-act="clear">Liste leeren</button>')+'</div>':'')+
-    (shareFallback?'<textarea id="sharetxt" readonly aria-label="Liste zum Kopieren">'+esc(shareFallback)+'</textarea>':'')+
+    (shareFallback?'<textarea id="sharetxt" readonly aria-label="Zum Kopieren">'+esc(shareFallback)+'</textarea>':'')+
+    shareBox()+
     '</div>';
   if(editId!=null){ const e=$('#editIn'); if(e){ e.focus(); e.setSelectionRange(e.value.length,e.value.length); } }
   if(shareFallback){ const ta=$('#sharetxt'); ta.focus(); ta.select(); }
 }
 function finishEdit(){
   const e=$('#editIn'); const it=shop.items.find(i=>i.id===editId); editId=null;
-  if(e && it){ const v=e.value.trim(); if(!v) shop.items=shop.items.filter(i=>i!==it); else if(v!==itemText(it)) it.text=v; save(); }
+  if(e && it){ const v=e.value.trim();
+    if(!v){ shop.items=shop.items.filter(i=>i!==it); commit([],[it]); }
+    else if(v!==itemText(it)){ it.text=v; commit([it],[]); } }
   renderShop();
 }
 function shareText(){ return 'Einkaufsliste\n'+shop.items.filter(i=>!i.done).map(i=>'• '+itemText(i)).join('\n'); }
@@ -452,26 +575,36 @@ async function share(){
 }
 $('#shop').addEventListener('click',e=>{
   const b=e.target.closest('[data-act]'); if(!b) return;
-  const act=b.dataset.act, li=b.closest('li'), it=li&&shop.items.find(i=>i.id===+li.dataset.id);
+  const act=b.dataset.act, li=b.closest('li'), it=li&&shop.items.find(i=>i.id===li.dataset.id);
   if(act==='back'){ goBack(); return; }
   if(act==='share'){ share(); return; }
+  if(act==='sharelink'){ shareLink(); return; }
   if(act==='save'){ finishEdit(); return; }
-  if(act==='toggle'&&it){ it.done=!it.done; save(); }
+  if(act==='startshare'){ connect(randomListId(),true); toast('Gemeinsame Liste angelegt. Schick jetzt den Link an andere.'); }
+  else if(act==='leave'){ disconnect(); toast('Getrennt. Die Liste bleibt auf diesem Gerät, wird aber nicht mehr abgeglichen.'); }
+  else if(act==='toggle'&&it){ it.done=!it.done; commit([it],[]); }
   else if(act==='edit'&&it){ editId=it.id; }
-  else if(act==='del'&&it){ shop.items=shop.items.filter(i=>i!==it); save(); toast('„'+itemText(it)+'“ gelöscht.'); }
-  else if(act==='rmrec'){ const rid=b.dataset.rid;
-    shop.items.forEach(i=>i.parts=i.parts.filter(p=>p.rid!==rid));
-    shop.items=shop.items.filter(i=>i.parts.length||i.custom); save(); }
-  else if(act==='cleardone'){ shop.items=shop.items.filter(i=>!i.done); save(); }
+  else if(act==='del'&&it){ shop.items=shop.items.filter(i=>i!==it); commit([],[it]); toast('„'+itemText(it)+'“ gelöscht.'); }
+  else if(act==='rmrec'){ const rid=b.dataset.rid, ch=[], rm=[];
+    shop.items.forEach(i=>{ if(i.parts.some(p=>p.rid===rid)){ i.parts=i.parts.filter(p=>p.rid!==rid); (i.parts.length||i.custom?ch:rm).push(i); } });
+    shop.items=shop.items.filter(i=>!rm.includes(i)); commit(ch,rm); }
+  else if(act==='cleardone'){ const rm=shop.items.filter(i=>i.done); shop.items=shop.items.filter(i=>!i.done); commit([],rm); }
   else if(act==='clear'){ confirmClear=true; }
   else if(act==='clearno'){ confirmClear=false; }
-  else if(act==='clearyes'){ shop.items=[]; confirmClear=false; save(); }
+  else if(act==='clearyes'){ const rm=shop.items; shop.items=[]; confirmClear=false; commit([],rm); }
   shareFallback='';
   renderShop();
 });
 $('#shop').addEventListener('submit',e=>{
-  e.preventDefault(); const v=$('#addIn').value.trim(); if(!v) return;
-  shop.items.push({id:shop.seq++,name:v,u:'',parts:[],done:false,custom:true,text:v}); save(); renderShop(); $('#addIn').focus();
+  e.preventDefault();
+  if(e.target.id==='joinform'){
+    const id=parseListId($('#joinIn').value);
+    if(!id){ toast('Das sieht nicht nach einem Listen-Link aus. Bitte den ganzen Link einfügen.'); return; }
+    connect(id,true); toast('Mit der gemeinsamen Liste verbunden.'); return;
+  }
+  const v=$('#addIn').value.trim(); if(!v) return;
+  const it={id:newId(),t:stamp(),name:v,u:'',parts:[],done:false,custom:true,text:v};
+  shop.items.push(it); commit([it],[]); renderShop(); $('#addIn').focus();
 });
 $('#shop').addEventListener('keydown',e=>{
   if(e.target.id!=='editIn') return;
@@ -506,8 +639,12 @@ window.addEventListener('hashchange',()=>{
   if(!h || h==='#') trail.length=1, trail[0]=h;
   route();
 });
-window.addEventListener('storage',e=>{ if(e.key===SK){ try{ shop=JSON.parse(e.newValue)||shop; }catch(_){} route(); } });
+window.addEventListener('storage',e=>{ if(e.key===SK && !listId){ try{ shop=JSON.parse(e.newValue)||shop; }catch(_){} route(); } });
 renderTabs(); renderList(); route();
+if(FB){
+  if(pendingJoin && pendingJoin!==listId){ const fresh=!listId; connect(pendingJoin,fresh); toast('Mit der gemeinsamen Liste verbunden.'); }
+  else if(listId) connect(listId,false);
+}
 })();
 </script>
 
