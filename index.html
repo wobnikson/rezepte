@@ -233,6 +233,9 @@ a.btn{text-decoration:none;color:var(--ink)}
 .day{background:var(--sheet);border:1px solid var(--rule);border-radius:14px;padding:10px 14px 6px}
 .day.today{border-color:var(--pen);box-shadow:inset 4px 0 0 var(--pen)}
 .day.past{opacity:.7}
+.day.compact{padding:6px 14px}
+.day.compact .dn{font-size:1.2rem}
+.days .day.compact + .day.compact{margin-top:-6px}
 .day.past .dn{color:var(--muted)}
 .dayhead{display:flex;align-items:baseline;gap:8px;margin-bottom:2px}
 .dayhead .dn{font:700 1.55rem/1 var(--hand);color:var(--pen)}
@@ -241,7 +244,7 @@ a.btn{text-decoration:none;color:var(--ink)}
 .entries{list-style:none;margin:0;padding:0}
 .entry{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:6px;border-top:1.5px dotted var(--rule);min-height:50px}
 .entry .open{border:0;background:none;text-align:left;padding:8px 0;cursor:pointer;min-width:0}
-.entry .t{display:block;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.entry .t{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-weight:700;line-height:1.3}
 .entry .s{display:block;font-size:.8rem;color:var(--muted)}
 .entry.note .t{font-weight:400;font-style:italic}
 .pill{font-size:.8rem;border:1.5px solid var(--rule);border-radius:99px;padding:2px 8px;white-space:nowrap;font-variant-numeric:tabular-nums}
@@ -477,7 +480,7 @@ function renderIngs(){
   if(picking) updatePickBar();
   renderCartBtn();
 }
-function itemBasic(it){ const names = it.m==null ? it.t.split(',') : [it.t.split(',')[0]]; return names.every(n=>isBasic(n.trim())); }
+function itemBasic(it){ const names = it.m==null ? it.t.split(',') : [baseName(it.t)]; return names.every(n=>isBasic(n.trim())); }
 function selectable(){ let k=0, out=[]; cur.groups.forEach(g=>g.items.forEach(it=>{ const i=k++; if(!itemBasic(it)) out.push(i); })); return out; }
 function updatePickBar(){ const n=pick.size, b=$('#pickAdd'); b.disabled=!n; b.textContent = n ? n+(n===1?' Zutat':' Zutaten')+' hinzufügen' : 'Zutaten auswählen'; }
 $('#detail').addEventListener('change',e=>{
@@ -692,6 +695,12 @@ let pendingJoin=null;
 if(FB){ const id=parseListId(location.search); if(id){ pendingJoin=id; history.replaceState(null,'',location.pathname+'#einkauf'); } }
 
 // Grundzutaten, die man meistens zu Hause hat
+// „Karotte, gewürfelt“ → „Karotte“, aber „Sojasauce, hell“ bleibt „Sojasauce, hell“
+function baseName(t){
+  const i=t.indexOf(','); if(i<0) return t.trim();
+  const rest=t.slice(i+1).toLowerCase();
+  return /(^|\s)(ge(?!räuchert)[a-zäöüß]+t\b|in (feinen |dünnen |breiten |halben )?(ringen|streifen|würfeln|scheiben|stücken|röschen)|entsteint|geschält|gerieben|geschnitten|klein|fein|grob|halbiert|zum )/.test(rest) ? t.slice(0,i).trim() : t.trim();
+}
 function isBasic(name){
   const s=name.toLowerCase().replace(/\(.*?\)/g,'').trim();
   if(!s) return true;
@@ -761,7 +770,7 @@ function addRecipe(r,f,sel){
   let k=0,n=0; const changed=new Set();
   r.groups.forEach(g=>g.items.forEach(it=>{
     const idx=k++; if(!sel.has(idx)) return;
-    const names = it.m==null ? it.t.split(',').map(s=>s.trim()) : [it.t.split(',')[0].trim()];
+    const names = it.m==null ? it.t.split(',').map(s=>s.trim()) : [baseName(it.t)];
     names.forEach(name=>{
       name=name.replace(/\s*\((\d+ )?(kleine |große )?Dose[^)]*\)/i,'').trim();
       if(isBasic(name)) return;
@@ -919,7 +928,7 @@ const unitShort=r=>(r&&r.unit||'Port.').replace('Portionen','Port.').replace('Pe
 
 function renderWeek(){
   const end=addD(wkStart,6), a=isoD(wkStart), z=isoD(end), td=isoD(today0());
-  const week=plan.filter(e=>e.date>=a&&e.date<=z), dishes=week.filter(e=>e.rid), open=dishes.filter(e=>!e.bought);
+  const week=plan.filter(e=>e.date>=a&&e.date<=z), dishes=week.filter(e=>e.rid), open=dishes.filter(e=>!e.bought&&e.date>=td);
   $('#week').innerHTML=
     '<h1 class="wtitle">Wochenplan</h1>'+
     '<div class="weeknav"><button class="arrow" type="button" data-w="prev" aria-label="Vorige Woche">‹</button>'+
@@ -930,13 +939,14 @@ function renderWeek(){
     '<div class="days">'+DN.map((dn,i)=>{
       const d=addD(wkStart,i), ds=isoD(d), isT=ds===td, past=ds<td;
       const es=plan.filter(e=>e.date===ds).sort((x,y)=>(x.t||0)-(y.t||0));
+      if(past && !es.length) return '<section class="day past compact"><div class="dayhead"><span class="dn">'+DL[i]+'</span><span class="dd">'+fmtDM(d)+'</span><span class="dd" style="margin-left:auto">nichts geplant</span></div></section>';
       return '<section class="day'+(isT?' today':'')+(past?' past':'')+'"><div class="dayhead"><span class="dn">'+DL[i]+'</span><span class="dd">'+fmtDM(d)+'</span>'+(isT?'<span class="tg">heute</span>':'')+'</div>'+
         '<ul class="entries">'+es.map(e=>{
           if(!e.rid) return '<li class="entry note"><span class="open"><span class="t">'+esc(e.text)+'</span><span class="s">Notiz</span></span><span></span><button class="more" type="button" data-more="'+esc(e.id)+'" aria-label="Optionen">⋯</button></li>';
           const r=recOf(e), title=r?r.title:(e.rt||'Rezept');
           return '<li class="entry"><button class="open" type="button" data-openp="'+esc(e.id)+'"><span class="t">'+esc(title)+'</span><span class="s">'+esc(r?r.cat:'nicht mehr vorhanden')+(e.bought?' · <span class="bought">✓ eingekauft</span>':'')+'</span></button>'+
             '<span class="pill">'+e.por+' '+esc(unitShort(r))+'</span><button class="more" type="button" data-more="'+esc(e.id)+'" aria-label="Optionen für '+esc(title)+'">⋯</button></li>';
-        }).join('')+'</ul><button class="dayadd" type="button" data-addday="'+ds+'">+ Gericht</button></section>';
+        }).join('')+'</ul>'+(past?'':'<button class="dayadd" type="button" data-addday="'+ds+'">+ Gericht</button>')+'</section>';
     }).join('')+'</div>'+
     (FB?'<p class="wsync">'+(listId?'👥 Der Plan wird mit allen geteilt, die eure gemeinsame Liste nutzen.':'Nur auf diesem Handy. Zum gemeinsamen Planen unter <a href="#einkauf">Einkauf</a> die Liste gemeinsam nutzen, der Plan kommt dann mit.')+'</p>':'');
 }
@@ -991,12 +1001,12 @@ function openMore(id){
 /* Woche einkaufen: Zutaten aller noch nicht eingekauften Gerichte, zusammengerechnet */
 let wRows=[], wSel=new Set(), wEntries=[];
 function openWeekShop(){
-  const a=isoD(wkStart), z=isoD(addD(wkStart,6));
+  const td=isoD(today0()), a=isoD(wkStart)<td?td:isoD(wkStart), z=isoD(addD(wkStart,6));
   wEntries=plan.filter(e=>e.rid&&!e.bought&&e.date>=a&&e.date<=z&&recOf(e));
   const map=new Map();
   wEntries.forEach(e=>{ const r=recOf(e), f=r.servings?e.por/r.servings:e.por, dn=DN[(dOf(e.date).getDay()+6)%7];
     r.groups.forEach(g=>g.items.forEach(it=>{
-      const names = it.m==null ? it.t.split(',').map(x=>x.trim()) : [it.t.split(',')[0].trim()];
+      const names = it.m==null ? it.t.split(',').map(x=>x.trim()) : [baseName(it.t)];
       names.forEach(name=>{
         name=name.replace(/\s*\((\d+ )?(kleine |große )?Dose[^)]*\)/i,'').trim(); if(isBasic(name)) return;
         let v=null,aTxt=''; if(it.m!=null){ if(Array.isArray(it.m)) aTxt=qty(it,f).replace(/^ca\. /,''); else v=it.m*f; }
@@ -1009,10 +1019,11 @@ function openWeekShop(){
   });
   wRows=[...map.values()]; wSel=new Set();
   const txt=x=>x.a.length?x.a.join(' + ')+' ':(x.has?fmtAmt(x.sum,x.u)+' ':'');
+  const multi=new Set(wEntries.map(e=>e.date)).size>1;
   openSheet('<div class="sh-head"><h2>Woche einkaufen</h2><button class="btn" type="button" data-close>Abbrechen</button></div>'+
-    '<p style="margin:2px 0 0;color:var(--muted);font-size:.9rem">'+wEntries.length+(wEntries.length===1?' Gericht':' Gerichte')+' · gleiche Zutaten zusammengerechnet. Was musst du kaufen?</p>'+
+    '<p style="margin:2px 0 0;color:var(--muted);font-size:.9rem">'+wEntries.length+(wEntries.length===1?' Gericht':' Gerichte')+(wEntries.length>1?' · gleiche Zutaten zusammengerechnet':'')+'. Was musst du kaufen?</p>'+
     '<div style="margin:6px 0;flex:none"><button class="linkbtn" type="button" data-wsel="all">Alle</button> · <button class="linkbtn" type="button" data-wsel="none">Keine</button></div>'+
-    '<div class="sh-body"><ul class="ing picking">'+wRows.map((x,i)=>'<li><label for="w'+i+'"><input type="checkbox" id="w'+i+'" data-wi="'+i+'"><span><span class="q">'+esc(txt(x))+'</span>'+esc(x.parts.length>1?pluralize(x.name):x.name)+'<small class="for">für '+[...x.days].join(', ')+'</small></span></label></li>').join('')+'</ul></div>'+
+    '<div class="sh-body"><ul class="ing picking">'+wRows.map((x,i)=>'<li><label for="w'+i+'"><input type="checkbox" id="w'+i+'" data-wi="'+i+'"><span><span class="q">'+esc(txt(x))+'</span>'+esc(x.parts.length>1?pluralize(x.name):x.name)+(multi?'<small class="for">für '+[...x.days].join(', ')+'</small>':'')+'</span></label></li>').join('')+'</ul></div>'+
     '<div class="sbar"><button class="btn primary" type="button" id="wAdd" disabled>Zutaten auswählen</button></div>','wshop');
 }
 function updW(){ const b=$('#wAdd'), n=wSel.size; b.disabled=!n; b.textContent=n? n+(n===1?' Zutat':' Zutaten')+' auf die Einkaufsliste':'Zutaten auswählen'; }
