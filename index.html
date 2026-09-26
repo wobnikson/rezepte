@@ -654,6 +654,23 @@ body.hasact.actoff .toast{bottom:calc(82px + var(--tb) + env(safe-area-inset-bot
   :root:not([data-theme="light"]) .hero .kat{color:color-mix(in srgb,var(--cc) 55%,#FFFFFF)}}
 :root[data-theme="dark"] .back,:root[data-theme="dark"] .icb{background:var(--glass)}
 :root[data-theme="dark"] .wsum{background:var(--pen-soft);color:var(--ink)}
+/* Knöpfe oben im Rezept: deutlicher Kontrast und klare aktive Zustände */
+#detail .back,#detail .icb{background:#FFFFFF;color:#2B2A24;box-shadow:0 1px 4px rgba(60,40,10,.14);border:0;padding:0}
+#detail .icb svg{flex:none}
+#detail .icb svg{width:22px;height:22px;stroke-width:2}
+#detail .back svg{stroke-width:2.4}
+#detail #wake[aria-pressed="true"]{width:auto;padding:0 14px 0 11px;gap:6px;background:#2B2A24;color:#FFD37A}
+#detail #wake[aria-pressed="true"] svg{fill:#FFD37A}
+#detail #wake .wtxt{display:none;font-size:.9rem;font-weight:700;color:#FFFFFF;white-space:nowrap}
+#detail #wake[aria-pressed="true"] .wtxt{display:inline}
+#detail .favbtn[aria-pressed="true"]{background:#FFFFFF;color:#C2415B;box-shadow:0 0 0 2px #C2415B}
+#detail .favbtn[aria-pressed="true"] svg{fill:#C2415B}
+#detail .barR{gap:8px}
+/* Schrittnummern im neuen Stil: runde grüne Plakette, Systemschrift */
+.steps li{grid-template-columns:32px 1fr;gap:12px}
+.steps li::before{width:30px;height:30px;border:0;border-radius:50%;background:var(--pen-soft);color:var(--pen);font:700 15px/1 var(--body);font-variant-numeric:tabular-nums;display:grid;place-items:center;margin-top:1px}
+.steps li.done::before{content:"✓";background:var(--pen);color:#FFFFFF;border:0}
+.steps li.done{color:var(--done)}
 </style>
 
 </head>
@@ -864,7 +881,7 @@ function renderDetail(r){
     eS==='ja'?'<button type="button" class="p-endo" data-goendo>endo-freundlich ›</button>':eS==='anpassbar'?'<button type="button" class="p-endo tipp" data-goendo>endo + Tipp ›</button>':''
   ].filter(Boolean).join('');
   $('#detail').innerHTML = '<div class="bar"><button class="back" type="button" id="back" aria-label="Zurück zu den Rezepten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>'+
-    '<div class="barR"><button class="btn icb" type="button" id="wake" aria-pressed="'+wakeOn+'" aria-label="Bildschirm anlassen" title="Bildschirm anlassen">'+IC.sun+'</button>'+
+    '<div class="barR"><button class="btn icb" type="button" id="wake" aria-pressed="'+wakeOn+'" aria-label="Bildschirm anlassen" title="Bildschirm anlassen">'+IC.sun+'<span class="wtxt">Bildschirm an</span></button>'+
     '<button class="btn icb" type="button" id="planBtn" aria-label="In den Wochenplan" title="In den Wochenplan">'+IC.cal+'</button>'+
     '<button class="btn icb favbtn" type="button" id="favBtn" aria-pressed="'+favs.has(r.id)+'" aria-label="Als Favorit merken" title="Favorit">'+IC.heart+'</button></div></div>'+
     '<div class="hero"><div class="kat">'+esc(r.cat)+'</div>'+
@@ -996,7 +1013,7 @@ function cookGo(d){
 }
 $('#cook').addEventListener('click',e=>{
   const tb=e.target.closest('.tbtn'); if(tb){ tapTimerChip(tb, cur); return; }
-  const ct=e.target.closest('[data-ct]'); if(ct){ const t=timers.find(x=>x.id===ct.dataset.id); if(t){ if(ct.dataset.ct==='plus') t.end+=60000; else timers=timers.filter(x=>x!==t); saveTimers(); tSig=''; renderTimers(); } return; }
+  const ct=e.target.closest('[data-ct]'); if(ct){ const t=timers.find(x=>x.id===ct.dataset.id); if(t){ if(ct.dataset.ct==='plus') t.end+=60000; else timers=timers.filter(x=>x!==t); saveTimers(); tSig=null; renderTimers(); } return; }
   if(e.target.closest('#ckClose')) closeCook();
   else if(e.target.closest('#ckNext')) cookGo(1);
   else if(e.target.closest('#ckPrev')) cookGo(-1);
@@ -1572,13 +1589,13 @@ function fmtT(ms){ const s=Math.max(0,Math.ceil(ms/1000)), h=Math.floor(s/3600),
 function timerOf(rid,si,ti){ return timers.find(t=>t.rid===rid && t.si===si && t.ti===ti); }
 function tapTimerChip(tb,r){
   const si=+tb.dataset.si, ti=+tb.dataset.ti, run=timerOf(r.id,si,ti);
-  if(run){ toast(run.end>Date.now()?'Läuft noch '+fmtT(run.end-Date.now())+'.':'Zeit ist um.',null,'Timer stoppen',()=>{ timers=timers.filter(x=>x!==run); saveTimers(); tSig=''; renderTimers(); }); return; }
+  if(run){ toast(run.end>Date.now()?'Läuft noch '+fmtT(run.end-Date.now())+'.':'Zeit ist um.',null,'Timer stoppen',()=>{ timers=timers.filter(x=>x!==run); saveTimers(); tSig=null; renderTimers(); }); return; }
   startTimer(+tb.dataset.sec, r, si, ti, +tb.dataset.hi||0);
 }
 function startTimer(sec,r,si,ti,hi){
   try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); actx.resume(); }catch(e){}   // Ton freischalten (braucht einen Tipp)
   timers.push({id:newId(),end:Date.now()+sec*1000,label:'Schritt '+(si+1)+' · '+r.title.replace(/ (mit|und|in|an|auf) .*/,''),sec:sec,rid:r.id,si:si,ti:ti,hi:hi||0,start:Date.now()});
-  saveTimers(); tSig=''; renderTimers();
+  saveTimers(); tSig=null; renderTimers();
   if(!wakeOn) toggleWake(true);
 }
 function beep(){ if(!actx) return; try{ const t=actx.currentTime;
@@ -1640,7 +1657,7 @@ $('#tdone').addEventListener('click',e=>{
   if(t){ if(b.dataset.td==='plus'){ t.end=Date.now()+60000; t.start=Date.now(); t.sec=60; t.hi=0; }
     else if(b.dataset.td==='more'){ const add=+b.dataset.add; t.end=Date.now()+add*1000; t.start=Date.now(); t.sec=add; t.hi=0; }
     else timers=timers.filter(x=>x!==t); }
-  saveTimers(); tSig=''; renderTimers();
+  saveTimers(); tSig=null; renderTimers();
 });
 $('#tbar').addEventListener('click',e=>{
   const b=e.target.closest('[data-t]'); if(!b) return; const id=b.closest('.tm').dataset.id, t=timers.find(x=>x.id===id); if(!t) return;
