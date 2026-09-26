@@ -43,7 +43,7 @@ window.addEventListener('error', function (e) {
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@500..800&family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500&display=swap">
 <script>document.documentElement.setAttribute("data-theme","light")</script>
 <style>
 :root{color-scheme:light;
@@ -53,6 +53,7 @@ window.addEventListener('error', function (e) {
   --hand:"Fraunces",ui-serif,Georgia,serif;
   --body:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
   --label:var(--body);
+  --ui:"Figtree",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
@@ -671,6 +672,23 @@ body.hasact.actoff .toast{bottom:calc(82px + var(--tb) + env(safe-area-inset-bot
 .steps li::before{width:30px;height:30px;border:0;border-radius:50%;background:var(--pen-soft);color:var(--pen);font:700 15px/1 var(--body);font-variant-numeric:tabular-nums;display:grid;place-items:center;margin-top:1px}
 .steps li.done::before{content:"✓";background:var(--pen);color:#FFFFFF;border:0}
 .steps li.done{color:var(--done)}
+
+/* ===== Schriften: Figtree für Zwischenüberschriften und Kochmodus ===== */
+/* Kategorien in der Übersicht, Zutaten-Gruppen und Supermarkt-Bereiche: aufrecht, kräftig, ruhig */
+.group>.lbl{font:800 20px/1.2 var(--ui);letter-spacing:-.01em;color:var(--ink);gap:10px;margin:0 0 10px 4px}
+.group>.lbl::before{width:10px;height:10px}
+.cols h3.lbl{font:700 15px/1.25 var(--ui);letter-spacing:.01em;color:var(--muted);margin:16px 0 8px 2px}
+.dhead{font:800 17px/1.2 var(--ui)!important;font-style:normal!important;letter-spacing:-.005em!important}
+/* Kochmodus: eine Schrift, gut lesbar aus der Entfernung */
+#cook,#cook .lbl{font-family:var(--ui)}
+#cook .ck-top .lbl{font-size:13px;font-weight:800;letter-spacing:.08em}
+.ck-title{font-size:15px;font-weight:600;margin:0 0 18px}
+.ck-num{width:52px;height:52px;border-radius:50%;background:var(--pen-soft);color:var(--pen);display:grid;place-items:center;font:800 24px/1 var(--ui);font-variant-numeric:tabular-nums;margin:0 0 16px}
+.ck-step{font:500 clamp(1.45rem,5.8vw,2.05rem)/1.38 var(--ui);letter-spacing:-.01em;color:var(--ink)}
+.ck-step .tbtn{font-weight:700;padding:0 10px}
+.ck-ings li{font-size:17px}
+.ring .rt{font:700 2.6rem/1 var(--ui)}
+.ck-nav button{font-family:var(--ui);font-weight:700}
 </style>
 
 </head>
