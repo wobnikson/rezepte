@@ -1277,7 +1277,11 @@ function siHit(w,t){
   return t.startsWith(a) || (t.length>=5 && w.startsWith(t)) || (t.length>=4 && w.endsWith(t)) || (t==='ol' && w.endsWith('ol'));
 }
 function stepIngs(r,si){
-  const txt=norm(r.steps[si]), items=r.groups.flatMap(g=>g.items);
+  const items=r.groups.flatMap(g=>g.items);
+  // Fest hinterlegte Zuordnung aus rezepte.js (stepItems: je Schritt die Nummern der Zutaten)
+  if(Array.isArray(r.stepItems) && Array.isArray(r.stepItems[si])) return r.stepItems[si].map(i=>items[i]).filter(Boolean);
+  // Sonst: anhand der Wörter im Schritt raten
+  const txt=norm(r.steps[si]);
   if(txt.includes(norm('alle Zutaten'))) return items;
   const toks=[...new Set(txt.split(' ').filter(Boolean))];
   return items.filter(it=>(it.m==null ? it.t.split(',') : [it.t.split(',')[0]]).some(n=>siWords(n).some(w=>toks.some(t=>siHit(w,t)))));

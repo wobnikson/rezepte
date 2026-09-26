@@ -74,6 +74,20 @@ window.REZEPTE = [
    "Alle Zutaten miteinander zu einer homogenen Masse verarbeiten.",
    "In Glas oder Schüssel füllen und mindestens 2 Stunden oder über Nacht in den Kühlschrank stellen."
   ],
+  "stepItems": [
+   [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   [
+    7
+   ]
+  ],
   "notes": []
  },
  {
@@ -159,6 +173,28 @@ window.REZEPTE = [
    "Bei 180 °C Umluft ca. 30–40 min goldbraun und knusprig backen.",
    "Gurke und Schalotte würfeln und mit dem Rest vermischen.",
    "Kartoffeln und Dressing vermischen."
+  ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    0,
+    1
+   ],
+   [],
+   [
+    2,
+    5,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   []
   ],
   "notes": []
  },
@@ -257,6 +293,31 @@ window.REZEPTE = [
    "Cherrytomaten, Babyspinat, Sahne, etwas Zitronenabrieb und einen Spritzer Zitronensaft unterrühren. Kurz köcheln lassen, bis der Spinat zusammenfällt.",
    "Mit Parmesan und gehackter Petersilie servieren."
   ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    3,
+    1,
+    2,
+    12
+   ],
+   [
+    4,
+    5
+   ],
+   [
+    6,
+    7,
+    8,
+    11
+   ],
+   [
+    10,
+    9
+   ]
+  ],
   "notes": []
  },
  {
@@ -354,6 +415,28 @@ window.REZEPTE = [
    "Alles mit Ei, Mehl und Haferkleie vermischen. Mit Salz und Pfeffer würzen.",
    "Rösti 2–3 Minuten pro Seite braten.",
    "Für den Salat die Dressing-Zutaten verrühren und mit Salat und Radieschen mischen."
+  ],
+  "stepItems": [
+   [
+    0,
+    1,
+    3,
+    2
+   ],
+   [
+    6,
+    5,
+    4,
+    7
+   ],
+   [],
+   [
+    8,
+    9,
+    10,
+    11,
+    12
+   ]
   ],
   "notes": []
  },
@@ -468,6 +551,31 @@ window.REZEPTE = [
    "Udon-Nudeln währenddessen 2 Minuten mit heißem Wasser übergießen, dann zum Gemüse geben.",
    "Sauce über Nudeln und Gemüse geben, gut vermischen und noch ein bisschen anbraten lassen."
   ],
+  "stepItems": [
+   [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   [
+    0,
+    1,
+    2
+   ],
+   [
+    3,
+    4
+   ],
+   [
+    5
+   ],
+   [
+    12
+   ]
+  ],
   "notes": []
  },
  {
@@ -563,6 +671,42 @@ window.REZEPTE = [
    "Mit Zitrone, Salz und Pfeffer gut würzen.",
    "Zum Schluss das ganze Gemüse, die TK-Erbsen und das Chicken untermischen und erwärmen."
   ],
+  "stepItems": [
+   [
+    0,
+    1,
+    2
+   ],
+   [
+    0,
+    10
+   ],
+   [
+    3,
+    10
+   ],
+   [
+    2,
+    1,
+    10
+   ],
+   [
+    5,
+    4
+   ],
+   [
+    6,
+    7
+   ],
+   [
+    8,
+    10
+   ],
+   [
+    9,
+    3
+   ]
+  ],
   "notes": []
  },
  {
@@ -615,6 +759,16 @@ window.REZEPTE = [
    "Alle Zutaten kneten und 30 Minuten ruhen lassen.",
    "Dann auf ein eingefettetes Backblech geben.",
    "Bei 250 °C Ober-/Unterhitze ca. 20 Minuten backen."
+  ],
+  "stepItems": [
+   [
+    0,
+    1,
+    2,
+    3
+   ],
+   [],
+   []
   ],
   "notes": []
  },
@@ -716,6 +870,31 @@ window.REZEPTE = [
    "Die Gewürze zu den Pilzen geben. Das Mehl hinzufügen und gründlich mit den restlichen Zutaten vermengen. Kurz anschwitzen und anschließend mit der Gemüsebrühe ablöschen.",
    "Weißwein und Sojadrink unterrühren. Die Sauce mit Hefeflocken, Salz und Pfeffer abschmecken.",
    "Anschließend 15 Minuten bei geringer Hitze leicht köcheln lassen, bis die Sauce die gewünschte Konsistenz hat."
+  ],
+  "stepItems": [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    0,
+    1
+   ],
+   [
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   [
+    8,
+    9,
+    10,
+    13
+   ],
+   []
   ],
   "notes": [
    "Alternativ mit 2–3 TL mittelscharfem Senf verfeinern."
@@ -838,6 +1017,38 @@ window.REZEPTE = [
    "Die Sauce jetzt langsam mit Deckel einköcheln lassen, ca. 1,5–2 Stunden simmern lassen. Dabei gelegentlich umrühren.",
    "Durch ein Sieb passieren und mit Salz und Pfeffer abschmecken."
   ],
+  "stepItems": [
+   [
+    14,
+    15
+   ],
+   [
+    0,
+    1,
+    2,
+    3
+   ],
+   [
+    4,
+    5
+   ],
+   [
+    8
+   ],
+   [
+    9,
+    7,
+    6,
+    10,
+    11,
+    12,
+    13
+   ],
+   [],
+   [
+    16
+   ]
+  ],
   "notes": []
  },
  {
@@ -917,6 +1128,27 @@ window.REZEPTE = [
    "Mehl, Backpulver, Salz, Zimt und Vanillemark vermischen und mit der Ei-Öl-Masse verrühren. Bananenpüree einrühren.",
    "Teig in die Form geben und im vorgeheizten Ofen etwa 55 Minuten backen.",
    "Bananenbrot nach dem Backen vollständig auskühlen lassen, erst dann aus der Form nehmen."
+  ],
+  "stepItems": [
+   [],
+   [
+    0
+   ],
+   [
+    7,
+    1,
+    2,
+    3
+   ],
+   [
+    4,
+    5,
+    6,
+    8,
+    7
+   ],
+   [],
+   []
   ],
   "notes": []
  },
@@ -1016,6 +1248,25 @@ window.REZEPTE = [
    "Zuckerguss mit einem Löffel auf den ausgekühlten Zimtsternen verteilen.",
    "Luftdicht verpacken und innerhalb von 3–5 Tagen essen."
   ],
+  "stepItems": [
+   [],
+   [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   [],
+   [],
+   [
+    6,
+    7
+   ],
+   [],
+   []
+  ],
   "notes": [
    "Für Royal Icing (Option 2) steht auf dem Zettel keine eigene Anleitung."
   ]
@@ -1096,6 +1347,27 @@ window.REZEPTE = [
    "Hafer-Chia-Mischung hinzufügen und alles vermischen.",
    "Öl (Rapsöl) in einer Pfanne erhitzen und die Pancakes anbraten.",
    "Mit Toppings servieren: Apfelmark, Obst, Ahornsirup, Beeren, Joghurt."
+  ],
+  "stepItems": [
+   [
+    0,
+    1,
+    2
+   ],
+   [
+    3,
+    4,
+    5
+   ],
+   [],
+   [
+    6
+   ],
+   [
+    7,
+    8,
+    9
+   ]
   ],
   "notes": []
  },
@@ -1187,6 +1459,28 @@ window.REZEPTE = [
    "Mandelmus unterrühren.",
    "Topping: Butter erhitzen, Apfelstücke, Ahornsirup und Zimt dazugeben. Bei mittlerer Hitze anbraten und karamellisieren."
   ],
+  "stepItems": [
+   [
+    0,
+    1,
+    2,
+    3
+   ],
+   [],
+   [
+    4
+   ],
+   [
+    5
+   ],
+   [
+    7,
+    6,
+    8,
+    9,
+    10
+   ]
+  ],
   "notes": []
  },
  {
@@ -1261,6 +1555,24 @@ window.REZEPTE = [
    "Kerne aus dem Granatapfel herauslösen.",
    "Rote Bete putzen und waschen, bei Bedarf schälen. Anschließend vierteln und auf einer Reibe oder mit der Küchenmaschine fein raspeln.",
    "Alle Zutaten vermischen."
+  ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    3,
+    4,
+    5,
+    6,
+    7
+   ]
   ],
   "notes": []
  },
@@ -1340,6 +1652,34 @@ window.REZEPTE = [
    "Gnocchi und zuletzt den Pfanneninhalt in eine Auflaufform geben. Alternativ noch Tomaten unterrühren und Kräuter hinzugeben.",
    "Nach ca. 30 min den Käse darüberstreuen.",
    "Nach 45 min den Auflauf herausnehmen."
+  ],
+  "stepItems": [
+   [],
+   [
+    1,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    3,
+    4
+   ],
+   [
+    6,
+    8
+   ],
+   [
+    0,
+    7,
+    9
+   ],
+   [
+    5
+   ],
+   []
   ],
   "notes": []
  },
@@ -1445,6 +1785,38 @@ window.REZEPTE = [
    "Nun ca. 50 ml Pflanzenmilch dazugeben und ordentlich rühren, bis eine dicke Konsistenz entsteht.",
    "Senf und Zitronensaft hinzugeben und wieder mit etwas Pflanzenmilch verrühren.",
    "Oregano hinzufügen und nach und nach die restliche Pflanzenmilch hinzugeben, ggf. Nudelwasser hinzufügen."
+  ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    3,
+    4
+   ],
+   [
+    6,
+    5,
+    12,
+    11
+   ],
+   [
+    10
+   ],
+   [
+    8,
+    9,
+    10
+   ],
+   [
+    7,
+    10,
+    0
+   ]
   ],
   "notes": []
  },
@@ -1555,6 +1927,37 @@ window.REZEPTE = [
    "Gemüse nach Wahl hinzufügen und köcheln lassen, bis das Gemüse gar ist.",
    "Zum Schluss mit Salz abschmecken. Thai-Basilikum in kleine Stücke reißen und dazugeben.",
    "Auf Reis mit frittiertem Tofu servieren."
+  ],
+  "stepItems": [
+   [
+    8,
+    0,
+    1,
+    2
+   ],
+   [
+    3
+   ],
+   [
+    4
+   ],
+   [
+    5,
+    6
+   ],
+   [
+    9,
+    10,
+    11
+   ],
+   [
+    8,
+    7
+   ],
+   [
+    12,
+    13
+   ]
   ],
   "notes": []
  },
@@ -1677,6 +2080,38 @@ window.REZEPTE = [
    "Alle Zutaten für die Soße miteinander vermischen, über das Sojageschnetzelte geben und kurz eindicken lassen.",
    "Brokkoli hinzugeben, gut verrühren und auf Reis servieren."
   ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    3,
+    4,
+    5
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+   ],
+   [
+    1,
+    14
+   ]
+  ],
   "notes": []
  },
  {
@@ -1748,6 +2183,31 @@ window.REZEPTE = [
    "Von der Herdplatte nehmen, Kohlrabi hinzufügen.",
    "Salz, Pfeffer, Muskat, Wasser und Soja Cuisine hinzufügen, evtl. auch Brühe.",
    "Aufkochen lassen. Bei kleiner bis mittlerer Hitze mit Deckel ca. 15–20 min kochen."
+  ],
+  "stepItems": [
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    0
+   ],
+   [
+    5,
+    6,
+    3,
+    4,
+    7
+   ],
+   [
+    8
+   ]
   ],
   "notes": [
    "Die Mengen für Wasser und Soja Cuisine stimmen nicht ganz, es muss mehr Flüssigkeit sein."
@@ -1823,6 +2283,31 @@ window.REZEPTE = [
    "Erbsen und Buchweizen in den Topf geben, Gemüsebrühe darüber gießen und alles 15–20 min köcheln lassen.",
    "Mit Salz und Pfeffer abschmecken."
   ],
+  "stepItems": [
+   [
+    1,
+    2,
+    3,
+    5
+   ],
+   [
+    7,
+    1,
+    5
+   ],
+   [
+    2,
+    3
+   ],
+   [
+    4,
+    0,
+    6
+   ],
+   [
+    8
+   ]
+  ],
   "notes": []
  },
  {
@@ -1886,6 +2371,30 @@ window.REZEPTE = [
    "Mie-Nudeln in kochendem Wasser ziehen lassen.",
    "Gemüse anbraten.",
    "Nudeln hinzufügen und mit Chilisauce, Sojasauce, Currypulver etc. würzen."
+  ],
+  "stepItems": [
+   [
+    1,
+    2,
+    3,
+    4
+   ],
+   [
+    0
+   ],
+   [
+    1,
+    2,
+    3,
+    4
+   ],
+   [
+    0,
+    6,
+    5,
+    8,
+    7
+   ]
   ],
   "notes": []
  },
@@ -2012,6 +2521,40 @@ window.REZEPTE = [
    "Dann eine weitere Reispapierschicht hinzufügen.",
    "Marinade verrühren und die Keulen damit einstreichen.",
    "Bei 190 °C ca. 30–40 min backen."
+  ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   [
+    0
+   ],
+   [
+    2,
+    3
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    10,
+    11,
+    12,
+    13,
+    14
+   ],
+   []
   ],
   "notes": []
  },
@@ -2142,6 +2685,43 @@ window.REZEPTE = [
    "Den ausgekühlten Boden halbieren und etwa die Hälfte der Creme auf den unteren Boden streichen. Deckel aufsetzen und den Kuchen mit der restlichen Creme einstreichen.",
    "Mit gehackten Nüssen dekorieren und bis zum Servieren kalt stellen."
   ],
+  "stepItems": [
+   [
+    15
+   ],
+   [
+    0
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    3,
+    4,
+    5,
+    6,
+    7,
+    1
+   ],
+   [
+    8,
+    9,
+    10,
+    0
+   ],
+   [],
+   [
+    11,
+    12,
+    13,
+    14
+   ],
+   [],
+   [
+    16
+   ]
+  ],
   "notes": [
    "Hält sich mindestens 3 Tage im Kühlschrank."
   ]
@@ -2258,6 +2838,36 @@ window.REZEPTE = [
    "Für die Streusel Butter, Zucker, Vanillezucker, Salz und Zimt verkneten. Mehl zugeben und zu groben Streuseln verarbeiten.",
    "Ca. 40 min backen."
   ],
+  "stepItems": [
+   [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   [],
+   [
+    6
+   ],
+   [],
+   [],
+   [
+    5
+   ],
+   [
+    6
+   ],
+   [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   []
+  ],
   "notes": []
  },
  {
@@ -2316,6 +2926,19 @@ window.REZEPTE = [
    "Mehl, Milch, Eier und Salz zu einem glatten Teig verrühren, bis dieser Blasen wirft.",
    "Teig ca. 30 min im Kühlschrank ruhen lassen.",
    "Teig aus dem Kühlschrank nehmen, einen guten Schuss Mineralwasser zufügen und nochmals kurz durchrühren."
+  ],
+  "stepItems": [
+   [
+    0,
+    1,
+    3,
+    2
+   ],
+   [],
+   [
+    4,
+    5
+   ]
   ],
   "notes": []
  },
@@ -2381,6 +3004,22 @@ window.REZEPTE = [
    "Anschließend Wasser und Öl dazugeben und gut umrühren, bis ein glatter Teig entsteht.",
    "In die Form füllen.",
    "35–40 min backen."
+  ],
+  "stepItems": [
+   [],
+   [],
+   [
+    0,
+    1,
+    3,
+    2
+   ],
+   [
+    4,
+    5
+   ],
+   [],
+   []
   ],
   "notes": []
  },
@@ -2498,6 +3137,33 @@ window.REZEPTE = [
    "30–35 min backen.",
    "In Dreiecke schneiden."
   ],
+  "stepItems": [
+   [],
+   [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   [
+    7
+   ],
+   [
+    10,
+    11,
+    8,
+    9,
+    12
+   ],
+   [],
+   [],
+   [
+    13
+   ]
+  ],
   "notes": [
    "Die Kuvertüre steht auf dem Zettel ohne Anleitung."
   ]
@@ -2590,6 +3256,31 @@ window.REZEPTE = [
    "Mit einem Eisportionierer oder zwei Teelöffeln den Teig auf die Förmchen verteilen. Im vorgeheizten Ofen ca. 25 min backen. Vollständig abkühlen lassen.",
    "Für den Guss Zitronensaft in eine Schüssel geben und Puderzucker hinzugeben. Gut verrühren, bis keine Klümpchen mehr zu sehen sind. Ist die Masse zu dick oder zu dünn, noch etwas Zitronensaft oder Puderzucker hinzugeben.",
    "Guss mit einem Teelöffel auf den Muffins verteilen und fest werden lassen."
+  ],
+  "stepItems": [
+   [
+    0,
+    1,
+    2,
+    3
+   ],
+   [
+    4
+   ],
+   [
+    5,
+    6,
+    7
+   ],
+   [],
+   [],
+   [
+    8,
+    9
+   ],
+   [
+    10
+   ]
   ],
   "notes": []
  },
@@ -2729,6 +3420,43 @@ window.REZEPTE = [
    "Frosting in einen Spritzbeutel mit Sterntülle füllen und auf die abgekühlten Muffins spritzen. Schokolade fein hacken und über einem leicht köchelnden Wasserbad schmelzen. Flüssige Schokolade in einen kleinen Spritzbeutel füllen, die Spitze abschneiden und mit Zick-Zack-Bewegungen über die Cupcakes fahren, um sie mit Schokostreifen zu dekorieren.",
    "Erdnüsse hacken und über die Cupcakes streuen."
   ],
+  "stepItems": [
+   [],
+   [
+    0,
+    1,
+    2
+   ],
+   [
+    3
+   ],
+   [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   [],
+   [
+    10,
+    11,
+    12,
+    13
+   ],
+   [
+    14,
+    15
+   ],
+   [
+    16
+   ],
+   [
+    17
+   ]
+  ],
   "notes": [
    "Die Cupcakes halten sich abgedeckt im Kühlschrank mindestens 4 Tage."
   ]
@@ -2841,6 +3569,35 @@ window.REZEPTE = [
    "Toppings aufbringen.",
    "In den Gefrierschrank geben, bis die Schokolade komplett fest ist."
   ],
+  "stepItems": [
+   [
+    2
+   ],
+   [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   [
+    6,
+    7,
+    8
+   ],
+   [
+    9
+   ],
+   [
+    10
+   ],
+   [
+    9,
+    11
+   ],
+   []
+  ],
   "notes": []
  },
  {
@@ -2913,6 +3670,29 @@ window.REZEPTE = [
    "Wenn alles eine klebrige Masse ist, die Haferflocken, Salz und die Masse aus dem Mixer vermengen.",
    "Die Masse in eine Form geben und für 30 min in den Tiefkühler stellen.",
    "Schokolade im Wasserbad schmelzen und auf die Masse geben."
+  ],
+  "stepItems": [
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    2,
+    3,
+    0,
+    5,
+    4
+   ],
+   [
+    1,
+    6
+   ],
+   [],
+   [
+    7
+   ]
   ],
   "notes": [
    "Vegan nur mit Zartbitterschokolade ohne Milchzusatz, das steht auf der Zutatenliste der Packung."
@@ -3013,6 +3793,50 @@ window.REZEPTE = [
    "Die Couscous-Mischung in die Paprikaschoten füllen.",
    "Mozzarella darüberstreuen und im Airfryer bei 160 °C ca. 15 min goldbraun backen. Alternativ im Ofen bei 180 °C ca. 35–45 min backen.",
    "Mit der restlichen Petersilie bestreuen."
+  ],
+  "stepItems": [
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    2
+   ],
+   [
+    3
+   ],
+   [
+    4
+   ],
+   [
+    8
+   ],
+   [
+    7
+   ],
+   [
+    1,
+    2,
+    3,
+    8,
+    5,
+    9,
+    7,
+    4,
+    10,
+    11
+   ],
+   [
+    0
+   ],
+   [
+    6
+   ],
+   [
+    4
+   ]
   ],
   "notes": []
  },
@@ -3126,6 +3950,49 @@ window.REZEPTE = [
    "Feta zerbröseln.",
    "Salat mit dem Dressing und dem Feta servieren."
   ],
+  "stepItems": [
+   [],
+   [
+    0
+   ],
+   [
+    0,
+    1,
+    2,
+    3,
+    12
+   ],
+   [
+    4
+   ],
+   [
+    9
+   ],
+   [
+    8
+   ],
+   [
+    5
+   ],
+   [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   [
+    4,
+    5
+   ],
+   [
+    6
+   ],
+   [
+    6
+   ]
+  ],
   "notes": []
  },
  {
@@ -3215,6 +4082,34 @@ window.REZEPTE = [
    "Pesto in die Pfanne geben und gut mit den Gnocchi mischen.",
    "Gnocchi mit Basilikum bestreuen und genießen."
   ],
+  "stepItems": [
+   [
+    6
+   ],
+   [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   [
+    0
+   ],
+   [
+    2
+   ],
+   [
+    1,
+    0
+   ],
+   [],
+   [
+    2
+   ]
+  ],
   "notes": []
  },
  {
@@ -3299,6 +4194,27 @@ window.REZEPTE = [
    "Nach und nach die Pflanzenmilch zugeben.",
    "Pürieren, bis eine feine, klumpenfreie Creme entsteht."
   ],
+  "stepItems": [
+   [
+    0
+   ],
+   [],
+   [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   [
+    6
+   ],
+   [
+    7,
+    8
+   ]
+  ],
   "notes": [
    "Ergibt ca. 160 g, genug als Topping für etwa 4 Portionen. Im Kühlschrank bis zu 5 Tage haltbar.",
    "Statt Misopaste geht auch 1 EL Hefeflocken. Für mehr Schärfe Jalapeño-Ringe mitpürieren."
@@ -3378,6 +4294,30 @@ window.REZEPTE = [
    "Tofuscheiben in Öl von beiden Seiten goldbraun braten.",
    "Tomate, Gurke und Salat waschen. Salat trocknen, Tomate und Gurke in Scheiben schneiden.",
    "Brot mit Hummus bestreichen und mit Tofu und Gemüse belegen."
+  ],
+  "stepItems": [
+   [
+    0,
+    9
+   ],
+   [
+    1,
+    2,
+    3,
+    4
+   ],
+   [
+    9
+   ],
+   [
+    5,
+    6,
+    7
+   ],
+   [
+    0,
+    8
+   ]
   ],
   "notes": [
    "Guten Hummus gibt es in arabischen Supermärkten, oder selbst machen."
@@ -3486,6 +4426,39 @@ window.REZEPTE = [
    "Mit Koriander bestreuen, etwas Cashew-Creme darauf verteilen und die Limette darüber auspressen.",
    "Wraps zusammenrollen.",
    "Die Burritos noch einmal kurz von beiden Seiten in der Pfanne anbraten."
+  ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    0,
+    4
+   ],
+   [
+    1,
+    2,
+    3
+   ],
+   [
+    5
+   ],
+   [
+    6
+   ],
+   [
+    7,
+    8,
+    9,
+    10
+   ],
+   [
+    11,
+    12,
+    13
+   ],
+   [],
+   []
   ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
@@ -3609,6 +4582,40 @@ window.REZEPTE = [
    "Burgerbrötchen aufschneiden und mit den Innenseiten nach unten in etwas Öl kurz anrösten.",
    "Tofu-Pattys in reichlich Öl von beiden Seiten braten. Vorsichtig wenden, damit die Panade hält.",
    "Brötchen mit Ketchup und Senf bestreichen. Tofu, Tomate, Gurke, Zwiebel, Salat und Cashew-Creme daraufstapeln."
+  ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    9,
+    2
+   ],
+   [
+    2
+   ],
+   [
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+   ]
   ],
   "notes": [
    "Je länger der Tofu mariniert, desto kräftiger der Geschmack. Gerne schon einige Stunden vorher einlegen."
@@ -3744,6 +4751,43 @@ window.REZEPTE = [
    "Mit Salz, Pfeffer, Oregano und Basilikum würzen, Sojasoße zugeben.",
    "Zugedeckt unter gelegentlichem Rühren mindestens 20 min auf niedriger Stufe köcheln lassen.",
    "Nudeln nach Packungsanleitung kochen."
+  ],
+  "stepItems": [
+   [
+    0,
+    8
+   ],
+   [
+    1,
+    7
+   ],
+   [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   [
+    9,
+    10,
+    11
+   ],
+   [
+    12,
+    13
+   ],
+   [
+    7,
+    14,
+    15,
+    16
+   ],
+   [],
+   [
+    17
+   ]
   ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
@@ -3884,6 +4928,42 @@ window.REZEPTE = [
    "Passierte Tomaten und Wasser zugeben.",
    "Oregano, Zimt und Schokolade zugeben, mit Salz abschmecken und aufkochen.",
    "Zugedeckt mindestens 30 min auf niedriger Stufe köcheln lassen, gelegentlich umrühren. Vor dem Servieren abschmecken."
+  ],
+  "stepItems": [
+   [
+    0,
+    8
+   ],
+   [
+    1,
+    7
+   ],
+   [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   [
+    9,
+    10,
+    11,
+    12,
+    13
+   ],
+   [
+    14,
+    15
+   ],
+   [
+    16,
+    17,
+    18,
+    7
+   ],
+   []
   ],
   "notes": [
    "Statt Schokolade geht auch ½ TL Backkakao plus ½ TL Ahornsirup."
@@ -4027,6 +5107,50 @@ window.REZEPTE = [
    "Woknudeln zum Gemüse geben und gut unterheben.",
    "Sojasoße, Zucker, Sambal Oelek, Currypaste und Zitronensaft verrühren, in den Wok geben und alles gut vermischen.",
    "Mit dem Sesamtofu servieren."
+  ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   [
+    7
+   ],
+   [
+    8,
+    9
+   ],
+   [
+    10,
+    11,
+    12,
+    13,
+    6
+   ],
+   [
+    14
+   ],
+   [
+    8
+   ],
+   [
+    14
+   ],
+   [
+    15,
+    16,
+    17,
+    18,
+    19
+   ],
+   []
   ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
@@ -4177,6 +5301,45 @@ window.REZEPTE = [
    "Tortilla-Wraps 30 Sekunden in einer Pfanne erwärmen.",
    "Reis, Tofuhack, Salat, Cashew-Creme und Tortilla-Chips auf den Wraps verteilen und zusammenrollen."
   ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    1,
+    9
+   ],
+   [
+    2,
+    8
+   ],
+   [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   [
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+   ],
+   [
+    19
+   ],
+   [
+    20,
+    21
+   ]
+  ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
    "Tipp: Alles in Schüsseln auf den Tisch stellen, dann baut sich jeder seinen Burrito selbst."
@@ -4319,6 +5482,44 @@ window.REZEPTE = [
    "Sambal Oelek, Ahornsirup, Currypaste und Sojasoße zugeben. Aufkochen und 5 min auf niedriger Stufe köcheln lassen.",
    "Tofu in einer zweiten Pfanne in Öl rundum braun braten, zum Curry geben und servieren."
   ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    10,
+    4,
+    5
+   ],
+   [
+    6
+   ],
+   [
+    7,
+    8,
+    9,
+    10
+   ],
+   [
+    11,
+    12,
+    13
+   ],
+   [
+    14,
+    15,
+    16,
+    17
+   ],
+   [
+    3,
+    1
+   ]
+  ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
    "Ist die Mango sehr reif, 1 TL Zitronensaft zugeben. Ist sie noch etwas unreif, mit 1 TL Ahornsirup nachsüßen."
@@ -4450,6 +5651,45 @@ window.REZEPTE = [
    "Für die Soße die Zwiebel 5 min auf mittlerer Stufe glasig braten. Chiliflocken und Paprikapulver zugeben und weitere 5 min braten.",
    "Knoblauch und passierte Tomaten zugeben und mindestens 10 min köcheln lassen. Mit Salz, Pfeffer, Ahornsirup und Basilikum würzen.",
    "Tofubällchen in reichlich Öl goldbraun braten und in der Tomatensoße servieren."
+  ],
+  "stepItems": [
+   [
+    0,
+    10
+   ],
+   [
+    1,
+    9
+   ],
+   [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   [
+    1
+   ],
+   [],
+   [
+    11,
+    12,
+    13
+   ],
+   [
+    15,
+    16,
+    14,
+    17,
+    18
+   ],
+   [
+    10
+   ]
   ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
@@ -4588,6 +5828,46 @@ window.REZEPTE = [
    "Öl in die Pfanne geben und die Pattys auf niedriger bis mittlerer Stufe ca. 5 min goldbraun braten.",
    "Brötchen mit Ketchup und Senf bestreichen und mit Pattys und Gemüse belegen."
   ],
+  "stepItems": [
+   [
+    0,
+    12
+   ],
+   [
+    1,
+    11
+   ],
+   [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   [
+    1
+   ],
+   [],
+   [
+    13,
+    12
+   ],
+   [
+    12
+   ],
+   [
+    14,
+    15,
+    16,
+    17,
+    18
+   ]
+  ],
   "notes": [
    "Als Beilage passen knusprige Kartoffelspalten (siehe Rezept „Tofu-Nuggets mit Kartoffelspalten“)."
   ]
@@ -4669,6 +5949,26 @@ window.REZEPTE = [
    "Die Flüssigkeit zum Tofu geben und gut unterrühren.",
    "Tofu mit Öl in der Pfanne ca. 10 min goldbraun braten.",
    "Mit Brot und Frühlingszwiebeln servieren."
+  ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    1,
+    2,
+    3,
+    4,
+    8
+   ],
+   [],
+   [
+    5
+   ],
+   [
+    6,
+    7
+   ]
   ],
   "notes": [
    "Kala Namak schmeckt nach Ei. Wer den Ei-Geschmack vermisst, nimmt es statt normalem Salz."
@@ -4773,6 +6073,36 @@ window.REZEPTE = [
    "Nudeln nach Packungsanleitung kochen.",
    "Cashew-Soße zum Tofu in die Pfanne geben und 5 min auf mittlerer Stufe köcheln lassen.",
    "Nudeln zugeben und mit der Soße vermischen."
+  ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    10
+   ],
+   [
+    7,
+    11
+   ],
+   [
+    8,
+    9,
+    10
+   ],
+   [
+    12
+   ],
+   [],
+   [
+    12
+   ]
   ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
@@ -4897,6 +6227,37 @@ window.REZEPTE = [
    "Alle Zutaten für das Dressing in einer Tasse verrühren.",
    "Quinoa, Spinat, Tomate und Gurke auf zwei Bowls verteilen, Tofu dazugeben und großzügig mit Dressing beträufeln."
   ],
+  "stepItems": [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    3
+   ],
+   [
+    5
+   ],
+   [
+    4
+   ],
+   [
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+   ],
+   [
+    5,
+    6,
+    7,
+    8
+   ]
+  ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
    "Die Bowls schon vorbereiten, während der Tofu brät, und sofort servieren. So bleibt der Tofu knusprig."
@@ -4986,6 +6347,30 @@ window.REZEPTE = [
    "Öl in die Pfanne geben und die Sticks auf mittlerer Stufe braten. Regelmäßig wenden, bis alle Seiten knusprig braun sind.",
    "Für den Dip Tomatenmark, Ahornsirup, Currypulver und Wasser verrühren. Mit Salz und Pfeffer abschmecken.",
    "Tofu-Sticks heiß servieren."
+  ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    1,
+    2,
+    3
+   ],
+   [
+    4
+   ],
+   [
+    5
+   ],
+   [
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   []
   ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
@@ -5101,6 +6486,40 @@ window.REZEPTE = [
    "Tofustücke in die Masse tunken und dann in den Cornflakes wälzen.",
    "Nuggets mit Öl ca. 10 min in der Pfanne goldbraun und knusprig braten.",
    "Mit Ketchup servieren."
+  ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2,
+    3,
+    4,
+    5
+   ],
+   [
+    7
+   ],
+   [
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   [
+    13
+   ],
+   [],
+   [
+    14
+   ],
+   [
+    6
+   ]
   ],
   "notes": [
    "Laut Vorlage für 3–4 Portionen. Die Mengen sind hier für 3 Portionen gerechnet.",
@@ -5241,6 +6660,58 @@ window.REZEPTE = [
    "Koriander dazugeben, mischen und mit Salz würzen.",
    "Quesadilla in Stücke schneiden und mit der Guacamole servieren."
   ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    3
+   ],
+   [
+    4
+   ],
+   [
+    9
+   ],
+   [
+    5,
+    6,
+    7
+   ],
+   [
+    8,
+    11
+   ],
+   [
+    10,
+    9
+   ],
+   [],
+   [
+    12
+   ],
+   [
+    13
+   ],
+   [
+    14
+   ],
+   [
+    15
+   ],
+   [],
+   [
+    16,
+    17
+   ],
+   []
+  ],
   "notes": []
  },
  {
@@ -5330,6 +6801,36 @@ window.REZEPTE = [
    "Den Bulgur vom Herd nehmen. Das Wasser sollte jetzt aufgesogen sein. Bulgur unter das Gemüse mischen.",
    "Mit Tomatenmark, Salz, Pfeffer, Paprikapulver und Chilipulver nach Belieben würzen. Das Tomatenmark gut untermischen, damit keine Klumpen bleiben. Die Knoblauchzehe hineinpressen.",
    "Zuletzt den Schafskäse zugeben und nur kurz erwärmen, damit er nicht komplett schmilzt. Heiß servieren."
+  ],
+  "stepItems": [
+   [
+    0,
+    1
+   ],
+   [
+    3,
+    4,
+    5,
+    6
+   ],
+   [
+    2,
+    9
+   ],
+   [],
+   [
+    0
+   ],
+   [
+    7,
+    10,
+    11,
+    12,
+    8
+   ],
+   [
+    6
+   ]
   ],
   "notes": [
    "Durch die Brühe und den Schafskäse ist kaum noch Salz nötig.",
@@ -5486,6 +6987,42 @@ window.REZEPTE = [
    "Für die Curry-Gewürzmischung alle Zutaten im Mixer oder Mörser gut vermischen. Die Gerste mit 1–2 TL der Currymischung würzen.",
    "Das Pastinakenpüree auf tiefen Tellern anrichten, Currygerste und Tempeh daneben platzieren und den Brokkoli darüber verteilen."
   ],
+  "stepItems": [
+   [
+    0
+   ],
+   [
+    4,
+    5,
+    6
+   ],
+   [
+    7,
+    8
+   ],
+   [
+    10
+   ],
+   [
+    9,
+    11
+   ],
+   [
+    1,
+    2,
+    3
+   ],
+   [
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+   ],
+   []
+  ],
   "notes": [
    "Die Teriyaki-Sauce steht im Kochbuch auf S. 33, das Rezept fehlt hier noch. Ersatzweise geht die Teriyaki-Sauce aus dem Rezept „Rundkorn-Naturreis mit Schwarzkohl, Kürbis und Shiitakepilzen“ oder eine gekaufte.",
    "Von der Curry-Gewürzmischung bleibt etwas übrig. Sie lässt sich gut in einem Schraubglas aufbewahren.",
@@ -5628,6 +7165,45 @@ window.REZEPTE = [
    "Die Kürbiswürfel in einer großen Pfanne in etwas heißem Bratöl ca. 20 min anbraten.",
    "Shiitakepilze und Schwarzkohl putzen, waschen, klein schneiden und nach und nach mit etwas Teriyaki-Sauce zum Kürbis geben.",
    "Den Reis mit einem Servierring auf die Teller geben. Das Gemüse darauf verteilen und zum Schluss die Sauce darübergießen. Mit frisch gehacktem Koriander garnieren."
+  ],
+  "stepItems": [
+   [
+    0,
+    1,
+    2
+   ],
+   [
+    3,
+    4,
+    5
+   ],
+   [
+    16,
+    6,
+    7,
+    8
+   ],
+   [
+    10,
+    11,
+    9
+   ],
+   [
+    12
+   ],
+   [
+    13
+   ],
+   [
+    16
+   ],
+   [
+    14,
+    15
+   ],
+   [
+    17
+   ]
   ],
   "notes": [
    "Der Zucker steht in der Zutatenliste, in der Anleitung aber nicht. Am besten mit der Sojasauce in die Sauce geben."
@@ -5802,6 +7378,48 @@ window.REZEPTE = [
    "Den Feldsalat putzen, waschen und trocken schleudern.",
    "Für das Joghurtdressing alle Zutaten in einen Mixbecher geben und vermischen.",
    "Zum Anrichten das Kartoffelpüree mit einem Löffel kreisförmig auf den Tellern verteilen. Den Salat mit dem Dressing mischen und mittig auf das Püree setzen. Zum Schluss die Quinoa-Bratlinge auf dem Salat anrichten."
+  ],
+  "stepItems": [
+   [
+    0,
+    1,
+    2
+   ],
+   [
+    3,
+    4,
+    5,
+    6
+   ],
+   [
+    7,
+    8,
+    9
+   ],
+   [
+    10,
+    11
+   ],
+   [
+    12,
+    13,
+    14
+   ],
+   [
+    15
+   ],
+   [
+    16
+   ],
+   [
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+   ],
+   []
   ],
   "notes": []
  },
@@ -6004,6 +7622,59 @@ window.REZEPTE = [
    "Den Hefeteig in 4 Portionen teilen und auf einer bemehlten Arbeitsfläche dünn ausrollen. Die Fladen auf ein mit Backpapier ausgelegtes Blech legen und 5 min backen.",
    "Zum Anrichten den Hummus auf die Teller geben, den Rosenkohl mittig darauf setzen und die Falafel darauflegen. Mit etwas Rapsöl und Paprikapulver garnieren. Die Pitabrote dazulegen oder separat reichen."
   ],
+  "stepItems": [
+   [
+    0,
+    12
+   ],
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    3,
+    4,
+    5,
+    1,
+    6
+   ],
+   [
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   [
+    13,
+    14,
+    15,
+    16
+   ],
+   [
+    12,
+    17,
+    18
+   ],
+   [
+    19
+   ],
+   [
+    20,
+    21,
+    22,
+    23
+   ],
+   [],
+   [
+    26
+   ],
+   [
+    24,
+    25
+   ]
+  ],
   "notes": [
    "Für den Hummus gehen auch vorgegarte Kichererbsen aus Dose oder Glas.",
    "Die Falafel-Kichererbsen werden nur eingeweicht, nicht gekocht."
@@ -6063,6 +7734,25 @@ window.REZEPTE = [
    "Langsam zum Kochen bringen und unter ständigem Rühren weiterkochen, bis die Sauce dick wird.",
    "2–3 Minuten auf kleinster Hitze weiterkochen lassen.",
    "Die Sauce mit Muskat, Salz und Pfeffer abschmecken."
+  ],
+  "stepItems": [
+   [
+    0,
+    1
+   ],
+   [
+    2
+   ],
+   [
+    3
+   ],
+   [],
+   [],
+   [],
+   [
+    4,
+    5
+   ]
   ],
   "notes": [
    "Ergibt ca. 300 ml Sauce."
