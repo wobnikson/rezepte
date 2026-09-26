@@ -840,8 +840,7 @@ window.REZEPTE = [
   "title": "Vegane Zimtsterne",
   "cat": "Backen",
   "tags": [
-   "vegan",
-   "glutenfrei"
+   "vegan"
   ],
   "servings": 25,
   "unit": "Stück",
@@ -1603,7 +1602,6 @@ window.REZEPTE = [
   "title": "Vegetarisches Buchweizen-Risotto",
   "cat": "Pfanne & Wok",
   "tags": [
-   "vegetarisch",
    "vegan"
   ],
   "servings": 2,
