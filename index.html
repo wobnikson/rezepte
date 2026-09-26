@@ -526,6 +526,40 @@ body.actoff .actbar{transform:translateY(120px);opacity:0;pointer-events:none}
 .picking li.basic,.picking small{color:#77705F}
 .btn:disabled{opacity:1;background:#E6DDCB;border-color:#E6DDCB;color:#6D675A}
 
+/* Timer neu */
+.tbtn.running{background:var(--pen);color:#FFFFFF;border-color:var(--pen);font-variant-numeric:tabular-nums;min-width:4.2em;justify-content:center}
+.tbtn.running.over{background:#B3261E;border-color:#B3261E}
+.tm.inring{display:none}
+body.tdopen .tm.ring{display:none}
+.cktimer{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:22px}
+.cktimer:empty{display:none}
+.ring{position:relative;width:180px;height:180px}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:9}
+.ring .rbg{stroke:var(--rule)}
+.ring .rfg{stroke:var(--pen);stroke-linecap:round;transition:stroke-dashoffset .5s linear}
+.cktimer.over .rfg{stroke:#B3261E}
+.ring .rt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:600 2.6rem/1 var(--hand);font-variant-numeric:tabular-nums;color:var(--ink)}
+.rbtns{display:flex;gap:8px}
+.tdone{position:fixed;inset:0;z-index:60;background:rgba(43,42,36,.55);display:flex;align-items:center;justify-content:center;padding:24px}
+.td-card{width:100%;max-width:380px;background:var(--sheet);border-radius:28px;padding:26px 22px 20px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.3);display:flex;flex-direction:column;gap:10px}
+@media (prefers-reduced-motion:no-preference){.td-card{animation:tdpop .25s ease}.td-ico{animation:pulse 1s infinite}}
+@keyframes tdpop{from{transform:scale(.9);opacity:0}}
+.td-ico{font-size:2.6rem;line-height:1}
+.td-card h2{margin:0;font:600 2rem/1.1 var(--hand);color:#B3261E}
+.td-lbl{margin:0;font-weight:700}
+.td-step{margin:0 0 6px;color:var(--muted);font-size:.95rem}
+.td-card .btn{min-height:52px;justify-content:center;font-size:1.05rem;border-radius:26px}
+.td-row{display:flex;gap:8px}.td-row .btn{flex:1}
+
+/* Runde 4 */
+.sstatrow{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin:0 0 14px}
+.sstatrow .sstat{margin:0}
+.syncpill{display:inline-flex;align-items:center;gap:6px;margin:0;padding:3px 10px;border-radius:12px;background:#E3EDD4;color:#3F5A2E;font-size:.8rem;font-weight:600}
+.syncpill .sdot{background:#3F5A2E}
+.syncpill.s-connecting{background:#EFE8DA;color:#6D675A}.syncpill.s-connecting .sdot{background:#A39C8C}
+.shead{align-items:center}
+
 /* ===== Feinschliff nach Entwurf C ===== */
 :root{--navon:#DCE8C6;--cardsh:0 2px 10px rgba(80,60,20,.06)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--navon:var(--pen-soft);--cardsh:none}}
@@ -644,6 +678,7 @@ body.hasact.actoff .toast{bottom:calc(82px + var(--tb) + env(safe-area-inset-bot
 </div>
 <div class="toast" id="toast" role="status" hidden></div>
 <div class="tbar" id="tbar" aria-live="polite"></div>
+<div class="tdone" id="tdone" hidden></div>
 <div class="backdrop" id="bd" hidden></div>
 <div class="bsheet" id="bs" role="dialog" aria-modal="true" hidden></div>
 <div id="cook" hidden role="dialog" aria-modal="true" aria-label="Kochmodus"></div>
@@ -735,15 +770,36 @@ function qty(it,f){
   return (it.ca?'ca. ':'') + v + (u?' '+uPl(u,mx):'');
 }
 /* Zeitangaben wie „ca. 20 min“, „2–3 Minuten“, „1,5–2 Stunden“ werden zu Timer-Knöpfen */
-const TIME_RE=/(\d+(?:,\d+)?)(?:\s*[–-]\s*(\d+(?:,\d+)?))?\s*(Sekunden|Sek\.|min\.?|Minuten|Minute|Min\.|h\b|Stunden|Stunde|Std\.)/gi;
+const TIME_RE=/(\d+(?:,\d+)?)(?:\s*[–-]\s*(\d+(?:,\d+)?))?\s*(Sekunden|Sek\.|Minuten|Minute|Min\.|min\.?|Stunden|Stunde|Std\.|h\b)/gi;
 function secs(v,unit){ const n=parseFloat(String(v).replace(',','.')); const u=unit.toLowerCase(); return Math.round(n*(u.startsWith('s')&&!u.startsWith('st')?1:(u.startsWith('h')||u.startsWith('st'))?3600:60)); }
+const NUMW={ein:1,eine:1,einer:1,einem:1,zwei:2,drei:3,vier:4,'fünf':5,sechs:6,sieben:7,acht:8,neun:9,zehn:10,elf:11,'zwölf':12,'fünfzehn':15,zwanzig:20,'fünfundzwanzig':25,'dreißig':30,vierzig:40,'fünfundvierzig':45,'fünfzig':50,sechzig:60};
+const NW='(?:'+Object.keys(NUMW).sort((a,b)=>b.length-a.length).join('|')+')';
+const WORD_RE=new RegExp('\\b(?:(ein paar) (Minuten)|(?:eine[rn]? )?(Viertelstunde|Dreiviertelstunde)|(?:eine[rn]? )?(halbe[n]?) (Stunde)|(anderthalb|eineinhalb) (Stunden)|('+NW+')(?: (?:bis|oder) ('+NW+'))? (Sekunden|Minuten|Minute|Stunden|Stunde))\\b','gi');
+const NUMBIS_RE=/(\d+(?:,\d+)?)\s+bis\s+(\d+(?:,\d+)?)\s*(Sekunden|Sek\.|Minuten|Min\.|min\.?|Stunden|Std\.)/gi;
+// Alle Zeitangaben eines Schritts: {i, n (Länge), sec (kürzeste Zeit), hi (längste Zeit bei Spannen)}
+function findTimes(txt){
+  const hits=[];
+  const add=(i,n,sec,hi)=>{ if(!sec||sec>12*3600) return; if(hits.some(h=>i<h.i+h.n && h.i<i+n)) return; hits.push({i,n,sec,hi:hi>sec?hi:0}); };
+  for(const m of txt.matchAll(NUMBIS_RE)) add(m.index,m[0].length,secs(m[1],m[3]),secs(m[2],m[3]));
+  for(const m of txt.matchAll(TIME_RE)) add(m.index,m[0].length,secs(m[1],m[3]),m[2]?secs(m[2],m[3]):0);
+  for(const m of txt.matchAll(WORD_RE)){
+    let sec=0,hi=0; const l=m[0].toLowerCase();
+    if(m[1]){ sec=120; hi=180; }
+    else if(m[3]){ sec=/drei/i.test(m[3])?2700:900; }
+    else if(m[4]){ sec=1800; }
+    else if(m[6]){ sec=5400; }
+    else if(m[8]){ const u=m[10].toLowerCase(), f=u.startsWith('sek')?1:u.startsWith('min')?60:3600; sec=NUMW[m[8].toLowerCase()]*f; if(m[9]) hi=NUMW[m[9].toLowerCase()]*f; }
+    add(m.index,m[0].length,sec,hi);
+  }
+  return hits.sort((a,b)=>a.i-b.i);
+}
 function stepHtml(txt,si){
   let out='',last=0; txt=String(txt);
-  for(const m of txt.matchAll(TIME_RE)){
-    const sec=secs(m[1],m[3]); if(!sec||sec>12*3600) continue;
-    out+=esc(txt.slice(last,m.index))+'<button type="button" class="tbtn" data-sec="'+sec+'" data-si="'+si+'" aria-label="Timer '+esc(m[0])+' starten">'+esc(m[0])+'</button>';
-    last=m.index+m[0].length;
-  }
+  findTimes(txt).forEach((h,ti)=>{
+    const lab=txt.substr(h.i,h.n);
+    out+=esc(txt.slice(last,h.i))+'<button type="button" class="tbtn" data-sec="'+h.sec+'" data-hi="'+h.hi+'" data-si="'+si+'" data-ti="'+ti+'" data-orig="'+esc(lab)+'" aria-label="Timer '+esc(lab)+' starten">'+esc(lab)+'</button>';
+    last=h.i+h.n;
+  });
   return out+esc(txt.slice(last));
 }
 const LEVEL=['','leicht','mittel','schwer'];
@@ -767,7 +823,7 @@ function renderList(){
   if($('#endoF')) $('#endoF').setAttribute('aria-pressed',endoOnly);
   const nf=R.filter(passF), fl=endoOnly?'endo-freundlich':'';
   $('#count').textContent = fl ? '🎗️ '+nf.length+' von '+R.length+' Rezepten endo-freundlich, '+nf.filter(r=>endoSt(r)==='anpassbar').length+' davon mit Tipp' : '';
-  $('#count').hidden = !fl;
+  $('#count').hidden = true;
   if(!hits.length){ $('#groups').innerHTML='<p class="empty">'+(cat===FAV && !words.length ? 'Noch keine Favoriten. Öffne ein Rezept und tippe oben auf das Herz ♡.' : (q?'Kein Rezept passt zu „'+esc(q)+'“':'Keine Rezepte')+(cat!=='Alle'?' in „'+esc(cat)+'“':'')+(fl?' ('+fl+')':'')+'.'+(q?' Versuch es mit einer Zutat, z. B. „Pilze“.':''))+'</p>'; return; }
   $('#groups').innerHTML = cats.filter(c=>hits.some(r=>r.cat===c)).map(c=>
     '<section class="group" style="--cc:'+cc(c)+'"><h2 class="lbl" style="--cc:'+cc(c)+'">'+esc(c)+'</h2><ul class="list">'+
@@ -801,8 +857,8 @@ function renderDetail(r){
   ].filter(Boolean);
   $('#detail').style.setProperty('--cc',cc(r.cat));
   const eS=endoSt(r), pills=[
-    r.difficulty?'<span>'+LEVEL[r.difficulty]+(isEst(r,'difficulty')?' <small class="est">(geschätzt)</small>':'')+'</span>':'',
-    r.min?'<span>'+fmtMin(r.min)+(isEst(r,'time')?' <small class="est">(geschätzt)</small>':'')+'</span>':'',
+    r.difficulty?'<span>'+LEVEL[r.difficulty]+'</span>':'',
+    r.min?'<span>'+fmtMin(r.min)+'</span>':'',
     r.rest?'<span>+ '+esc(r.rest)+'</span>':'',
     r.tags.includes('vegan')?'<span class="p-veg">vegan</span>':'',
     eS==='ja'?'<button type="button" class="p-endo" data-goendo>endo-freundlich ›</button>':eS==='anpassbar'?'<button type="button" class="p-endo tipp" data-goendo>endo + Tipp ›</button>':''
@@ -817,21 +873,20 @@ function renderDetail(r){
     '<div class="sheet">'+
     '<div class="cols"><section><div class="ihead"><h2>Zutaten</h2>'+
     '<div class="scale"><span class="lbl">'+(r.servings?'Menge':'Rezeptmenge')+'</span><div class="step"><button type="button" id="minus" aria-label="weniger">−</button><output id="amt"></output><button type="button" id="plus" aria-label="mehr">+</button></div></div></div>'+
-    (isEst(r,'servings')?'<p class="hint" style="margin:-4px 0 6px">Portionenzahl geschätzt.</p>':'')+
     '<button class="reset" type="button" id="reset" hidden>Menge zurücksetzen</button><div id="ings"></div>'+
     '<button class="btn cartadd" type="button" id="toCart"></button>'+
     '<p class="addnote" id="addnote" hidden></p></section>'+
-    '<section><div class="stephead"><h2>Zubereitung</h2></div><ol class="steps" id="steps">'+r.steps.map((s,i)=>'<li><span>'+stepHtml(s,i)+'</span></li>').join('')+'</ol><p class="hint">Tipp: Schritt antippen, um ihn abzuhaken. Zeiten mit ⏱ antippen startet einen Timer.</p>'+
+    '<section><div class="stephead"><h2>Zubereitung</h2></div><ol class="steps" id="steps">'+r.steps.map((s,i)=>'<li><span>'+stepHtml(s,i)+'</span></li>').join('')+'</ol>'+
     (r.notes.length?'<div class="notes"><span class="nh">Notizen</span>'+r.notes.map(n=>'<p>'+esc(n)+'</p>').join('')+'</div>':'')+
     endoBox(r)+'</section></div></div>'+
     '<div class="actbar" id="actbar"><button class="ab-cart" type="button" id="abCart" aria-label="Zutaten auf die Einkaufsliste">'+IC.cart+'<i class="abok" aria-hidden="true">✓</i></button><button class="ab-cook" type="button" id="cookBtn">Jetzt kochen</button></div>';
-  renderIngs(); renderCartBtn();
+  renderIngs(); renderCartBtn(); renderTimers();
 }
 function renderCartBtn(){
   const on = cur && shop.items.some(i=>i.parts.some(p=>p.rid===cur.id));
   $('#toCart').hidden = true;
   $('#addnote').textContent = on ? '✓ Dieses Rezept steht schon auf der Einkaufsliste. Nochmal hinzufügen zählt die Mengen dazu.' : '';
-  $('#addnote').hidden = pick!=null || !on;
+  $('#addnote').hidden = true;
   const ab=$('#abCart'); if(ab){ ab.classList.toggle('on',!!on); ab.setAttribute('aria-label', on?'Nochmal auf die Einkaufsliste (steht schon drauf)':'Zutaten auf die Einkaufsliste'); }
 }
 function renderIngs(){
@@ -890,7 +945,7 @@ $('#detail').addEventListener('click',e=>{
     renderIngs(); return;
   }
   if(t.closest('#reset')){ amount=r.servings||1; renderIngs(); return; }
-  const tb=t.closest('.tbtn'); if(tb){ startTimer(+tb.dataset.sec, r.title, +tb.dataset.si); return; }
+  const tb=t.closest('.tbtn'); if(tb){ tapTimerChip(tb, r); return; }
   const li=t.closest('.steps li'); if(li) li.classList.toggle('done');
 });
 
@@ -915,7 +970,7 @@ async function openCook(){
   $('#ckNext').focus();
 }
 async function closeCook(){
-  $('#cook').hidden=true; document.body.classList.remove('noscroll','cooking');
+  $('#cook').hidden=true; document.body.classList.remove('noscroll','cooking'); renderTimers();
   if(!cookWake && wakeOn){ wakeOn=false; try{ lock && await lock.release(); }catch(e){} lock=null; if($('#wake')) $('#wake').setAttribute('aria-pressed',false); }
 }
 function renderCook(){
@@ -925,11 +980,12 @@ function renderCook(){
     '<button class="btn" type="button" id="ckIngs" aria-pressed="'+cookIngs+'">Zutaten</button></div>'+
     '<div class="ck-prog"><i style="width:'+Math.round((cookI+1)/n*100)+'%"></i></div>'+
     '<div class="ck-body" id="ckBody"><p class="ck-title">'+esc(r.title)+' · '+esc(amountLabel(r))+'</p>'+
-    '<div class="ck-num">'+(cookI+1)+'</div>'+'<p class="ck-step">'+stepHtml(r.steps[cookI],cookI)+'</p>'+
+    '<div class="ck-num">'+(cookI+1)+'</div>'+'<p class="ck-step">'+stepHtml(r.steps[cookI],cookI)+'</p><div class="cktimer" id="ckTimer"></div>'+
     (cookIngs?'<div class="ck-ings"><div class="lbl">Zutaten</div>'+r.groups.map(g=>(g.title?'<h3 class="lbl" style="margin:12px 0 0">'+esc(g.title)+'</h3>':'')+'<ul>'+g.items.map(it=>{const q=qty(it,f); return '<li>'+(q?'<b class="q">'+esc(q)+'</b> ':'')+esc(it.t)+'</li>';}).join('')+'</ul>').join('')+'</div>':'')+
     '</div>'+
     '<div class="ck-nav"><button class="btn" type="button" id="ckPrev"'+(cookI?'':' disabled')+'>‹ Zurück</button>'+
     '<button class="btn primary" type="button" id="ckNext">'+(last?'Fertig ✓':'Weiter ›')+'</button></div>';
+  renderTimers();
 }
 function markStep(i){ const li=document.querySelectorAll('#steps li')[i]; if(li) li.classList.add('done'); }
 function cookGo(d){
@@ -939,7 +995,8 @@ function cookGo(d){
   cookI=Math.max(0,Math.min(n-1,cookI+d)); renderCook();
 }
 $('#cook').addEventListener('click',e=>{
-  const tb=e.target.closest('.tbtn'); if(tb){ startTimer(+tb.dataset.sec, cur.title, +tb.dataset.si); return; }
+  const tb=e.target.closest('.tbtn'); if(tb){ tapTimerChip(tb, cur); return; }
+  const ct=e.target.closest('[data-ct]'); if(ct){ const t=timers.find(x=>x.id===ct.dataset.id); if(t){ if(ct.dataset.ct==='plus') t.end+=60000; else timers=timers.filter(x=>x!==t); saveTimers(); tSig=''; renderTimers(); } return; }
   if(e.target.closest('#ckClose')) closeCook();
   else if(e.target.closest('#ckNext')) cookGo(1);
   else if(e.target.closest('#ckPrev')) cookGo(-1);
@@ -1156,7 +1213,9 @@ function addRecipe(r,f,sel){
 }
 let editId=null, confirmClear=false, shareFallback='';
 function syncLine(){
+  // Nur noch melden, wenn etwas nicht stimmt (offline oder Fehler)
   if(!listId) return '';
+  if(sync.state==='online'||sync.state==='connecting') return '<p class="syncpill s-'+sync.state+'"><span class="sdot"></span>Gemeinsame Liste · '+(sync.state==='online'?'verbunden':'verbinde …')+'</p>';
   const t={connecting:'Verbinde …', online:'Verbunden. Änderungen sehen alle sofort.',
     offline:'Offline. Änderungen werden abgeglichen, sobald wieder Internet da ist.',
     error:'Verbindung fehlgeschlagen'+(sync.msg?' ('+sync.msg+')':'')+'. Die Liste zeigt den zuletzt gespeicherten Stand.'}[sync.state]||'';
@@ -1187,23 +1246,20 @@ function renderShop(){
     const from=[...new Set(i.parts.map(p=>p.rt))];
     return '<li class="'+(i.done?'done':'')+'" data-id="'+esc(i.id)+'">'+
       '<button class="chk" type="button" data-act="toggle" aria-label="'+(i.done?'Wieder offen':'Abhaken')+'"></button>'+
-      '<button class="it" type="button" data-act="toggle"><span class="txt">'+txt+'</span>'+(from.length?'<small>für '+from.map(esc).join(', ')+'</small>':'')+'</button>'+
+      '<button class="it" type="button" data-act="toggle"><span class="txt">'+txt+'</span></button>'+
       '<button class="ic" type="button" data-act="edit" aria-label="Bearbeiten oder löschen">✎</button></li>';
   };
   $('#shop').innerHTML=
     '<div class="sheet"><div class="shead"><h1 class="stitle">Einkaufsliste</h1>'+
-    '<div class="shbtns"><button class="btn" type="button" data-act="share"'+(open.length?'':' disabled')+'>Als Text teilen</button>'+
-    (shop.items.length?'<button class="btn icb2" type="button" data-act="menu" aria-label="Weitere Aktionen">⋯</button>':'')+'</div></div>'+
-    '<p class="sstat">'+(shop.items.length? open.length+' offen'+(done.length?' · '+done.length+' erledigt':'') : 'Noch leer.')+'</p>'+
-    syncLine()+
+    '<div class="shbtns"><button class="btn icb2" type="button" data-act="menu" aria-label="Teilen und weitere Aktionen">⋯</button></div></div>'+
+    '<div class="sstatrow"><p class="sstat">'+(shop.items.length? open.length+' offen'+(done.length?' · '+done.length+' erledigt':'') : 'Noch leer.')+'</p>'+syncLine()+'</div>'+
     '<form class="addform" id="addform"><input id="addIn" placeholder="Hinzufügen, z. B. 2 l Milch" autocomplete="off" aria-label="Eintrag hinzufügen"><button type="submit">+</button></form>'+
     (recs.size?'<div class="lbl">Rezepte auf der Liste</div><div class="chips" style="margin-top:6px">'+[...recs].map(([id,t])=>'<span class="chip"><span class="cht">'+esc(t)+'</span><button type="button" data-act="rmrec" data-rid="'+esc(id)+'" aria-label="'+esc(t)+' von der Liste nehmen">✕</button></span>').join('')+'</div>':'')+
     (open.length?SECS.map(sec=>{ const its=open.filter(i=>secOf(i)===sec); return its.length?'<h2 class="lbl dhead">'+esc(sec)+'</h2><ul class="shop">'+its.map(row).join('')+'</ul>':''; }).join(''):
-      '<p class="sempty">'+(done.length?'Alles erledigt. ':'')+'Öffne ein Rezept und tippe auf „Zur Einkaufsliste“, oder schreib oben selbst etwas dazu.</p>')+
+      '<p class="sempty">'+(done.length?'Alles erledigt. ':'')+'Öffne ein Rezept und tippe unten auf den Einkaufswagen, oder schreib oben selbst etwas dazu.</p>')+
     (done.length?'<h2 class="lbl dhead">Erledigt</h2><ul class="shop">'+done.map(row).join('')+'</ul>':'')+
 
     (shareFallback?'<textarea id="sharetxt" readonly aria-label="Zum Kopieren">'+esc(shareFallback)+'</textarea>':'')+
-    shareBox()+
     '</div>';
   if(editId!=null){ const e=$('#editIn'); if(e){ e.focus(); e.setSelectionRange(e.value.length,e.value.length); } }
   if(shareFallback){ const ta=$('#sharetxt'); ta.focus(); ta.select(); }
@@ -1213,11 +1269,19 @@ function delItem(it){
   toast('„'+itemText(it)+'“ gelöscht.',null,'Rückgängig',()=>{ shop.items.splice(Math.min(idx,shop.items.length),0,it); commit([it],[]); renderShop(); });
 }
 function openShopMenu(confirm){
-  const done=shop.items.filter(i=>i.done).length;
+  const done=shop.items.filter(i=>i.done).length, open=shop.items.length-done;
   openSheet('<div class="sh-head"><h2>Einkaufsliste</h2><button class="btn" type="button" data-close>Fertig</button></div><div class="sh-body">'+
+    (open?'<button class="opt" type="button" data-smenu="share">✉︎ Als Text teilen (z. B. WhatsApp)</button>':'')+
+    (FB?(listId?'<p class="lbl" style="margin:16px 0 2px">Gemeinsame Liste · verbunden</p>'+
+        '<button class="opt" type="button" data-smenu="sharelink">🔗 Link an andere schicken</button>'+
+        '<button class="opt" type="button" data-smenu="leave">Auf diesem Gerät trennen</button>'
+      :'<p class="lbl" style="margin:16px 0 2px">Gemeinsam nutzen</p>'+
+        '<button class="opt" type="button" data-smenu="startshare">👥 Liste gemeinsam nutzen</button>'+
+        '<form class="addform" id="joinform" style="margin-top:10px"><input id="joinIn" placeholder="Bekommenen Link einfügen" autocomplete="off" aria-label="Link zur gemeinsamen Liste"><button type="submit">Beitreten</button></form>'):'')+
+    (shop.items.length?'<p class="lbl" style="margin:16px 0 2px">Aufräumen</p>':'')+
     (done?'<button class="opt" type="button" data-smenu="cleardone">✓ Erledigte entfernen ('+done+')</button>':'')+
     (confirm?'<p style="margin:14px 0 8px;font-weight:600">'+(listId?'Wirklich die ganze Liste löschen, für alle?':'Wirklich die ganze Liste löschen?')+'</p><div style="display:flex;gap:8px"><button class="btn warn" type="button" data-smenu="clearyes">Ja, alles löschen</button><button class="btn" type="button" data-smenu="menu">Abbrechen</button></div>'
-            :'<button class="opt" type="button" data-smenu="clear" style="color:#B3261E">✕ Ganze Liste leeren</button>')+'</div>','shopmenu');
+            :(shop.items.length?'<button class="opt" type="button" data-smenu="clear" style="color:#B3261E">✕ Ganze Liste leeren</button>':''))+'</div>','shopmenu');
 }
 function finishEdit(){
   const e=$('#editIn'), se=$('#editSec'); const it=shop.items.find(i=>i.id===editId); editId=null;
@@ -1333,13 +1397,11 @@ function renderWeek(){
     '<button class="btn primary" type="button" data-w="shop"'+(open.length?'':' disabled')+'>Einkaufen</button></div>'+
     '<div class="tl">'+(()=>{ // leere vergangene Tage am Stück zu einer Zeile zusammenfassen
       const out=[]; let run=[];
-      const flush=()=>{ if(!run.length) return; const a0=run[0], z0=run[run.length-1];
-        out.push('<div class="tday past"><b>'+(run.length>1?DN[a0.i]+'–'+DN[z0.i]:DN[a0.i]).toUpperCase()+'</b><span>'+(run.length>1?a0.d.getDate()+'–'+z0.d.getDate():a0.d.getDate())+'</span></div><div class="tnone">nichts geplant</div>'); run=[]; };
+      const flush=()=>{ run=[]; };
       DN.forEach((dn,i)=>{ const d=addD(wkStart,i), ds=isoD(d);
         if(ds<td && !plan.some(e=>e.date===ds)) run.push({i,d}); else { flush(); out.push(dayCard(i,d,ds)); } });
-      flush(); return out.join('');
-    })()+'</div>'+
-    (FB?'<p class="wsync">'+(listId?'👥 Der Plan wird mit allen geteilt, die eure gemeinsame Liste nutzen.':'Nur auf diesem Handy. Zum gemeinsamen Planen unter <a href="#einkauf">Einkauf</a> die Liste gemeinsam nutzen, der Plan kommt dann mit.')+'</p>':'');
+      flush(); return out.length? out.join('') : '<p class="tnone" style="grid-column:1/-1">In dieser Woche war nichts geplant.</p>';
+    })()+'</div>';
 }
 function dayCard(i,d,ds){
   const td=isoD(today0()), isT=ds===td, past=ds<td;
@@ -1451,7 +1513,7 @@ function openWeekShop(){
   openSheet('<div class="sh-head"><h2>Woche einkaufen</h2><button class="btn" type="button" data-close>Abbrechen</button></div>'+
     '<p style="margin:2px 0 0;color:var(--muted);font-size:.9rem">'+wEntries.length+(wEntries.length===1?' Gericht':' Gerichte')+(wEntries.length>1?' · gleiche Zutaten zusammengerechnet':'')+'. Was musst du kaufen?</p>'+
     '<div style="margin:6px 0;flex:none"><button class="linkbtn" type="button" data-wsel="all">Alle</button> · <button class="linkbtn" type="button" data-wsel="none">Keine</button></div>'+
-    '<div class="sh-body"><ul class="ing picking">'+wRows.map((x,i)=>'<li><label for="w'+i+'"><input type="checkbox" id="w'+i+'" data-wi="'+i+'"><span><span class="q">'+esc(txt(x))+'</span>'+esc(x.parts.length>1&&!x.u&&x.has&&x.sum>1?pluralize(x.name):x.name)+(multi?'<small class="for">für '+DN.filter(d=>x.days.has(d)).join(', ')+'</small>':'')+'</span></label></li>').join('')+'</ul></div>'+
+    '<div class="sh-body"><ul class="ing picking">'+wRows.map((x,i)=>'<li><label for="w'+i+'"><input type="checkbox" id="w'+i+'" data-wi="'+i+'"><span><span class="q">'+esc(txt(x))+'</span>'+esc(x.parts.length>1&&!x.u&&x.has&&x.sum>1?pluralize(x.name):x.name)+'</span></label></li>').join('')+'</ul></div>'+
     '<div class="sbar"><button class="btn primary" type="button" id="wAdd" disabled>Zutaten auswählen</button></div>','wshop');
 }
 function updW(){ const b=$('#wAdd'), n=wSel.size; b.disabled=!n; b.textContent=n? n+(n===1?' Zutat':' Zutaten')+' auf die Einkaufsliste':'Zutaten auswählen'; }
@@ -1478,6 +1540,10 @@ $('#bs').addEventListener('click',e=>{
   }
   const sm=t.closest('[data-smenu]'); if(sm){ const a=sm.dataset.smenu;
     if(a==='clear') return openShopMenu(true);
+    if(a==='share'){ closeSheet(); share(); return; }
+    if(a==='sharelink'){ closeSheet(); shareLink(); return; }
+    if(a==='startshare'){ closeSheet(); connect(randomListId(),true); renderShop(); toast('Gemeinsame Liste angelegt. Schick jetzt den Link an andere.'); return; }
+    if(a==='leave'){ closeSheet(); disconnect(); renderShop(); toast('Getrennt. Die Liste bleibt auf diesem Gerät, wird aber nicht mehr abgeglichen.'); return; }
     if(a==='menu') return openShopMenu(false);
     if(a==='cleardone'){ const rm=shop.items.filter(i=>i.done); shop.items=shop.items.filter(i=>!i.done); commit([],rm); closeSheet(); renderShop(); toast(rm.length+' erledigte entfernt.'); return; }
     if(a==='clearyes'){ const rm=shop.items; shop.items=[]; commit([],rm); closeSheet(); renderShop(); toast('Liste geleert.'); return; } }
@@ -1490,6 +1556,10 @@ $('#bs').addEventListener('click',e=>{
     closeSheet(); toast(n+(n===1?' Zutat':' Zutaten')+' hinzugefügt','#einkauf'); return;
   }
 });
+$('#bs').addEventListener('submit',e=>{ if(e.target.id!=='joinform') return; e.preventDefault();
+  const id=parseListId($('#joinIn').value);
+  if(!id){ toast('Das sieht nicht nach einem Listen-Link aus. Bitte den ganzen Link einfügen.'); return; }
+  closeSheet(); connect(id,true); renderShop(); toast('Mit der gemeinsamen Liste verbunden.'); });
 $('#bs').addEventListener('change',e=>{ const c=e.target; if(!c.matches('[data-wi]')) return; c.checked?wSel.add(+c.dataset.wi):wSel.delete(+c.dataset.wi); updW(); });
 $('#bs').addEventListener('keydown',e=>{ if(e.target.id==='noteIn'&&e.key==='Enter'){ e.preventDefault(); $('#noteAdd').click(); } });
 cleanPlan();
@@ -1499,10 +1569,16 @@ let timers=[]; try{ timers=JSON.parse(localStorage.getItem('rz-timer')||'[]'); }
 let actx=null, tick=null, lastBeep=0;
 function saveTimers(){ try{ localStorage.setItem('rz-timer',JSON.stringify(timers)); }catch(e){} }
 function fmtT(ms){ const s=Math.max(0,Math.ceil(ms/1000)), h=Math.floor(s/3600), m=Math.floor(s%3600/60), x=s%60; return (h?h+':'+String(m).padStart(2,'0'):m)+':'+String(x).padStart(2,'0'); }
-function startTimer(sec,title,si){
+function timerOf(rid,si,ti){ return timers.find(t=>t.rid===rid && t.si===si && t.ti===ti); }
+function tapTimerChip(tb,r){
+  const si=+tb.dataset.si, ti=+tb.dataset.ti, run=timerOf(r.id,si,ti);
+  if(run){ toast(run.end>Date.now()?'Läuft noch '+fmtT(run.end-Date.now())+'.':'Zeit ist um.',null,'Timer stoppen',()=>{ timers=timers.filter(x=>x!==run); saveTimers(); tSig=''; renderTimers(); }); return; }
+  startTimer(+tb.dataset.sec, r, si, ti, +tb.dataset.hi||0);
+}
+function startTimer(sec,r,si,ti,hi){
   try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); actx.resume(); }catch(e){}   // Ton freischalten (braucht einen Tipp)
-  timers.push({id:newId(),end:Date.now()+sec*1000,label:'Schritt '+(si+1)+' · '+title.replace(/ (mit|und|in|an|auf) .*/,''),sec:sec});
-  saveTimers(); renderTimers(); toast('Timer läuft: '+fmtT(sec*1000));
+  timers.push({id:newId(),end:Date.now()+sec*1000,label:'Schritt '+(si+1)+' · '+r.title.replace(/ (mit|und|in|an|auf) .*/,''),sec:sec,rid:r.id,si:si,ti:ti,hi:hi||0,start:Date.now()});
+  saveTimers(); tSig=''; renderTimers();
   if(!wakeOn) toggleWake(true);
 }
 function beep(){ if(!actx) return; try{ const t=actx.currentTime;
@@ -1519,12 +1595,53 @@ function renderTimers(){
         (ring?'':'<button type="button" data-t="plus" aria-label="1 Minute dazu">+1</button>')+'<button type="button" data-t="stop" aria-label="Timer beenden">'+(ring?'OK':'✕')+'</button></div>'; }).join('');
   }
   timers.forEach(t=>{ const el=document.querySelector('.tm[data-id="'+t.id+'"] .tt'); if(el) el.textContent = t.end<=now ? '0:00' : fmtT(t.end-now); });
+  // 2: Countdown direkt in der Zeitangabe
+  const live=new Set();
+  if(cur) timers.filter(t=>t.rid===cur.id).forEach(t=>document.querySelectorAll('.tbtn[data-si="'+t.si+'"][data-ti="'+t.ti+'"]').forEach(b=>{
+    live.add(b); b.classList.add('running'); b.classList.toggle('over',t.end<=now); b.textContent = t.end<=now ? 'Zeit ist um' : fmtT(t.end-now); }));
+  document.querySelectorAll('.tbtn.running').forEach(b=>{ if(!live.has(b)){ b.classList.remove('running','over'); b.textContent=b.dataset.orig; } });
+  // 6: großer Ring im Kochmodus für den aktuellen Schritt
+  const inCook = !$('#cook').hidden && cur, ct = inCook ? timers.find(t=>t.rid===cur.id && t.si===cookI) : null, box=$('#ckTimer');
+  document.querySelectorAll('.tm').forEach(el=>{ el.classList.toggle('inring', !!ct && el.dataset.id===ct.id); });
+  if(box){
+    if(!ct){ if(box.dataset.id){ box.innerHTML=''; box.dataset.id=''; } }
+    else {
+      if(box.dataset.id!==ct.id){ box.dataset.id=ct.id;
+        box.innerHTML='<div class="ring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" class="rbg"/><circle cx="60" cy="60" r="52" class="rfg"/></svg><div class="rt"></div></div>'+
+          '<div class="rbtns"><button class="btn" type="button" data-ct="plus" data-id="'+ct.id+'">+1 Minute</button><button class="btn" type="button" data-ct="stop" data-id="'+ct.id+'">Stoppen</button></div>'; }
+      const left=Math.max(0,ct.end-now), tot=Math.max(1,ct.end-(ct.start||ct.end-ct.sec*1000)), c=2*Math.PI*52;
+      box.querySelector('.rt').textContent = left ? fmtT(left) : '0:00';
+      const fg=box.querySelector('.rfg'); fg.style.strokeDasharray=c; fg.style.strokeDashoffset=c*(1-left/tot);
+      box.classList.toggle('over',!left);
+    }
+  }
+  // 4: deutliche Meldung, wenn die Zeit um ist
+  const ringing=timers.find(t=>t.end<=now), dlg=$('#tdone');
+  if(ringing && dlg.dataset.id!==ringing.id){ dlg.dataset.id=ringing.id;
+    const r=R.find(x=>x.id===ringing.rid), more=ringing.hi>ringing.sec ? Math.round((ringing.hi-ringing.sec)/60) : 0;
+    const stxt = r && r.steps[ringing.si] ? r.steps[ringing.si] : '';
+    dlg.innerHTML='<div class="td-card" role="alertdialog" aria-labelledby="tdh"><div class="td-ico">⏱</div><h2 id="tdh">Zeit ist um!</h2>'+
+      '<p class="td-lbl">'+esc(ringing.label)+'</p>'+(stxt?'<p class="td-step">'+esc(stxt.length>140?stxt.slice(0,140)+' …':stxt)+'</p>':'')+
+      (more?'<button class="btn primary" type="button" data-td="more" data-add="'+(ringing.hi-ringing.sec)+'">Noch '+(more>=1?more+' Minute'+(more>1?'n':''):(ringing.hi-ringing.sec)+' Sekunden')+'</button>':'')+
+      '<div class="td-row"><button class="btn" type="button" data-td="plus">+1 Minute</button><button class="btn'+(more?'':' primary')+'" type="button" data-td="ok">'+(more?'Fertig':'OK')+'</button></div></div>';
+    dlg.hidden=false;
+  }
+  document.body.classList.toggle('tdopen', !!ringing);
+  if(!ringing && !dlg.hidden){ dlg.hidden=true; dlg.dataset.id=''; }
   if(timers.some(t=>t.end<=now) && now-lastBeep>1400){ lastBeep=now; beep(); try{ navigator.vibrate&&navigator.vibrate([300,150,300]); }catch(e){} }
   const tbH = timers.length ? $('#tbar').offsetHeight+8 : 0;
   document.body.style.setProperty('--tb', tbH+'px'); document.body.classList.toggle('timing', !!timers.length);
   if(timers.length && !tick) tick=setInterval(renderTimers,500);
   if(!timers.length && tick){ clearInterval(tick); tick=null; }
 }
+$('#tdone').addEventListener('click',e=>{
+  const b=e.target.closest('[data-td]'); if(!b) return; const t=timers.find(x=>x.id===$('#tdone').dataset.id);
+  $('#tdone').dataset.id=''; $('#tdone').hidden=true;
+  if(t){ if(b.dataset.td==='plus'){ t.end=Date.now()+60000; t.start=Date.now(); t.sec=60; t.hi=0; }
+    else if(b.dataset.td==='more'){ const add=+b.dataset.add; t.end=Date.now()+add*1000; t.start=Date.now(); t.sec=add; t.hi=0; }
+    else timers=timers.filter(x=>x!==t); }
+  saveTimers(); tSig=''; renderTimers();
+});
 $('#tbar').addEventListener('click',e=>{
   const b=e.target.closest('[data-t]'); if(!b) return; const id=b.closest('.tm').dataset.id, t=timers.find(x=>x.id===id); if(!t) return;
   if(b.dataset.t==='plus') t.end+=60000; else timers=timers.filter(x=>x!==t);

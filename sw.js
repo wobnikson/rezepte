@@ -1,5 +1,5 @@
 // Offline-Speicher. Die Versionsnummer ändert sich bei jeder neuen Fassung.
-const CACHE = 'rezeptordner-3d1ec697';
+const CACHE = 'rezeptordner-8a1b397a';
 const FILES = ['./', 'index.html', 'rezepte.js', 'manifest.json', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));
