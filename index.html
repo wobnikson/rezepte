@@ -43,7 +43,7 @@ window.addEventListener('error', function (e) {
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@500..800&family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..800&family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500&display=swap">
 <script>document.documentElement.setAttribute("data-theme","light")</script>
 <style>
 :root{color-scheme:light;
@@ -51,9 +51,9 @@ window.addEventListener('error', function (e) {
   --pen:#3F5A2E; --pen-soft:#E3EDD4; --leaf:#3F5A2E; --endo:#8A3E6B; --endo-soft:#F3E2EA; --rule:#E9DFCB; --done:#A39C8C;
   --tomato:#C24A2C; --saffron:#E4A73A; --heart:#C2415B; --glass:rgba(255,255,255,.72); --navbg:rgba(255,253,247,.94); --shadow:0 2px 12px rgba(80,60,20,.08);
   --hand:"Fraunces",ui-serif,Georgia,serif;
-  --body:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
+  --body:"Figtree",-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
   --label:var(--body);
-  --ui:"Figtree",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --ui:var(--body);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
@@ -689,6 +689,43 @@ body.hasact.actoff .toast{bottom:calc(82px + var(--tb) + env(safe-area-inset-bot
 .ck-ings li{font-size:17px}
 .ring .rt{font:700 2.6rem/1 var(--ui)}
 .ck-nav button{font-family:var(--ui);font-weight:700}
+
+/* ===== Runde 5 ===== */
+/* Trefferzahl bei Suche oder Filter */
+#home .count{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2px 12px;margin:10px 4px 0;color:var(--muted);font-weight:600;font-size:14px}
+#home .count[hidden]{display:none}
+#home .count .linkbtn{font-weight:700;padding:4px 0}
+/* Zutaten zum Abhaken: abgerundete Quadrate statt Kreise (Einkaufsliste bleibt rund) */
+.ing input{border-radius:7px!important}
+/* Rezeptansicht: ohne Leiste unten, dafür mehr Platz */
+body.hasact .bnav{display:none}
+body.hasact{padding-bottom:calc(104px + var(--tb) + env(safe-area-inset-bottom,0px))}
+body.hasact .actbar{bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+body.hasact .tbar{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+body.hasact .toast{bottom:calc(96px + var(--tb) + env(safe-area-inset-bottom,0px))}
+body.hasact.actoff .tbar{bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+body.hasact.actoff .toast{bottom:calc(20px + var(--tb) + env(safe-area-inset-bottom,0px))}
+body.hasact .pickbar{bottom:calc(14px + var(--tb) + env(safe-area-inset-bottom,0px))}
+/* Kochmodus: Zutaten für den Schritt, Timer kompakt, Vorschau auf den nächsten Schritt */
+.ck-body{padding-bottom:calc(18px + var(--tb,0px))}
+.ck-si{margin-top:22px;background:var(--sheet);border-radius:18px;padding:12px 16px 6px;box-shadow:var(--cardsh)}
+.ck-si ul{list-style:none;margin:6px 0 0;padding:0}
+.ck-si li{padding:7px 0;border-top:1px solid var(--rule);font-size:17px;line-height:1.35}
+.ck-si li:first-child{border-top:0}
+.cktimer{flex-direction:row;justify-content:center;gap:18px;margin-top:20px}
+.cktimer .ring{width:140px;height:140px}
+.cktimer .ring .rt{font-size:2.15rem}
+.cktimer .rbtns{flex-direction:column}
+.cktimer .rbtns .btn{min-width:128px;justify-content:center}
+.ck-foot{flex:none;display:flex;flex-direction:column;gap:10px;max-width:760px;width:100%;margin:0 auto;padding-top:8px}
+.ck-next{display:flex;flex-direction:column;gap:2px;width:100%;text-align:left;border:1.5px dashed var(--rule);background:transparent;border-radius:16px;padding:9px 40px 10px 14px;cursor:pointer;color:var(--muted);position:relative}
+.ck-next::after{content:"›";position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1.5rem;color:var(--muted)}
+.ck-nl{font:800 12px/1.2 var(--ui);letter-spacing:.07em;text-transform:uppercase}
+.ck-nt{font-size:15px;line-height:1.35;color:var(--ink);opacity:.75;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ck-last{margin:0;text-align:center;font-weight:700;color:var(--pen);padding:8px 0}
+.ck-foot .ck-nav{margin:0}
+body.cooking .tbar{bottom:calc(var(--ckfoot,84px) + 20px + env(safe-area-inset-bottom,0px))!important}
+.ck-step.long{font-size:clamp(1.25rem,4.9vw,1.75rem);line-height:1.4}
 </style>
 
 </head>
@@ -698,13 +735,13 @@ body.hasact.actoff .toast{bottom:calc(82px + var(--tb) + env(safe-area-inset-bot
     <div class="head">
       <h1>Was kochen wir heute?</h1>
     </div>
-    <p class="count" id="count"></p>
     <div class="search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
       <input id="q" type="search" placeholder="Zutat, Gericht, Idee …" autocomplete="off" aria-label="Rezept oder Zutat suchen">
     </div>
     <nav class="tabs" id="tabs" aria-label="Kategorien"></nav>
     <h2 class="favhead" id="favhead" hidden>♥ Deine Favoriten</h2>
+    <p class="count" id="count" hidden></p>
     <div id="groups"></div>
   </main>
   <article id="detail" hidden></article>
@@ -856,9 +893,17 @@ function renderList(){
   const q = $('#q').value.trim(), words = norm(q).split(' ').filter(Boolean);
   const hits = R.filter(r=>(cat==='Alle'||r.cat===cat||(cat===FAV&&favs.has(r.id))) && passF(r) && (!words.length || matches(r,words)));
   if($('#endoF')) $('#endoF').setAttribute('aria-pressed',endoOnly);
-  const nf=R.filter(passF), fl=endoOnly?'endo-freundlich':'';
-  $('#count').textContent = fl ? '🎗️ '+nf.length+' von '+R.length+' Rezepten endo-freundlich, '+nf.filter(r=>endoSt(r)==='anpassbar').length+' davon mit Tipp' : '';
-  $('#count').hidden = true;
+  const fl=endoOnly?'endo-freundlich':'';
+  // Trefferzahl nur zeigen, wenn gesucht oder gefiltert wird
+  const filtered = !!q || endoOnly || (cat!=='Alle' && cat!==FAV);
+  if(filtered && hits.length){
+    const tip=endoOnly?hits.filter(r=>endoSt(r)==='anpassbar').length:0;
+    $('#count').innerHTML='<span>'+(cat===FAV?hits.length+(hits.length===1?' Favorit':' Favoriten'):hits.length+(endoOnly&&!q?'':(hits.length===1?' Rezept':' Rezepte')))+
+      (q?' für „'+esc(q)+'“':'')+(cat!=='Alle'&&cat!==FAV&&q?' in '+esc(cat):'')+
+      (endoOnly?(q?' · endo':' endo-freundlich')+(tip?' · '+tip+' mit Tipp':''):'')+'</span>'+
+      '<button type="button" class="linkbtn" id="resetF">'+(cat===FAV?'Zurücksetzen':'Alle zeigen')+'</button>';
+    $('#count').hidden=false;
+  } else $('#count').hidden=true;
   if(!hits.length){ $('#groups').innerHTML='<p class="empty">'+(cat===FAV && !words.length ? 'Noch keine Favoriten. Öffne ein Rezept und tippe oben auf das Herz ♡.' : (q?'Kein Rezept passt zu „'+esc(q)+'“':'Keine Rezepte')+(cat!=='Alle'?' in „'+esc(cat)+'“':'')+(fl?' ('+fl+')':'')+'.'+(q?' Versuch es mit einer Zutat, z. B. „Pilze“.':''))+'</p>'; return; }
   $('#groups').innerHTML = cats.filter(c=>hits.some(r=>r.cat===c)).map(c=>
     '<section class="group" style="--cc:'+cc(c)+'"><h2 class="lbl" style="--cc:'+cc(c)+'">'+esc(c)+'</h2><ul class="list">'+
@@ -874,6 +919,9 @@ $('#tabs').addEventListener('click',e=>{ if(e.target.closest('#endoF')){ endoOnl
   const b=e.target.closest('.tab'); if(!b) return; setCat(b.dataset.c); updateNav();});
 
 $('#q').addEventListener('input',renderList);
+$('#count').addEventListener('click',e=>{ if(!e.target.closest('#resetF')) return;
+  $('#q').value=''; endoOnly=false; try{ localStorage.setItem('rz-endo','0'); }catch(_){}
+  setCat(cat===FAV?FAV:'Alle'); updateNav(); });
 $('#groups').addEventListener('click',e=>{const b=e.target.closest('.row'); if(b) location.hash=b.dataset.id;});
 
 /* ---------- Rezeptansicht ---------- */
@@ -1000,7 +1048,7 @@ document.addEventListener('visibilitychange',()=>{ if(wakeOn && !lock && documen
 let cookI=0, cookWake=false, cookIngs=false, tx=null;
 async function openCook(){
   if(!cur) return; cookI=0; cookIngs=false; cookWake=wakeOn;
-  renderCook(); $('#cook').hidden=false; document.body.classList.add('noscroll','cooking');
+  renderCook(); $('#cook').hidden=false; document.body.classList.add('noscroll','cooking'); setCkFoot();
   if(!wakeOn){ wakeOn = ('wakeLock' in navigator) && await acquire(); if($('#wake')) $('#wake').setAttribute('aria-pressed',wakeOn); }
   $('#ckNext').focus();
 }
@@ -1009,18 +1057,40 @@ async function closeCook(){
   if(!cookWake && wakeOn){ wakeOn=false; try{ lock && await lock.release(); }catch(e){} lock=null; if($('#wake')) $('#wake').setAttribute('aria-pressed',false); }
 }
 function renderCook(){
-  const r=cur, n=r.steps.length, last=cookI===n-1, f=factor(r);
+  const r=cur, n=r.steps.length, last=cookI===n-1, f=factor(r), si=stepIngs(r,cookI);
   $('#cook').innerHTML=
     '<div class="ck-top"><button class="btn" type="button" id="ckClose" aria-label="Kochmodus schließen">✕</button><span class="lbl">Schritt '+(cookI+1)+' von '+n+'</span>'+
     '<button class="btn" type="button" id="ckIngs" aria-pressed="'+cookIngs+'">Zutaten</button></div>'+
     '<div class="ck-prog"><i style="width:'+Math.round((cookI+1)/n*100)+'%"></i></div>'+
     '<div class="ck-body" id="ckBody"><p class="ck-title">'+esc(r.title)+' · '+esc(amountLabel(r))+'</p>'+
-    '<div class="ck-num">'+(cookI+1)+'</div>'+'<p class="ck-step">'+stepHtml(r.steps[cookI],cookI)+'</p><div class="cktimer" id="ckTimer"></div>'+
+    '<div class="ck-num">'+(cookI+1)+'</div>'+'<p class="ck-step'+(r.steps[cookI].length>170?' long':'')+'">'+stepHtml(r.steps[cookI],cookI)+'</p><div class="cktimer" id="ckTimer"></div>'+
+    (!cookIngs && si.length?'<div class="ck-si"><div class="lbl">Für diesen Schritt</div><ul>'+si.map(it=>{const q=qty(it,f); return '<li>'+(q?'<b class="q">'+esc(q)+'</b> ':'')+esc(it.t)+'</li>';}).join('')+'</ul></div>':'')+
     (cookIngs?'<div class="ck-ings"><div class="lbl">Zutaten</div>'+r.groups.map(g=>(g.title?'<h3 class="lbl" style="margin:12px 0 0">'+esc(g.title)+'</h3>':'')+'<ul>'+g.items.map(it=>{const q=qty(it,f); return '<li>'+(q?'<b class="q">'+esc(q)+'</b> ':'')+esc(it.t)+'</li>';}).join('')+'</ul>').join('')+'</div>':'')+
     '</div>'+
+    '<div class="ck-foot" id="ckFoot">'+
+    (last?'<p class="ck-last">Letzter Schritt, gleich geschafft!</p>'
+         :'<button type="button" class="ck-next" id="ckPeek" aria-label="Weiter zu Schritt '+(cookI+2)+'"><span class="ck-nl">Als Nächstes · Schritt '+(cookI+2)+'</span><span class="ck-nt">'+esc(r.steps[cookI+1])+'</span></button>')+
     '<div class="ck-nav"><button class="btn" type="button" id="ckPrev"'+(cookI?'':' disabled')+'>‹ Zurück</button>'+
-    '<button class="btn primary" type="button" id="ckNext">'+(last?'Fertig ✓':'Weiter ›')+'</button></div>';
+    '<button class="btn primary" type="button" id="ckNext">'+(last?'Fertig ✓':'Weiter ›')+'</button></div></div>';
+  setCkFoot();
   renderTimers();
+}
+// Höhe des Fußbereichs merken, damit schwebende Timer „Als Nächstes“ nicht verdecken
+function setCkFoot(){ const ft=$('#ckFoot'); if(ft && !$('#cook').hidden) document.body.style.setProperty('--ckfoot',ft.offsetHeight+'px'); }
+window.addEventListener('resize',setCkFoot);
+/* Zutaten, die in einem Schritt vorkommen */
+const SI_STOP=new Set(['bund','dose','dosen','prise','prisen','packung','pack','stuck','handvol','scheibe','scheiben','zehe','zehen','glas','becher','tase','tasen','zweig','zweige','geschmack','belieben','etwas','frisch','frische','frischer','rote','roter','grune','gruner','gelbe','kleine','kleiner','grose','groser','weise','weiser','schwarze','schwarzer','tk','zum','fur','nach','optional']);
+function siWords(n){ return String(n).replace(/\(.*?\)/g,' ').split(/[\s\-–\/&+]+/).filter(w=>/^[A-ZÄÖÜ]/.test(w)).map(w=>norm(w).replace(/ /g,'')).filter(w=>w.length>=2 && !SI_STOP.has(w)); }
+function siHit(w,t){
+  if(w.length<4) return t===w || t===w+'er';
+  const a = w.length>=6 ? w.slice(0,-2) : w;
+  return t.startsWith(a) || (t.length>=5 && w.startsWith(t)) || (t.length>=4 && w.endsWith(t)) || (t==='ol' && w.endsWith('ol'));
+}
+function stepIngs(r,si){
+  const txt=norm(r.steps[si]), items=r.groups.flatMap(g=>g.items);
+  if(txt.includes(norm('alle Zutaten'))) return items;
+  const toks=[...new Set(txt.split(' ').filter(Boolean))];
+  return items.filter(it=>(it.m==null ? it.t.split(',') : [it.t.split(',')[0]]).some(n=>siWords(n).some(w=>toks.some(t=>siHit(w,t)))));
 }
 function markStep(i){ const li=document.querySelectorAll('#steps li')[i]; if(li) li.classList.add('done'); }
 function cookGo(d){
@@ -1033,7 +1103,7 @@ $('#cook').addEventListener('click',e=>{
   const tb=e.target.closest('.tbtn'); if(tb){ tapTimerChip(tb, cur); return; }
   const ct=e.target.closest('[data-ct]'); if(ct){ const t=timers.find(x=>x.id===ct.dataset.id); if(t){ if(ct.dataset.ct==='plus') t.end+=60000; else timers=timers.filter(x=>x!==t); saveTimers(); tSig=null; renderTimers(); } return; }
   if(e.target.closest('#ckClose')) closeCook();
-  else if(e.target.closest('#ckNext')) cookGo(1);
+  else if(e.target.closest('#ckNext')||e.target.closest('#ckPeek')) cookGo(1);
   else if(e.target.closest('#ckPrev')) cookGo(-1);
   else if(e.target.closest('#ckIngs')){ cookIngs=!cookIngs; renderCook(); }
 });
@@ -1643,7 +1713,8 @@ function renderTimers(){
     else {
       if(box.dataset.id!==ct.id){ box.dataset.id=ct.id;
         box.innerHTML='<div class="ring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" class="rbg"/><circle cx="60" cy="60" r="52" class="rfg"/></svg><div class="rt"></div></div>'+
-          '<div class="rbtns"><button class="btn" type="button" data-ct="plus" data-id="'+ct.id+'">+1 Minute</button><button class="btn" type="button" data-ct="stop" data-id="'+ct.id+'">Stoppen</button></div>'; }
+          '<div class="rbtns"><button class="btn" type="button" data-ct="plus" data-id="'+ct.id+'">+1 Minute</button><button class="btn" type="button" data-ct="stop" data-id="'+ct.id+'">Stoppen</button></div>';
+        requestAnimationFrame(()=>{ try{ box.scrollIntoView({block:'nearest',behavior:'smooth'}); }catch(e){} }); }
       const left=Math.max(0,ct.end-now), tot=Math.max(1,ct.end-(ct.start||ct.end-ct.sec*1000)), c=2*Math.PI*52;
       box.querySelector('.rt').textContent = left ? fmtT(left) : '0:00';
       const fg=box.querySelector('.rfg'); fg.style.strokeDasharray=c; fg.style.strokeDashoffset=c*(1-left/tot);
