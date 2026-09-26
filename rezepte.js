@@ -14,6 +14,13 @@ window.REZEPTE = [
    "difficulty",
    "time"
   ],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "omega3",
+    "ballaststoffe"
+   ]
+  },
   "groups": [
    {
     "items": [
@@ -83,6 +90,12 @@ window.REZEPTE = [
    "time",
    "servings"
   ],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [],
+   "grund": "wenig Gemüse (ca. 100 g pro Portion)",
+   "tipp": "Mehr Gemüse untermischen, z. B. Radieschen, Tomaten oder eine Handvoll Rucola."
+  },
   "groups": [
    {
     "items": [
@@ -163,6 +176,14 @@ window.REZEPTE = [
    "time",
    "servings"
   ],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [
+    "entzuendung"
+   ],
+   "grund": "viel Sahne und Parmesan (ca. 75 g pro Portion)",
+   "tipp": "Sahne durch Hafer- oder Sojacuisine ersetzen und Parmesan halbieren."
+  },
   "groups": [
    {
     "items": [
@@ -248,6 +269,14 @@ window.REZEPTE = [
   "difficulty": 1,
   "min": 30,
   "est": [],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [
+    "ballaststoffe"
+   ],
+   "grund": "wenig Gemüse (ca. 80 g pro Portion)",
+   "tipp": "Mit einem großen Salat servieren, das Dressing ist schon im Rezept."
+  },
   "groups": [
    {
     "items": [
@@ -342,6 +371,13 @@ window.REZEPTE = [
   "est": [
    "time"
   ],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "omega3",
+    "entzuendung"
+   ]
+  },
   "groups": [
    {
     "title": "Gemüse & Nudeln",
@@ -446,6 +482,10 @@ window.REZEPTE = [
   "difficulty": 1,
   "min": 30,
   "est": [],
+  "endo": {
+   "status": "ja",
+   "plus": []
+  },
   "groups": [
    {
     "items": [
@@ -541,6 +581,12 @@ window.REZEPTE = [
    "time",
    "servings"
   ],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [],
+   "grund": "nur der Teig aus Weißmehl",
+   "tipp": "Reichlich mit Gemüse belegen (z. B. Zucchini, Lauch, Pilze) und Crème fraîche sparsam verwenden, gern halb Vollkornmehl."
+  },
   "groups": [
    {
     "items": [
@@ -584,6 +630,12 @@ window.REZEPTE = [
   "difficulty": 2,
   "min": 30,
   "est": [],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [],
+   "grund": "enthält Weißwein",
+   "tipp": "Die Variante ohne Wein nehmen: 2 EL Weißweinessig und mehr Brühe."
+  },
   "groups": [
    {
     "items": [
@@ -681,6 +733,12 @@ window.REZEPTE = [
   "difficulty": 3,
   "min": 150,
   "est": [],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [],
+   "grund": "enthält 200 ml Rotwein",
+   "tipp": "Rotwein durch Brühe und 1–2 EL Balsamico ersetzen."
+  },
   "groups": [
    {
     "items": [
@@ -795,6 +853,12 @@ window.REZEPTE = [
   "est": [
    "servings"
   ],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [],
+   "grund": "Weißmehl und Zucker als Hauptbestandteile",
+   "tipp": "Vollkornmehl statt Weizenmehl 405 nehmen und den Zucker halbieren (die reifen Bananen süßen mit)."
+  },
   "groups": [
    {
     "items": [
@@ -868,6 +932,11 @@ window.REZEPTE = [
   "difficulty": 2,
   "min": 90,
   "est": [],
+  "endo": {
+   "status": "nein",
+   "plus": [],
+   "grund": "viel Zucker (ca. 16 g pro Stück)"
+  },
   "groups": [
    {
     "title": "Teig",
@@ -961,6 +1030,13 @@ window.REZEPTE = [
   "difficulty": 1,
   "min": 15,
   "est": [],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "omega3",
+    "ballaststoffe"
+   ]
+  },
   "groups": [
    {
     "items": [
@@ -1038,6 +1114,10 @@ window.REZEPTE = [
    "time",
    "servings"
   ],
+  "endo": {
+   "status": "ja",
+   "plus": []
+  },
   "groups": [
    {
     "items": [
@@ -1121,6 +1201,12 @@ window.REZEPTE = [
   "est": [
    "time"
   ],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "entzuendung"
+   ]
+  },
   "groups": [
    {
     "items": [
@@ -1190,6 +1276,13 @@ window.REZEPTE = [
   "est": [
    "difficulty"
   ],
+  "endo": {
+   "status": "nein",
+   "plus": [
+    "entzuendung"
+   ],
+   "grund": "sehr viel Käse und Schmand (ca. 165 g pro Portion)"
+  },
   "groups": [
    {
     "items": [
@@ -1265,6 +1358,12 @@ window.REZEPTE = [
    "time",
    "servings"
   ],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [],
+   "grund": "wenig Gemüse (ca. 20 g pro Portion)",
+   "tipp": "Reichlich Gemüse mitkochen, z. B. 400 g Brokkoli und Erbsen für 4 Portionen."
+  },
   "groups": [
    {
     "items": [
@@ -1362,6 +1461,14 @@ window.REZEPTE = [
    "time",
    "servings"
   ],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [
+    "entzuendung"
+   ],
+   "grund": "viel Kokosmilch, eher wenig Gemüse",
+   "tipp": "Kokosmilch light nehmen oder zur Hälfte durch Brühe ersetzen und mehr Gemüse dazu (z. B. Brokkoli)."
+  },
   "groups": [
    {
     "items": [
@@ -1465,6 +1572,12 @@ window.REZEPTE = [
   "est": [
    "time"
   ],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "entzuendung"
+   ]
+  },
   "groups": [
    {
     "items": [
@@ -1581,6 +1694,10 @@ window.REZEPTE = [
    "difficulty",
    "time"
   ],
+  "endo": {
+   "status": "ja",
+   "plus": []
+  },
   "groups": [
    {
     "items": [
@@ -1648,6 +1765,12 @@ window.REZEPTE = [
   "difficulty": 1,
   "min": 30,
   "est": [],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "ballaststoffe"
+   ]
+  },
   "groups": [
    {
     "items": [
@@ -1715,6 +1838,10 @@ window.REZEPTE = [
    "difficulty",
    "time"
   ],
+  "endo": {
+   "status": "ja",
+   "plus": []
+  },
   "groups": [
    {
     "items": [
@@ -1778,6 +1905,10 @@ window.REZEPTE = [
    "time",
    "servings"
   ],
+  "endo": {
+   "status": "ja",
+   "plus": []
+  },
   "groups": [
    {
     "items": [
@@ -1895,6 +2026,11 @@ window.REZEPTE = [
   "min": 80,
   "rest": "auskühlen lassen",
   "est": [],
+  "endo": {
+   "status": "nein",
+   "plus": [],
+   "grund": "viel Zucker, Butter und Frischkäse"
+  },
   "groups": [
    {
     "title": "Für den Teig",
@@ -2024,6 +2160,11 @@ window.REZEPTE = [
    "servings",
    "time"
   ],
+  "endo": {
+   "status": "nein",
+   "plus": [],
+   "grund": "viel Butter und Zucker (ca. 20 g Butter pro Stück)"
+  },
   "groups": [
    {
     "title": "Mürbteig",
@@ -2131,6 +2272,12 @@ window.REZEPTE = [
   "est": [
    "time"
   ],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [],
+   "grund": "Weißmehl, in Butter gebacken, ohne Obst oder Gemüse",
+   "tipp": "In Rapsöl statt Butter backen und mit Obst oder Gemüse füllen."
+  },
   "groups": [
    {
     "items": [
@@ -2186,6 +2333,11 @@ window.REZEPTE = [
   "est": [
    "servings"
   ],
+  "endo": {
+   "status": "nein",
+   "plus": [],
+   "grund": "viel Zucker (ca. 22 g pro Stück)"
+  },
   "groups": [
    {
     "items": [
@@ -2247,6 +2399,13 @@ window.REZEPTE = [
    "time",
    "servings"
   ],
+  "endo": {
+   "status": "nein",
+   "plus": [
+    "omega3"
+   ],
+   "grund": "viel Margarine und Zucker"
+  },
   "groups": [
    {
     "title": "Für den Teig",
@@ -2353,6 +2512,11 @@ window.REZEPTE = [
   "difficulty": 1,
   "min": 45,
   "est": [],
+  "endo": {
+   "status": "nein",
+   "plus": [],
+   "grund": "viel Butter und Zucker"
+  },
   "groups": [
    {
     "title": "Für die Muffins",
@@ -2442,6 +2606,11 @@ window.REZEPTE = [
    "difficulty",
    "time"
   ],
+  "endo": {
+   "status": "nein",
+   "plus": [],
+   "grund": "viel Butter, Zucker und Frischkäse"
+  },
   "groups": [
    {
     "title": "Für den Teig",
@@ -2579,6 +2748,12 @@ window.REZEPTE = [
    "time",
    "servings"
   ],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "ballaststoffe"
+   ]
+  },
   "groups": [
    {
     "title": "Für den Boden",
@@ -2683,6 +2858,12 @@ window.REZEPTE = [
    "servings",
    "time"
   ],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "ballaststoffe"
+   ]
+  },
   "groups": [
    {
     "items": [
@@ -2750,6 +2931,12 @@ window.REZEPTE = [
    "difficulty",
    "time"
   ],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [],
+   "grund": "viel Käse (ca. 90 g pro Portion)",
+   "tipp": "Nur den Feta nehmen und den Mozzarella weglassen."
+  },
   "groups": [
    {
     "items": [
@@ -2842,6 +3029,12 @@ window.REZEPTE = [
    "difficulty",
    "time"
   ],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "ballaststoffe"
+   ]
+  },
   "groups": [
    {
     "items": [
@@ -2948,6 +3141,12 @@ window.REZEPTE = [
    "difficulty",
    "time"
   ],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [],
+   "grund": "kaum Gemüse",
+   "tipp": "Mit Gemüse ergänzen, z. B. 250 g Cherrytomaten und 100 g Spinat, oder einen Salat dazu."
+  },
   "groups": [
    {
     "items": [
@@ -3032,6 +3231,10 @@ window.REZEPTE = [
   "est": [
    "servings"
   ],
+  "endo": {
+   "status": "ja",
+   "plus": []
+  },
   "groups": [
    {
     "items": [
@@ -3113,6 +3316,12 @@ window.REZEPTE = [
   "difficulty": 1,
   "min": 15,
   "est": [],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "ballaststoffe"
+   ]
+  },
   "groups": [
    {
     "items": [
@@ -3186,6 +3395,10 @@ window.REZEPTE = [
   "difficulty": 2,
   "min": 45,
   "est": [],
+  "endo": {
+   "status": "ja",
+   "plus": []
+  },
   "groups": [
    {
     "title": "Für die Kartoffeln",
@@ -3292,6 +3505,12 @@ window.REZEPTE = [
   "difficulty": 2,
   "min": 30,
   "est": [],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [],
+   "grund": "wenig Gemüse (ca. 115 g pro Portion)",
+   "tipp": "Mit Salat oder Ofengemüse als Beilage servieren."
+  },
   "groups": [
    {
     "title": "Für das Tofu-Patty",
@@ -3407,6 +3626,12 @@ window.REZEPTE = [
   "difficulty": 2,
   "min": 45,
   "est": [],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "ballaststoffe"
+   ]
+  },
   "groups": [
    {
     "title": "Für das Tofuhack",
@@ -3537,6 +3762,12 @@ window.REZEPTE = [
   "difficulty": 2,
   "min": 45,
   "est": [],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "ballaststoffe"
+   ]
+  },
   "groups": [
    {
     "title": "Für das Tofuhack",
@@ -3670,6 +3901,13 @@ window.REZEPTE = [
   "difficulty": 2,
   "min": 30,
   "est": [],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "ballaststoffe",
+    "entzuendung"
+   ]
+  },
   "groups": [
    {
     "title": "Für den Tofu",
@@ -3807,6 +4045,10 @@ window.REZEPTE = [
   "difficulty": 2,
   "min": 30,
   "est": [],
+  "endo": {
+   "status": "ja",
+   "plus": []
+  },
   "groups": [
    {
     "items": [
@@ -3952,6 +4194,14 @@ window.REZEPTE = [
   "difficulty": 3,
   "min": 40,
   "est": [],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [
+    "entzuendung"
+   ],
+   "grund": "viel Kokosmilch (1 Dose für 2 Portionen)",
+   "tipp": "Kokosmilch light nehmen oder zur Hälfte durch Gemüsebrühe ersetzen."
+  },
   "groups": [
    {
     "items": [
@@ -4086,6 +4336,10 @@ window.REZEPTE = [
   "difficulty": 3,
   "min": 45,
   "est": [],
+  "endo": {
+   "status": "ja",
+   "plus": []
+  },
   "groups": [
    {
     "title": "Für die Bällchen",
@@ -4214,6 +4468,12 @@ window.REZEPTE = [
   "difficulty": 3,
   "min": 45,
   "est": [],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [],
+   "grund": "wenig Gemüse (ca. 130 g pro Portion)",
+   "tipp": "Mit Salat oder Ofengemüse als Beilage servieren."
+  },
   "groups": [
    {
     "title": "Für das Patty",
@@ -4344,6 +4604,12 @@ window.REZEPTE = [
   "difficulty": 1,
   "min": 15,
   "est": [],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [],
+   "grund": "kaum Gemüse",
+   "tipp": "Tomaten, Paprika oder eine Handvoll Spinat mitbraten."
+  },
   "groups": [
    {
     "items": [
@@ -4420,6 +4686,12 @@ window.REZEPTE = [
   "difficulty": 2,
   "min": 25,
   "est": [],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [],
+   "grund": "kaum Gemüse",
+   "tipp": "Gemüse ergänzen, z. B. 300 g Erbsen, Zucchini oder Spinat für 2 Portionen."
+  },
   "groups": [
    {
     "title": "Für die Cashew-Soße",
@@ -4519,6 +4791,13 @@ window.REZEPTE = [
   "difficulty": 2,
   "min": 20,
   "est": [],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "ballaststoffe",
+    "entzuendung"
+   ]
+  },
   "groups": [
    {
     "title": "Für den Tofu",
@@ -4635,6 +4914,10 @@ window.REZEPTE = [
   "difficulty": 1,
   "min": 20,
   "est": [],
+  "endo": {
+   "status": "ja",
+   "plus": []
+  },
   "groups": [
    {
     "title": "Für den Tofu",
@@ -4721,6 +5004,12 @@ window.REZEPTE = [
   "difficulty": 2,
   "min": 45,
   "est": [],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [],
+   "grund": "kein Gemüse (Kartoffeln zählen nicht)",
+   "tipp": "Mit Salat oder Rohkost servieren."
+  },
   "groups": [
    {
     "title": "Für die Kartoffelspalten",
@@ -4831,6 +5120,10 @@ window.REZEPTE = [
    "difficulty",
    "time"
   ],
+  "endo": {
+   "status": "ja",
+   "plus": []
+  },
   "groups": [
    {
     "title": "Für die Quesadillas",
@@ -4960,6 +5253,12 @@ window.REZEPTE = [
   "difficulty": 2,
   "min": 55,
   "est": [],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "ballaststoffe"
+   ]
+  },
   "groups": [
    {
     "items": [
@@ -5052,6 +5351,13 @@ window.REZEPTE = [
    "difficulty",
    "time"
   ],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "ballaststoffe",
+    "entzuendung"
+   ]
+  },
   "groups": [
    {
     "title": "Pastinakenpüree",
@@ -5201,6 +5507,13 @@ window.REZEPTE = [
    "difficulty",
    "time"
   ],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "ballaststoffe",
+    "entzuendung"
+   ]
+  },
   "groups": [
    {
     "title": "Reis",
@@ -5335,6 +5648,15 @@ window.REZEPTE = [
    "difficulty",
    "time"
   ],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [
+    "ballaststoffe",
+    "entzuendung"
+   ],
+   "grund": "wenig Gemüse (ca. 95 g pro Portion)",
+   "tipp": "Doppelt so viel Feldsalat oder Ofengemüse dazu."
+  },
   "groups": [
    {
     "title": "Kartoffelpüree",
@@ -5499,6 +5821,15 @@ window.REZEPTE = [
    "difficulty",
    "time"
   ],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [
+    "omega3",
+    "ballaststoffe"
+   ],
+   "grund": "wenig Gemüse (ca. 95 g pro Portion)",
+   "tipp": "Doppelt so viel Rosenkohl oder einen großen Salat dazu."
+  },
   "groups": [
    {
     "title": "Hummus",

@@ -46,7 +46,7 @@ window.addEventListener('error', function (e) {
 <style>
 :root{
   --paper:#F3F5F2; --sheet:#FFFFFF; --ink:#23262D; --muted:#5F6571;
-  --pen:#26358C; --pen-soft:#E6E9F6; --leaf:#557257; --rule:#C9CEDA; --done:#9AA0AC;
+  --pen:#26358C; --pen-soft:#E6E9F6; --leaf:#557257; --endo:#8A3E6B; --endo-soft:#F6E9F0; --rule:#C9CEDA; --done:#9AA0AC;
   --hand:"Caveat","Segoe Print","Bradley Hand",cursive;
   --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
   --label:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -55,13 +55,13 @@ window.addEventListener('error', function (e) {
   :root:not([data-theme="light"]){
     color-scheme:dark;
     --paper:#10131A; --sheet:#191D27; --ink:#E6E8EE; --muted:#9CA2AF;
-    --pen:#A7B5FF; --pen-soft:#232A46; --leaf:#8DB08E; --rule:#343A4B; --done:#646A78;
+    --pen:#A7B5FF; --pen-soft:#232A46; --leaf:#8DB08E; --endo:#E3A6CA; --endo-soft:#35222E; --rule:#343A4B; --done:#646A78;
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
   --paper:#10131A; --sheet:#191D27; --ink:#E6E8EE; --muted:#9CA2AF;
-  --pen:#A7B5FF; --pen-soft:#232A46; --leaf:#8DB08E; --rule:#343A4B; --done:#646A78;
+  --pen:#A7B5FF; --pen-soft:#232A46; --leaf:#8DB08E; --endo:#E3A6CA; --endo-soft:#35222E; --rule:#343A4B; --done:#646A78;
 }
 *{box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font:17px/1.55 var(--body);margin:0;-webkit-text-size-adjust:100%;padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
@@ -176,6 +176,20 @@ body.cooking .tbar{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 .subrow .count{margin:0}
 .vegbtn{padding:5px 12px;font-size:.88rem}
 .vegbtn[aria-pressed="true"]{border-color:var(--leaf);background:var(--leaf);color:var(--sheet);font-weight:700}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+#endoF[aria-pressed="true"]{border-color:var(--endo);background:var(--endo);color:var(--sheet)}
+.tag.endo{color:var(--endo)}
+.tag.endo.tipp{border-style:dashed}
+.endobox{margin:14px 0 4px;padding:12px 14px;border-radius:12px;background:var(--endo-soft);border-left:4px solid var(--endo);font-size:.95rem}
+.endobox.nein{background:transparent;border:1.5px dotted var(--rule);border-left:4px solid var(--rule)}
+.endobox .eh{font-weight:700;color:var(--endo)}
+.endobox.nein .eh{color:var(--muted)}
+.endobox p{margin:4px 0 0}
+.endobox details{margin-top:6px}
+.endobox summary{cursor:pointer;color:var(--muted);font-size:.88rem}
+.endobox ul{margin:6px 0 0;padding-left:20px}
+.endobox li{margin:2px 0}
+.endobox small{display:block;color:var(--muted);margin-top:6px}
 a.btn{text-decoration:none;color:var(--ink)}
 .badge{min-width:22px;height:22px;padding:0 6px;border-radius:99px;background:var(--pen);color:var(--sheet);font:700 .78rem/22px var(--body);text-align:center;font-variant-numeric:tabular-nums}
 .badge:empty{display:none}
@@ -315,7 +329,7 @@ a.btn{text-decoration:none;color:var(--ink)}
       <h1>Rezeptordner</h1>
       <svg viewBox="0 0 74 30" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 20 Q36 16 72 12"/><path d="M14 19c-3-7 1-12 6-13 1 6-2 10-6 13Z"/><path d="M14 19c4 6 10 7 13 6-3-5-8-7-13-6Z"/><path d="M30 17c-3-7 1-12 6-13 1 6-2 10-6 13Z"/><path d="M30 17c4 6 10 7 13 6-3-5-8-7-13-6Z"/><path d="M46 15c-3-7 1-12 6-13 1 6-2 10-6 13Z"/><path d="M46 15c4 6 10 7 13 6-3-5-8-7-13-6Z"/></svg>
     </div>
-    <div class="subrow"><p class="count" id="count"></p><button class="btn vegbtn" type="button" id="veg" aria-pressed="false">🌱 Nur vegan</button></div>
+    <div class="subrow"><p class="count" id="count"></p><div class="filters"><button class="btn vegbtn" type="button" id="veg" aria-pressed="false">🌱 Nur vegan</button><button class="btn vegbtn" type="button" id="endoF" aria-pressed="false">✿ Endo-freundlich</button></div></div>
     <div class="search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
       <input id="q" type="search" placeholder="Rezept oder Zutat suchen …" autocomplete="off" aria-label="Rezept oder Zutat suchen">
@@ -356,6 +370,26 @@ function loadSet(k){ try{ return JSON.parse(localStorage.getItem(k)||'[]'); }cat
 function saveArr(k,a){ try{ localStorage.setItem(k,JSON.stringify(a)); }catch(e){} }
 let favs=new Set(loadSet('rz-favs'));
 let vegOnly=false; try{ vegOnly=localStorage.getItem('rz-vegan')==='1'; }catch(e){}
+let endoOnly=false; try{ endoOnly=localStorage.getItem('rz-endo')==='1'; }catch(e){}
+const ENDO_ORDER={ja:0,anpassbar:1,nein:2};
+function endoSt(r){ return r.endo ? r.endo.status : 'nein'; }
+function passF(r){ return (!vegOnly||r.tags.includes('vegan')) && (!endoOnly||endoSt(r)!=='nein'); }
+const PLUS={omega3:'Omega-3',ballaststoffe:'Ballaststoffe',entzuendung:'Entzündungshemmende Zutaten'};
+function endoTag(r){ const s=endoSt(r); return s==='ja'?'<span class="tag endo">endo</span>':(s==='anpassbar'?'<span class="tag endo tipp">endo + Tipp</span>':''); }
+function endoBox(r){
+  const e=r.endo; if(!e) return '';
+  const plus=(e.plus||[]).map(k=>PLUS[k]).filter(Boolean);
+  const head={ja:'✿ Endo-freundlich',anpassbar:'✿ Endo-freundlich mit kleiner Änderung',nein:'Nicht endo-freundlich'}[e.status];
+  return '<div class="endobox '+e.status+'"><div class="eh">'+head+'</div>'+
+    (e.status==='anpassbar'?'<p><b>Tipp:</b> '+esc(e.tipp)+'</p>':'')+
+    (e.grund?'<p>'+(e.status==='nein'?'':'Grund: ')+esc(e.grund)+'</p>':'')+
+    (plus.length?'<p>Pluspunkte: '+plus.join(' · ')+'</p>':'')+
+    '<details><summary>Was heißt endo-freundlich?</summary><ul>'+
+    '<li>reichlich Gemüse (ab ca. 150 g pro Portion)</li><li>kein rotes oder verarbeitetes Fleisch</li>'+
+    '<li>Fett vor allem aus Pflanzenölen, wenig Butter, Sahne und Käse</li><li>kein Alkohol</li>'+
+    '<li>bei Gebäck und Snacks: wenig Zucker, keine Butter als Hauptzutat</li></ul>'+
+    '<small>Pluspunkte: Omega-3 (z. B. Chia, Leinsamen, Rapsöl, Walnüsse), Ballaststoffe (Hülsenfrüchte, Vollkorn, Nüsse), entzündungshemmende Zutaten (Ingwer, Kurkuma, Blattgemüse, Kohl, Beeren). Einordnung nach aktuellem Forschungsstand, ersetzt keine ärztliche Beratung.</small></details></div>';
+}
 try{ localStorage.removeItem('rz-recent'); }catch(e){}
 function toggleFav(id){ favs.has(id)?favs.delete(id):favs.add(id); saveArr('rz-favs',[...favs]); }
 function setCat(c){ cat=c; try{localStorage.setItem('rz-cat',cat)}catch(_){} renderTabs(); renderList(); }
@@ -414,14 +448,15 @@ function renderTabs(){
 }
 function renderList(){
   const q = $('#q').value.trim(), words = norm(q).split(' ').filter(Boolean);
-  const hits = R.filter(r=>(cat==='Alle'||r.cat===cat||(cat===FAV&&favs.has(r.id))) && (!vegOnly||r.tags.includes('vegan')) && (!words.length || matches(r,words)));
-  $('#veg').setAttribute('aria-pressed',vegOnly);
-  $('#count').textContent = vegOnly ? R.filter(r=>r.tags.includes('vegan')).length+' vegane von '+R.length+' Rezepten' : R.length+' Rezepte in '+cats.length+' Kategorien';
-  if(!hits.length){ $('#groups').innerHTML='<p class="empty">'+(cat===FAV && !words.length ? 'Noch keine Favoriten. Öffne ein Rezept und tippe oben auf das Herz ♡.' : (q?'Kein Rezept passt zu „'+esc(q)+'“':'Keine Rezepte')+(cat!=='Alle'?' in „'+esc(cat)+'“':'')+(vegOnly?' (nur vegan)':'')+'.'+(q?' Versuch es mit einer Zutat, z. B. „Pilze“.':''))+'</p>'; return; }
+  const hits = R.filter(r=>(cat==='Alle'||r.cat===cat||(cat===FAV&&favs.has(r.id))) && passF(r) && (!words.length || matches(r,words)));
+  $('#veg').setAttribute('aria-pressed',vegOnly); $('#endoF').setAttribute('aria-pressed',endoOnly);
+  const nf=R.filter(passF), fl=[vegOnly?'vegan':'',endoOnly?'endo-freundlich':''].filter(Boolean).join(' und ');
+  $('#count').textContent = fl ? nf.length+' von '+R.length+' Rezepten '+fl+(endoOnly?' ('+nf.filter(r=>endoSt(r)==='anpassbar').length+' davon mit Tipp)':'') : R.length+' Rezepte in '+cats.length+' Kategorien';
+  if(!hits.length){ $('#groups').innerHTML='<p class="empty">'+(cat===FAV && !words.length ? 'Noch keine Favoriten. Öffne ein Rezept und tippe oben auf das Herz ♡.' : (q?'Kein Rezept passt zu „'+esc(q)+'“':'Keine Rezepte')+(cat!=='Alle'?' in „'+esc(cat)+'“':'')+(fl?' ('+fl+')':'')+'.'+(q?' Versuch es mit einer Zutat, z. B. „Pilze“.':''))+'</p>'; return; }
   $('#groups').innerHTML = cats.filter(c=>hits.some(r=>r.cat===c)).map(c=>
     '<section class="group"><h2 class="lbl">'+esc(c)+'</h2><ul class="list">'+
-    hits.filter(r=>r.cat===c).sort((a,b)=>a.title.localeCompare(b.title,'de')).map(r=>{
-      const m = [diffHtml(r.difficulty), r.min?'<span>⏱ '+fmtMin(r.min)+'</span>':'', yieldText(r)?'<span>'+esc(yieldText(r))+'</span>':'', ...r.tags.map(t=>'<span class="tag">'+esc(t)+'</span>')].filter(Boolean).join('');
+    hits.filter(r=>r.cat===c).sort((a,b)=>(endoOnly?ENDO_ORDER[endoSt(a)]-ENDO_ORDER[endoSt(b)]:0)||a.title.localeCompare(b.title,'de')).map(r=>{
+      const m = [diffHtml(r.difficulty), r.min?'<span>⏱ '+fmtMin(r.min)+'</span>':'', yieldText(r)?'<span>'+esc(yieldText(r))+'</span>':'', ...r.tags.map(t=>'<span class="tag">'+esc(t)+'</span>'), endoTag(r)].filter(Boolean).join('');
       return '<li><button class="row" type="button" data-id="'+r.id+'"><div class="t'+(r.title.length>38?' long':'')+'">'+esc(r.title)+(favs.has(r.id)?'<span class="fav" aria-label="Favorit">♥</span>':'')+'</div>'+(m?'<div class="meta">'+m+'</div>':'')+'</button></li>';
     }).join('')+'</ul></section>').join('');
 }
@@ -429,6 +464,7 @@ $('#tabs').addEventListener('click',e=>{const b=e.target.closest('.tab'); if(!b)
 
 $('#q').addEventListener('input',renderList);
 $('#veg').addEventListener('click',()=>{ vegOnly=!vegOnly; try{ localStorage.setItem('rz-vegan',vegOnly?'1':'0'); }catch(e){} renderList(); });
+$('#endoF').addEventListener('click',()=>{ endoOnly=!endoOnly; try{ localStorage.setItem('rz-endo',endoOnly?'1':'0'); }catch(e){} renderList(); });
 $('#groups').addEventListener('click',e=>{const b=e.target.closest('.row'); if(b) location.hash=b.dataset.id;});
 
 /* ---------- Rezeptansicht ---------- */
@@ -452,7 +488,7 @@ function renderDetail(r){
     '<button class="btn favbtn" type="button" id="favBtn" aria-pressed="'+favs.has(r.id)+'" aria-label="Als Favorit merken">'+(favs.has(r.id)?'♥':'♡')+'</button></div></div>'+
     '<div class="sheet"><div class="lbl">'+esc(r.cat)+(r.tags.length?' · '+r.tags.map(esc).join(' · '):'')+'</div>'+
     '<h1 class="rtitle'+(r.title.length>45?' long':'')+'">'+esc(r.title)+'</h1>'+
-    (facts.length?'<div class="facts">'+facts.map(f=>'<div><span class="lbl">'+f[0]+'</span><b>'+f[1]+'</b></div>').join('')+'</div>':'')+
+    (facts.length?'<div class="facts">'+facts.map(f=>'<div><span class="lbl">'+f[0]+'</span><b>'+f[1]+'</b></div>').join('')+'</div>':'')+endoBox(r)+
     '<div class="scale"><span class="lbl">'+(r.servings?'Menge':'Rezeptmenge')+(isEst(r,'servings')?EST:'')+'</span><div class="step"><button type="button" id="minus" aria-label="weniger">−</button><output id="amt"></output><button type="button" id="plus" aria-label="mehr">+</button></div><button class="reset" type="button" id="reset" hidden>zurücksetzen</button></div>'+
     '<div class="cols"><section><h2>Zutaten</h2><div id="ings"></div>'+
     '<button class="btn cartadd" type="button" id="toCart"></button>'+
@@ -974,7 +1010,7 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSheet(); });
 let addDate=null, addCat='Alle', planFor=null;
 function renderPicker(){
   const q=$('#pq').value.trim(), words=norm(q).split(' ').filter(Boolean);
-  const hits=R.filter(r=>(addCat==='Alle'||r.cat===addCat||(addCat===FAV&&favs.has(r.id)))&&(!vegOnly||r.tags.includes('vegan'))&&(!words.length||matches(r,words))).sort((a,b)=>{ const ta=words.length&&words.every(w=>norm(a.title).includes(w)), tb=words.length&&words.every(w=>norm(b.title).includes(w)); return (tb-ta)||a.title.localeCompare(b.title,'de'); });
+  const hits=R.filter(r=>(addCat==='Alle'||r.cat===addCat||(addCat===FAV&&favs.has(r.id)))&&passF(r)&&(!words.length||matches(r,words))).sort((a,b)=>{ const ta=words.length&&words.every(w=>norm(a.title).includes(w)), tb=words.length&&words.every(w=>norm(b.title).includes(w)); return (tb-ta)||a.title.localeCompare(b.title,'de'); });
   $('#pcats').innerHTML=['Alle',FAV,...cats].map(c=>'<button type="button" aria-pressed="'+(c===addCat)+'" data-pcat="'+esc(c)+'">'+(c===FAV?'♥ ':'')+esc(c)+'</button>').join('');
   $('#plist').innerHTML=hits.length?hits.map(r=>'<button class="opt" type="button" data-prid="'+r.id+'"><span>'+esc(r.title)+(favs.has(r.id)?' <span style="color:#C2415B">♥</span>':'')+'</span><small>'+esc(r.cat)+'</small></button>').join(''):'<p class="lbl" style="padding:14px 0">Nichts gefunden.</p>';
 }
