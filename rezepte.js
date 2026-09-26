@@ -4887,5 +4887,722 @@ window.REZEPTE = [
    "Quesadilla in Stücke schneiden und mit der Guacamole servieren."
   ],
   "notes": []
+ },
+ {
+  "id": "bulgur-gemuese-pfanne",
+  "title": "Bulgur-Gemüse-Pfanne",
+  "cat": "Mittagessen",
+  "tags": [],
+  "servings": 2,
+  "unit": "Portionen",
+  "difficulty": null,
+  "prep": "30 min",
+  "time": "55 min",
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 150,
+      "u": "g",
+      "t": "Bulgur"
+     },
+     {
+      "m": 300,
+      "u": "ml",
+      "t": "Gemüsebrühe"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "mittelgroße Zwiebel, gewürfelt"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "rote Paprikaschote"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "kleine Aubergine"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "kleine Zucchini"
+     },
+     {
+      "m": 100,
+      "u": "g",
+      "t": "Schafskäse"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Tomatenmark"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "mittelgroße Knoblauchzehe"
+     },
+     {
+      "t": "Olivenöl"
+     },
+     {
+      "t": "Salz, Pfeffer (auch Kräutersalz)"
+     },
+     {
+      "t": "Paprikapulver"
+     },
+     {
+      "t": "Chilipulver (oder Cayennepfeffer bzw. Tabasco)"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Den Bulgur ca. 10 min in der Gemüsebrühe köcheln lassen.",
+   "Währenddessen das Gemüse putzen und zusammen mit dem Schafskäse mundgerecht würfeln.",
+   "Die Zwiebelwürfel in heißem Olivenöl anbraten. Dafür eignet sich auch das Öl von eingelegtem Schafskäse.",
+   "Das gewürfelte Gemüse dazugeben und 5–10 min braten.",
+   "Den Bulgur vom Herd nehmen. Das Wasser sollte jetzt aufgesogen sein. Bulgur unter das Gemüse mischen.",
+   "Mit Tomatenmark, Salz, Pfeffer, Paprikapulver und Chilipulver nach Belieben würzen. Das Tomatenmark gut untermischen, damit keine Klumpen bleiben. Die Knoblauchzehe hineinpressen.",
+   "Zuletzt den Schafskäse zugeben und nur kurz erwärmen, damit er nicht komplett schmilzt. Heiß servieren."
+  ],
+  "notes": [
+   "Schwierigkeit laut Vorlage: normal.",
+   "Durch die Brühe und den Schafskäse ist kaum noch Salz nötig.",
+   "Statt Bulgur gehen auch Kartoffeln: würfeln, kochen und dann zum Gemüse geben."
+  ]
+ },
+ {
+  "id": "teriyaki-tempeh-currygerste-pastinakenpueree",
+  "title": "Teriyaki-Tempeh und gebratener Brokkoli mit Currygerste an Pastinakenpüree",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": 4,
+  "unit": "Portionen",
+  "difficulty": null,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "title": "Pastinakenpüree",
+    "items": [
+     {
+      "m": 500,
+      "u": "g",
+      "t": "Pastinaken"
+     },
+     {
+      "m": 100,
+      "u": "g",
+      "t": "Margarine"
+     },
+     {
+      "m": 10,
+      "u": "g",
+      "t": "Salz"
+     },
+     {
+      "m": 100,
+      "u": "ml",
+      "t": "Gemüsebrühe"
+     }
+    ]
+   },
+   {
+    "title": "Gerste",
+    "items": [
+     {
+      "m": 300,
+      "u": "g",
+      "t": "Nacktgerste"
+     },
+     {
+      "m": 600,
+      "u": "ml",
+      "t": "Wasser"
+     },
+     {
+      "m": 10,
+      "u": "g",
+      "t": "Salz"
+     }
+    ]
+   },
+   {
+    "title": "Teriyaki-Tempeh",
+    "items": [
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Tempeh"
+     },
+     {
+      "m": 150,
+      "u": "ml",
+      "t": "Teriyaki-Sauce"
+     },
+     {
+      "t": "Bratöl zum Anbraten"
+     }
+    ]
+   },
+   {
+    "title": "Brokkoli",
+    "items": [
+     {
+      "m": 500,
+      "u": "g",
+      "t": "Brokkoli"
+     },
+     {
+      "t": "Bratöl zum Anbraten"
+     }
+    ]
+   },
+   {
+    "title": "Curry-Gewürzmischung",
+    "items": [
+     {
+      "m": 10,
+      "u": "g",
+      "t": "gemahlene Kurkuma"
+     },
+     {
+      "m": 5,
+      "u": "g",
+      "t": "Paprikapulver"
+     },
+     {
+      "m": 5,
+      "u": "g",
+      "t": "Bockshornkleesamen"
+     },
+     {
+      "m": 5,
+      "u": "g",
+      "t": "gemahlener Koriander"
+     },
+     {
+      "m": 5,
+      "u": "g",
+      "t": "gemahlener Ingwer"
+     },
+     {
+      "m": 2,
+      "u": "g",
+      "t": "gemahlener Kardamom"
+     },
+     {
+      "m": 2,
+      "u": "g",
+      "t": "gemahlener Galgant"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Für das Pastinakenpüree die Pastinaken waschen, schälen, klein schneiden und in einem mittelgroßen Topf in ausreichend Wasser ca. 20 min kochen.",
+   "Gleichzeitig die Gerste mit dem Wasser und dem Salz in einem Topf aufkochen und bei mittlerer Temperatur ca. 30 min köcheln lassen.",
+   "Den Tempeh in dünne Streifen schneiden und mit der Teriyaki-Sauce marinieren.",
+   "Den Brokkoli waschen und in Röschen teilen.",
+   "In einer Wokpfanne etwas Öl erhitzen und Tempeh und Brokkoli bei hoher Temperatur anbraten.",
+   "Die Pastinaken abgießen und mit der Margarine, dem Salz und etwas Gemüsebrühe im Mixer zu einem cremigen Püree mixen.",
+   "Für die Curry-Gewürzmischung alle Zutaten im Mixer oder Mörser gut vermischen. Die Gerste mit 1–2 TL der Currymischung würzen.",
+   "Das Pastinakenpüree auf tiefen Tellern anrichten, Currygerste und Tempeh daneben platzieren und den Brokkoli darüber verteilen."
+  ],
+  "notes": [
+   "Die Teriyaki-Sauce steht im Kochbuch auf S. 33, das Rezept fehlt hier noch. Ersatzweise geht die Teriyaki-Sauce aus dem Rezept „Rundkorn-Naturreis mit Schwarzkohl, Kürbis und Shiitakepilzen“ oder eine gekaufte.",
+   "Von der Curry-Gewürzmischung bleibt etwas übrig. Sie lässt sich gut in einem Schraubglas aufbewahren.",
+   "Statt Brokkoli gehen auch Flower Sprouts (Kreuzung aus Rosen- und Grünkohl)."
+  ]
+ },
+ {
+  "id": "rundkorn-naturreis-schwarzkohl-kuerbis-shiitake",
+  "title": "Rundkorn-Naturreis mit Schwarzkohl, Kürbis und Shiitakepilzen in Teriyaki-Sauce",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": 4,
+  "unit": "Portionen",
+  "difficulty": null,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "title": "Reis",
+    "items": [
+     {
+      "m": 250,
+      "u": "g",
+      "t": "Rundkorn-Naturreis"
+     },
+     {
+      "m": 500,
+      "u": "ml",
+      "t": "Wasser"
+     },
+     {
+      "t": "Salz"
+     }
+    ]
+   },
+   {
+    "title": "Teriyaki-Sauce",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "Zwiebel"
+     },
+     {
+      "m": 15,
+      "u": "g",
+      "t": "frischer Ingwer"
+     },
+     {
+      "m": 2,
+      "u": "",
+      "t": "Knoblauchzehen"
+     },
+     {
+      "m": 2,
+      "u": "g",
+      "t": "Kreuzkümmel"
+     },
+     {
+      "m": 2,
+      "u": "g",
+      "t": "Koriandersamen"
+     },
+     {
+      "m": 2,
+      "u": "g",
+      "t": "Pfeffer"
+     },
+     {
+      "m": 30,
+      "u": "g",
+      "t": "Zucker"
+     },
+     {
+      "m": 100,
+      "u": "ml",
+      "t": "Sojasauce (Tamari)"
+     },
+     {
+      "m": 200,
+      "u": "ml",
+      "t": "Wasser"
+     },
+     {
+      "t": "Stärke zum Binden"
+     }
+    ]
+   },
+   {
+    "title": "Gemüse",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "Hokkaidokürbis (ca. 1 kg)"
+     },
+     {
+      "m": 150,
+      "u": "g",
+      "t": "Shiitakepilze"
+     },
+     {
+      "m": 250,
+      "u": "g",
+      "t": "Schwarzkohl"
+     }
+    ]
+   },
+   {
+    "title": "Außerdem",
+    "items": [
+     {
+      "t": "Bratöl zum Anbraten"
+     },
+     {
+      "t": "Koriander, frisch, zum Anrichten"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Den Reis mit dem Wasser und etwas Salz in einem mittelgroßen Topf ca. 40 min garen.",
+   "Für die Teriyaki-Sauce Zwiebel, Ingwer und Knoblauch schälen und sehr fein würfeln.",
+   "In einem Topf etwas Bratöl erhitzen und Zwiebel, Ingwer und Knoblauch mit den Gewürzen darin anbraten.",
+   "Sobald die Zwiebeln glasig sind, mit Sojasauce und Wasser ablöschen und bei mittlerer Temperatur ca. 20 min köcheln lassen.",
+   "Die Sauce nach Belieben durch ein Sieb passieren. Zum Schluss mit etwas in Wasser angerührter Stärke binden.",
+   "Den Kürbis waschen, halbieren, die Kerne mit einem Löffel entfernen und das Fruchtfleisch in Würfel (2 × 2 cm) schneiden.",
+   "Die Kürbiswürfel in einer großen Pfanne in etwas heißem Bratöl ca. 20 min anbraten.",
+   "Shiitakepilze und Schwarzkohl putzen, waschen, klein schneiden und nach und nach mit etwas Teriyaki-Sauce zum Kürbis geben.",
+   "Den Reis mit einem Servierring auf die Teller geben. Das Gemüse darauf verteilen und zum Schluss die Sauce darübergießen. Mit frisch gehacktem Koriander garnieren."
+  ],
+  "notes": [
+   "Der Zucker steht in der Zutatenliste, in der Anleitung aber nicht. Am besten mit der Sojasauce in die Sauce geben."
+  ]
+ },
+ {
+  "id": "quinoa-bratlinge-kartoffelpueree-feldsalat",
+  "title": "Quinoa-Bratlinge mit Kartoffelpüree, Feldsalat und Joghurtdressing",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": 4,
+  "unit": "Portionen",
+  "difficulty": null,
+  "prep": null,
+  "time": null,
+  "groups": [
+   {
+    "title": "Kartoffelpüree",
+    "items": [
+     {
+      "m": 1,
+      "u": "kg",
+      "t": "mehligkochende Kartoffeln"
+     },
+     {
+      "m": 2,
+      "u": "l",
+      "t": "Wasser"
+     },
+     {
+      "m": 15,
+      "u": "g",
+      "t": "Salz"
+     },
+     {
+      "m": 250,
+      "u": "ml",
+      "t": "Sojadrink"
+     },
+     {
+      "m": 2,
+      "u": "g",
+      "t": "frisch gemahlener Pfeffer"
+     },
+     {
+      "t": "frisch geriebene Muskatnuss, nach Belieben"
+     },
+     {
+      "m": 150,
+      "u": "g",
+      "t": "Margarine"
+     }
+    ]
+   },
+   {
+    "title": "Quinoa-Bratlinge",
+    "items": [
+     {
+      "m": 100,
+      "u": "g",
+      "t": "Quinoa"
+     },
+     {
+      "m": 220,
+      "u": "ml",
+      "t": "Wasser"
+     },
+     {
+      "m": 5,
+      "u": "g",
+      "t": "Salz"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "rote Zwiebel"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "rote Paprikaschote"
+     },
+     {
+      "m": 2,
+      "u": "g",
+      "t": "gerebelter Oregano"
+     },
+     {
+      "m": 1,
+      "u": "g",
+      "t": "gemahlener Kreuzkümmel"
+     },
+     {
+      "m": 30,
+      "u": "g",
+      "t": "Buchweizenmehl"
+     },
+     {
+      "m": 50,
+      "u": "ml",
+      "t": "Bratöl"
+     }
+    ]
+   },
+   {
+    "title": "Salat",
+    "items": [
+     {
+      "m": 150,
+      "u": "g",
+      "t": "Feldsalat"
+     }
+    ]
+   },
+   {
+    "title": "Joghurtdressing",
+    "items": [
+     {
+      "m": 200,
+      "u": "ml",
+      "t": "Sojajoghurt"
+     },
+     {
+      "m": 15,
+      "u": "ml",
+      "t": "Apfelessig"
+     },
+     {
+      "m": 20,
+      "u": "g",
+      "t": "mittelscharfer Senf"
+     },
+     {
+      "m": 30,
+      "u": "ml",
+      "t": "natives Rapsöl"
+     },
+     {
+      "m": 10,
+      "u": "g",
+      "t": "Zucker"
+     },
+     {
+      "m": 5,
+      "u": "g",
+      "t": "Salz"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Für das Kartoffelpüree die Kartoffeln waschen, schälen und vierteln. In ausreichend kochendem Salzwasser ca. 25 min kochen.",
+   "Die Kartoffeln noch warm mit Sojadrink, Pfeffer, Muskatnuss und Margarine in einer Küchenmaschine zu einem feinen Püree verarbeiten. Bis zum Servieren warm halten.",
+   "Für die Bratlinge die Quinoa mit gesalzenem Wasser in einem Topf aufkochen und 20 min köcheln lassen. Abgießen, in eine große Schüssel geben und abkühlen lassen.",
+   "Die Zwiebel schälen und fein würfeln. Die Paprika putzen, waschen, entkernen, von den Innenhäuten befreien und ebenfalls fein würfeln.",
+   "Zwiebel- und Paprikawürfel mit den Gewürzen und dem Buchweizenmehl zur Quinoa geben und mit den Händen verkneten.",
+   "Aus der Masse Bratlinge formen und in einer heißen, beschichteten Pfanne mit ausreichend Bratöl ausbraten.",
+   "Den Feldsalat putzen, waschen und trocken schleudern.",
+   "Für das Joghurtdressing alle Zutaten in einen Mixbecher geben und vermischen.",
+   "Zum Anrichten das Kartoffelpüree mit einem Löffel kreisförmig auf den Tellern verteilen. Den Salat mit dem Dressing mischen und mittig auf das Püree setzen. Zum Schluss die Quinoa-Bratlinge auf dem Salat anrichten."
+  ],
+  "notes": []
+ },
+ {
+  "id": "hummusteller-rosenkohl-falafel",
+  "title": "Hummusteller mit karamellisiertem Rosenkohl und Falafel",
+  "cat": "Mittagessen",
+  "tags": [
+   "vegan"
+  ],
+  "servings": 4,
+  "unit": "Portionen",
+  "difficulty": null,
+  "prep": "8 h Einweichen",
+  "time": null,
+  "groups": [
+   {
+    "title": "Hummus",
+    "items": [
+     {
+      "m": 200,
+      "u": "g",
+      "t": "getrocknete Kichererbsen"
+     },
+     {
+      "m": 20,
+      "u": "g",
+      "t": "Salz"
+     },
+     {
+      "m": 2,
+      "u": "",
+      "t": "Knoblauchzehen"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "weiße Tahina"
+     },
+     {
+      "m": 50,
+      "u": "ml",
+      "t": "natives Rapsöl"
+     },
+     {
+      "m": 50,
+      "u": "ml",
+      "t": "Wasser"
+     },
+     {
+      "m": 3,
+      "u": "g",
+      "t": "Kreuzkümmel"
+     }
+    ]
+   },
+   {
+    "title": "Pitabrot",
+    "items": [
+     {
+      "m": 15,
+      "u": "g",
+      "t": "frische Hefe"
+     },
+     {
+      "m": 125,
+      "u": "ml",
+      "t": "Wasser (Zimmertemperatur)"
+     },
+     {
+      "m": 250,
+      "u": "g",
+      "t": "Dinkelmehl (Type 630)"
+     },
+     {
+      "m": 5,
+      "u": "g",
+      "t": "Salz"
+     },
+     {
+      "m": 5,
+      "u": "g",
+      "t": "Zucker"
+     }
+    ]
+   },
+   {
+    "title": "Falafel",
+    "items": [
+     {
+      "m": 250,
+      "u": "g",
+      "t": "getrocknete Kichererbsen"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Zwiebel"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Knoblauchzehe"
+     },
+     {
+      "m": 1,
+      "u": "Bund",
+      "t": "Petersilie"
+     },
+     {
+      "m": 1,
+      "u": "Bund",
+      "t": "Koriander"
+     },
+     {
+      "m": 10,
+      "u": "g",
+      "t": "Salz"
+     },
+     {
+      "m": 30,
+      "u": "g",
+      "t": "Buchweizenmehl"
+     },
+     {
+      "m": 50,
+      "u": "ml",
+      "t": "Bratöl"
+     }
+    ]
+   },
+   {
+    "title": "Rosenkohl",
+    "items": [
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Rosenkohl"
+     },
+     {
+      "m": 30,
+      "u": "g",
+      "t": "Margarine"
+     },
+     {
+      "m": 5,
+      "u": "g",
+      "t": "Salz"
+     },
+     {
+      "m": 10,
+      "u": "g",
+      "t": "Zucker"
+     }
+    ]
+   },
+   {
+    "title": "Anrichten",
+    "items": [
+     {
+      "t": "natives Rapsöl"
+     },
+     {
+      "t": "Paprikapulver"
+     }
+    ]
+   },
+   {
+    "title": "Außerdem",
+    "items": [
+     {
+      "t": "Weizenmehl für die Arbeitsfläche"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Die Kichererbsen für Hummus und Falafel über Nacht, mindestens 8 Stunden, in Wasser einweichen.",
+   "Am nächsten Tag die Kichererbsen für den Hummus in reichlich Wasser mindestens 1 Stunde weich kochen. Erst gegen Ende der Garzeit etwas Salz zugeben, sonst dauert das Garen länger.",
+   "Für den Hummus den Knoblauch schälen und grob zerkleinern. Die gekochten Kichererbsen mit Knoblauch, Tahina, Rapsöl, Wasser, Salz und Kreuzkümmel in einem leistungsstarken Mixer oder einer Küchenmaschine cremig pürieren.",
+   "Für das Pitabrot die Hefe im Wasser auflösen. Dinkelmehl, Hefewasser, Salz und Zucker mit den Händen zu einem glatten Teig kneten. Abgedeckt bei Zimmertemperatur ca. 1 Stunde gehen lassen, bis sich das Volumen etwa verdoppelt hat.",
+   "Für die Falafel Zwiebel und Knoblauch schälen und grob zerkleinern. Kräuter waschen, trocken schütteln und die Blättchen abzupfen.",
+   "Koriander, Petersilie, Knoblauch, Zwiebel, die eingeweichten Kichererbsen und Salz in der Küchenmaschine ca. 3 min zerkleinern. Mit dem Buchweizenmehl zu einem griffigen Teig vermischen.",
+   "Das Öl in einer Pfanne erhitzen. Mit den Händen kleine Bällchen formen und rundum knusprig braten.",
+   "Den Rosenkohl waschen, äußere welke Blätter und die trockene Schnittfläche entfernen und vierteln. Die Margarine in einer Pfanne schmelzen und den Rosenkohl darin mit Salz und Zucker weich schmoren.",
+   "Den Backofen auf 250 °C Umluft vorheizen.",
+   "Den Hefeteig in 4 Portionen teilen und auf einer bemehlten Arbeitsfläche dünn ausrollen. Die Fladen auf ein mit Backpapier ausgelegtes Blech legen und 5 min backen.",
+   "Zum Anrichten den Hummus auf die Teller geben, den Rosenkohl mittig darauf setzen und die Falafel darauflegen. Mit etwas Rapsöl und Paprikapulver garnieren. Die Pitabrote dazulegen oder separat reichen."
+  ],
+  "notes": [
+   "Die Kichererbsen am Vortag einweichen.",
+   "Für den Hummus gehen auch vorgegarte Kichererbsen aus Dose oder Glas.",
+   "Die Falafel-Kichererbsen werden nur eingeweicht, nicht gekocht."
+  ]
  }
 ];
