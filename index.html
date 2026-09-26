@@ -864,6 +864,42 @@ body.hasact.actoff .toast{bottom:calc(20px + var(--tb) + var(--cbh,0px) + env(sa
 /* Seitentitel: eine Zeile, auch auf kleinen Handys */
 .head{padding-top:10px}
 .head h1,.stitle,.wtitle{font-size:clamp(25px,7.6vw,30px);line-height:1.1;white-space:nowrap}
+
+/* ===== Runde 6: Filter, kompakte Zutaten, eigene Notizen ===== */
+/* Filterzeile: getrennt von den Kategorien */
+.fchips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 0 10px;padding:2px 0}
+.fchips::-webkit-scrollbar{display:none}
+.fchip{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 12px;border:1.5px solid var(--rule);border-radius:18px;background:var(--sheet);color:var(--ink);font:600 14px/1 var(--ui);cursor:pointer}
+.fchip svg{width:15px;height:15px;display:none}
+.fchip[aria-pressed="true"]{background:var(--pen);border-color:var(--pen);color:#FFFFFF}
+.fchip[aria-pressed="true"] svg{display:block}
+.fchip.fendo{border-color:var(--endo-soft);background:var(--endo-soft);color:#7A3560}
+.fchip.fendo[aria-pressed="true"]{background:var(--endo);border-color:var(--endo);color:#FFFFFF}
+.tabs{margin-bottom:4px}
+/* Zutaten: eine Karte je Gruppe statt einer Karte je Zutat */
+.ing{display:block;background:var(--sheet);border-radius:18px;box-shadow:var(--cardsh);padding:0 14px}
+.ing li{background:none;border-radius:0;padding:0;border-bottom:1px solid var(--rule)}
+.ing li:last-child{border-bottom:0}
+.ing label{min-height:44px;padding:9px 0;gap:12px;font-size:16px;line-height:1.35}
+.ing input{width:20px!important;height:20px!important;border-radius:6px!important}
+.ing+.ing{margin-top:10px}
+#bs .ing{box-shadow:none;background:transparent;padding:0}
+/* Eigene Notiz zum Rezept */
+.mynote{margin-top:22px}
+.mn-add{width:100%;min-height:48px;border:1.5px dashed #C9BFA9;border-radius:18px;background:transparent;color:var(--ink);font:600 15px var(--ui);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.mn-add svg{width:18px;height:18px}
+.mn-box{background:#FFF7DE;border-radius:18px;padding:12px 16px 12px;box-shadow:var(--cardsh)}
+.mn-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.mn-head b{font:600 1.15rem/1.2 var(--hand)}
+.mn-head .linkbtn{font-weight:700;text-decoration:none}
+.mn-text{margin:6px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.mn-meta{display:block;margin-top:6px;color:var(--muted);font-size:12.5px}
+.mn-edit textarea{width:100%;min-height:110px;font:inherit;font-size:16px;line-height:1.45;padding:10px 12px;border:1.5px solid var(--pen);border-radius:14px;background:var(--sheet);color:var(--ink);resize:vertical}
+.mn-btns{display:flex;gap:8px;margin-top:8px}
+.mn-btns .primary{flex:1;justify-content:center}
+body.noting .actbar{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mn-box{background:var(--sheet)}}
+:root[data-theme="dark"] .mn-box{background:var(--sheet)}
 </style>
 
 </head>
@@ -878,6 +914,7 @@ body.hasact.actoff .toast{bottom:calc(20px + var(--tb) + var(--cbh,0px) + env(sa
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
       <input id="q" type="search" placeholder="Zutat, Gericht, Idee …" autocomplete="off" aria-label="Rezept oder Zutat suchen">
     </div>
+    <div class="fchips" id="filters" role="group" aria-label="Filter"></div>
     <nav class="tabs" id="tabs" aria-label="Kategorien"></nav>
     <h2 class="favhead" id="favhead" hidden>♥ Deine Favoriten</h2>
     <p class="count" id="count" hidden></p>
@@ -927,9 +964,16 @@ function loadSet(k){ try{ return JSON.parse(localStorage.getItem(k)||'[]'); }cat
 function saveArr(k,a){ try{ localStorage.setItem(k,JSON.stringify(a)); }catch(e){} }
 let favs=new Set(loadSet('rz-favs'));
 let endoOnly=false; try{ endoOnly=localStorage.getItem('rz-endo')==='1'; }catch(e){}
+// Weitere Filter auf der Startseite: vegan, schnell (bis 30 min), leicht
+let flt={vegan:false,quick:false,easy:false}; try{ flt=Object.assign(flt,JSON.parse(localStorage.getItem('rz-filter')||'{}')); }catch(e){}
+function saveFlt(){ try{ localStorage.setItem('rz-filter',JSON.stringify(flt)); localStorage.setItem('rz-endo',endoOnly?'1':'0'); }catch(e){} }
 const ENDO_ORDER={ja:0,anpassbar:1,nein:2};
 function endoSt(r){ return r.endo ? r.endo.status : 'nein'; }
-function passF(r){ return !endoOnly||endoSt(r)!=='nein'; }
+// passE: nur Endo (Auswahlfenster im Wochenplan), passF: alle Filter der Startseite
+function passE(r){ return !endoOnly||endoSt(r)!=='nein'; }
+function passF(r){ return passE(r) && (!flt.vegan||r.tags.includes('vegan')) && (!flt.quick||(r.min&&r.min<=30)) && (!flt.easy||r.difficulty===1); }
+function anyFlt(){ return endoOnly||flt.vegan||flt.quick||flt.easy; }
+function fltLabels(){ return [endoOnly?'endo-freundlich':'', flt.vegan?'vegan':'', flt.quick?'bis 30 min':'', flt.easy?'leicht':''].filter(Boolean); }
 const PLUS={omega3:'Omega-3',ballaststoffe:'Ballaststoffe',entzuendung:'Entzündungshemmende Zutaten'};
 function endoTag(r){ const s=endoSt(r); return s==='ja'?'<span class="tag endo">endo</span>':(s==='anpassbar'?'<span class="tag endo tipp">endo + Tipp</span>':''); }
 function endoBox(r){
@@ -947,7 +991,11 @@ function endoBox(r){
     '<small>Pluspunkte: Omega-3 (z. B. Chia, Leinsamen, Rapsöl, Walnüsse), Ballaststoffe (Hülsenfrüchte, Vollkorn, Nüsse), entzündungshemmende Zutaten (Ingwer, Kurkuma, Blattgemüse, Kohl, Beeren). Einordnung nach aktuellem Forschungsstand, ersetzt keine ärztliche Beratung.</small></details></div>';
 }
 try{ localStorage.removeItem('rz-recent'); }catch(e){}
-function toggleFav(id){ favs.has(id)?favs.delete(id):favs.add(id); saveArr('rz-favs',[...favs]); }
+// Eigene Notizen je Rezept: {rid: {text, t}}. Bei gemeinsamer Liste zusätzlich in Firebase (wie die Favoriten).
+let notes={}; try{ notes=JSON.parse(localStorage.getItem('rz-notizen')||'{}')||{}; }catch(e){ notes={}; }
+function saveNotes(){ try{ localStorage.setItem('rz-notizen',JSON.stringify(notes)); }catch(e){} }
+function toggleFav(id){ const on=!favs.has(id); on?favs.add(id):favs.delete(id); saveArr('rz-favs',[...favs]);
+  pushExtra('fav_'+id, on?{kind:'fav',rid:id,t:Date.now()}:null); }
 function setCat(c){ cat=c; try{localStorage.setItem('rz-cat',cat)}catch(_){} renderTabs(); renderList(); if(typeof renderToday==='function') renderToday(); }
 
 /* Suche: unempfindlich gegen Umlaute, doppelte Buchstaben und kleine Tippfehler */
@@ -1026,25 +1074,26 @@ function isEst(r,k){ return (r.est||[]).includes(k); }
 function renderTabs(){
   $('#tabs').hidden = cat===FAV;
   $('#favhead').hidden = cat!==FAV;
-  $('#tabs').innerHTML = '<button class="tab endotab" type="button" id="endoF" aria-pressed="'+endoOnly+'">🎗️ Endo</button>'+['Alle',...cats].map(c=>'<button class="tab" type="button" aria-pressed="'+(c===cat)+'" data-c="'+esc(c)+'"'+(c==='Alle'?'':' style="--cc:'+cc(c)+'"')+'>'+esc(c)+'</button>').join('');
+  renderFilters();
+  $('#tabs').innerHTML = ['Alle',...cats].map(c=>'<button class="tab" type="button" aria-pressed="'+(c===cat)+'" data-c="'+esc(c)+'"'+(c==='Alle'?'':' style="--cc:'+cc(c)+'"')+'>'+esc(c)+'</button>').join('');
   requestAnimationFrame(fadeTabs); const on=$('#tabs [aria-pressed="true"]'); if(on && on.scrollIntoView) on.scrollIntoView({block:'nearest',inline:'nearest'});
 }
 function renderList(){
   const q = $('#q').value.trim(), words = norm(q).split(' ').filter(Boolean);
   const hits = R.filter(r=>(cat==='Alle'||r.cat===cat||(cat===FAV&&favs.has(r.id))) && passF(r) && (!words.length || matches(r,words)));
-  if($('#endoF')) $('#endoF').setAttribute('aria-pressed',endoOnly);
-  const fl=endoOnly?'endo-freundlich':'';
+  renderFilters();
+  const fls=fltLabels(), fl=fls.join(', ');
   // Trefferzahl nur zeigen, wenn gesucht oder gefiltert wird
-  const filtered = !!q || endoOnly || (cat!=='Alle' && cat!==FAV);
+  const filtered = !!q || anyFlt() || (cat!=='Alle' && cat!==FAV);
   if(filtered && hits.length){
     const tip=endoOnly?hits.filter(r=>endoSt(r)==='anpassbar').length:0;
-    $('#count').innerHTML='<span>'+(cat===FAV?hits.length+(hits.length===1?' Favorit':' Favoriten'):hits.length+(endoOnly&&!q?'':(hits.length===1?' Rezept':' Rezepte')))+
+    $('#count').innerHTML='<span>'+hits.length+(cat===FAV?(hits.length===1?' Favorit':' Favoriten'):(hits.length===1?' Rezept':' Rezepte'))+
       (q?' für „'+esc(q)+'“':'')+(cat!=='Alle'&&cat!==FAV&&q?' in '+esc(cat):'')+
-      (endoOnly?(q?' · endo':' endo-freundlich')+(tip?' · '+tip+' mit Tipp':''):'')+'</span>'+
+      (fls.length?' · '+esc(fls.join(' · ')):'')+(tip?' · '+tip+' mit Endo-Tipp':'')+'</span>'+
       '<button type="button" class="linkbtn" id="resetF">'+(cat===FAV?'Zurücksetzen':'Alle zeigen')+'</button>';
     $('#count').hidden=false;
   } else $('#count').hidden=true;
-  if(!hits.length){ $('#groups').innerHTML='<p class="empty">'+(cat===FAV && !words.length ? 'Noch keine Favoriten. Öffne ein Rezept und tippe oben auf das Herz ♡.' : (q?'Kein Rezept passt zu „'+esc(q)+'“':'Keine Rezepte')+(cat!=='Alle'?' in „'+esc(cat)+'“':'')+(fl?' ('+fl+')':'')+'.'+(q?' Versuch es mit einer Zutat, z. B. „Pilze“.':''))+'</p>'; return; }
+  if(!hits.length){ $('#groups').innerHTML='<p class="empty">'+(cat===FAV && !words.length ? 'Noch keine Favoriten. Öffne ein Rezept und tippe oben auf das Herz ♡.' : (q?'Kein Rezept passt zu „'+esc(q)+'“':'Keine Rezepte')+(cat!=='Alle'&&cat!==FAV?' in „'+esc(cat)+'“':'')+(fl?' ('+esc(fl)+')':'')+'.'+(q?' Versuch es mit einer Zutat, z. B. „Pilze“.':'')+(anyFlt()?' <button type="button" class="linkbtn" data-fclear>Filter aufheben</button>':''))+'</p>'; return; }
   $('#groups').innerHTML = cats.filter(c=>hits.some(r=>r.cat===c)).map(c=>
     '<section class="group" style="--cc:'+cc(c)+'"><h2 class="lbl" style="--cc:'+cc(c)+'">'+esc(c)+'</h2><ul class="list">'+
     hits.filter(r=>r.cat===c).sort((a,b)=>(endoOnly?ENDO_ORDER[endoSt(a)]-ENDO_ORDER[endoSt(b)]:0)||a.title.localeCompare(b.title,'de')).map(r=>{
@@ -1055,12 +1104,23 @@ function renderList(){
 }
 function fadeTabs(){ const t=$('#tabs'); if(!t) return; const m=t.scrollWidth-t.clientWidth; t.classList.toggle('fl',t.scrollLeft>4); t.classList.toggle('fr',m-t.scrollLeft>4); }
 $('#tabs').addEventListener('scroll',fadeTabs,{passive:true}); window.addEventListener('resize',fadeTabs);
-$('#tabs').addEventListener('click',e=>{ if(e.target.closest('#endoF')){ endoOnly=!endoOnly; try{ localStorage.setItem('rz-endo',endoOnly?'1':'0'); }catch(_){} renderTabs(); renderList(); return; }
-  const b=e.target.closest('.tab'); if(!b) return; setCat(b.dataset.c); updateNav();});
+$('#tabs').addEventListener('click',e=>{ const b=e.target.closest('.tab'); if(!b) return; setCat(b.dataset.c); updateNav();});
+/* Filterzeile */
+const CHK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
+function renderFilters(){
+  const f=$('#filters'); if(!f) return;
+  const n=k=>R.filter(r=>k==='endo'?endoSt(r)!=='nein':k==='vegan'?r.tags.includes('vegan'):k==='quick'?(r.min&&r.min<=30):r.difficulty===1).length;
+  const chip=(k,on,label,extra)=>'<button type="button" class="fchip'+(extra||'')+'" data-f="'+k+'" aria-pressed="'+on+'" title="'+n(k)+' Rezepte">'+CHK+label+'</button>';
+  f.innerHTML=chip('endo',endoOnly,'🎗️ Endo',' fendo')+chip('vegan',flt.vegan,'vegan')+chip('quick',flt.quick,'bis 30 min')+chip('easy',flt.easy,'leicht');
+}
+function toggleFlt(k){ if(k==='endo') endoOnly=!endoOnly; else flt[k]=!flt[k]; saveFlt(); renderList(); }
+function clearFlt(){ endoOnly=false; flt={vegan:false,quick:false,easy:false}; saveFlt(); }
+$('#filters').addEventListener('click',e=>{ const b=e.target.closest('[data-f]'); if(b) toggleFlt(b.dataset.f); });
+$('#groups').addEventListener('click',e=>{ if(e.target.closest('[data-fclear]')){ clearFlt(); renderList(); } });
 
 $('#q').addEventListener('input',renderList);
 $('#count').addEventListener('click',e=>{ if(!e.target.closest('#resetF')) return;
-  $('#q').value=''; endoOnly=false; try{ localStorage.setItem('rz-endo','0'); }catch(_){}
+  $('#q').value=''; clearFlt();
   setCat(cat===FAV?FAV:'Alle'); updateNav(); });
 $('#groups').addEventListener('click',e=>{const b=e.target.closest('.row'); if(b) location.hash=b.dataset.id;});
 
@@ -1102,9 +1162,41 @@ function renderDetail(r){
     '<p class="addnote" id="addnote" hidden></p></section>'+
     '<section><div class="stephead"><h2>Zubereitung</h2></div><ol class="steps" id="steps">'+r.steps.map((s,i)=>'<li'+(ses&&ses.done.includes(i)?' class="done"':'')+'><span>'+stepHtml(s,i,r.id)+'</span></li>').join('')+'</ol>'+
     (r.notes.length?'<div class="notes"><span class="nh">Notizen</span>'+r.notes.map(n=>'<p>'+esc(n)+'</p>').join('')+'</div>':'')+
+    '<div class="mynote" id="mynote"></div>'+
     endoBox(r)+'</section></div></div>'+
     '<div class="actbar" id="actbar"><button class="ab-cart" type="button" id="abCart" aria-label="Zutaten auf die Einkaufsliste">'+IC.cart+'<i class="abok" aria-hidden="true">✓</i></button><button class="ab-cook" type="button" id="cookBtn">Jetzt kochen</button></div>';
-  renderIngs(); renderCartBtn(); renderCookBtn(); renderTimers();
+  noteEdit=false; document.body.classList.remove('noting');
+  renderIngs(); renderCartBtn(); renderCookBtn(); renderTimers(); renderMyNote();
+}
+/* Eigene Notiz im Rezept */
+let noteEdit=false;
+const PEN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/></svg>';
+function fmtDay(t){ const d=new Date(t), td=today0(); d.setHours(0,0,0,0); const n=Math.round((td-d)/864e5); return n===0?'heute':n===1?'gestern':fmtDM(new Date(t)); }
+function renderMyNote(){
+  const el=$('#mynote'); if(!el||!cur) return;
+  const n=notes[cur.id], shared=!!listId && xState==='online';
+  document.body.classList.toggle('noting',noteEdit);
+  if(noteEdit){
+    el.innerHTML='<div class="mn-edit"><textarea id="mnIn" aria-label="Eigene Notiz zum Rezept" placeholder="z. B. Beim nächsten Mal mehr Knoblauch. 20 min im Ofen reichen.">'+esc(n?n.text:'')+'</textarea>'+
+      '<div class="mn-btns"><button class="btn primary" type="button" data-mn="save">Speichern</button><button class="btn" type="button" data-mn="cancel">Abbrechen</button></div></div>';
+    return;
+  }
+  if(!n||!n.text){ el.innerHTML='<button type="button" class="mn-add" data-mn="edit">'+PEN+'Eigene Notiz hinzufügen</button>'; return; }
+  const where = listId ? (xState==='denied'?' · nur auf diesem Gerät gespeichert':shared?' · für alle mit der gemeinsamen Liste':'') : '';
+  el.innerHTML='<div class="mn-box"><div class="mn-head"><b>'+(shared?'Eure Notiz':'Eigene Notiz')+'</b><button type="button" class="linkbtn" data-mn="edit">Bearbeiten</button></div>'+
+    '<p class="mn-text">'+esc(n.text)+'</p><small class="mn-meta">Geändert '+fmtDay(n.t||Date.now())+where+'</small></div>';
+}
+function noteAction(a){
+  const r=cur; if(!r) return;
+  if(a==='edit'){ noteEdit=true; renderMyNote(); const ta=$('#mnIn'); if(ta){ ta.focus(); ta.setSelectionRange(ta.value.length,ta.value.length); ta.scrollIntoView({block:'center',behavior:'smooth'}); } return; }
+  if(a==='cancel'){ noteEdit=false; renderMyNote(); return; }
+  if(a==='save'){
+    const v=($('#mnIn')||{value:''}).value.trim(), had=!!(notes[r.id]&&notes[r.id].text);
+    if(v) notes[r.id]={text:v,t:Date.now()}; else delete notes[r.id];
+    saveNotes(); pushExtra('note_'+r.id, v?{kind:'note',rid:r.id,text:v,t:notes[r.id].t}:null);
+    noteEdit=false; renderMyNote();
+    if(v||had) toast(v?'Notiz gespeichert.':'Notiz gelöscht.');
+  }
 }
 function renderCartBtn(){
   const on = cur && shop.items.some(i=>i.parts.some(p=>p.rid===cur.id));
@@ -1147,6 +1239,7 @@ $('#detail').addEventListener('click',e=>{
   const t=e.target;
   if(t.closest('#back')){ goBack(); return; }
   if(t.closest('#wake')){ toggleWake(); return; }
+  const mn=t.closest('[data-mn]'); if(mn){ noteAction(mn.dataset.mn); return; }
   const r=cur; if(!r) return;
   if(t.closest('#planBtn')){ openPlanFor(r,amount); return; }
   if(t.closest('#favBtn')){ toggleFav(r.id); const b=$('#favBtn'); b.setAttribute('aria-pressed',favs.has(r.id));
@@ -1444,6 +1537,9 @@ async function connect(id,uploadLocal){
   if(listId!==id) return;
   if(uploadLocal && shop.items.length) commit(shop.items,[]);
   if(uploadLocal && plan.length) commitPlan(plan,[]);
+  // Favoriten und Notizen: beim ersten Verbinden dieses Geräts mit dieser Liste die eigenen dazulegen
+  let xDone=null; try{ xDone=localStorage.getItem(XK); }catch(e){}
+  listenExtras(uploadLocal || xDone!==id);
   if(unsub) unsub();
   unsub=col().onSnapshot({includeMetadataChanges:true}, snap=>{
     const docs=snap.docs.map(d=>Object.assign({},d.data(),{id:d.id}));
@@ -1453,8 +1549,41 @@ async function connect(id,uploadLocal){
     saveLocal(); refresh();
   }, err=>{ sync={state:'error',msg:(err&&err.code)||'Fehler'}; refresh(); });
 }
+/* Favoriten und Notizen gemeinsam: eigene Sammlung „extras“ neben den Einträgen,
+   damit ältere Fassungen der App sie nicht für Einkaufs-Einträge halten */
+const XK='rz-extras-liste';
+let unsubX=null, xState='local';        // local | online | denied | error
+function xcol(){ return db.collection('listen').doc(listId).collection('extras'); }
+function xFail(err){ console.warn(err); xState = err && err.code==='permission-denied' ? 'denied' : 'error'; refreshX(); }
+function pushExtra(docId,data){
+  if(!(listId && db) || xState==='denied') return;
+  const d=xcol().doc(docId); (data ? d.set(data) : d.delete()).catch(xFail);
+}
+function listenExtras(upload){
+  if(unsubX) unsubX(); unsubX=null;
+  const id=listId;
+  const go=()=>{ if(listId!==id) return;
+    unsubX=xcol().onSnapshot({includeMetadataChanges:false}, snap=>{
+      if(snap.empty && snap.metadata.fromCache) return;   // noch nichts vom Server: lokale Favoriten behalten
+      const nf=new Set(), nn={};
+      snap.docs.forEach(d=>{ const x=d.data()||{}; if(!x.rid) return;
+        if(x.kind==='fav') nf.add(x.rid); else if(x.kind==='note' && x.text) nn[x.rid]={text:String(x.text),t:x.t||0}; });
+      favs=nf; notes=nn; saveArr('rz-favs',[...favs]); saveNotes();
+      xState='online'; refreshX();
+    }, xFail); };
+  if(!upload){ go(); return; }
+  const b=db.batch(), c=xcol();
+  favs.forEach(rid=>b.set(c.doc('fav_'+rid),{kind:'fav',rid:rid,t:Date.now()}));
+  Object.keys(notes).forEach(rid=>{ const n=notes[rid]; if(n && n.text) b.set(c.doc('note_'+rid),{kind:'note',rid:rid,text:n.text,t:n.t||Date.now()}); });
+  b.commit().then(()=>{ try{ localStorage.setItem(XK,id); }catch(e){} go(); }, err=>{ xFail(err); if(xState!=='denied') go(); });
+}
+function refreshX(){
+  if(!$('#detail').hidden && cur){ const fb=$('#favBtn'); if(fb) fb.setAttribute('aria-pressed',favs.has(cur.id)); if(!noteEdit) renderMyNote(); }
+  if(!$('#home').hidden) renderList();
+}
 function disconnect(){
   if(unsub) unsub(); unsub=null; listId=null;
+  if(unsubX) unsubX(); unsubX=null; xState='local';
   try{ localStorage.removeItem(LK); }catch(e){}
   sync={state:'local'}; saveLocal(); refresh();
 }
@@ -1845,7 +1974,7 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSheet(); });
 let addDate=null, addCat='Alle', planFor=null;
 function renderPicker(){
   const q=$('#pq').value.trim(), words=norm(q).split(' ').filter(Boolean);
-  const hits=R.filter(r=>(addCat==='Alle'||r.cat===addCat||(addCat===FAV&&favs.has(r.id)))&&passF(r)&&(!words.length||matches(r,words))).sort((a,b)=>{ const ta=words.length&&words.every(w=>norm(a.title).includes(w)), tb=words.length&&words.every(w=>norm(b.title).includes(w)); return (tb-ta)||a.title.localeCompare(b.title,'de'); });
+  const hits=R.filter(r=>(addCat==='Alle'||r.cat===addCat||(addCat===FAV&&favs.has(r.id)))&&passE(r)&&(!words.length||matches(r,words))).sort((a,b)=>{ const ta=words.length&&words.every(w=>norm(a.title).includes(w)), tb=words.length&&words.every(w=>norm(b.title).includes(w)); return (tb-ta)||a.title.localeCompare(b.title,'de'); });
   const dayEs=plan.filter(e=>e.date===addDate&&e.rid), onIds=new Set(dayEs.map(e=>e.rid));
   $('#pday').innerHTML='<span class="lbl">Geplant</span>'+(dayEs.length?dayEs.map(e=>{ const r=recOf(e), tt=r?r.title:(e.rt||'Rezept'); return '<span class="chip"><span class="cht">'+esc(tt)+'</span><button type="button" data-punplan="'+esc(e.id)+'" aria-label="'+esc(tt)+' wieder entfernen">✕</button></span>'; }).join(''):'<span class="none">noch nichts</span>')+
     '<button type="button" class="pnote" data-pnote>📝 Notiz</button>';
