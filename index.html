@@ -305,7 +305,7 @@ function renderDetail(r){
     '<p class="addnote" id="addnote" hidden></p></section>'+
     '<section><h2>Zubereitung</h2><ol class="steps" id="steps">'+r.steps.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ol><p class="hint">Tipp: Schritt antippen, um ihn abzuhaken.</p>'+
     (r.notes.length?'<div class="notes"><span class="nh">Notizen</span>'+r.notes.map(n=>'<p>'+esc(n)+'</p>').join('')+'</div>':'')+
-    '</section></div></div><p class="foot">Abgetippt vom Zettel im Rezeptordner.</p>';
+    '</section></div></div>';
   renderIngs(); renderCartBtn();
 }
 function renderCartBtn(){
