@@ -144,7 +144,7 @@ window.REZEPTE = [
  {
   "id": "mediterranes-chicken-orzo",
   "title": "Mediterranes „Chicken“ Orzo",
-  "cat": "Mittagessen",
+  "cat": "Pasta & Nudeln",
   "tags": [],
   "servings": null,
   "unit": null,
@@ -229,7 +229,7 @@ window.REZEPTE = [
  {
   "id": "gemuese-hafer-roesti",
   "title": "Gemüse-Hafer-Rösti",
-  "cat": "Mittagessen",
+  "cat": "Pfanne & Wok",
   "tags": [],
   "servings": 2,
   "unit": "Personen",
@@ -319,7 +319,7 @@ window.REZEPTE = [
  {
   "id": "udon-nudeln",
   "title": "Udon-Nudeln",
-  "cat": "Mittagessen",
+  "cat": "Pasta & Nudeln",
   "tags": [
    "vegan"
   ],
@@ -423,7 +423,7 @@ window.REZEPTE = [
  {
   "id": "veganes-huehnerfrikassee",
   "title": "Veganes Hühnerfrikassee",
-  "cat": "Mittagessen",
+  "cat": "Curry & Eintopf",
   "tags": [
    "vegan"
   ],
@@ -514,7 +514,7 @@ window.REZEPTE = [
  {
   "id": "flammkuchenteig",
   "title": "Flammkuchenteig",
-  "cat": "Mittagessen",
+  "cat": "Aus dem Ofen",
   "tags": [
    "vegan"
   ],
@@ -1156,7 +1156,7 @@ window.REZEPTE = [
  {
   "id": "gnocchi-spinat-auflauf-gorgonzola",
   "title": "Italienischer Gnocchi-Spinat-Auflauf mit Gorgonzola",
-  "cat": "Mittagessen",
+  "cat": "Aus dem Ofen",
   "tags": [],
   "servings": 3,
   "unit": "Personen",
@@ -1226,7 +1226,7 @@ window.REZEPTE = [
  {
   "id": "kaese-schinken-pasta",
   "title": "Käse-Schinken-Pasta",
-  "cat": "Mittagessen",
+  "cat": "Pasta & Nudeln",
   "tags": [
    "vegan"
   ],
@@ -1322,7 +1322,7 @@ window.REZEPTE = [
  {
   "id": "thai-curry",
   "title": "Thai-Curry",
-  "cat": "Mittagessen",
+  "cat": "Curry & Eintopf",
   "tags": [],
   "servings": null,
   "unit": null,
@@ -1421,7 +1421,7 @@ window.REZEPTE = [
  {
   "id": "beef-and-broccoli",
   "title": "Beef & Broccoli",
-  "cat": "Mittagessen",
+  "cat": "Pfanne & Wok",
   "tags": [
    "vegan"
   ],
@@ -1534,7 +1534,7 @@ window.REZEPTE = [
  {
   "id": "kohlrabi-gemuese",
   "title": "Kohlrabi-Gemüse",
-  "cat": "Mittagessen",
+  "cat": "Pfanne & Wok",
   "tags": [
    "vegan"
   ],
@@ -1601,7 +1601,7 @@ window.REZEPTE = [
  {
   "id": "buchweizen-risotto",
   "title": "Vegetarisches Buchweizen-Risotto",
-  "cat": "Mittagessen",
+  "cat": "Pfanne & Wok",
   "tags": [
    "vegetarisch",
    "vegan"
@@ -1668,7 +1668,7 @@ window.REZEPTE = [
  {
   "id": "mie-nudeln-gebraten",
   "title": "Mie-Nudeln gebraten",
-  "cat": "Mittagessen",
+  "cat": "Pasta & Nudeln",
   "tags": [],
   "servings": 2,
   "unit": "Personen",
@@ -1725,7 +1725,7 @@ window.REZEPTE = [
  {
   "id": "vegane-gaensekeulen",
   "title": "Vegane Gänsekeulen",
-  "cat": "Mittagessen",
+  "cat": "Aus dem Ofen",
   "tags": [
    "vegan"
   ],
@@ -2676,7 +2676,7 @@ window.REZEPTE = [
  {
   "id": "gefuellte-paprika-couscous-feta",
   "title": "Gefüllte Paprika mit Couscous & Feta",
-  "cat": "Mittagessen",
+  "cat": "Aus dem Ofen",
   "tags": [],
   "servings": 2,
   "unit": "Personen",
@@ -2868,7 +2868,7 @@ window.REZEPTE = [
  {
   "id": "gnocchi-cashew-pesto",
   "title": "Gnocchi mit crunchy Cashew-Pesto",
-  "cat": "Mittagessen",
+  "cat": "Pasta & Nudeln",
   "tags": [],
   "servings": 2,
   "unit": "Personen",
@@ -3030,7 +3030,7 @@ window.REZEPTE = [
  {
   "id": "tofu-sandwich",
   "title": "Tofu-Sandwich mit Gewürz-Tofu",
-  "cat": "Mittagessen",
+  "cat": "Burger & Wraps",
   "tags": [
    "vegan"
   ],
@@ -3108,8 +3108,8 @@ window.REZEPTE = [
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
+  "servings": 2,
+  "unit": "Portionen",
   "difficulty": null,
   "prep": null,
   "time": "45 min",
@@ -3202,7 +3202,7 @@ window.REZEPTE = [
    "Die Burritos noch einmal kurz von beiden Seiten in der Pfanne anbraten."
   ],
   "notes": [
-   "Ergibt 2–3 Portionen.",
+   "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
    "Die Kartoffeln erst nach dem Braten salzen, sonst werden sie nicht knusprig.",
    "Tofu Scramble: siehe eigenes Rezept „Tofu Scramble auf Brot“.",
    "Niveau laut Vorlage: mittel."
@@ -3211,7 +3211,7 @@ window.REZEPTE = [
  {
   "id": "crispy-tofu-burger",
   "title": "Crispy Tofu Burger mit paniertem Tofu",
-  "cat": "Mittagessen",
+  "cat": "Burger & Wraps",
   "tags": [
    "vegan"
   ],
@@ -3327,12 +3327,12 @@ window.REZEPTE = [
  {
   "id": "pasta-bolognese-tofuhack",
   "title": "Pasta Bolognese mit Tofuhack",
-  "cat": "Mittagessen",
+  "cat": "Pasta & Nudeln",
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
+  "servings": 2,
+  "unit": "Portionen",
   "difficulty": null,
   "prep": null,
   "time": "45 min",
@@ -3450,7 +3450,7 @@ window.REZEPTE = [
    "Nudeln nach Packungsanleitung kochen."
   ],
   "notes": [
-   "Ergibt 2–3 Portionen.",
+   "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
    "Wird die Soße zu dick, ein paar Löffel Nudelwasser einrühren.",
    "Niveau laut Vorlage: mittel."
   ]
@@ -3458,7 +3458,7 @@ window.REZEPTE = [
  {
   "id": "chili-con-tofu",
   "title": "Chili con Tofu mit Tofuhack",
-  "cat": "Mittagessen",
+  "cat": "Curry & Eintopf",
   "tags": [
    "vegan"
   ],
@@ -3592,12 +3592,12 @@ window.REZEPTE = [
  {
   "id": "wokpfanne-sesamtofu",
   "title": "Wokpfanne mit Sesamtofu",
-  "cat": "Mittagessen",
+  "cat": "Pfanne & Wok",
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
+  "servings": 2,
+  "unit": "Portionen",
   "difficulty": null,
   "prep": null,
   "time": "30 min",
@@ -3722,7 +3722,7 @@ window.REZEPTE = [
    "Mit dem Sesamtofu servieren."
   ],
   "notes": [
-   "Ergibt 2–3 Portionen.",
+   "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
    "Übrige Erdnusssoße einfach am Schluss mit in den Wok geben.",
    "Niveau laut Vorlage: mittel."
   ]
@@ -3730,12 +3730,12 @@ window.REZEPTE = [
  {
   "id": "burrito-tofuhack",
   "title": "Burrito mit Tofuhack",
-  "cat": "Mittagessen",
+  "cat": "Burger & Wraps",
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
+  "servings": 2,
+  "unit": "Portionen",
   "difficulty": null,
   "prep": null,
   "time": "30 min",
@@ -3868,7 +3868,7 @@ window.REZEPTE = [
    "Reis, Tofuhack, Salat, Cashew-Creme und Tortilla-Chips auf den Wraps verteilen und zusammenrollen."
   ],
   "notes": [
-   "Ergibt 2–3 Portionen.",
+   "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
    "Tipp: Alles in Schüsseln auf den Tisch stellen, dann baut sich jeder seinen Burrito selbst.",
    "Niveau laut Vorlage: mittel."
   ]
@@ -3876,12 +3876,12 @@ window.REZEPTE = [
  {
   "id": "fruchtiges-curry-tofu",
   "title": "Fruchtiges Curry mit gekochtem Tofu",
-  "cat": "Mittagessen",
+  "cat": "Curry & Eintopf",
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
+  "servings": 2,
+  "unit": "Portionen",
   "difficulty": null,
   "prep": null,
   "time": "40 min",
@@ -4003,7 +4003,7 @@ window.REZEPTE = [
    "Tofu in einer zweiten Pfanne in Öl rundum braun braten, zum Curry geben und servieren."
   ],
   "notes": [
-   "Ergibt 2–3 Portionen.",
+   "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
    "Ist die Mango sehr reif, 1 TL Zitronensaft zugeben. Ist sie noch etwas unreif, mit 1 TL Ahornsirup nachsüßen.",
    "Niveau laut Vorlage: schwer."
   ]
@@ -4011,12 +4011,12 @@ window.REZEPTE = [
  {
   "id": "tofubaellchen-tomatensosse",
   "title": "Tofubällchen in Tomatensoße",
-  "cat": "Mittagessen",
+  "cat": "Pfanne & Wok",
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
+  "servings": 2,
+  "unit": "Portionen",
   "difficulty": null,
   "prep": null,
   "time": "45 min",
@@ -4132,7 +4132,7 @@ window.REZEPTE = [
    "Tofubällchen in reichlich Öl goldbraun braten und in der Tomatensoße servieren."
   ],
   "notes": [
-   "Ergibt 2–3 Portionen.",
+   "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
    "Beim Braten nicht am Öl sparen, dann werden die Bällchen schön braun und knusprig. Dazu passen Nudeln oder Reis.",
    "Niveau laut Vorlage: schwer."
   ]
@@ -4140,7 +4140,7 @@ window.REZEPTE = [
  {
   "id": "juicy-burger-tofupatty",
   "title": "Juicy Burger mit Tofupatty",
-  "cat": "Mittagessen",
+  "cat": "Burger & Wraps",
   "tags": [
    "vegan"
   ],
@@ -4348,12 +4348,12 @@ window.REZEPTE = [
  {
   "id": "spaghetti-carbonara-raeuchertofu",
   "title": "Spaghetti Carbonara mit Räuchertofu",
-  "cat": "Mittagessen",
+  "cat": "Pasta & Nudeln",
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
+  "servings": 2,
+  "unit": "Portionen",
   "difficulty": null,
   "prep": null,
   "time": "25 min",
@@ -4440,7 +4440,7 @@ window.REZEPTE = [
    "Nudeln zugeben und mit der Soße vermischen."
   ],
   "notes": [
-   "Ergibt 2–3 Portionen.",
+   "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
    "Wird die Soße zu dick, einen Schluck Pflanzenmilch zugeben und evtl. nachwürzen.",
    "Niveau laut Vorlage: mittel."
   ]
@@ -4448,12 +4448,12 @@ window.REZEPTE = [
  {
   "id": "quinoa-bowl-tofu",
   "title": "Quinoa Bowl mit Tofuwürfeln",
-  "cat": "Mittagessen",
+  "cat": "Bowls & Teller",
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
+  "servings": 2,
+  "unit": "Portionen",
   "difficulty": null,
   "prep": null,
   "time": "20 min",
@@ -4557,7 +4557,7 @@ window.REZEPTE = [
    "Quinoa, Spinat, Tomate und Gurke auf zwei Bowls verteilen, Tofu dazugeben und großzügig mit Dressing beträufeln."
   ],
   "notes": [
-   "Ergibt 2–3 Portionen.",
+   "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
    "Die Bowls schon vorbereiten, während der Tofu brät, und sofort servieren. So bleibt der Tofu knusprig.",
    "Niveau laut Vorlage: mittel."
   ]
@@ -4569,8 +4569,8 @@ window.REZEPTE = [
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
+  "servings": 2,
+  "unit": "Portionen",
   "difficulty": null,
   "prep": null,
   "time": "20 min",
@@ -4644,7 +4644,7 @@ window.REZEPTE = [
    "Tofu-Sticks heiß servieren."
   ],
   "notes": [
-   "Ergibt 2–3 Portionen.",
+   "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
    "Eine Hand für den Teig, die andere für die Panade nehmen. So klumpt das Panko nicht.",
    "Niveau laut Vorlage: leicht."
   ]
@@ -4652,12 +4652,12 @@ window.REZEPTE = [
  {
   "id": "tofu-nuggets-kartoffelspalten",
   "title": "Tofu-Nuggets mit Kartoffelspalten",
-  "cat": "Mittagessen",
+  "cat": "Aus dem Ofen",
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
+  "servings": 3,
+  "unit": "Portionen",
   "difficulty": null,
   "prep": null,
   "time": "45 min",
@@ -4754,7 +4754,7 @@ window.REZEPTE = [
    "Mit Ketchup servieren."
   ],
   "notes": [
-   "Ergibt 3–4 Portionen.",
+   "Laut Vorlage für 3–4 Portionen. Die Mengen sind hier für 3 Portionen gerechnet.",
    "Cornflakes in einem Gefrierbeutel mit dem Nudelholz zerdrücken, dann werden die Brösel gleichmäßig.",
    "Niveau laut Vorlage: mittel."
   ]
@@ -4762,7 +4762,7 @@ window.REZEPTE = [
  {
   "id": "quesadillas-guacamole",
   "title": "Quesadillas mit Guacamole",
-  "cat": "Mittagessen",
+  "cat": "Burger & Wraps",
   "tags": [],
   "servings": 2,
   "unit": "Portionen",
@@ -4891,7 +4891,7 @@ window.REZEPTE = [
  {
   "id": "bulgur-gemuese-pfanne",
   "title": "Bulgur-Gemüse-Pfanne",
-  "cat": "Mittagessen",
+  "cat": "Pfanne & Wok",
   "tags": [],
   "servings": 2,
   "unit": "Portionen",
@@ -4979,7 +4979,7 @@ window.REZEPTE = [
  {
   "id": "teriyaki-tempeh-currygerste-pastinakenpueree",
   "title": "Teriyaki-Tempeh und gebratener Brokkoli mit Currygerste an Pastinakenpüree",
-  "cat": "Mittagessen",
+  "cat": "Bowls & Teller",
   "tags": [
    "vegan"
   ],
@@ -5125,7 +5125,7 @@ window.REZEPTE = [
  {
   "id": "rundkorn-naturreis-schwarzkohl-kuerbis-shiitake",
   "title": "Rundkorn-Naturreis mit Schwarzkohl, Kürbis und Shiitakepilzen in Teriyaki-Sauce",
-  "cat": "Mittagessen",
+  "cat": "Bowls & Teller",
   "tags": [
    "vegan"
   ],
@@ -5256,7 +5256,7 @@ window.REZEPTE = [
  {
   "id": "quinoa-bratlinge-kartoffelpueree-feldsalat",
   "title": "Quinoa-Bratlinge mit Kartoffelpüree, Feldsalat und Joghurtdressing",
-  "cat": "Mittagessen",
+  "cat": "Bowls & Teller",
   "tags": [
    "vegan"
   ],
@@ -5416,7 +5416,7 @@ window.REZEPTE = [
  {
   "id": "hummusteller-rosenkohl-falafel",
   "title": "Hummusteller mit karamellisiertem Rosenkohl und Falafel",
-  "cat": "Mittagessen",
+  "cat": "Bowls & Teller",
   "tags": [
    "vegan"
   ],
