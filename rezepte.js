@@ -6,10 +6,14 @@ window.REZEPTE = [
   "cat": "Frühstück",
   "tags": [],
   "servings": 2,
-  "unit": "Personen",
-  "difficulty": null,
-  "prep": null,
-  "time": null,
+  "unit": "Portionen",
+  "difficulty": 1,
+  "min": 10,
+  "rest": "mind. 2 h kühlen",
+  "est": [
+   "difficulty",
+   "time"
+  ],
   "groups": [
    {
     "items": [
@@ -70,11 +74,15 @@ window.REZEPTE = [
   "title": "Smashed Potato Salad",
   "cat": "Salat",
   "tags": [],
-  "servings": null,
-  "unit": null,
-  "difficulty": null,
-  "prep": null,
-  "time": null,
+  "servings": 2,
+  "unit": "Portionen",
+  "difficulty": 1,
+  "min": 70,
+  "est": [
+   "difficulty",
+   "time",
+   "servings"
+  ],
   "groups": [
    {
     "items": [
@@ -146,11 +154,15 @@ window.REZEPTE = [
   "title": "Mediterranes „Chicken“ Orzo",
   "cat": "Pasta & Nudeln",
   "tags": [],
-  "servings": null,
-  "unit": null,
-  "difficulty": null,
-  "prep": null,
-  "time": null,
+  "servings": 3,
+  "unit": "Portionen",
+  "difficulty": 1,
+  "min": 30,
+  "est": [
+   "difficulty",
+   "time",
+   "servings"
+  ],
   "groups": [
    {
     "items": [
@@ -232,10 +244,10 @@ window.REZEPTE = [
   "cat": "Pfanne & Wok",
   "tags": [],
   "servings": 2,
-  "unit": "Personen",
+  "unit": "Portionen",
   "difficulty": 1,
-  "prep": null,
-  "time": "30 min",
+  "min": 30,
+  "est": [],
   "groups": [
    {
     "items": [
@@ -326,8 +338,10 @@ window.REZEPTE = [
   "servings": 2,
   "unit": "Portionen",
   "difficulty": 1,
-  "prep": null,
-  "time": null,
+  "min": 20,
+  "est": [
+   "time"
+  ],
   "groups": [
    {
     "title": "Gemüse & Nudeln",
@@ -428,10 +442,10 @@ window.REZEPTE = [
    "vegan"
   ],
   "servings": 2,
-  "unit": "Personen",
+  "unit": "Portionen",
   "difficulty": 1,
-  "prep": null,
-  "time": "30 min",
+  "min": 30,
+  "est": [],
   "groups": [
    {
     "items": [
@@ -518,11 +532,15 @@ window.REZEPTE = [
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
-  "difficulty": null,
-  "prep": null,
-  "time": null,
+  "servings": 2,
+  "unit": "Portionen",
+  "difficulty": 1,
+  "min": 60,
+  "est": [
+   "difficulty",
+   "time",
+   "servings"
+  ],
   "groups": [
    {
     "items": [
@@ -562,10 +580,10 @@ window.REZEPTE = [
    "vegan"
   ],
   "servings": 4,
-  "unit": "Personen",
+  "unit": "Portionen",
   "difficulty": 2,
-  "prep": null,
-  "time": "30 min",
+  "min": 30,
+  "est": [],
   "groups": [
    {
     "items": [
@@ -659,10 +677,10 @@ window.REZEPTE = [
    "vegan"
   ],
   "servings": 4,
-  "unit": "Personen",
+  "unit": "Portionen",
   "difficulty": 3,
-  "prep": null,
-  "time": "2–3 h",
+  "min": 150,
+  "est": [],
   "groups": [
    {
     "items": [
@@ -769,11 +787,14 @@ window.REZEPTE = [
   "title": "Bananenbrot",
   "cat": "Backen",
   "tags": [],
-  "servings": null,
-  "unit": null,
+  "servings": 12,
+  "unit": "Stück",
   "difficulty": 1,
-  "prep": "20 min",
-  "time": "55 min",
+  "min": 75,
+  "rest": "auskühlen lassen",
+  "est": [
+   "servings"
+  ],
   "groups": [
    {
     "items": [
@@ -845,8 +866,8 @@ window.REZEPTE = [
   "servings": 25,
   "unit": "Stück",
   "difficulty": 2,
-  "prep": null,
-  "time": "1,5 h",
+  "min": 90,
+  "est": [],
   "groups": [
    {
     "title": "Teig",
@@ -936,10 +957,10 @@ window.REZEPTE = [
   "cat": "Frühstück",
   "tags": [],
   "servings": 2,
-  "unit": "Personen",
+  "unit": "Portionen",
   "difficulty": 1,
-  "prep": "ca. 5 min",
-  "time": "10 min",
+  "min": 15,
+  "est": [],
   "groups": [
    {
     "items": [
@@ -1009,11 +1030,14 @@ window.REZEPTE = [
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
+  "servings": 2,
+  "unit": "Portionen",
   "difficulty": 1,
-  "prep": null,
-  "time": null,
+  "min": 15,
+  "est": [
+   "time",
+   "servings"
+  ],
   "groups": [
    {
     "items": [
@@ -1091,10 +1115,12 @@ window.REZEPTE = [
   "cat": "Salat",
   "tags": [],
   "servings": 2,
-  "unit": "Personen",
+  "unit": "Portionen",
   "difficulty": 1,
-  "prep": null,
-  "time": null,
+  "min": 15,
+  "est": [
+   "time"
+  ],
   "groups": [
    {
     "items": [
@@ -1158,10 +1184,12 @@ window.REZEPTE = [
   "cat": "Aus dem Ofen",
   "tags": [],
   "servings": 3,
-  "unit": "Personen",
-  "difficulty": null,
-  "prep": "15 min",
-  "time": "50 min",
+  "unit": "Portionen",
+  "difficulty": 1,
+  "min": 60,
+  "est": [
+   "difficulty"
+  ],
   "groups": [
    {
     "items": [
@@ -1229,11 +1257,14 @@ window.REZEPTE = [
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
+  "servings": 4,
+  "unit": "Portionen",
   "difficulty": 1,
-  "prep": null,
-  "time": null,
+  "min": 25,
+  "est": [
+   "time",
+   "servings"
+  ],
   "groups": [
    {
     "items": [
@@ -1323,11 +1354,14 @@ window.REZEPTE = [
   "title": "Thai-Curry",
   "cat": "Curry & Eintopf",
   "tags": [],
-  "servings": null,
-  "unit": null,
+  "servings": 3,
+  "unit": "Portionen",
   "difficulty": 3,
-  "prep": null,
-  "time": null,
+  "min": 35,
+  "est": [
+   "time",
+   "servings"
+  ],
   "groups": [
    {
     "items": [
@@ -1425,10 +1459,12 @@ window.REZEPTE = [
    "vegan"
   ],
   "servings": 2,
-  "unit": "Personen",
+  "unit": "Portionen",
   "difficulty": 2,
-  "prep": null,
-  "time": null,
+  "min": 35,
+  "est": [
+   "time"
+  ],
   "groups": [
    {
     "items": [
@@ -1538,10 +1574,13 @@ window.REZEPTE = [
    "vegan"
   ],
   "servings": 2,
-  "unit": "Personen",
-  "difficulty": null,
-  "prep": null,
-  "time": null,
+  "unit": "Portionen",
+  "difficulty": 1,
+  "min": 30,
+  "est": [
+   "difficulty",
+   "time"
+  ],
   "groups": [
    {
     "items": [
@@ -1605,10 +1644,10 @@ window.REZEPTE = [
    "vegan"
   ],
   "servings": 2,
-  "unit": "Personen",
+  "unit": "Portionen",
   "difficulty": 1,
-  "prep": null,
-  "time": "30 min",
+  "min": 30,
+  "est": [],
   "groups": [
    {
     "items": [
@@ -1669,10 +1708,13 @@ window.REZEPTE = [
   "cat": "Pasta & Nudeln",
   "tags": [],
   "servings": 2,
-  "unit": "Personen",
-  "difficulty": null,
-  "prep": null,
-  "time": null,
+  "unit": "Portionen",
+  "difficulty": 1,
+  "min": 20,
+  "est": [
+   "difficulty",
+   "time"
+  ],
   "groups": [
    {
     "items": [
@@ -1727,11 +1769,15 @@ window.REZEPTE = [
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
-  "difficulty": null,
-  "prep": null,
-  "time": null,
+  "servings": 2,
+  "unit": "Portionen",
+  "difficulty": 3,
+  "min": 70,
+  "est": [
+   "difficulty",
+   "time",
+   "servings"
+  ],
   "groups": [
    {
     "items": [
@@ -1843,11 +1889,12 @@ window.REZEPTE = [
   "title": "Carrot Cake",
   "cat": "Backen",
   "tags": [],
-  "servings": 1,
-  "unit": "Kuchen",
-  "difficulty": null,
-  "prep": "30 min",
-  "time": "50 min backen",
+  "servings": 16,
+  "unit": "Stück",
+  "difficulty": 1,
+  "min": 80,
+  "rest": "auskühlen lassen",
+  "est": [],
   "groups": [
    {
     "title": "Für den Teig",
@@ -1960,8 +2007,7 @@ window.REZEPTE = [
    "Mit gehackten Nüssen dekorieren und bis zum Servieren kalt stellen."
   ],
   "notes": [
-   "Ergibt ca. 16 Stücke und hält sich mindestens 3 Tage im Kühlschrank.",
-   "Niveau laut Vorlage: einfach."
+   "Hält sich mindestens 3 Tage im Kühlschrank."
   ]
  },
  {
@@ -1969,11 +2015,15 @@ window.REZEPTE = [
   "title": "Zwetschgen-Streuselkuchen",
   "cat": "Backen",
   "tags": [],
-  "servings": null,
-  "unit": null,
-  "difficulty": null,
-  "prep": "30 min",
-  "time": "40 min",
+  "servings": 12,
+  "unit": "Stück",
+  "difficulty": 2,
+  "min": 100,
+  "est": [
+   "difficulty",
+   "servings",
+   "time"
+  ],
   "groups": [
    {
     "title": "Mürbteig",
@@ -2075,10 +2125,12 @@ window.REZEPTE = [
   "cat": "Backen",
   "tags": [],
   "servings": 4,
-  "unit": "Personen",
+  "unit": "Portionen",
   "difficulty": 1,
-  "prep": null,
-  "time": null,
+  "min": 50,
+  "est": [
+   "time"
+  ],
   "groups": [
    {
     "items": [
@@ -2127,11 +2179,13 @@ window.REZEPTE = [
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
+  "servings": 8,
+  "unit": "Stück",
   "difficulty": 1,
-  "prep": "10 min",
-  "time": "35 min backen",
+  "min": 45,
+  "est": [
+   "servings"
+  ],
   "groups": [
    {
     "items": [
@@ -2185,11 +2239,14 @@ window.REZEPTE = [
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
+  "servings": 24,
+  "unit": "Stück",
   "difficulty": 2,
-  "prep": null,
-  "time": null,
+  "min": 50,
+  "est": [
+   "time",
+   "servings"
+  ],
   "groups": [
    {
     "title": "Für den Teig",
@@ -2292,10 +2349,10 @@ window.REZEPTE = [
   "cat": "Backen",
   "tags": [],
   "servings": 12,
-  "unit": "Muffins",
-  "difficulty": null,
-  "prep": "20 min",
-  "time": "25 min backen",
+  "unit": "Stück",
+  "difficulty": 1,
+  "min": 45,
+  "est": [],
   "groups": [
    {
     "title": "Für die Muffins",
@@ -2370,9 +2427,7 @@ window.REZEPTE = [
    "Für den Guss Zitronensaft in eine Schüssel geben und Puderzucker hinzugeben. Gut verrühren, bis keine Klümpchen mehr zu sehen sind. Ist die Masse zu dick oder zu dünn, noch etwas Zitronensaft oder Puderzucker hinzugeben.",
    "Guss mit einem Teelöffel auf den Muffins verteilen und fest werden lassen."
   ],
-  "notes": [
-   "Niveau laut Vorlage: einfach."
-  ]
+  "notes": []
  },
  {
   "id": "erdnuss-cupcakes",
@@ -2380,10 +2435,13 @@ window.REZEPTE = [
   "cat": "Backen",
   "tags": [],
   "servings": 12,
-  "unit": "Cupcakes",
-  "difficulty": null,
-  "prep": null,
-  "time": null,
+  "unit": "Stück",
+  "difficulty": 2,
+  "min": 60,
+  "est": [
+   "difficulty",
+   "time"
+  ],
   "groups": [
    {
     "title": "Für den Teig",
@@ -2511,11 +2569,16 @@ window.REZEPTE = [
   "title": "Tahini Bites",
   "cat": "Snacks",
   "tags": [],
-  "servings": null,
-  "unit": null,
-  "difficulty": null,
-  "prep": null,
-  "time": null,
+  "servings": 16,
+  "unit": "Stück",
+  "difficulty": 1,
+  "min": 25,
+  "rest": "ca. 1 h einfrieren",
+  "est": [
+   "difficulty",
+   "time",
+   "servings"
+  ],
   "groups": [
    {
     "title": "Für den Boden",
@@ -2612,11 +2675,14 @@ window.REZEPTE = [
   "tags": [
    "vegan"
   ],
-  "servings": null,
-  "unit": null,
+  "servings": 8,
+  "unit": "Stück",
   "difficulty": 1,
-  "prep": "15 min",
-  "time": null,
+  "min": 45,
+  "est": [
+   "servings",
+   "time"
+  ],
   "groups": [
    {
     "items": [
@@ -2677,10 +2743,13 @@ window.REZEPTE = [
   "cat": "Aus dem Ofen",
   "tags": [],
   "servings": 2,
-  "unit": "Personen",
-  "difficulty": null,
-  "prep": null,
-  "time": null,
+  "unit": "Portionen",
+  "difficulty": 1,
+  "min": 40,
+  "est": [
+   "difficulty",
+   "time"
+  ],
   "groups": [
    {
     "items": [
@@ -2766,10 +2835,13 @@ window.REZEPTE = [
   "cat": "Salat",
   "tags": [],
   "servings": 2,
-  "unit": "Personen",
-  "difficulty": null,
-  "prep": null,
-  "time": null,
+  "unit": "Portionen",
+  "difficulty": 1,
+  "min": 40,
+  "est": [
+   "difficulty",
+   "time"
+  ],
   "groups": [
    {
     "items": [
@@ -2869,10 +2941,13 @@ window.REZEPTE = [
   "cat": "Pasta & Nudeln",
   "tags": [],
   "servings": 2,
-  "unit": "Personen",
-  "difficulty": null,
-  "prep": null,
-  "time": null,
+  "unit": "Portionen",
+  "difficulty": 1,
+  "min": 20,
+  "est": [
+   "difficulty",
+   "time"
+  ],
   "groups": [
    {
     "items": [
@@ -2950,11 +3025,13 @@ window.REZEPTE = [
   "tags": [
    "vegan"
   ],
-  "servings": 10,
-  "unit": "EL",
-  "difficulty": null,
-  "prep": null,
-  "time": "15 min",
+  "servings": 4,
+  "unit": "Portionen",
+  "difficulty": 1,
+  "min": 15,
+  "est": [
+   "servings"
+  ],
   "groups": [
    {
     "items": [
@@ -3020,9 +3097,8 @@ window.REZEPTE = [
    "Pürieren, bis eine feine, klumpenfreie Creme entsteht."
   ],
   "notes": [
-   "Ergibt ca. 160 g. Im Kühlschrank bis zu 5 Tage haltbar.",
-   "Statt Misopaste geht auch 1 EL Hefeflocken. Für mehr Schärfe Jalapeño-Ringe mitpürieren.",
-   "Niveau laut Vorlage: leicht."
+   "Ergibt ca. 160 g, genug als Topping für etwa 4 Portionen. Im Kühlschrank bis zu 5 Tage haltbar.",
+   "Statt Misopaste geht auch 1 EL Hefeflocken. Für mehr Schärfe Jalapeño-Ringe mitpürieren."
   ]
  },
  {
@@ -3034,9 +3110,9 @@ window.REZEPTE = [
   ],
   "servings": 2,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": "15 min",
+  "difficulty": 1,
+  "min": 15,
+  "est": [],
   "groups": [
    {
     "items": [
@@ -3095,8 +3171,7 @@ window.REZEPTE = [
    "Brot mit Hummus bestreichen und mit Tofu und Gemüse belegen."
   ],
   "notes": [
-   "Guten Hummus gibt es in arabischen Supermärkten, oder selbst machen.",
-   "Niveau laut Vorlage: leicht."
+   "Guten Hummus gibt es in arabischen Supermärkten, oder selbst machen."
   ]
  },
  {
@@ -3108,9 +3183,9 @@ window.REZEPTE = [
   ],
   "servings": 2,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": "45 min",
+  "difficulty": 2,
+  "min": 45,
+  "est": [],
   "groups": [
    {
     "title": "Für die Kartoffeln",
@@ -3202,8 +3277,7 @@ window.REZEPTE = [
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
    "Die Kartoffeln erst nach dem Braten salzen, sonst werden sie nicht knusprig.",
-   "Tofu Scramble: siehe eigenes Rezept „Tofu Scramble auf Brot“.",
-   "Niveau laut Vorlage: mittel."
+   "Tofu Scramble: siehe eigenes Rezept „Tofu Scramble auf Brot“."
   ]
  },
  {
@@ -3215,9 +3289,9 @@ window.REZEPTE = [
   ],
   "servings": 2,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": "30 min",
+  "difficulty": 2,
+  "min": 30,
+  "est": [],
   "groups": [
    {
     "title": "Für das Tofu-Patty",
@@ -3318,8 +3392,7 @@ window.REZEPTE = [
    "Brötchen mit Ketchup und Senf bestreichen. Tofu, Tomate, Gurke, Zwiebel, Salat und Cashew-Creme daraufstapeln."
   ],
   "notes": [
-   "Je länger der Tofu mariniert, desto kräftiger der Geschmack. Gerne schon einige Stunden vorher einlegen.",
-   "Niveau laut Vorlage: mittel."
+   "Je länger der Tofu mariniert, desto kräftiger der Geschmack. Gerne schon einige Stunden vorher einlegen."
   ]
  },
  {
@@ -3331,9 +3404,9 @@ window.REZEPTE = [
   ],
   "servings": 2,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": "45 min",
+  "difficulty": 2,
+  "min": 45,
+  "est": [],
   "groups": [
    {
     "title": "Für das Tofuhack",
@@ -3449,8 +3522,7 @@ window.REZEPTE = [
   ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
-   "Wird die Soße zu dick, ein paar Löffel Nudelwasser einrühren.",
-   "Niveau laut Vorlage: mittel."
+   "Wird die Soße zu dick, ein paar Löffel Nudelwasser einrühren."
   ]
  },
  {
@@ -3462,9 +3534,9 @@ window.REZEPTE = [
   ],
   "servings": 4,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": "45 min",
+  "difficulty": 2,
+  "min": 45,
+  "est": [],
   "groups": [
    {
     "title": "Für das Tofuhack",
@@ -3583,8 +3655,7 @@ window.REZEPTE = [
    "Zugedeckt mindestens 30 min auf niedriger Stufe köcheln lassen, gelegentlich umrühren. Vor dem Servieren abschmecken."
   ],
   "notes": [
-   "Statt Schokolade geht auch ½ TL Backkakao plus ½ TL Ahornsirup.",
-   "Niveau laut Vorlage: mittel."
+   "Statt Schokolade geht auch ½ TL Backkakao plus ½ TL Ahornsirup."
   ]
  },
  {
@@ -3596,9 +3667,9 @@ window.REZEPTE = [
   ],
   "servings": 2,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": "30 min",
+  "difficulty": 2,
+  "min": 30,
+  "est": [],
   "groups": [
    {
     "title": "Für den Tofu",
@@ -3721,8 +3792,7 @@ window.REZEPTE = [
   ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
-   "Übrige Erdnusssoße einfach am Schluss mit in den Wok geben.",
-   "Niveau laut Vorlage: mittel."
+   "Übrige Erdnusssoße einfach am Schluss mit in den Wok geben."
   ]
  },
  {
@@ -3734,9 +3804,9 @@ window.REZEPTE = [
   ],
   "servings": 2,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": "30 min",
+  "difficulty": 2,
+  "min": 30,
+  "est": [],
   "groups": [
    {
     "items": [
@@ -3867,8 +3937,7 @@ window.REZEPTE = [
   ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
-   "Tipp: Alles in Schüsseln auf den Tisch stellen, dann baut sich jeder seinen Burrito selbst.",
-   "Niveau laut Vorlage: mittel."
+   "Tipp: Alles in Schüsseln auf den Tisch stellen, dann baut sich jeder seinen Burrito selbst."
   ]
  },
  {
@@ -3880,9 +3949,9 @@ window.REZEPTE = [
   ],
   "servings": 2,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": "40 min",
+  "difficulty": 3,
+  "min": 40,
+  "est": [],
   "groups": [
    {
     "items": [
@@ -4002,8 +4071,7 @@ window.REZEPTE = [
   ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
-   "Ist die Mango sehr reif, 1 TL Zitronensaft zugeben. Ist sie noch etwas unreif, mit 1 TL Ahornsirup nachsüßen.",
-   "Niveau laut Vorlage: schwer."
+   "Ist die Mango sehr reif, 1 TL Zitronensaft zugeben. Ist sie noch etwas unreif, mit 1 TL Ahornsirup nachsüßen."
   ]
  },
  {
@@ -4015,9 +4083,9 @@ window.REZEPTE = [
   ],
   "servings": 2,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": "45 min",
+  "difficulty": 3,
+  "min": 45,
+  "est": [],
   "groups": [
    {
     "title": "Für die Bällchen",
@@ -4131,8 +4199,7 @@ window.REZEPTE = [
   ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
-   "Beim Braten nicht am Öl sparen, dann werden die Bällchen schön braun und knusprig. Dazu passen Nudeln oder Reis.",
-   "Niveau laut Vorlage: schwer."
+   "Beim Braten nicht am Öl sparen, dann werden die Bällchen schön braun und knusprig. Dazu passen Nudeln oder Reis."
   ]
  },
  {
@@ -4144,9 +4211,9 @@ window.REZEPTE = [
   ],
   "servings": 2,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": "45 min",
+  "difficulty": 3,
+  "min": 45,
+  "est": [],
   "groups": [
    {
     "title": "Für das Patty",
@@ -4262,8 +4329,7 @@ window.REZEPTE = [
    "Brötchen mit Ketchup und Senf bestreichen und mit Pattys und Gemüse belegen."
   ],
   "notes": [
-   "Als Beilage passen knusprige Kartoffelspalten (siehe Rezept „Tofu-Nuggets mit Kartoffelspalten“).",
-   "Niveau laut Vorlage: schwer."
+   "Als Beilage passen knusprige Kartoffelspalten (siehe Rezept „Tofu-Nuggets mit Kartoffelspalten“)."
   ]
  },
  {
@@ -4275,9 +4341,9 @@ window.REZEPTE = [
   ],
   "servings": 2,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": "15 min",
+  "difficulty": 1,
+  "min": 15,
+  "est": [],
   "groups": [
    {
     "items": [
@@ -4339,8 +4405,7 @@ window.REZEPTE = [
    "Mit Brot und Frühlingszwiebeln servieren."
   ],
   "notes": [
-   "Kala Namak schmeckt nach Ei. Wer den Ei-Geschmack vermisst, nimmt es statt normalem Salz.",
-   "Niveau laut Vorlage: leicht."
+   "Kala Namak schmeckt nach Ei. Wer den Ei-Geschmack vermisst, nimmt es statt normalem Salz."
   ]
  },
  {
@@ -4352,9 +4417,9 @@ window.REZEPTE = [
   ],
   "servings": 2,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": "25 min",
+  "difficulty": 2,
+  "min": 25,
+  "est": [],
   "groups": [
    {
     "title": "Für die Cashew-Soße",
@@ -4439,8 +4504,7 @@ window.REZEPTE = [
   ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
-   "Wird die Soße zu dick, einen Schluck Pflanzenmilch zugeben und evtl. nachwürzen.",
-   "Niveau laut Vorlage: mittel."
+   "Wird die Soße zu dick, einen Schluck Pflanzenmilch zugeben und evtl. nachwürzen."
   ]
  },
  {
@@ -4452,9 +4516,9 @@ window.REZEPTE = [
   ],
   "servings": 2,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": "20 min",
+  "difficulty": 2,
+  "min": 20,
+  "est": [],
   "groups": [
    {
     "title": "Für den Tofu",
@@ -4556,8 +4620,7 @@ window.REZEPTE = [
   ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
-   "Die Bowls schon vorbereiten, während der Tofu brät, und sofort servieren. So bleibt der Tofu knusprig.",
-   "Niveau laut Vorlage: mittel."
+   "Die Bowls schon vorbereiten, während der Tofu brät, und sofort servieren. So bleibt der Tofu knusprig."
   ]
  },
  {
@@ -4569,9 +4632,9 @@ window.REZEPTE = [
   ],
   "servings": 2,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": "20 min",
+  "difficulty": 1,
+  "min": 20,
+  "est": [],
   "groups": [
    {
     "title": "Für den Tofu",
@@ -4643,8 +4706,7 @@ window.REZEPTE = [
   ],
   "notes": [
    "Laut Vorlage für 2–3 Portionen. Die Mengen sind hier für 2 Portionen gerechnet.",
-   "Eine Hand für den Teig, die andere für die Panade nehmen. So klumpt das Panko nicht.",
-   "Niveau laut Vorlage: leicht."
+   "Eine Hand für den Teig, die andere für die Panade nehmen. So klumpt das Panko nicht."
   ]
  },
  {
@@ -4656,9 +4718,9 @@ window.REZEPTE = [
   ],
   "servings": 3,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": "45 min",
+  "difficulty": 2,
+  "min": 45,
+  "est": [],
   "groups": [
    {
     "title": "Für die Kartoffelspalten",
@@ -4753,8 +4815,7 @@ window.REZEPTE = [
   ],
   "notes": [
    "Laut Vorlage für 3–4 Portionen. Die Mengen sind hier für 3 Portionen gerechnet.",
-   "Cornflakes in einem Gefrierbeutel mit dem Nudelholz zerdrücken, dann werden die Brösel gleichmäßig.",
-   "Niveau laut Vorlage: mittel."
+   "Cornflakes in einem Gefrierbeutel mit dem Nudelholz zerdrücken, dann werden die Brösel gleichmäßig."
   ]
  },
  {
@@ -4764,9 +4825,12 @@ window.REZEPTE = [
   "tags": [],
   "servings": 2,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": null,
+  "difficulty": 2,
+  "min": 35,
+  "est": [
+   "difficulty",
+   "time"
+  ],
   "groups": [
    {
     "title": "Für die Quesadillas",
@@ -4893,9 +4957,9 @@ window.REZEPTE = [
   "tags": [],
   "servings": 2,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": "30 min",
-  "time": "55 min",
+  "difficulty": 2,
+  "min": 55,
+  "est": [],
   "groups": [
    {
     "items": [
@@ -4969,7 +5033,6 @@ window.REZEPTE = [
    "Zuletzt den Schafskäse zugeben und nur kurz erwärmen, damit er nicht komplett schmilzt. Heiß servieren."
   ],
   "notes": [
-   "Schwierigkeit laut Vorlage: normal.",
    "Durch die Brühe und den Schafskäse ist kaum noch Salz nötig.",
    "Statt Bulgur gehen auch Kartoffeln: würfeln, kochen und dann zum Gemüse geben."
   ]
@@ -4983,9 +5046,12 @@ window.REZEPTE = [
   ],
   "servings": 4,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": null,
+  "difficulty": 2,
+  "min": 45,
+  "est": [
+   "difficulty",
+   "time"
+  ],
   "groups": [
    {
     "title": "Pastinakenpüree",
@@ -5129,9 +5195,12 @@ window.REZEPTE = [
   ],
   "servings": 4,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": null,
+  "difficulty": 2,
+  "min": 60,
+  "est": [
+   "difficulty",
+   "time"
+  ],
   "groups": [
    {
     "title": "Reis",
@@ -5260,9 +5329,12 @@ window.REZEPTE = [
   ],
   "servings": 4,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": null,
-  "time": null,
+  "difficulty": 2,
+  "min": 50,
+  "est": [
+   "difficulty",
+   "time"
+  ],
   "groups": [
    {
     "title": "Kartoffelpüree",
@@ -5420,9 +5492,13 @@ window.REZEPTE = [
   ],
   "servings": 4,
   "unit": "Portionen",
-  "difficulty": null,
-  "prep": "8 h Einweichen",
-  "time": null,
+  "difficulty": 3,
+  "min": 120,
+  "rest": "über Nacht einweichen",
+  "est": [
+   "difficulty",
+   "time"
+  ],
   "groups": [
    {
     "title": "Hummus",
@@ -5598,7 +5674,6 @@ window.REZEPTE = [
    "Zum Anrichten den Hummus auf die Teller geben, den Rosenkohl mittig darauf setzen und die Falafel darauflegen. Mit etwas Rapsöl und Paprikapulver garnieren. Die Pitabrote dazulegen oder separat reichen."
   ],
   "notes": [
-   "Die Kichererbsen am Vortag einweichen.",
    "Für den Hummus gehen auch vorgegarte Kichererbsen aus Dose oder Glas.",
    "Die Falafel-Kichererbsen werden nur eingeweicht, nicht gekocht."
   ]

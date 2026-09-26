@@ -100,6 +100,8 @@ button{font:inherit;color:inherit}
 .dots{display:inline-flex;gap:3px;vertical-align:middle}
 .dots i{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--muted)}
 .dots i.on{background:var(--pen);border-color:var(--pen)}
+.diff{display:inline-flex;align-items:center;gap:6px}
+.est{color:var(--muted);font-size:.8em;white-space:nowrap}
 .tag{font:700 .64rem/1 var(--label);letter-spacing:.08em;text-transform:uppercase;color:var(--leaf);border:1.5px solid currentColor;border-radius:99px;padding:4px 7px 3px}
 .empty{padding:28px 4px;color:var(--muted)}
 
@@ -398,8 +400,13 @@ function stepHtml(txt,si){
   }
   return out+esc(txt.slice(last));
 }
-function dots(n){ if(!n) return ''; let h='<span class="dots" aria-label="Schwierigkeit '+n+' von 5">'; for(let i=1;i<=5;i++) h+='<i class="'+(i<=n?'on':'')+'"></i>'; return h+'</span>'; }
+const LEVEL=['','leicht','mittel','schwer'];
+function dots(n){ if(!n) return ''; let h='<span class="dots" aria-hidden="true">'; for(let i=1;i<=3;i++) h+='<i class="'+(i<=n?'on':'')+'"></i>'; return h+'</span>'; }
+function diffHtml(n){ return n ? '<span class="diff">'+dots(n)+' '+LEVEL[n]+'</span>' : ''; }
+function fmtMin(m){ if(!m) return ''; if(m<60) return m+' min'; const h=Math.floor(m/60), r=m%60; return h+' h'+(r?' '+r+' min':''); }
 function yieldText(r){ return r.servings ? r.servings+' '+r.unit : ''; }
+const EST=' <small class="est">(geschätzt)</small>';
+function isEst(r,k){ return (r.est||[]).includes(k); }
 
 /* ---------- Übersicht ---------- */
 function renderTabs(){
@@ -414,7 +421,7 @@ function renderList(){
   $('#groups').innerHTML = cats.filter(c=>hits.some(r=>r.cat===c)).map(c=>
     '<section class="group"><h2 class="lbl">'+esc(c)+'</h2><ul class="list">'+
     hits.filter(r=>r.cat===c).sort((a,b)=>a.title.localeCompare(b.title,'de')).map(r=>{
-      const m = [dots(r.difficulty), r.time?'<span>⏱ '+esc(r.time)+'</span>':'', yieldText(r)?'<span>'+esc(yieldText(r))+'</span>':'', ...r.tags.map(t=>'<span class="tag">'+esc(t)+'</span>')].filter(Boolean).join('');
+      const m = [diffHtml(r.difficulty), r.min?'<span>⏱ '+fmtMin(r.min)+'</span>':'', yieldText(r)?'<span>'+esc(yieldText(r))+'</span>':'', ...r.tags.map(t=>'<span class="tag">'+esc(t)+'</span>')].filter(Boolean).join('');
       return '<li><button class="row" type="button" data-id="'+r.id+'"><div class="t'+(r.title.length>38?' long':'')+'">'+esc(r.title)+(favs.has(r.id)?'<span class="fav" aria-label="Favorit">♥</span>':'')+'</div>'+(m?'<div class="meta">'+m+'</div>':'')+'</button></li>';
     }).join('')+'</ul></section>').join('');
 }
@@ -434,9 +441,9 @@ function renderDetail(r){
   cur=r; amount = r.servings || 1; cooked=new Set(); pick=null;
   if(planPor && planPor.rid===r.id){ amount=planPor.por; } planPor=null;
   const facts = [
-    r.difficulty?['Schwierigkeit',dots(r.difficulty)]:null,
-    r.prep?['Vorbereitung',esc(r.prep)]:null,
-    r.time?['Zeit',esc(r.time)]:null,
+    r.difficulty?['Schwierigkeit',diffHtml(r.difficulty)+(isEst(r,'difficulty')?EST:'')]:null,
+    r.min?['Zeit',fmtMin(r.min)+(isEst(r,'time')?EST:'')]:null,
+    r.rest?['Zusätzlich',esc(r.rest)]:null,
   ].filter(Boolean);
   $('#detail').innerHTML =
     '<div class="bar"><button class="back" type="button" id="back">‹ Rezepte</button>'+
@@ -446,7 +453,7 @@ function renderDetail(r){
     '<div class="sheet"><div class="lbl">'+esc(r.cat)+(r.tags.length?' · '+r.tags.map(esc).join(' · '):'')+'</div>'+
     '<h1 class="rtitle'+(r.title.length>45?' long':'')+'">'+esc(r.title)+'</h1>'+
     (facts.length?'<div class="facts">'+facts.map(f=>'<div><span class="lbl">'+f[0]+'</span><b>'+f[1]+'</b></div>').join('')+'</div>':'')+
-    '<div class="scale"><span class="lbl">'+(r.servings?'Menge':'Rezeptmenge')+'</span><div class="step"><button type="button" id="minus" aria-label="weniger">−</button><output id="amt"></output><button type="button" id="plus" aria-label="mehr">+</button></div><button class="reset" type="button" id="reset" hidden>zurücksetzen</button></div>'+
+    '<div class="scale"><span class="lbl">'+(r.servings?'Menge':'Rezeptmenge')+(isEst(r,'servings')?EST:'')+'</span><div class="step"><button type="button" id="minus" aria-label="weniger">−</button><output id="amt"></output><button type="button" id="plus" aria-label="mehr">+</button></div><button class="reset" type="button" id="reset" hidden>zurücksetzen</button></div>'+
     '<div class="cols"><section><h2>Zutaten</h2><div id="ings"></div>'+
     '<button class="btn cartadd" type="button" id="toCart"></button>'+
     '<p class="addnote" id="addnote" hidden></p></section>'+
