@@ -845,6 +845,21 @@ body.hasact.actoff .tbar{bottom:calc(14px + var(--cbh,0px) + env(safe-area-inset
 body.hasact .toast{bottom:calc(96px + var(--tb) + var(--cbh,0px) + env(safe-area-inset-bottom,0px))}
 body.hasact.actoff .toast{bottom:calc(20px + var(--tb) + var(--cbh,0px) + env(safe-area-inset-bottom,0px))}
 .tbar,.cbar{left:12px;right:12px}
+
+/* ===== Timer-Zeile im Stil der Kochleiste ===== */
+.tm{gap:4px;background:#2F4622;color:#FFFFFF;border-radius:22px;padding:6px;box-shadow:0 10px 28px rgba(30,40,10,.28)}
+.tm-go{flex:1;min-width:0;display:flex;align-items:center;gap:12px;border:0;background:none;color:inherit;text-align:left;padding:4px 4px 4px 6px;cursor:pointer;font:inherit}
+.tm-ico{flex:none;width:40px;height:40px;border-radius:14px;background:rgba(255,255,255,.14);display:grid;place-items:center}
+.tm-ico svg{width:22px;height:22px}
+.tm-txt{flex:1;min-width:0;display:flex;flex-direction:column}
+.tm-txt b{font:700 15px/1.25 var(--ui);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tm-txt small{font:600 12.5px/1.3 var(--ui);opacity:.8;white-space:nowrap}
+.tm .tt{flex:none;font:800 15px/1 var(--ui);font-variant-numeric:tabular-nums;background:#E4A73A;color:#2B2A24;border-radius:12px;padding:7px 9px;min-width:3.6em;text-align:center}
+.tm .tm-b{flex:none;width:40px;min-width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#FFFFFF;font:700 15px/1 var(--ui);cursor:pointer;padding:0}
+.tm.ring{background:#B3261E}
+.tm.ring .tt{background:#FFFFFF;color:#B3261E}
+.tm.ring .tm-b{width:auto;min-width:48px;padding:0 12px;border-radius:20px}
+.tm .tm-go{background:none;height:auto;min-width:0;border-radius:16px;font-weight:inherit}
 </style>
 
 </head>
@@ -1984,8 +1999,11 @@ function renderTimers(){
   const sig=timers.map(t=>t.id+(t.end<=now?'!':'')).join(',');
   if(sig!==tSig){ tSig=sig;
     $('#tbar').innerHTML=timers.map(t=>{ const ring=t.end<=now;
-      return '<div class="tm'+(ring?' ring':'')+'" data-id="'+t.id+'"><span class="tl">'+(ring?'Fertig! ':'')+esc(t.label)+'</span><span class="tt"></span>'+
-        (ring?'':'<button type="button" data-t="plus" aria-label="1 Minute dazu">+1</button>')+'<button type="button" data-t="stop" aria-label="Timer beenden">'+(ring?'OK':'✕')+'</button></div>'; }).join('');
+      const r=R.find(x=>x.id===t.rid), nm=r?shortT(r.title):String(t.label||'').replace(/^Schritt \d+ · /,'');
+      return '<div class="tm'+(ring?' ring':'')+'" data-id="'+t.id+'"><button type="button" class="tm-go" data-t="go" aria-label="Zu Schritt '+(t.si+1)+': '+esc(nm)+'">'+
+        '<span class="tm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 10v3.5l2.2 1.6M10 2.5h4"/></svg></span>'+
+        '<span class="tm-txt"><b>'+esc(nm)+'</b><small>Schritt '+(t.si+1)+(ring?' · Zeit ist um':'')+'</small></span></button><span class="tt"></span>'+
+        (ring?'':'<button type="button" class="tm-b" data-t="plus" aria-label="1 Minute dazu">+1</button>')+'<button type="button" class="tm-b" data-t="stop" aria-label="Timer beenden">'+(ring?'OK':'✕')+'</button></div>'; }).join('');
   }
   timers.forEach(t=>{ const el=document.querySelector('.tm[data-id="'+t.id+'"] .tt'); if(el) el.textContent = t.end<=now ? '0:00' : fmtT(t.end-now); });
   // 2: Countdown direkt in der Zeitangabe
@@ -2042,6 +2060,7 @@ $('#tdone').addEventListener('click',e=>{
 });
 $('#tbar').addEventListener('click',e=>{
   const b=e.target.closest('[data-t]'); if(!b) return; const id=b.closest('.tm').dataset.id, t=timers.find(x=>x.id===id); if(!t) return;
+  if(b.dataset.t==='go'){ const x=sesOf(t.rid); if(x) openSession(x,t.si); else if(location.hash!=='#'+t.rid) location.hash=t.rid; return; }
   if(b.dataset.t==='plus') t.end+=60000; else timers=timers.filter(x=>x!==t);
   saveTimers(); renderTimers();
 });
