@@ -494,6 +494,38 @@ body.picking .actbar{display:none}
 /* Timer */
 .tm{border-radius:28px;padding:8px 8px 8px 18px}
 
+/* ===== Runde 3: UI/UX ===== */
+.actbar{transition:transform .25s ease,opacity .25s ease}
+body.actoff .actbar{transform:translateY(120px);opacity:0;pointer-events:none}
+.tbar{transition:bottom .25s ease}
+.ab-cart{position:relative}
+.abok{display:none;position:absolute;top:4px;right:4px;width:20px;height:20px;border-radius:50%;background:#3F5A2E;color:#fff;font:700 12px/20px var(--body);font-style:normal;text-align:center}
+.ab-cart.on .abok{display:block}
+.pills button.p-endo{border:0;cursor:pointer;font:inherit;font-size:14px;font-weight:600;min-height:32px;padding:0 12px;border-radius:16px;background:#8A3E6B;color:#FFFFFF}
+.pills button.p-endo.tipp{background:#FFFFFF;color:#7A3560;box-shadow:inset 0 0 0 1.5px #8A3E6B}
+.endobox{scroll-margin:90px}
+@keyframes flash{0%{box-shadow:0 0 0 0 rgba(138,62,107,.6)}100%{box-shadow:0 0 0 14px rgba(138,62,107,0)}}
+.endobox.flash{animation:flash .9s ease 2}
+.tab.endotab{background:var(--endo-soft);color:#7A3560}
+.tab.endotab[aria-pressed="true"]{background:var(--endo);color:#FFFFFF}
+.grab{width:44px;height:5px;margin:4px auto 10px;background:#D8CDB6}
+.pcat{display:inline-flex;align-items:center;gap:6px}
+.pcat i{width:9px;height:9px;border-radius:50%;flex:none}
+.tag.sm{font-size:11px;padding:2px 6px;margin-left:6px}
+.ing input{border-radius:50%!important;width:24px!important;height:24px!important}
+.shbtns{display:flex;gap:8px;align-items:center}
+.icb2{width:40px;padding:0;justify-content:center;font-size:1.2rem}
+.shop li{position:relative;transform:translateX(var(--dx,0));transition:transform .2s ease}
+.shop li.swiping{transition:none;background:var(--sheet)}
+.shop li.swiping::after{content:"Löschen";position:absolute;top:0;bottom:0;left:100%;width:140px;display:flex;align-items:center;padding-left:18px;background:#E9C7BE;color:#7A2A1C;font-weight:700}
+.shop li.armed::after{background:#B3261E;color:#fff}
+.shop li.gone{transform:translateX(-110%);opacity:0;transition:transform .18s ease,opacity .18s ease}
+.shop{overflow:hidden}
+.tact{border:0;background:none;color:var(--paper);font-weight:700;text-decoration:underline;cursor:pointer;white-space:nowrap;padding:4px 2px}
+.tday.past,.tday.past b,.tnone{color:#77705F!important}
+.picking li.basic,.picking small{color:#77705F}
+.btn:disabled{opacity:1;background:#E6DDCB;border-color:#E6DDCB;color:#6D675A}
+
 /* ===== Feinschliff nach Entwurf C ===== */
 :root{--navon:#DCE8C6;--cardsh:0 2px 10px rgba(80,60,20,.06)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--navon:var(--pen-soft);--cardsh:none}}
@@ -577,6 +609,11 @@ body.hasact .toast{bottom:calc(156px + var(--tb) + env(safe-area-inset-bottom,0p
 .bnav button[aria-current="page"] svg{background:var(--navon)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bnav{background:var(--sheet)}}
 :root[data-theme="dark"] .bnav{background:var(--sheet)}
+/* Runde 3, muss nach Entwurf-C-Regeln stehen */
+body.hasact.actoff .tbar{bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+body.hasact.actoff .toast{bottom:calc(82px + var(--tb) + env(safe-area-inset-bottom,0px))}
+.wsum .btn.primary:disabled{background:rgba(255,255,255,.25);color:#FFFFFF}
+:root{--done:#857E6F}
 /* dunkel: Glas-Knöpfe und weiße Etiketten angleichen */
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .back,:root:not([data-theme="light"]) .icb{background:var(--glass)}
   :root:not([data-theme="light"]) .wsum{background:var(--pen-soft);color:var(--ink)}
@@ -591,7 +628,6 @@ body.hasact .toast{bottom:calc(156px + var(--tb) + env(safe-area-inset-bottom,0p
   <main id="home">
     <div class="head">
       <h1>Was kochen wir heute?</h1>
-      <button class="endobtn" type="button" id="endoF" aria-pressed="false" aria-label="Nur endo-freundliche Rezepte" title="Nur endo-freundliche Rezepte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-2.2 0-3.5 1.7-3.5 3.6 0 2.4 1.8 4.6 3.5 6.9 1.7-2.3 3.5-4.5 3.5-6.9C15.5 4.7 14.2 3 12 3Z"/><path d="M10.3 11.2 5.5 20.5l3-.6 1.2 2.6L13 15"/><path d="m13.7 11.2 4.8 9.3-3-.6-1.2 2.6L11 15"/></svg></button>
     </div>
     <p class="count" id="count"></p>
     <div class="search">
@@ -722,13 +758,13 @@ function isEst(r,k){ return (r.est||[]).includes(k); }
 function renderTabs(){
   $('#tabs').hidden = cat===FAV;
   $('#favhead').hidden = cat!==FAV;
-  $('#tabs').innerHTML = ['Alle',...cats].map(c=>'<button class="tab" type="button" aria-pressed="'+(c===cat)+'" data-c="'+esc(c)+'"'+(c==='Alle'?'':' style="--cc:'+cc(c)+'"')+'>'+esc(c)+'</button>').join('');
+  $('#tabs').innerHTML = '<button class="tab endotab" type="button" id="endoF" aria-pressed="'+endoOnly+'">🎗️ Endo</button>'+['Alle',...cats].map(c=>'<button class="tab" type="button" aria-pressed="'+(c===cat)+'" data-c="'+esc(c)+'"'+(c==='Alle'?'':' style="--cc:'+cc(c)+'"')+'>'+esc(c)+'</button>').join('');
   requestAnimationFrame(fadeTabs); const on=$('#tabs [aria-pressed="true"]'); if(on && on.scrollIntoView) on.scrollIntoView({block:'nearest',inline:'nearest'});
 }
 function renderList(){
   const q = $('#q').value.trim(), words = norm(q).split(' ').filter(Boolean);
   const hits = R.filter(r=>(cat==='Alle'||r.cat===cat||(cat===FAV&&favs.has(r.id))) && passF(r) && (!words.length || matches(r,words)));
-  $('#endoF').setAttribute('aria-pressed',endoOnly);
+  if($('#endoF')) $('#endoF').setAttribute('aria-pressed',endoOnly);
   const nf=R.filter(passF), fl=endoOnly?'endo-freundlich':'';
   $('#count').textContent = fl ? '🎗️ '+nf.length+' von '+R.length+' Rezepten endo-freundlich, '+nf.filter(r=>endoSt(r)==='anpassbar').length+' davon mit Tipp' : '';
   $('#count').hidden = !fl;
@@ -743,10 +779,10 @@ function renderList(){
 }
 function fadeTabs(){ const t=$('#tabs'); if(!t) return; const m=t.scrollWidth-t.clientWidth; t.classList.toggle('fl',t.scrollLeft>4); t.classList.toggle('fr',m-t.scrollLeft>4); }
 $('#tabs').addEventListener('scroll',fadeTabs,{passive:true}); window.addEventListener('resize',fadeTabs);
-$('#tabs').addEventListener('click',e=>{const b=e.target.closest('.tab'); if(!b) return; setCat(b.dataset.c); updateNav();});
+$('#tabs').addEventListener('click',e=>{ if(e.target.closest('#endoF')){ endoOnly=!endoOnly; try{ localStorage.setItem('rz-endo',endoOnly?'1':'0'); }catch(_){} renderTabs(); renderList(); return; }
+  const b=e.target.closest('.tab'); if(!b) return; setCat(b.dataset.c); updateNav();});
 
 $('#q').addEventListener('input',renderList);
-$('#endoF').addEventListener('click',()=>{ endoOnly=!endoOnly; try{ localStorage.setItem('rz-endo',endoOnly?'1':'0'); }catch(e){} renderList(); });
 $('#groups').addEventListener('click',e=>{const b=e.target.closest('.row'); if(b) location.hash=b.dataset.id;});
 
 /* ---------- Rezeptansicht ---------- */
@@ -769,7 +805,7 @@ function renderDetail(r){
     r.min?'<span>'+fmtMin(r.min)+(isEst(r,'time')?' <small class="est">(geschätzt)</small>':'')+'</span>':'',
     r.rest?'<span>+ '+esc(r.rest)+'</span>':'',
     r.tags.includes('vegan')?'<span class="p-veg">vegan</span>':'',
-    eS==='ja'?'<span class="p-endo">endo-freundlich</span>':eS==='anpassbar'?'<span class="p-endo tipp">endo + Tipp</span>':''
+    eS==='ja'?'<button type="button" class="p-endo" data-goendo>endo-freundlich ›</button>':eS==='anpassbar'?'<button type="button" class="p-endo tipp" data-goendo>endo + Tipp ›</button>':''
   ].filter(Boolean).join('');
   $('#detail').innerHTML = '<div class="bar"><button class="back" type="button" id="back" aria-label="Zurück zu den Rezepten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>'+
     '<div class="barR"><button class="btn icb" type="button" id="wake" aria-pressed="'+wakeOn+'" aria-label="Bildschirm anlassen" title="Bildschirm anlassen">'+IC.sun+'</button>'+
@@ -788,14 +824,15 @@ function renderDetail(r){
     '<section><div class="stephead"><h2>Zubereitung</h2></div><ol class="steps" id="steps">'+r.steps.map((s,i)=>'<li><span>'+stepHtml(s,i)+'</span></li>').join('')+'</ol><p class="hint">Tipp: Schritt antippen, um ihn abzuhaken. Zeiten mit ⏱ antippen startet einen Timer.</p>'+
     (r.notes.length?'<div class="notes"><span class="nh">Notizen</span>'+r.notes.map(n=>'<p>'+esc(n)+'</p>').join('')+'</div>':'')+
     endoBox(r)+'</section></div></div>'+
-    '<div class="actbar"><button class="ab-cart" type="button" id="abCart" aria-label="Zutaten auf die Einkaufsliste">'+IC.cart+'</button><button class="ab-cook" type="button" id="cookBtn">Jetzt kochen</button></div>';
+    '<div class="actbar" id="actbar"><button class="ab-cart" type="button" id="abCart" aria-label="Zutaten auf die Einkaufsliste">'+IC.cart+'<i class="abok" aria-hidden="true">✓</i></button><button class="ab-cook" type="button" id="cookBtn">Jetzt kochen</button></div>';
   renderIngs(); renderCartBtn();
 }
 function renderCartBtn(){
   const on = cur && shop.items.some(i=>i.parts.some(p=>p.rid===cur.id));
-  $('#toCart').textContent = on ? '🛒 Nochmal zur Einkaufsliste' : '🛒 Zur Einkaufsliste';
-  $('#addnote').textContent = on ? 'Dieses Rezept steht schon auf der Liste. Nochmal hinzufügen zählt die Mengen dazu.' : '';
-  $('#toCart').hidden = pick!=null; $('#addnote').hidden = pick!=null || !on;
+  $('#toCart').hidden = true;
+  $('#addnote').textContent = on ? '✓ Dieses Rezept steht schon auf der Einkaufsliste. Nochmal hinzufügen zählt die Mengen dazu.' : '';
+  $('#addnote').hidden = pick!=null || !on;
+  const ab=$('#abCart'); if(ab){ ab.classList.toggle('on',!!on); ab.setAttribute('aria-label', on?'Nochmal auf die Einkaufsliste (steht schon drauf)':'Zutaten auf die Einkaufsliste'); }
 }
 function renderIngs(){
   const r=cur, f=factor(r);
@@ -835,6 +872,7 @@ $('#detail').addEventListener('click',e=>{
   if(t.closest('#favBtn')){ toggleFav(r.id); const b=$('#favBtn'); b.setAttribute('aria-pressed',favs.has(r.id));
     toast(favs.has(r.id)?'Zu den Favoriten hinzugefügt.':'Aus den Favoriten entfernt.'); return; }
   if(t.closest('#cookBtn')){ openCook(); return; }
+  if(t.closest('[data-goendo]')){ const eb=$('#detail .endobox'); if(eb){ eb.scrollIntoView({behavior:'smooth',block:'center'}); eb.classList.remove('flash'); void eb.offsetWidth; eb.classList.add('flash'); } return; }
   if(t.closest('#toCart')||t.closest('#abCart')){ pick=new Set(); renderIngs(); $('#ings').scrollIntoView({behavior:'smooth',block:'start'}); return; }
   if(t.closest('#pickCancel')){ pick=null; renderIngs(); return; }
   const pb=t.closest('[data-pick]');
@@ -1154,7 +1192,8 @@ function renderShop(){
   };
   $('#shop').innerHTML=
     '<div class="sheet"><div class="shead"><h1 class="stitle">Einkaufsliste</h1>'+
-    '<button class="btn" type="button" data-act="share"'+(open.length?'':' disabled')+'>Als Text teilen</button></div>'+
+    '<div class="shbtns"><button class="btn" type="button" data-act="share"'+(open.length?'':' disabled')+'>Als Text teilen</button>'+
+    (shop.items.length?'<button class="btn icb2" type="button" data-act="menu" aria-label="Weitere Aktionen">⋯</button>':'')+'</div></div>'+
     '<p class="sstat">'+(shop.items.length? open.length+' offen'+(done.length?' · '+done.length+' erledigt':'') : 'Noch leer.')+'</p>'+
     syncLine()+
     '<form class="addform" id="addform"><input id="addIn" placeholder="Hinzufügen, z. B. 2 l Milch" autocomplete="off" aria-label="Eintrag hinzufügen"><button type="submit">+</button></form>'+
@@ -1162,15 +1201,23 @@ function renderShop(){
     (open.length?SECS.map(sec=>{ const its=open.filter(i=>secOf(i)===sec); return its.length?'<h2 class="lbl dhead">'+esc(sec)+'</h2><ul class="shop">'+its.map(row).join('')+'</ul>':''; }).join(''):
       '<p class="sempty">'+(done.length?'Alles erledigt. ':'')+'Öffne ein Rezept und tippe auf „Zur Einkaufsliste“, oder schreib oben selbst etwas dazu.</p>')+
     (done.length?'<h2 class="lbl dhead">Erledigt</h2><ul class="shop">'+done.map(row).join('')+'</ul>':'')+
-    (shop.items.length?'<div class="sactions">'+
-      (done.length?'<button class="btn" type="button" data-act="cleardone">Erledigte entfernen</button>':'')+
-      (confirmClear?'<span>'+(listId?'Wirklich alles löschen, für alle?':'Wirklich alles löschen?')+'</span><button class="btn warn" type="button" data-act="clearyes">Ja, leeren</button><button class="btn" type="button" data-act="clearno">Abbrechen</button>'
-                   :'<button class="btn warn" type="button" data-act="clear">Liste leeren</button>')+'</div>':'')+
+
     (shareFallback?'<textarea id="sharetxt" readonly aria-label="Zum Kopieren">'+esc(shareFallback)+'</textarea>':'')+
     shareBox()+
     '</div>';
   if(editId!=null){ const e=$('#editIn'); if(e){ e.focus(); e.setSelectionRange(e.value.length,e.value.length); } }
   if(shareFallback){ const ta=$('#sharetxt'); ta.focus(); ta.select(); }
+}
+function delItem(it){
+  const idx=shop.items.indexOf(it); shop.items=shop.items.filter(i=>i!==it); commit([],[it]); renderShop();
+  toast('„'+itemText(it)+'“ gelöscht.',null,'Rückgängig',()=>{ shop.items.splice(Math.min(idx,shop.items.length),0,it); commit([it],[]); renderShop(); });
+}
+function openShopMenu(confirm){
+  const done=shop.items.filter(i=>i.done).length;
+  openSheet('<div class="sh-head"><h2>Einkaufsliste</h2><button class="btn" type="button" data-close>Fertig</button></div><div class="sh-body">'+
+    (done?'<button class="opt" type="button" data-smenu="cleardone">✓ Erledigte entfernen ('+done+')</button>':'')+
+    (confirm?'<p style="margin:14px 0 8px;font-weight:600">'+(listId?'Wirklich die ganze Liste löschen, für alle?':'Wirklich die ganze Liste löschen?')+'</p><div style="display:flex;gap:8px"><button class="btn warn" type="button" data-smenu="clearyes">Ja, alles löschen</button><button class="btn" type="button" data-smenu="menu">Abbrechen</button></div>'
+            :'<button class="opt" type="button" data-smenu="clear" style="color:#B3261E">✕ Ganze Liste leeren</button>')+'</div>','shopmenu');
 }
 function finishEdit(){
   const e=$('#editIn'), se=$('#editSec'); const it=shop.items.find(i=>i.id===editId); editId=null;
@@ -1194,13 +1241,14 @@ $('#shop').addEventListener('click',e=>{
   const act=b.dataset.act, li=b.closest('li'), it=li&&shop.items.find(i=>i.id===li.dataset.id);
   if(act==='back'){ goBack(); return; }
   if(act==='share'){ share(); return; }
+  if(act==='menu'){ openShopMenu(false); return; }
   if(act==='sharelink'){ shareLink(); return; }
   if(act==='save'){ finishEdit(); return; }
   if(act==='startshare'){ connect(randomListId(),true); toast('Gemeinsame Liste angelegt. Schick jetzt den Link an andere.'); }
   else if(act==='leave'){ disconnect(); toast('Getrennt. Die Liste bleibt auf diesem Gerät, wird aber nicht mehr abgeglichen.'); }
   else if(act==='toggle'&&it){ it.done=!it.done; commit([it],[]); }
   else if(act==='edit'&&it){ editId=it.id; }
-  else if(act==='del'&&it){ editId=null; shop.items=shop.items.filter(i=>i!==it); commit([],[it]); toast('„'+itemText(it)+'“ gelöscht.'); }
+  else if(act==='del'&&it){ editId=null; delItem(it); return; }
   else if(act==='rmrec'){ const rid=b.dataset.rid, ch=[], rm=[];
     shop.items.forEach(i=>{ if(i.parts.some(p=>p.rid===rid)){ i.parts=i.parts.filter(p=>p.rid!==rid); (i.parts.length||i.custom?ch:rm).push(i); } });
     shop.items=shop.items.filter(i=>!rm.includes(i)); commit(ch,rm); }
@@ -1222,6 +1270,17 @@ $('#shop').addEventListener('submit',e=>{
   const it={id:newId(),t:stamp(),name:v,u:'',parts:[],done:false,custom:true,text:v};
   shop.items.push(it); commit([it],[]); renderShop(); $('#addIn').focus();
 });
+(function(){ // Einkaufsliste: Zeile nach links wischen = löschen
+  let li=null,x0=0,y0=0,dx=0,mode=null;
+  $('#shop').addEventListener('touchstart',e=>{ const l=e.target.closest('.shop li'); if(!l||l.classList.contains('editing')) return; li=l; x0=e.touches[0].clientX; y0=e.touches[0].clientY; dx=0; mode=null; },{passive:true});
+  $('#shop').addEventListener('touchmove',e=>{ if(!li) return; const mx=e.touches[0].clientX-x0, my=e.touches[0].clientY-y0;
+    if(!mode){ if(Math.abs(mx)<10&&Math.abs(my)<10) return; mode=(mx<0&&Math.abs(mx)>Math.abs(my))?'swipe':'scroll'; if(mode==='swipe') li.classList.add('swiping'); }
+    if(mode!=='swipe') return; e.preventDefault(); dx=Math.min(0,mx); li.style.setProperty('--dx',dx+'px'); li.classList.toggle('armed',dx<-110); },{passive:false});
+  const end=()=>{ if(!li) return; const l=li; li=null; if(mode!=='swipe') return;
+    if(dx<-110){ l.classList.add('gone'); const it=shop.items.find(i=>i.id===l.dataset.id); setTimeout(()=>{ if(it) delItem(it); },180); }
+    else { l.classList.remove('swiping','armed'); l.style.removeProperty('--dx'); } };
+  $('#shop').addEventListener('touchend',end); $('#shop').addEventListener('touchcancel',end);
+})();
 $('#shop').addEventListener('mousedown',e=>{ if(e.target.closest('.editacts')) e.preventDefault(); });
 $('#shop').addEventListener('keydown',e=>{
   if(e.target.id!=='editIn') return;
@@ -1307,6 +1366,20 @@ $('#week').addEventListener('click',e=>{
 function openSheet(html,ctx){ $('#bs').innerHTML='<div class="grab"></div>'+html; $('#bs').dataset.ctx=ctx||''; $('#bs').hidden=$('#bd').hidden=false; document.body.classList.add('noscroll'); }
 function closeSheet(){ if($('#bs').hidden) return; $('#bs').hidden=$('#bd').hidden=true; document.body.classList.remove('noscroll'); if(!$('#week').hidden) renderWeek(); }
 $('#bd').addEventListener('click',closeSheet);
+(function(){ let y0=null,dy=0; const bs=$('#bs');
+  bs.addEventListener('touchstart',e=>{ const top=bs.getBoundingClientRect().top, y=e.touches[0].clientY; const body=bs.querySelector('.sh-body');
+    const onHead = y-top<72 || e.target.closest('.grab,.sh-head');
+    if(!onHead && !(body && body.contains(e.target) && body.scrollTop<=0)) { y0=null; return; }
+    if(e.target.closest('input,select,textarea')) { y0=null; return; }
+    y0=y; dy=0; },{passive:true});
+  bs.addEventListener('touchmove',e=>{ if(y0==null) return; dy=e.touches[0].clientY-y0; if(dy<=0){ bs.style.transform=''; return; }
+    const body=bs.querySelector('.sh-body'); if(body && body.scrollTop>0){ y0=null; bs.style.transform=''; return; }
+    e.preventDefault(); bs.style.transition='none'; bs.style.transform='translateY('+dy+'px)'; },{passive:false});
+  const end=()=>{ if(y0==null) return; y0=null; bs.style.transition='transform .2s ease';
+    if(dy>110){ bs.style.transform='translateY(100%)'; setTimeout(()=>{ closeSheet(); bs.style.transform=''; bs.style.transition=''; },180); }
+    else { bs.style.transform=''; setTimeout(()=>{ bs.style.transition=''; },200); } };
+  bs.addEventListener('touchend',end); bs.addEventListener('touchcancel',end);
+})();
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSheet(); });
 
 let addDate=null, addCat='Alle', planFor=null;
@@ -1316,7 +1389,7 @@ function renderPicker(){
   const dayEs=plan.filter(e=>e.date===addDate&&e.rid), onIds=new Set(dayEs.map(e=>e.rid));
   $('#pday').innerHTML='<span class="lbl">Geplant</span>'+(dayEs.length?dayEs.map(e=>{ const r=recOf(e), tt=r?r.title:(e.rt||'Rezept'); return '<span class="chip"><span class="cht">'+esc(tt)+'</span><button type="button" data-punplan="'+esc(e.id)+'" aria-label="'+esc(tt)+' wieder entfernen">✕</button></span>'; }).join(''):'<span class="none">noch nichts – tippe ein Gericht an</span>');
   $('#pcats').innerHTML='<button type="button" class="endoseg" data-pendo aria-pressed="'+endoOnly+'">🎗️ Endo</button>'+['Alle',FAV,...cats].map(c=>'<button type="button" aria-pressed="'+(c===addCat)+'" data-pcat="'+esc(c)+'">'+(c===FAV?'♥ ':'')+esc(c)+'</button>').join('');
-  $('#plist').innerHTML=hits.length?hits.map(r=>{ const on=onIds.has(r.id); return '<button class="opt pick" type="button" data-prid="'+r.id+'" aria-pressed="'+on+'"><span class="ck" aria-hidden="true">'+(on?'✓':'+')+'</span><span class="nm">'+esc(r.title)+(favs.has(r.id)?' <span style="color:var(--heart)">♥</span>':'')+'</span><small>'+(endoSt(r)!=='nein'?'🎗️ ':'')+esc(r.cat)+'</small></button>'; }).join(''):'<p class="lbl" style="padding:14px 0">Nichts gefunden'+(endoOnly?' (nur endo-freundlich)':'')+'.</p>';
+  $('#plist').innerHTML=hits.length?hits.map(r=>{ const on=onIds.has(r.id); return '<button class="opt pick" type="button" data-prid="'+r.id+'" aria-pressed="'+on+'"><span class="ck" aria-hidden="true">'+(on?'✓':'+')+'</span><span class="nm">'+esc(r.title)+(favs.has(r.id)?' <span style="color:var(--heart)">♥</span>':'')+'</span><small class="pcat"><i style="background:'+cc(r.cat)+'"></i>'+esc(r.cat)+'</small>'+(endoSt(r)!=='nein'?'<span class="tag endo sm">endo</span>':'')+'</button>'; }).join(''):'<p class="lbl" style="padding:14px 0">Nichts gefunden'+(endoOnly?' (nur endo-freundlich)':'')+'.</p>';
 }
 function openAddDay(ds){
   addDate=ds; addCat='Alle';
@@ -1403,6 +1476,11 @@ $('#bs').addEventListener('click',e=>{
     if(t.closest('[data-unbuy]')){ en.bought=false; commitPlan([en],[]); closeSheet(); return; }
     if(t.closest('[data-openr]')){ const r=recOf(en); closeSheet(); planPor={rid:r.id,por:en.por}; location.hash=r.id; return; }
   }
+  const sm=t.closest('[data-smenu]'); if(sm){ const a=sm.dataset.smenu;
+    if(a==='clear') return openShopMenu(true);
+    if(a==='menu') return openShopMenu(false);
+    if(a==='cleardone'){ const rm=shop.items.filter(i=>i.done); shop.items=shop.items.filter(i=>!i.done); commit([],rm); closeSheet(); renderShop(); toast(rm.length+' erledigte entfernt.'); return; }
+    if(a==='clearyes'){ const rm=shop.items; shop.items=[]; commit([],rm); closeSheet(); renderShop(); toast('Liste geleert.'); return; } }
   const ws=t.closest('[data-wsel]'); if(ws){ wSel=ws.dataset.wsel==='all'?new Set(wRows.map((_,i)=>i)):new Set(); document.querySelectorAll('#bs .ing input').forEach(c=>c.checked=wSel.has(+c.dataset.wi)); updW(); return; }
   if(t.closest('#wAdd')){
     const changed=new Set(); let n=0;
@@ -1455,11 +1533,13 @@ $('#tbar').addEventListener('click',e=>{
 document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible') renderTimers(); });
 
 let toastT=null;
-function toast(msg,link,linkText){
-  const t=$('#toast'); t.innerHTML='<span>'+esc(msg)+'</span>'+(link?'<a href="'+link+'">'+(linkText||'Zur Liste')+'</a>':''); t.hidden=false;
-  clearTimeout(toastT); toastT=setTimeout(()=>t.hidden=true,3500);
+let toastFn=null;
+function toast(msg,link,linkText,fn){
+  const t=$('#toast'); toastFn=fn||null;
+  t.innerHTML='<span>'+esc(msg)+'</span>'+(fn?'<button type="button" class="tact">'+esc(linkText||'Rückgängig')+'</button>':link?'<a href="'+link+'">'+(linkText||'Zur Liste')+'</a>':''); t.hidden=false;
+  clearTimeout(toastT); toastT=setTimeout(()=>{ t.hidden=true; toastFn=null; },fn?5000:3500);
 }
-$('#toast').addEventListener('click',e=>{ if(e.target.closest('a')) $('#toast').hidden=true; });
+$('#toast').addEventListener('click',e=>{ if(e.target.closest('.tact') && toastFn){ const f=toastFn; toastFn=null; $('#toast').hidden=true; f(); return; } if(e.target.closest('a')) $('#toast').hidden=true; });
 
 /* ---------- Navigation ---------- */
 // Merkt sich den Weg innerhalb der App, damit „Zurück“ nie aus der App hinausführt
@@ -1494,7 +1574,13 @@ function route(){
   if($('#detail').hidden) document.body.classList.remove('picking');
   stickBar(); updateCartCount(); updateNav();
 }
-function stickBar(){ const b=$('#detail .bar'); if(b && !$('#detail').hidden) b.classList.toggle('stuck',window.scrollY>60); }
+let lastY=0;
+function stickBar(){ const b=$('#detail .bar'); if(b && !$('#detail').hidden) b.classList.toggle('stuck',window.scrollY>60);
+  const y=window.scrollY, nearEnd=y+innerHeight>=document.documentElement.scrollHeight-40;
+  if($('#detail').hidden || y<80 || nearEnd) document.body.classList.remove('actoff');
+  else if(y>lastY+6) document.body.classList.add('actoff');
+  else if(y<lastY-6) document.body.classList.remove('actoff');
+  lastY=y; }
 window.addEventListener('scroll',stickBar,{passive:true});
 window.addEventListener('hashchange',()=>{
   const h=location.hash;
