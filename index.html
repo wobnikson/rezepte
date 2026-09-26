@@ -329,7 +329,7 @@ a.btn{text-decoration:none;color:var(--ink)}
       <h1>Rezeptordner</h1>
       <svg viewBox="0 0 74 30" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 20 Q36 16 72 12"/><path d="M14 19c-3-7 1-12 6-13 1 6-2 10-6 13Z"/><path d="M14 19c4 6 10 7 13 6-3-5-8-7-13-6Z"/><path d="M30 17c-3-7 1-12 6-13 1 6-2 10-6 13Z"/><path d="M30 17c4 6 10 7 13 6-3-5-8-7-13-6Z"/><path d="M46 15c-3-7 1-12 6-13 1 6-2 10-6 13Z"/><path d="M46 15c4 6 10 7 13 6-3-5-8-7-13-6Z"/></svg>
     </div>
-    <div class="subrow"><p class="count" id="count"></p><div class="filters"><button class="btn vegbtn" type="button" id="veg" aria-pressed="false">🌱 Nur vegan</button><button class="btn vegbtn" type="button" id="endoF" aria-pressed="false">✿ Endo-freundlich</button></div></div>
+    <div class="subrow"><p class="count" id="count"></p><div class="filters"><button class="btn vegbtn" type="button" id="endoF" aria-pressed="false">🎗️ Endo-freundlich</button></div></div>
     <div class="search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
       <input id="q" type="search" placeholder="Rezept oder Zutat suchen …" autocomplete="off" aria-label="Rezept oder Zutat suchen">
@@ -369,17 +369,16 @@ try{ cat = localStorage.getItem('rz-cat') || 'Alle'; if(cat!=='Alle' && cat!==FA
 function loadSet(k){ try{ return JSON.parse(localStorage.getItem(k)||'[]'); }catch(e){ return []; } }
 function saveArr(k,a){ try{ localStorage.setItem(k,JSON.stringify(a)); }catch(e){} }
 let favs=new Set(loadSet('rz-favs'));
-let vegOnly=false; try{ vegOnly=localStorage.getItem('rz-vegan')==='1'; }catch(e){}
 let endoOnly=false; try{ endoOnly=localStorage.getItem('rz-endo')==='1'; }catch(e){}
 const ENDO_ORDER={ja:0,anpassbar:1,nein:2};
 function endoSt(r){ return r.endo ? r.endo.status : 'nein'; }
-function passF(r){ return (!vegOnly||r.tags.includes('vegan')) && (!endoOnly||endoSt(r)!=='nein'); }
+function passF(r){ return !endoOnly||endoSt(r)!=='nein'; }
 const PLUS={omega3:'Omega-3',ballaststoffe:'Ballaststoffe',entzuendung:'Entzündungshemmende Zutaten'};
 function endoTag(r){ const s=endoSt(r); return s==='ja'?'<span class="tag endo">endo</span>':(s==='anpassbar'?'<span class="tag endo tipp">endo + Tipp</span>':''); }
 function endoBox(r){
   const e=r.endo; if(!e) return '';
   const plus=(e.plus||[]).map(k=>PLUS[k]).filter(Boolean);
-  const head={ja:'✿ Endo-freundlich',anpassbar:'✿ Endo-freundlich mit kleiner Änderung',nein:'Nicht endo-freundlich'}[e.status];
+  const head={ja:'🎗️ Endo-freundlich',anpassbar:'🎗️ Endo-freundlich mit kleiner Änderung',nein:'Nicht endo-freundlich'}[e.status];
   return '<div class="endobox '+e.status+'"><div class="eh">'+head+'</div>'+
     (e.status==='anpassbar'?'<p><b>Tipp:</b> '+esc(e.tipp)+'</p>':'')+
     (e.grund?'<p>'+(e.status==='nein'?'':'Grund: ')+esc(e.grund)+'</p>':'')+
@@ -449,8 +448,8 @@ function renderTabs(){
 function renderList(){
   const q = $('#q').value.trim(), words = norm(q).split(' ').filter(Boolean);
   const hits = R.filter(r=>(cat==='Alle'||r.cat===cat||(cat===FAV&&favs.has(r.id))) && passF(r) && (!words.length || matches(r,words)));
-  $('#veg').setAttribute('aria-pressed',vegOnly); $('#endoF').setAttribute('aria-pressed',endoOnly);
-  const nf=R.filter(passF), fl=[vegOnly?'vegan':'',endoOnly?'endo-freundlich':''].filter(Boolean).join(' und ');
+  $('#endoF').setAttribute('aria-pressed',endoOnly);
+  const nf=R.filter(passF), fl=endoOnly?'endo-freundlich':'';
   $('#count').textContent = fl ? nf.length+' von '+R.length+' Rezepten '+fl+(endoOnly?' ('+nf.filter(r=>endoSt(r)==='anpassbar').length+' davon mit Tipp)':'') : R.length+' Rezepte in '+cats.length+' Kategorien';
   if(!hits.length){ $('#groups').innerHTML='<p class="empty">'+(cat===FAV && !words.length ? 'Noch keine Favoriten. Öffne ein Rezept und tippe oben auf das Herz ♡.' : (q?'Kein Rezept passt zu „'+esc(q)+'“':'Keine Rezepte')+(cat!=='Alle'?' in „'+esc(cat)+'“':'')+(fl?' ('+fl+')':'')+'.'+(q?' Versuch es mit einer Zutat, z. B. „Pilze“.':''))+'</p>'; return; }
   $('#groups').innerHTML = cats.filter(c=>hits.some(r=>r.cat===c)).map(c=>
@@ -463,7 +462,6 @@ function renderList(){
 $('#tabs').addEventListener('click',e=>{const b=e.target.closest('.tab'); if(!b) return; setCat(b.dataset.c); updateNav();});
 
 $('#q').addEventListener('input',renderList);
-$('#veg').addEventListener('click',()=>{ vegOnly=!vegOnly; try{ localStorage.setItem('rz-vegan',vegOnly?'1':'0'); }catch(e){} renderList(); });
 $('#endoF').addEventListener('click',()=>{ endoOnly=!endoOnly; try{ localStorage.setItem('rz-endo',endoOnly?'1':'0'); }catch(e){} renderList(); });
 $('#groups').addEventListener('click',e=>{const b=e.target.closest('.row'); if(b) location.hash=b.dataset.id;});
 
