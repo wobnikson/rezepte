@@ -1457,7 +1457,26 @@ function canon(name){
   const w=s.split(' '); w[w.length-1]=stem(w[w.length-1]); return w.join(' ');
 }
 function normUnit(u,n){ if(u==='kg') return ['g',n==null?n:n*1000]; if(u==='l') return ['ml',n==null?n:n*1000]; return [u,n]; }
+/* Einkaufsliste: Küchenmaße (EL, TL, Prise …) und Gewürze/Öle/Saucen ohne Menge, nur der Name */
+const NO_AMT_U=new Set(['EL','TL','geh. EL','gestr. EL','geh. TL','gestr. TL','Prise','Prisen','Msp.','Schuss','Spritzer','cm','Zweig','Zweige','Stängel','Handvoll','Stücke','Lagen','Blatt','Blätter','Tasse','Tassen']);
+const SHOP_ADJ=/^((sehr|ganz) )?(kleine?[rsn]?|große?[rsn]?|mittlere?[rsn]?|mittelgroße?[rsn]?|dicke?[rsn]?|dünne?[rsn]?|reife?[rsn]?|weiche?[rsn]?|kalte?[rsn]?|zimmerwarme?[rsn]?|frische?[rsn]?|frisch|geriebene?[rsn]?|gehackte?[rsn]?)\s+/i;
+const SHOP_PAR=/\s*\((am besten[^)]*|optional|nach Geschmack|nach Belieben|bei Bedarf|zur Deko|zum Garnieren|Gr\.[^)]*|groß|klein|für [^)]*|\+ [^)]*|Zimmertemperatur|oder etwas weniger)\)/gi;
+const SHOP_TAIL=/\s+(zur Deko|zum Garnieren|zum Anrichten|zum Binden|zum Braten|zum Anbraten|zum Backen|für die (Form|Arbeitsfläche)|etc\.?)$/i;
+const SHOP_BITS=/^(frisch|fein|grob|gehackt|gewürfelt|gerieben|zum .*|zur .*|nach .*|für .*|optional|bei Bedarf|alternativ.*|etc\.?)$/i;
+function shopPrep(name,u,v,a){
+  name=String(name).replace(/^[⅓⅔¼½¾]\s*/,'').replace(/^(evtl\.|ggf\.|etwas)\s+/i,'').replace(SHOP_PAR,'').replace(/,\s*(frisch|zerbröselt|zerkleinert|abgetropft|gewaschen|geschält|entsteint)$/i,'').trim();
+  for(let i=0;i<3;i++) name=name.replace(SHOP_TAIL,'').replace(SHOP_ADJ,'').trim();
+  if(!name || SHOP_BITS.test(name)) return {name:'',u,v,a};          // Bruchstücke wie „frisch“, „zum Anrichten“
+  if(/^knoblauchzehen?$/i.test(name)) return {name:'Knoblauch',u:'',v:null,a:''};   // kauft man als Knolle
+  if(/^salatblätter?$/i.test(name)) return {name:'Salat',u:'',v:null,a:''};
+  if(/^scheiben? /i.test(name)) return {name:name.replace(/^scheiben? /i,''),u:'',v:null,a:''};   // „2 Scheiben Brot“ → Brot
+  if(/^(eigelb|eiweiß|eiklar)\b/i.test(name)) name='Ei';               // dafür braucht man Eier
+  if(NO_AMT_U.has(u) || autoSec({name:name,u:u})==='Gewürze, Öl & Saucen') return {name,u:'',v:null,a:''};
+  return {name,u,v,a};
+}
 function fmtAmt(v,u){
+  // Stückzahlen und Packungen kauft man ganz: ½ Gurke → 1 Gurke, ½ Pck. → 1 Pck.
+  if(v!=null && (!u || ['Pck.','Bund','Glas','Dose','Dosen'].includes(u))) v=Math.max(1,Math.ceil(v-1e-9));
   if(u==='g' && v>=1000) return String(Math.round(v/100)/10).replace('.',',')+' kg';
   if(u==='ml' && v>=1000) return String(Math.round(v/100)/10).replace('.',',')+' l';
   return num(v,u)+(u?' '+uPl(u,v):'');
@@ -1495,8 +1514,12 @@ function addPart(name,u0,n0,a,r){
   const [u,n]=normUnit(u0,n0);
   const key=canon(name)+'|'+u;
   const plainAmt = n==null && !a;
-  const hit=shop.items.find(i=>!i.done && i.text==null && (canon(i.name)+'|'+i.u)===key &&
-    (n!=null ? i.parts.every(p=>p.n!=null) : plainAmt && i.parts.every(p=>p.n==null && !p.a)));
+  const noAmt=i=>i.parts.every(p=>p.n==null && !p.a);
+  let hit=shop.items.find(i=>!i.done && i.text==null && (canon(i.name)+'|'+i.u)===key &&
+    (n!=null ? i.parts.every(p=>p.n!=null) : plainAmt && noAmt(i)));
+  // Zutat ohne Menge zu einem Eintrag mit Menge (oder umgekehrt): ein Eintrag reicht
+  if(!hit) hit=shop.items.find(i=>!i.done && i.text==null && canon(i.name)===canon(name) && (plainAmt || noAmt(i)) && !(n!=null && i.parts.some(p=>p.a)));
+  if(hit && noAmt(hit) && !plainAmt) hit.u=u;
   const part={rid:r.id,rt:r.title,n:n,a:a,nm:name};
   if(hit){ hit.parts.push(part); return hit; }
   const it={id:newId(),t:stamp(),name:name,u:u,parts:[part],done:false}; shop.items.push(it); return it;
@@ -1509,9 +1532,10 @@ function addRecipe(r,f,sel){
     names.forEach(name=>{
       name=name.replace(/\s*\((\d+ )?(kleine |große )?Dose[^)]*\)/i,'').trim();
       if(isBasic(name)) return;
-      const u=it.u||''; let v=null,a='';
+      let u=it.u||'', v=null, a='';
       if(it.m!=null){ if(Array.isArray(it.m)) a=qty(it,f).replace(/^ca\. /,''); else v=it.m*f; }
-      changed.add(addPart(name,u,v,a,r)); n++;
+      const x=shopPrep(name,u,v,a); if(!x.name || isBasic(x.name)) return;
+      changed.add(addPart(x.name,x.u,x.v,x.a,r)); n++;
     });
   }));
   if(n) commit([...changed],[]);
@@ -1835,14 +1859,18 @@ function openWeekShop(){
       names.forEach(name=>{
         name=name.replace(/\s*\((\d+ )?(kleine |große )?Dose[^)]*\)/i,'').trim(); if(isBasic(name)) return;
         let v=null,aTxt=''; if(it.m!=null){ if(Array.isArray(it.m)) aTxt=qty(it,f).replace(/^ca\. /,''); else v=it.m*f; }
-        const [u,nv]=normUnit(it.u||'',v), key=canon(name)+'|'+u+(aTxt||v==null?'|x':'');
+        const x=shopPrep(name,it.u||'',v,aTxt); if(!x.name || isBasic(x.name)) return; name=x.name; v=x.v; aTxt=x.a;
+        const [u,nv]=normUnit(x.u,v), key=canon(name)+'|'+u+(aTxt||v==null?'|x':'');
         const row=map.get(key)||{name,u,sum:0,has:false,a:[],days:new Set(),parts:[]};
         if(nv!=null){ row.sum+=nv; row.has=true; } if(aTxt) row.a.push(aTxt);
-        row.days.add(dn); row.parts.push({r,name,u:it.u||'',v,a:aTxt}); map.set(key,row);
+        row.days.add(dn); row.parts.push({r,name,u:x.u,v,a:aTxt}); map.set(key,row);
       });
     }));
   });
-  wRows=[...map.values()]; wSel=new Set();
+  wRows=[...map.values()];
+  // Zutat ohne Menge in die Zeile mit Menge übernehmen (z. B. „Zitrone“ + „1 Zitrone“)
+  wRows.filter(x=>!x.has&&!x.a.length).forEach(x=>{ const t=wRows.find(y=>y!==x&&!y.dead&&(y.has||y.a.length)&&canon(y.name)===canon(x.name)); if(t){ t.parts.push(...x.parts); x.days.forEach(d=>t.days.add(d)); x.dead=true; } });
+  wRows=wRows.filter(x=>!x.dead); wSel=new Set();
   const txt=x=>x.a.length?x.a.join(' + ')+' ':(x.has?fmtAmt(x.sum,x.u)+' ':'');
   const multi=new Set(wEntries.map(e=>e.date)).size>1;
   openSheet('<div class="sh-head"><h2>Woche einkaufen</h2><button class="btn" type="button" data-close>Abbrechen</button></div>'+
