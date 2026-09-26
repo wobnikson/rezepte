@@ -96,10 +96,6 @@ button{font:inherit;color:inherit}
 .row .t{font:700 1.75rem/1.1 var(--hand);color:var(--pen)}
 .row .t.long{font-size:1.35rem;line-height:1.15}
 .row .fav{color:#C2415B;margin-left:6px;font-family:var(--body);font-size:.95rem;vertical-align:middle}
-.recent{margin:4px 0 6px}
-.recent .chips{margin:6px 0 0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
-.recent .chips::-webkit-scrollbar{display:none}
-.rchip{flex:none;border:1.5px solid var(--rule);background:var(--sheet);border-radius:99px;padding:6px 12px;font-size:.88rem;cursor:pointer;max-width:220px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-top:4px;font-size:.88rem;color:var(--muted)}
 .dots{display:inline-flex;gap:3px;vertical-align:middle}
 .dots i{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--muted)}
@@ -251,7 +247,6 @@ a.btn{text-decoration:none;color:var(--ink)}
       <input id="q" type="search" placeholder="Rezept oder Zutat suchen …" autocomplete="off" aria-label="Rezept oder Zutat suchen">
     </div>
     <nav class="tabs" id="tabs" aria-label="Kategorien"></nav>
-    <div id="recent"></div>
     <div id="groups"></div>
   </main>
   <article id="detail" hidden></article>
@@ -280,9 +275,9 @@ const FAV='Favoriten';
 try{ cat = localStorage.getItem('rz-cat') || 'Alle'; if(cat!=='Alle' && cat!==FAV && !cats.includes(cat)) cat='Alle'; }catch(e){}
 function loadSet(k){ try{ return JSON.parse(localStorage.getItem(k)||'[]'); }catch(e){ return []; } }
 function saveArr(k,a){ try{ localStorage.setItem(k,JSON.stringify(a)); }catch(e){} }
-let favs=new Set(loadSet('rz-favs')), recent=loadSet('rz-recent').filter(id=>R.some(r=>r.id===id));
+let favs=new Set(loadSet('rz-favs'));
+try{ localStorage.removeItem('rz-recent'); }catch(e){}
 function toggleFav(id){ favs.has(id)?favs.delete(id):favs.add(id); saveArr('rz-favs',[...favs]); }
-function pushRecent(id){ recent=[id,...recent.filter(x=>x!==id)].slice(0,8); saveArr('rz-recent',recent); }
 function setCat(c){ cat=c; try{localStorage.setItem('rz-cat',cat)}catch(_){} renderTabs(); renderList(); }
 
 /* Suche: unempfindlich gegen Umlaute, doppelte Buchstaben und kleine Tippfehler */
@@ -320,16 +315,10 @@ function yieldText(r){ return r.servings ? r.servings+' '+r.unit : ''; }
 function renderTabs(){
   $('#tabs').innerHTML = ['Alle',FAV,...cats].map(c=>'<button class="tab" type="button" aria-pressed="'+(c===cat)+'" data-c="'+esc(c)+'">'+(c===FAV?'♥ ':'')+esc(c)+'</button>').join('');
 }
-function renderRecent(show){
-  const list=recent.map(id=>R.find(r=>r.id===id)).filter(Boolean);
-  $('#recent').innerHTML = show && list.length ? '<div class="recent"><div class="lbl">Zuletzt angesehen</div><div class="chips">'+
-    list.map(r=>'<button class="rchip" type="button" data-id="'+r.id+'">'+esc(r.title)+'</button>').join('')+'</div></div>' : '';
-}
 function renderList(){
   const q = $('#q').value.trim(), words = norm(q).split(' ').filter(Boolean);
   const hits = R.filter(r=>(cat==='Alle'||r.cat===cat||(cat===FAV&&favs.has(r.id))) && (!words.length || matches(r,words)));
   $('#count').textContent = R.length+' Rezepte in '+cats.length+' Kategorien';
-  renderRecent(cat==='Alle' && !words.length);
   if(!hits.length){ $('#groups').innerHTML='<p class="empty">'+(cat===FAV && !words.length ? 'Noch keine Favoriten. Öffne ein Rezept und tippe oben auf das Herz ♡.' : 'Kein Rezept passt zu „'+esc(q)+'“'+(cat!=='Alle'?' in „'+esc(cat)+'“':'')+'. Versuch es mit einer Zutat, z. B. „Pilze“.')+'</p>'; return; }
   $('#groups').innerHTML = cats.filter(c=>hits.some(r=>r.cat===c)).map(c=>
     '<section class="group"><h2 class="lbl">'+esc(c)+'</h2><ul class="list">'+
@@ -339,7 +328,7 @@ function renderList(){
     }).join('')+'</ul></section>').join('');
 }
 $('#tabs').addEventListener('click',e=>{const b=e.target.closest('.tab'); if(!b) return; setCat(b.dataset.c); updateNav();});
-$('#recent').addEventListener('click',e=>{const b=e.target.closest('.rchip'); if(b) location.hash=b.dataset.id;});
+
 $('#q').addEventListener('input',renderList);
 $('#groups').addEventListener('click',e=>{const b=e.target.closest('.row'); if(b) location.hash=b.dataset.id;});
 
@@ -350,7 +339,7 @@ function stepSize(r){ return r.servings>=10 ? 5 : 1; }
 function amountLabel(r){ return r.servings ? amount+' '+r.unit : (amount===1?'1× Rezept':String(amount).replace('.',',')+'× Rezept'); }
 function factor(r){ return r.servings ? amount/r.servings : amount; }
 function renderDetail(r){
-  cur=r; amount = r.servings || 1; cooked=new Set(); pick=null; pushRecent(r.id);
+  cur=r; amount = r.servings || 1; cooked=new Set(); pick=null;
   const facts = [
     r.difficulty?['Schwierigkeit',dots(r.difficulty)]:null,
     r.prep?['Vorbereitung',esc(r.prep)]:null,
