@@ -6008,5 +6008,64 @@ window.REZEPTE = [
    "Für den Hummus gehen auch vorgegarte Kichererbsen aus Dose oder Glas.",
    "Die Falafel-Kichererbsen werden nur eingeweicht, nicht gekocht."
   ]
+ },
+ {
+  "id": "bechamel-sauce",
+  "title": "Béchamel-Sauce",
+  "cat": "Saucen",
+  "tags": [],
+  "servings": 2,
+  "unit": "Portionen",
+  "difficulty": 1,
+  "min": 15,
+  "est": [],
+  "endo": {
+   "status": "ja",
+   "plus": []
+  },
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 300,
+      "u": "ml",
+      "t": "Milch"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Lorbeerblatt"
+     },
+     {
+      "m": 25,
+      "u": "g",
+      "t": "Butter"
+     },
+     {
+      "m": 25,
+      "u": "g",
+      "t": "Mehl"
+     },
+     {
+      "t": "Muskat"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Milch und Lorbeerblatt in einem Topf langsam zum Kochen bringen und vom Herd nehmen.",
+   "Die Butter in einem anderen Topf zerlassen.",
+   "Das Mehl hineinstreuen und auf kleiner Hitze 1–2 Minuten anschwitzen, dabei gut rühren. Das Mehl darf nicht bräunen. Sollte die Mehlschwitze zu heiß werden, den Topf vom Herd nehmen.",
+   "Das Lorbeerblatt aus der Milch nehmen. Nach und nach die Milch in die Mehlschwitze geben und immer wieder glattrühren, damit sich keine Klümpchen bilden.",
+   "Langsam zum Kochen bringen und unter ständigem Rühren weiterkochen, bis die Sauce dick wird.",
+   "2–3 Minuten auf kleinster Hitze weiterkochen lassen.",
+   "Die Sauce mit Muskat, Salz und Pfeffer abschmecken."
+  ],
+  "notes": [
+   "Ergibt ca. 300 ml Sauce."
+  ]
  }
 ];
