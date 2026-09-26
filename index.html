@@ -156,8 +156,8 @@ button{font:inherit;color:inherit}
 .notes{margin-top:26px;border:1.5px solid var(--ink);border-radius:4px;padding:10px 14px 12px;position:relative}
 .notes .nh{font:700 1.7rem/1 var(--hand);background:var(--sheet);padding:0 6px;position:absolute;top:-.8rem;left:12px}
 .notes p{margin:10px 0 0}
-.tbtn{display:inline-flex;align-items:center;gap:3px;border:1.5px solid var(--pen);background:var(--pen-soft);color:var(--pen);border-radius:99px;padding:0 8px;margin:0 1px;font:inherit;font-weight:700;cursor:pointer;line-height:1.5;white-space:nowrap}
-.tbtn::before{content:"⏱";font-weight:400}
+.tbtn{vertical-align:baseline;display:inline-flex;align-items:center;gap:3px;border:1.5px solid var(--pen);background:var(--pen-soft);color:var(--pen);border-radius:99px;padding:0 8px;margin:0 1px;font:inherit;font-weight:700;cursor:pointer;line-height:1.5;white-space:nowrap}
+.tbtn::before{content:"⏱\FE0E";font-weight:400;font-size:.9em}
 .done .tbtn{border-color:var(--done);background:transparent;color:var(--done)}
 .tbar{position:fixed;left:8px;right:8px;bottom:calc(70px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;flex-direction:column;gap:6px;max-width:560px;margin:0 auto;pointer-events:none}
 body.cooking .tbar{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
@@ -385,7 +385,7 @@ function renderDetail(r){
     '<div class="cols"><section><h2>Zutaten</h2><div id="ings"></div>'+
     '<button class="btn cartadd" type="button" id="toCart"></button>'+
     '<p class="addnote" id="addnote" hidden></p></section>'+
-    '<section><div class="stephead"><h2>Zubereitung</h2><button class="btn primary" type="button" id="cookBtn">▶ Jetzt kochen</button></div><ol class="steps" id="steps">'+r.steps.map((s,i)=>'<li>'+stepHtml(s,i)+'</li>').join('')+'</ol><p class="hint">Tipp: Schritt antippen, um ihn abzuhaken. Zeiten mit ⏱ antippen startet einen Timer.</p>'+
+    '<section><div class="stephead"><h2>Zubereitung</h2><button class="btn primary" type="button" id="cookBtn">▶ Jetzt kochen</button></div><ol class="steps" id="steps">'+r.steps.map((s,i)=>'<li><span>'+stepHtml(s,i)+'</span></li>').join('')+'</ol><p class="hint">Tipp: Schritt antippen, um ihn abzuhaken. Zeiten mit ⏱ antippen startet einen Timer.</p>'+
     (r.notes.length?'<div class="notes"><span class="nh">Notizen</span>'+r.notes.map(n=>'<p>'+esc(n)+'</p>').join('')+'</div>':'')+
     '</section></div></div>';
   renderIngs(); renderCartBtn();
@@ -460,7 +460,7 @@ async function toggleWake(quiet){
   const b=$('#wake');
   if(wakeOn){ wakeOn=false; try{ lock && await lock.release(); }catch(e){} lock=null; }
   else { wakeOn = ('wakeLock' in navigator) && await acquire();
-    if(!wakeOn && b){ b.textContent='Nicht verfügbar'; setTimeout(()=>{ if($('#wake')) $('#wake').textContent='☀ Bildschirm an'; },2200); } }
+    if(!wakeOn && b && !quiet){ b.textContent='Nicht verfügbar'; setTimeout(()=>{ if($('#wake')) $('#wake').textContent='☀ Bildschirm an'; },2200); } }
   if($('#wake')) $('#wake').setAttribute('aria-pressed',wakeOn);
   if(quiet) return;
   if(wakeOn) toast('Der Bildschirm bleibt an, solange das Rezept offen ist.');
