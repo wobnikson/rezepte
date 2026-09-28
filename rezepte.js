@@ -7763,5 +7763,690 @@ window.REZEPTE = [
   "notes": [
    "Ergibt ca. 300 ml Sauce."
   ]
+ },
+ {
+  "id": "zimtschnecken-cinnabon-style",
+  "title": "Zimtschnecken „Cinnabon Style“",
+  "cat": "Backen",
+  "tags": [],
+  "servings": 25,
+  "unit": "Stück",
+  "difficulty": 2,
+  "min": 90,
+  "rest": "Teig ca. 1–2 h gehen lassen, Schnecken nochmals 30 min",
+  "est": [],
+  "endo": {
+   "status": "nein",
+   "plus": [],
+   "grund": "viel Zucker (ca. 24 g pro Stück) und Butter (ca. 18 g pro Stück), Weißmehl"
+  },
+  "groups": [
+   {
+    "title": "Für den Teig",
+    "items": [
+     {
+      "m": 2,
+      "u": "Pck.",
+      "t": "Vanillepuddingpulver"
+     },
+     {
+      "m": 100,
+      "u": "ml",
+      "t": "Wasser, kalt"
+     },
+     {
+      "m": 500,
+      "u": "ml",
+      "t": "Milch"
+     },
+     {
+      "m": 5,
+      "u": "EL",
+      "t": "Zucker"
+     },
+     {
+      "m": 120,
+      "u": "g",
+      "t": "Butter"
+     },
+     {
+      "m": 2,
+      "u": "Pck.",
+      "t": "Trockenhefe"
+     },
+     {
+      "m": 2,
+      "u": "",
+      "t": "Eier"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Salz"
+     },
+     {
+      "m": 800,
+      "u": "g",
+      "t": "Mehl"
+     },
+     {
+      "t": "Mehl für die Arbeitsfläche"
+     }
+    ]
+   },
+   {
+    "title": "Zum Bestreichen",
+    "items": [
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Butter, flüssig"
+     },
+     {
+      "m": 300,
+      "u": "g",
+      "t": "brauner Zucker"
+     },
+     {
+      "m": 5,
+      "u": "TL",
+      "t": "Zimtpulver"
+     }
+    ]
+   },
+   {
+    "title": "Für das Frosting",
+    "items": [
+     {
+      "m": 250,
+      "u": "g",
+      "t": "Puderzucker"
+     },
+     {
+      "m": 250,
+      "u": "g",
+      "t": "Frischkäse"
+     },
+     {
+      "m": 120,
+      "u": "g",
+      "t": "Butter"
+     },
+     {
+      "m": 2,
+      "u": "Pck.",
+      "t": "Vanillinzucker"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Milch aufkochen. Puddingpulver mit dem kalten Wasser verrühren und in die kochende Milch rühren.",
+   "Kurz kochen lassen, bis der Pudding eingedickt ist, dabei ständig rühren.",
+   "Vom Herd nehmen, Butter zugeben und so lange einrühren, bis sie geschmolzen ist. Dann Zucker und Eier einrühren.",
+   "Wenn die Masse noch handwarm ist, die Trockenhefe unterrühren.",
+   "Salz und Mehl in einer Schüssel vermischen, die Puddingmasse hinzugeben und alles zu einem weichen, leicht klebrigen Teig verarbeiten (geht am besten mit den Knethaken eines Mixers). Der Teig sollte auf jeden Fall feuchter als ein normaler Hefeteig sein.",
+   "Den Teig gehen lassen, bis er sich verdoppelt hat (dauert ca. 1–2 Stunden).",
+   "Den Teig halbieren und eine Hälfte auf einer gut bemehlten Fläche auswalken. Mit der Hälfte der flüssigen Butter bestreichen und jeweils die Hälfte von Zimt und braunem Zucker aufstreuen.",
+   "Eng aufwickeln und in ca. 4 cm breite Stücke schneiden. Mit der restlichen Teighälfte, Butter, Zimt und Zucker genauso verfahren.",
+   "Die Zimtschnecken mit Abstand zueinander (am besten seitlich versetzt) auf ein mit Backpapier ausgelegtes Blech setzen und nochmals 30 Min. gehen lassen. Sie sollten nicht zu dicht stehen, sich nach dem Gehen aber ganz leicht berühren.",
+   "Im heißen Backofen bei 200 °C Ober-/Unterhitze ca. 20 Min. backen, nicht zu dunkel werden lassen.",
+   "Für das Frosting alle Zutaten zu einer cremigen Masse rühren und über die noch warmen Zimtschnecken streichen."
+  ],
+  "stepItems": [
+   [
+    2,
+    0,
+    1
+   ],
+   [],
+   [
+    4,
+    3,
+    6
+   ],
+   [
+    5
+   ],
+   [
+    7,
+    8
+   ],
+   [],
+   [
+    9,
+    10,
+    12,
+    11
+   ],
+   [
+    9,
+    10,
+    12,
+    11
+   ],
+   [],
+   [],
+   [
+    13,
+    14,
+    15,
+    16
+   ]
+  ],
+  "notes": [
+   "Nach dem Vorbild der amerikanischen Cinnabon Rolls: höher und weicher als deutsche Zimtschnecken. Sie backen eher wie ein Schneckenkuchen zusammen, von dem man die einzelnen Schnecken abtrennt."
+  ]
+ },
+ {
+  "id": "kartoffel-brokkoli-auflauf",
+  "title": "Kartoffel-Brokkoli-Auflauf",
+  "cat": "Aus dem Ofen",
+  "tags": [],
+  "servings": 4,
+  "unit": "Portionen",
+  "difficulty": 1,
+  "min": 55,
+  "est": [],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [
+    "entzuendung"
+   ],
+   "grund": "viel Sahne und Käse (ca. 100 g pro Portion)",
+   "tipp": "Sojasahne statt Sahne nehmen und den Käse auf ca. 100 g reduzieren."
+  },
+  "groups": [
+   {
+    "title": "Für den Auflauf",
+    "items": [
+     {
+      "m": 1,
+      "u": "l",
+      "t": "Wasser"
+     },
+     {
+      "t": "Gemüsebrühepulver, nach Bedarf"
+     },
+     {
+      "m": 6,
+      "u": "",
+      "t": "Kartoffeln, mittelgroß"
+     },
+     {
+      "m": 2,
+      "u": "",
+      "t": "Brokkoli (Köpfe)"
+     }
+    ]
+   },
+   {
+    "title": "Für die Sauce",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "Zwiebel"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Margarine"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Mehl"
+     },
+     {
+      "m": 200,
+      "u": "ml",
+      "ca": true,
+      "t": "Sahne oder Sojasahne (1 Pck.)"
+     },
+     {
+      "t": "Muskat"
+     },
+     {
+      "t": "Paprikapulver, edelsüß"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     },
+     {
+      "t": "Chilipulver"
+     },
+     {
+      "m": [
+       150,
+       200
+      ],
+      "u": "g",
+      "ca": true,
+      "t": "geriebener Käse oder veganer Käse-Ersatz"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Das Wasser zum Kochen bringen und das Gemüsebrühepulver dazugeben.",
+   "Währenddessen die Kartoffeln schälen und den Brokkoli putzen und in Röschen schneiden.",
+   "Die Kartoffeln würfeln und in der Brühe gar kochen. Dann mit einem Schaumlöffel aus der Brühe nehmen.",
+   "Die Brokkoliröschen in der Brühe kochen. Kartoffeln und Brokkoli in eine große Auflaufform geben, die Brühe aufheben.",
+   "Für die Soße die Zwiebel würfeln und in der Margarine glasig braten.",
+   "Das Mehl darüberstreuen und eine Weile bräunen lassen.",
+   "Einen halben Liter von der Gemüsebrühe, in der Kartoffeln und Brokkoli gekocht wurden, hinzugeben und kurz andicken lassen.",
+   "Die Sahne zufügen und die Soße mit Muskat, Paprikapulver, Salz, Pfeffer und Chili gut würzen.",
+   "Die Soße in die Auflaufform geben und den Käse darüberstreuen.",
+   "Im heißen Backofen bei 180 °C Ober-/Unterhitze ca. 20–25 Min. backen, bis der Käse schön braun ist."
+  ],
+  "stepItems": [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    3
+   ],
+   [
+    2
+   ],
+   [
+    3
+   ],
+   [
+    4,
+    5
+   ],
+   [
+    6
+   ],
+   [],
+   [
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   [
+    12
+   ],
+   []
+  ],
+  "notes": [
+   "Laut Vorlage geht auch Sojasahne (hat weniger Kalorien). Mit Sojasahne und veganem Käse-Ersatz ist der Auflauf vegan."
+  ]
+ },
+ {
+  "id": "griechischer-flammkuchen",
+  "title": "Griechischer Flammkuchen",
+  "cat": "Aus dem Ofen",
+  "tags": [],
+  "servings": 4,
+  "unit": "Portionen",
+  "difficulty": 1,
+  "min": 40,
+  "est": [],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [],
+   "grund": "viel Crème fraîche und Feta (ca. 90 g pro Portion) und wenig Gemüse (ca. 70 g pro Portion)",
+   "tipp": "Feta auf 100 g reduzieren, die Hälfte der Crème fraîche durch griechischen Joghurt ersetzen und zusätzlich 1 rote Paprika und 200 g Spinat mit auf den Flammkuchen geben."
+  },
+  "groups": [
+   {
+    "items": [
+     {
+      "m": 1,
+      "u": "Pck.",
+      "t": "frischer Flammkuchenteig (Kühlregal)"
+     },
+     {
+      "m": 150,
+      "u": "g",
+      "t": "Crème fraîche"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Kirschtomaten"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Feta"
+     },
+     {
+      "m": 50,
+      "u": "g",
+      "t": "Peperoni, eingelegte Ringe aus dem Glas"
+     },
+     {
+      "m": 10,
+      "u": "",
+      "t": "schwarze Oliven, entsteint"
+     },
+     {
+      "t": "Oregano"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Backofen auf 220 °C Ober-/Unterhitze (Umluft 200 °C, Gas Stufe 5) vorheizen.",
+   "Den Teig mit dem Backpapier auf einem Backblech entrollen.",
+   "Crème fraîche mit Salz und Pfeffer würzen und auf dem Teig verstreichen.",
+   "Tomaten waschen und in Scheiben schneiden. Feta zerbröseln oder in kleine Würfel schneiden.",
+   "Peperoni und Oliven abtropfen lassen, Oliven in Scheiben schneiden.",
+   "Tomaten, Peperoni, Oliven und Feta auf der Creme verteilen und mit Oregano bestreuen.",
+   "Den Flammkuchen im vorgeheizten Backofen ca. 15–20 Minuten backen.",
+   "In Stücke schneiden und servieren."
+  ],
+  "stepItems": [
+   [],
+   [
+    0
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    3,
+    4
+   ],
+   [
+    5,
+    6
+   ],
+   [
+    3,
+    5,
+    6,
+    4,
+    7
+   ],
+   [],
+   []
+  ],
+  "notes": [
+   "Wer es gerne scharf mag, nimmt scharfe Peperoni zum Belegen.",
+   "Statt Fertigteig geht auch das Rezept „Flammkuchenteig“ aus dem Ordner."
+  ]
+ },
+ {
+  "id": "risotto-grundrezept-mit-vier-abwandlungen",
+  "title": "Risotto Grundrezept mit vier Abwandlungen",
+  "cat": "Pfanne & Wok",
+  "tags": [],
+  "servings": 4,
+  "unit": "Portionen",
+  "difficulty": 2,
+  "min": 30,
+  "est": [],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [],
+   "grund": "wenig Gemüse (Grundrezept ca. 15 g pro Portion), zwei Varianten mit Weißwein",
+   "tipp": "Die Tomaten-Variante wählen und einen gemischten Salat (ca. 50 g pro Portion) dazu servieren; bei den Wein-Varianten den Wein durch Brühe mit einem Spritzer Essig ersetzen."
+  },
+  "groups": [
+   {
+    "title": "Grundrezept",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "kleine Zwiebel"
+     },
+     {
+      "m": 50,
+      "u": "g",
+      "t": "Butter"
+     },
+     {
+      "m": 200,
+      "u": "g",
+      "t": "Risottoreis (z. B. Arborio)"
+     },
+     {
+      "m": 450,
+      "u": "ml",
+      "t": "Gemüsebrühe, heiß"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Salz"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Kräuter, fein gehackt (z. B. gemischte TK-Kräuter)"
+     }
+    ]
+   },
+   {
+    "title": "Variante: Risi Bisi",
+    "items": [
+     {
+      "m": 150,
+      "u": "g",
+      "t": "TK-Erbsen"
+     },
+     {
+      "m": 3,
+      "u": "EL",
+      "t": "Parmesan, frisch gerieben"
+     },
+     {
+      "m": 20,
+      "u": "g",
+      "t": "Butter, kalt"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Petersilie, gehackt"
+     }
+    ]
+   },
+   {
+    "title": "Variante: mit Champignons",
+    "items": [
+     {
+      "m": 300,
+      "u": "g",
+      "t": "Champignons"
+     },
+     {
+      "m": 3,
+      "u": "EL",
+      "t": "Weißwein"
+     },
+     {
+      "t": "Salz"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Gruyère, gerieben"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Schnittlauchröllchen"
+     }
+    ]
+   },
+   {
+    "title": "Variante: mit Tomaten",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "Knoblauchzehe"
+     },
+     {
+      "m": 20,
+      "u": "g",
+      "t": "Butter"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Olivenöl"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Tomatenmark"
+     },
+     {
+      "m": 4,
+      "u": "",
+      "t": "Tomaten"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Cayennepfeffer"
+     },
+     {
+      "t": "Salz"
+     },
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "Basilikum, gehackt"
+     },
+     {
+      "m": 3,
+      "u": "EL",
+      "t": "Parmesan, frisch gerieben"
+     }
+    ]
+   },
+   {
+    "title": "Variante: Mailänder Risotto",
+    "items": [
+     {
+      "m": 125,
+      "u": "ml",
+      "t": "Weißwein"
+     },
+     {
+      "m": 1,
+      "u": "Msp.",
+      "t": "Safranpulver"
+     },
+     {
+      "m": 50,
+      "u": "ml",
+      "t": "Gemüsebrühe, zusätzlich (insgesamt 500 ml)"
+     },
+     {
+      "m": 30,
+      "u": "g",
+      "t": "Parmesan, frisch gerieben"
+     },
+     {
+      "m": [
+       1,
+       2
+      ],
+      "u": "EL",
+      "t": "Crème fraîche"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Zwiebel abziehen und würfeln. Butter in einem Topf zerlassen und die Zwiebelwürfel darin andünsten.",
+   "Risottoreis hinzufügen und glasig dünsten.",
+   "Etwas von der heißen Brühe angießen, zum Kochen bringen und den Reis bei schwacher Hitze unter gelegentlichem Umrühren etwa 20 Minuten mit Deckel quellen lassen. Dabei nach und nach die restliche Brühe hinzufügen.",
+   "Risotto mit Salz abschmecken, in eine vorgewärmte Schüssel füllen und mit den Kräutern bestreuen.",
+   "Variante Risi Bisi: Etwa 5 Minuten vor Ende der Garzeit die tiefgekühlten Erbsen unter den Reis mischen und fertig garen. Parmesan und kalte Butter untermischen und mit gehackter Petersilie bestreuen.",
+   "Variante mit Champignons: Die Champignons putzen, in Scheiben schneiden und mit den Zwiebelwürfeln in der Butter andünsten. Den Reis hinzufügen, mit dem Weißwein ablöschen, Brühe dazugießen und wie oben garen.",
+   "Variante mit Champignons: Zum Schluss den geriebenen Gruyère unterrühren, nochmals mit Salz abschmecken und mit Schnittlauchröllchen bestreut servieren.",
+   "Variante mit Tomaten: Zusätzlich die Knoblauchzehe abziehen, in Scheiben schneiden und mit den Zwiebelwürfeln in Butter und Olivenöl andünsten. Den Reis hinzufügen und glasig dünsten. Tomatenmark unterrühren, Brühe dazugeben und wie oben garen.",
+   "Variante mit Tomaten: Zum Schluss die Tomaten enthäuten, in Spalten schneiden, unter das Risotto mischen und kurz darin erwärmen. Mit Salz und Cayennepfeffer abschmecken und mit gehacktem Basilikum und 2–3 EL geriebenem Parmesan bestreuen.",
+   "Variante Mailänder Risotto: Weißwein und den gemahlenen Safran zum glasig gedünsteten Reis geben, im offenen Topf zum Kochen bringen und bei schwacher Hitze etwa 20 Minuten garen. Wenn die Flüssigkeit verkocht ist, nach und nach etwa 500 ml Gemüsebrühe hinzugießen.",
+   "Variante Mailänder Risotto: Geriebenen Parmesan mit der Crème fraîche verrühren und unter das Risotto mischen. Mit Salz und Pfeffer abschmecken."
+  ],
+  "stepItems": [
+   [
+    0,
+    1
+   ],
+   [
+    2
+   ],
+   [
+    3
+   ],
+   [
+    4,
+    5
+   ],
+   [
+    6,
+    7,
+    8,
+    9
+   ],
+   [
+    10,
+    0,
+    1,
+    2,
+    11,
+    3
+   ],
+   [
+    13,
+    12,
+    14
+   ],
+   [
+    15,
+    0,
+    16,
+    17,
+    2,
+    18,
+    3
+   ],
+   [
+    19,
+    21,
+    20,
+    22,
+    23
+   ],
+   [
+    24,
+    25,
+    3,
+    26
+   ],
+   [
+    27,
+    28,
+    29
+   ]
+  ],
+  "notes": [
+   "Die vier Varianten sind Abwandlungen des Grundrezepts: Grundrezept kochen und nur die Zutaten und Schritte der gewählten Variante dazunehmen.",
+   "Als Beilage zu kurz gebratenem Fleisch oder Fisch servieren, oder mit einem gemischten Salat als Hauptgericht."
+  ]
  }
 ];
