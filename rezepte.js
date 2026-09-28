@@ -8448,5 +8448,245 @@ window.REZEPTE = [
    "Die vier Varianten sind Abwandlungen des Grundrezepts: Grundrezept kochen und nur die Zutaten und Schritte der gewählten Variante dazunehmen.",
    "Als Beilage zu kurz gebratenem Fleisch oder Fisch servieren, oder mit einem gemischten Salat als Hauptgericht."
   ]
+ },
+ {
+  "id": "ofenkuerbis-mit-hummus-und-petersilien-pesto",
+  "title": "Ofenkürbis mit Hummus und Petersilien-Pesto",
+  "cat": "Bowls & Teller",
+  "tags": [],
+  "servings": 4,
+  "unit": "Portionen",
+  "difficulty": 2,
+  "min": 50,
+  "est": [
+   "difficulty",
+   "time",
+   "servings"
+  ],
+  "endo": {
+   "status": "ja",
+   "plus": [
+    "ballaststoffe",
+    "entzuendung"
+   ]
+  },
+  "groups": [
+   {
+    "title": "Hummus",
+    "items": [
+     {
+      "m": 1,
+      "u": "Glas",
+      "t": "Kichererbsen, abgetropft"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Knoblauchzehe"
+     },
+     {
+      "m": [
+       2,
+       3
+      ],
+      "u": "EL",
+      "t": "Tahini (Sesampaste)"
+     },
+     {
+      "m": [
+       1,
+       2
+      ],
+      "u": "TL",
+      "t": "Salz"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Zitrone, Saft davon"
+     },
+     {
+      "m": 30,
+      "u": "ml",
+      "t": "Gemüsebrühe"
+     },
+     {
+      "m": [
+       2,
+       3
+      ],
+      "u": "TL",
+      "t": "Harissa"
+     },
+     {
+      "m": [
+       2,
+       3
+      ],
+      "u": "EL",
+      "t": "Olivenöl"
+     }
+    ]
+   },
+   {
+    "title": "Zitronenvinaigrette",
+    "items": [
+     {
+      "m": [
+       1,
+       2
+      ],
+      "u": "",
+      "t": "Zitronen, Saft davon"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Honig"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     },
+     {
+      "t": "Olivenöl, gleiche Menge wie Zitronensaft"
+     }
+    ]
+   },
+   {
+    "title": "Ofenkürbis",
+    "items": [
+     {
+      "m": 1,
+      "u": "",
+      "t": "Hokkaido-Kürbis"
+     },
+     {
+      "m": 3,
+      "u": "",
+      "t": "rote Zwiebeln"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Knoblauchzehe"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Stück Ingwer, daumengroß"
+     },
+     {
+      "m": [
+       2,
+       3
+      ],
+      "u": "TL",
+      "t": "Harissa"
+     },
+     {
+      "t": "Olivenöl"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     }
+    ]
+   },
+   {
+    "title": "Petersilien-Pesto",
+    "items": [
+     {
+      "m": 1,
+      "u": "Bund",
+      "t": "glatte Petersilie"
+     },
+     {
+      "m": [
+       2,
+       3
+      ],
+      "u": "EL",
+      "t": "Mandelkerne"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "Knoblauchzehe"
+     },
+     {
+      "m": 50,
+      "u": "g",
+      "t": "gereifter Hartkäse, gerieben"
+     },
+     {
+      "t": "Salz, Pfeffer"
+     },
+     {
+      "m": 100,
+      "u": "ml",
+      "t": "Olivenöl"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Backofen auf 180 °C vorheizen.",
+   "Kürbis halbieren, entkernen und in Spalten schneiden.",
+   "Knoblauch und Ingwer in feine Scheiben schneiden, Zwiebeln in Spalten teilen.",
+   "Kürbis, Zwiebeln, Knoblauch und Ingwer mit Harissa, Salz, Pfeffer und Olivenöl marinieren.",
+   "Bei 180 °C ca. 30 Minuten rösten, bis der Kürbis weich und leicht karamellisiert ist.",
+   "Währenddessen für den Hummus alle Zutaten in ein hohes Gefäß geben und mit dem Pürierstab fein mixen. Zum Schluss abschmecken: Er sollte cremig, zitronig und leicht scharf sein.",
+   "Für das Pesto alle Zutaten im Mixer fein pürieren. Es sollte frisch, intensiv und leicht nussig schmecken.",
+   "Für die Vinaigrette Zitronensaft, Honig, Salz, Pfeffer und Olivenöl verrühren, bis sie leicht cremig-bindig ist.",
+   "Zum Anrichten den Hummus großzügig auf einem Teller verstreichen, den warmen Ofenkürbis daraufsetzen, mit der Zitronenvinaigrette beträufeln und mit dem Petersilien-Pesto vollenden."
+  ],
+  "stepItems": [
+   [],
+   [
+    12
+   ],
+   [
+    14,
+    15,
+    13
+   ],
+   [
+    12,
+    13,
+    14,
+    15,
+    16,
+    18,
+    17
+   ],
+   [],
+   [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   [
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+   ],
+   [
+    8,
+    9,
+    10,
+    11
+   ],
+   []
+  ],
+  "notes": [
+   "Die Vorlage nennt keine Portionszahl; bei 1 Hokkaido und 1 Glas Kichererbsen für ca. 4 Portionen gerechnet. Laut Vorlage gut zum Teilen."
+  ]
  }
 ];
