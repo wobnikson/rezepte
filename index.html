@@ -319,6 +319,17 @@ body.actoff .actbar{transform:translateY(120px);opacity:0;pointer-events:none}
 .shop li.swiping{transition:none;background:var(--sheet)}
 .shop li.swiping::after{content:"Löschen";position:absolute;top:0;bottom:0;left:100%;width:140px;display:flex;align-items:center;padding-left:18px;background:#E9C7BE;color:#7A2A1C;font-weight:700}
 .shop li.armed::after{background:#B3261E;color:#fff}
+.stores{display:flex;background:var(--rule);border-radius:12px;padding:3px;margin:4px 0 12px;gap:2px}
+.stores button{flex:1;min-height:40px;border:0;border-radius:9px;background:transparent;color:var(--muted);font:600 .95rem/1.2 var(--body);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.stores button.on{background:var(--sheet);color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgba(74,63,53,.18)}
+.stores .stn{min-width:20px;padding:1px 6px;border-radius:99px;background:var(--pen-soft);color:var(--pen);font-size:.78rem;font-weight:700}
+.stores button.on .stn{background:var(--pen);color:var(--sheet)}
+.editsel{display:flex;gap:6px}.editsel #editStore{flex:0 0 auto;width:auto}.editsel #editSec{flex:1;min-width:0;width:auto}
+.tag.laden{display:inline-block;vertical-align:1px;margin-left:4px;padding:2px 6px;font-size:.7rem}
+.shop li.moving{transition:none;background:var(--sheet)}
+.shop li.moving::before{content:"→ " attr(data-to);position:absolute;top:0;bottom:0;right:100%;width:160px;display:flex;align-items:center;justify-content:flex-end;padding-right:18px;background:var(--pen-soft);color:var(--pen);font-weight:700}
+.shop li.moving.armed::before{background:var(--pen);color:var(--sheet)}
+.shop li.gone.goner{transform:translateX(110%)}
 .shop li.gone{transform:translateX(-110%);opacity:0;transition:transform .18s ease,opacity .18s ease}
 .shop{list-style:none;margin:0;background:var(--sheet);border-radius:18px;box-shadow:var(--shadow);padding:0 12px;overflow:hidden}
 .tact{border:0;background:none;color:var(--paper);font-weight:700;text-decoration:underline;cursor:pointer;white-space:nowrap;padding:4px 2px}
@@ -1175,7 +1186,7 @@ function stamp(){ return Date.now()*1000+(tSeq++%1000); }
 function randomListId(){ const a=new Uint8Array(24); crypto.getRandomValues(a); return Array.from(a,x=>'abcdefghijklmnopqrstuvwxyz0123456789'[x%36]).join(''); }
 function saveLocal(){ try{ localStorage.setItem(SK,JSON.stringify(shop)); }catch(e){} updateCartCount(); }
 function updateCartCount(){ const n=shop.items.filter(i=>!i.done).length; document.querySelectorAll('[data-cartn]').forEach(el=>el.textContent=n||''); }
-function plain(it){ const o={name:it.name,u:it.u||'',parts:it.parts||[],done:!!it.done,t:it.t||stamp()}; if(it.text!=null) o.text=it.text; if(it.custom) o.custom=true; if(it.sec) o.sec=it.sec; return o; }
+function plain(it){ const o={name:it.name,u:it.u||'',parts:it.parts||[],done:!!it.done,t:it.t||stamp()}; if(it.text!=null) o.text=it.text; if(it.custom) o.custom=true; if(it.sec) o.sec=it.sec; if(it.store) o.store=it.store; return o; }
 
 /* Supermarkt-Bereiche: automatisch nach Zutatennamen, pro Eintrag änderbar */
 const SECS=['Obst & Gemüse','Kühlregal','Brot & Backwaren','Nudeln, Reis & Getreide','Konserven & Gläser','Backen & Süßes','Gewürze, Öl & Saucen','Nüsse & Samen','Tiefkühl','Getränke','Sonstiges'];
@@ -1202,6 +1213,27 @@ function autoSec(it){
   return 'Sonstiges';
 }
 function secOf(it){ return it.sec && SECS.includes(it.sec) ? it.sec : autoSec(it); }
+/* Läden: '' = Supermarkt (Standard). Weitere Läden hier ergänzen, z. B. {id:'rossmann',name:'Rossmann'} */
+const STORES=[{id:'',name:'Supermarkt'},{id:'dm',name:'DM'}];
+const STORE_IDS=new Set(STORES.map(x=>x.id));
+function storeOf(it){ return it.store && STORE_IDS.has(it.store) ? it.store : ''; }
+function storeName(id){ const x=STORES.find(x=>x.id===id); return x?x.name:'Supermarkt'; }
+function swipeTarget(it){ return storeOf(it)==='' ? 'dm' : ''; }   // nach rechts wischen: Supermarkt ↔ DM
+let shopStore=''; try{ const v=localStorage.getItem('rz-laden-tab')||''; if(STORE_IDS.has(v)) shopStore=v; }catch(e){}
+function setShopStore(id){ shopStore=id; try{ localStorage.setItem('rz-laden-tab',id); }catch(e){} }
+/* Gemerkt: welche Zutat in welchem Laden gekauft wird {kanonischer Name: Laden} – bei gemeinsamer Liste in „extras“ */
+const LPK='rz-laden-merk';
+let storePrefs={}; try{ const o=JSON.parse(localStorage.getItem(LPK)||'{}'); if(o && typeof o==='object') storePrefs=o; }catch(e){}
+function saveStorePrefs(){ try{ localStorage.setItem(LPK,JSON.stringify(storePrefs)); }catch(e){} }
+function prefKey(t){ return canon(String(t).replace(/^[\d.,/½¼¾⅓⅔\s]+(g|kg|ml|l|stk\.?|st\.?|pck\.?|packung(en)?|dose(n)?|flasche(n)?|becher)?\s+/i,'').trim()); }
+function itemKey(it){ return prefKey(it.text!=null?it.text:it.name); }
+function prefStore(name){ const v=storePrefs[prefKey(name)]; return v && STORE_IDS.has(v) ? v : ''; }
+function rememberStore(it){
+  const k=itemKey(it), st=storeOf(it); if(!k) return;
+  if(st){ if(storePrefs[k]===st) return; storePrefs[k]=st; } else { if(!(k in storePrefs)) return; delete storePrefs[k]; }
+  saveStorePrefs(); pushExtra('laden_'+encodeURIComponent(k),st?{kind:'laden',key:k,store:st,t:Date.now()}:null);
+}
+function moveStore(it,st){ if(st) it.store=st; else delete it.store; rememberStore(it); commit([it],[]); }
 function col(){ return db.collection('listen').doc(listId).collection('eintraege'); }
 // Änderungen speichern: immer auf dem Gerät, bei gemeinsamer Liste zusätzlich in Firebase
 function commit(changed,removed){
@@ -1271,16 +1303,19 @@ function listenExtras(upload){
   const go=()=>{ if(listId!==id) return;
     unsubX=xcol().onSnapshot({includeMetadataChanges:false}, snap=>{
       if(snap.empty && snap.metadata.fromCache) return;   // noch nichts vom Server: lokale Favoriten behalten
-      const nf=new Set(), nn={};
-      snap.docs.forEach(d=>{ const x=d.data()||{}; if(!x.rid) return;
+      const nf=new Set(), nn={}, np={};
+      snap.docs.forEach(d=>{ const x=d.data()||{};
+        if(x.kind==='laden'){ if(x.key && STORE_IDS.has(x.store) && x.store) np[x.key]=x.store; return; }
+        if(!x.rid) return;
         if(x.kind==='fav') nf.add(x.rid); else if(x.kind==='note' && x.text) nn[x.rid]={text:String(x.text),t:x.t||0}; });
-      favs=nf; notes=nn; saveArr('rz-favs',[...favs]); saveNotes();
+      favs=nf; notes=nn; storePrefs=np; saveArr('rz-favs',[...favs]); saveNotes(); saveStorePrefs();
       xState='online'; refreshX();
     }, xFail); };
   if(!upload){ go(); return; }
   const b=db.batch(), c=xcol();
   favs.forEach(rid=>b.set(c.doc('fav_'+rid),{kind:'fav',rid:rid,t:Date.now()}));
   Object.keys(notes).forEach(rid=>{ const n=notes[rid]; if(n && n.text) b.set(c.doc('note_'+rid),{kind:'note',rid:rid,text:n.text,t:n.t||Date.now()}); });
+  Object.keys(storePrefs).forEach(k=>{ if(STORE_IDS.has(storePrefs[k]) && storePrefs[k]) b.set(c.doc('laden_'+encodeURIComponent(k)),{kind:'laden',key:k,store:storePrefs[k],t:Date.now()}); });
   b.commit().then(()=>{ try{ localStorage.setItem(XK,id); }catch(e){} go(); }, err=>{ xFail(err); if(xState!=='denied') go(); });
 }
 function refreshX(){
@@ -1405,7 +1440,7 @@ function addPart(name,u0,n0,a,r){
   if(hit && noAmt(hit) && !plainAmt) hit.u=u;
   const part={rid:r.id,rt:r.title,n:n,a:a,nm:name};
   if(hit){ hit.parts.push(part); return hit; }
-  const it={id:newId(),t:stamp(),name:name,u:u,parts:[part],done:false}; shop.items.push(it); return it;
+  const it={id:newId(),t:stamp(),name:name,u:u,parts:[part],done:false}; const st=prefStore(name); if(st) it.store=st; shop.items.push(it); return it;
 }
 function addRecipe(r,f,sel){
   let k=0,n=0; const changed=new Set();
@@ -1448,16 +1483,19 @@ function shareBox(){
     '<form class="addform" id="joinform"><input id="joinIn" placeholder="Link hier einfügen" autocomplete="off" aria-label="Link zur gemeinsamen Liste"><button type="submit">Beitreten</button></form></details></div>';
 }
 function renderShop(){
-  const open=shop.items.filter(i=>!i.done), done=shop.items.filter(i=>i.done);
+  const inSt=i=>storeOf(i)===shopStore;
+  const open=shop.items.filter(i=>!i.done&&inSt(i)), done=shop.items.filter(i=>i.done&&inSt(i));
+  const openAll=shop.items.filter(i=>!i.done);
   const recs=new Map(); shop.items.forEach(i=>i.parts.forEach(p=>recs.set(p.rid,p.rt)));
   const row=i=>{
     if(i.id===editId) return '<li class="editing" data-id="'+esc(i.id)+'"><div class="editbox"><input class="edit-in" id="editIn" value="'+esc(itemText(i))+'" aria-label="Eintrag bearbeiten">'+
-      '<select class="edit-in" id="editSec" aria-label="Bereich im Supermarkt">'+SECS.map(x=>'<option'+(x===secOf(i)?' selected':'')+'>'+esc(x)+'</option>').join('')+'</select></div>'+
+      '<div class="editsel"><select class="edit-in" id="editStore" aria-label="Laden">'+STORES.map(x=>'<option value="'+esc(x.id)+'"'+(x.id===storeOf(i)?' selected':'')+'>'+esc(x.name)+'</option>').join('')+'</select>'+
+      '<select class="edit-in" id="editSec" aria-label="Bereich im Laden">'+SECS.map(x=>'<option'+(x===secOf(i)?' selected':'')+'>'+esc(x)+'</option>').join('')+'</select></div></div>'+
       '<div class="editacts"><button class="ic" type="button" data-act="save" aria-label="Speichern">✓</button><button class="ic del" type="button" data-act="del" aria-label="Löschen">'+IC.trash+'</button></div></li>';
     const a=i.text==null?sumText(i):'';
     const txt=i.text!=null?esc(i.text):(a?'<b>'+esc(a)+'</b> ':'')+esc(shownName(i));
     const from=[...new Set(i.parts.map(p=>p.rt))];
-    return '<li class="'+(i.done?'done':'')+'" data-id="'+esc(i.id)+'">'+
+    return '<li class="'+(i.done?'done':'')+'" data-id="'+esc(i.id)+'" data-to="'+esc(storeName(swipeTarget(i)))+'">'+
       '<button class="chk" type="button" data-act="toggle" aria-label="'+(i.done?'Wieder offen':'Abhaken')+'"></button>'+
       '<button class="it" type="button" data-act="toggle"><span class="txt">'+txt+'</span></button>'+
       '<button class="ic" type="button" data-act="edit" aria-label="Bearbeiten oder löschen">✎</button></li>';
@@ -1465,11 +1503,17 @@ function renderShop(){
   $('#shop').innerHTML=
     '<div class="sheet"><div class="shead"><h1 class="stitle">Einkaufsliste</h1>'+
     '<div class="shbtns"><button class="btn icb2" type="button" data-act="menu" aria-label="Teilen und weitere Aktionen">⋯</button></div></div>'+
-    '<div class="sstatrow"><p class="sstat">'+(shop.items.length? open.length+' offen'+(done.length?' · '+done.length+' erledigt':'') : 'Noch leer.')+'</p>'+syncLine()+'</div>'+
-    '<form class="addform" id="addform"><input id="addIn" placeholder="Hinzufügen, z. B. 2 l Milch" autocomplete="off" aria-label="Eintrag hinzufügen"><button type="submit">+</button></form>'+
-    (recs.size?'<div class="lbl">Rezepte auf der Liste</div><div class="chips" style="margin-top:6px">'+[...recs].map(([id,t])=>'<span class="chip"><span class="cht">'+esc(t)+'</span><button type="button" data-act="rmrec" data-rid="'+esc(id)+'" aria-label="'+esc(t)+' von der Liste nehmen">✕</button></span>').join('')+'</div>':'')+
-    (open.length?SECS.map(sec=>{ const its=open.filter(i=>secOf(i)===sec); return its.length?'<h2 class="lbl dhead">'+esc(sec)+'</h2><ul class="shop">'+its.map(row).join('')+'</ul>':''; }).join(''):
-      '<p class="sempty">'+(done.length?'Alles erledigt. ':'')+'Öffne ein Rezept und tippe unten auf den Einkaufswagen, oder schreib oben selbst etwas dazu.</p>')+
+    '<div class="stores" role="tablist" aria-label="Laden">'+STORES.map(x=>{ const n=openAll.filter(i=>storeOf(i)===x.id).length, on=x.id===shopStore;
+      return '<button type="button" role="tab" data-act="store" data-store="'+esc(x.id)+'" aria-selected="'+on+'"'+(on?' class="on"':'')+'>'+esc(x.name)+(n?' <span class="stn">'+n+'</span>':'')+'</button>'; }).join('')+'</div>'+
+    '<div class="sstatrow"><p class="sstat">'+(open.length||done.length? open.length+' offen'+(done.length?' · '+done.length+' erledigt':'') : 'Noch leer.')+'</p>'+syncLine()+'</div>'+
+    '<form class="addform" id="addform"><input id="addIn" placeholder="'+(shopStore?'Für '+esc(storeName(shopStore))+', z. B. Zahnpasta':'Hinzufügen, z. B. 2 l Milch')+'" autocomplete="off" aria-label="Eintrag hinzufügen'+(shopStore?' ('+esc(storeName(shopStore))+')':'')+'"><button type="submit">+</button></form>'+
+    (recs.size&&!shopStore?'<div class="lbl">Rezepte auf der Liste</div><div class="chips" style="margin-top:6px">'+[...recs].map(([id,t])=>'<span class="chip"><span class="cht">'+esc(t)+'</span><button type="button" data-act="rmrec" data-rid="'+esc(id)+'" aria-label="'+esc(t)+' von der Liste nehmen">✕</button></span>').join('')+'</div>':'')+
+    (open.length?(shopStore
+        ? '<ul class="shop">'+SECS.flatMap(sec=>open.filter(i=>secOf(i)===sec)).map(row).join('')+'</ul>'
+        : SECS.map(sec=>{ const its=open.filter(i=>secOf(i)===sec); return its.length?'<h2 class="lbl dhead">'+esc(sec)+'</h2><ul class="shop">'+its.map(row).join('')+'</ul>':''; }).join('')):
+      '<p class="sempty">'+(done.length?'Alles erledigt. ':'')+(shopStore
+        ? 'Schreib oben dazu, was du bei '+esc(storeName(shopStore))+' holst. Oder schieb eine Zutat aus der Supermarkt-Liste hierher: nach rechts wischen oder über ✎. Die App merkt sich das fürs nächste Mal.'
+        : 'Öffne ein Rezept und tippe unten auf den Einkaufswagen, oder schreib oben selbst etwas dazu.')+'</p>')+
     (done.length?'<h2 class="lbl dhead">Erledigt</h2><ul class="shop">'+done.map(row).join('')+'</ul>':'')+
 
     (shareFallback?'<textarea id="sharetxt" readonly aria-label="Zum Kopieren">'+esc(shareFallback)+'</textarea>':'')+
@@ -1497,16 +1541,23 @@ function openShopMenu(confirm){
             :(shop.items.length?'<button class="opt" type="button" data-smenu="clear" style="color:#B3261E">✕ Ganze Liste leeren</button>':''))+'</div>','shopmenu');
 }
 function finishEdit(){
-  const e=$('#editIn'), se=$('#editSec'); const it=shop.items.find(i=>i.id===editId); editId=null;
+  const e=$('#editIn'), se=$('#editSec'), so=$('#editStore'); const it=shop.items.find(i=>i.id===editId); editId=null;
   if(e && it){ const v=e.value.trim(); let ch=false;
     if(!v){ shop.items=shop.items.filter(i=>i!==it); commit([],[it]); renderShop(); return; }
     if(v!==itemText(it)){ it.text=v; ch=true; }
     if(se && se.value!==secOf(it)){ it.sec=se.value; ch=true; }
-    if(ch) commit([it],[]); }
+    let moved=false; if(so && so.value!==storeOf(it)){ if(so.value) it.store=so.value; else delete it.store; moved=true; ch=true; }
+    if(moved || (ch && storeOf(it))) rememberStore(it);
+    if(ch) commit([it],[]);
+    if(moved) toast('„'+itemText(it)+'“ → '+storeName(storeOf(it))+'. Gemerkt fürs nächste Mal.'); }
   renderShop();
 }
 function shareText(){ const open=shop.items.filter(i=>!i.done);
-  return 'Einkaufsliste'+SECS.map(sec=>{ const its=open.filter(i=>secOf(i)===sec); return its.length?'\n\n'+sec+'\n'+its.map(i=>'• '+itemText(i)).join('\n'):''; }).join(''); }
+  const sup=open.filter(i=>!storeOf(i));
+  let t='Einkaufsliste'+SECS.map(sec=>{ const its=sup.filter(i=>secOf(i)===sec); return its.length?'\n\n'+sec+'\n'+its.map(i=>'• '+itemText(i)).join('\n'):''; }).join('');
+  STORES.forEach(x=>{ if(!x.id) return; const its=SECS.flatMap(sec=>open.filter(i=>storeOf(i)===x.id&&secOf(i)===sec));
+    if(its.length) t+='\n\n— '+x.name+' —\n'+its.map(i=>'• '+itemText(i)).join('\n'); });
+  return t; }
 async function share(){
   const txt=shareText();
   if(navigator.share){ try{ await navigator.share({title:'Einkaufsliste',text:txt}); return; }catch(e){ if(e && e.name==='AbortError') return; } }
@@ -1517,6 +1568,7 @@ $('#shop').addEventListener('click',e=>{
   const b=e.target.closest('[data-act]'); if(!b) return;
   const act=b.dataset.act, li=b.closest('li'), it=li&&shop.items.find(i=>i.id===li.dataset.id);
   if(act==='back'){ goBack(); return; }
+  if(act==='store'){ setShopStore(b.dataset.store||''); editId=null; shareFallback=''; renderShop(); return; }
   if(act==='share'){ share(); return; }
   if(act==='menu'){ openShopMenu(false); return; }
   if(act==='sharelink'){ shareLink(); return; }
@@ -1545,17 +1597,25 @@ $('#shop').addEventListener('submit',e=>{
   }
   const v=$('#addIn').value.trim(); if(!v) return;
   const it={id:newId(),t:stamp(),name:v,u:'',parts:[],done:false,custom:true,text:v};
+  if(shopStore){ it.store=shopStore; rememberStore(it); }
   shop.items.push(it); commit([it],[]); renderShop(); $('#addIn').focus();
 });
-(function(){ // Einkaufsliste: Zeile nach links wischen = löschen
+(function(){ // Einkaufsliste: nach links wischen = löschen, nach rechts = Supermarkt ↔ DM
   let li=null,x0=0,y0=0,dx=0,mode=null;
   $('#shop').addEventListener('touchstart',e=>{ const l=e.target.closest('.shop li'); if(!l||l.classList.contains('editing')) return; li=l; x0=e.touches[0].clientX; y0=e.touches[0].clientY; dx=0; mode=null; },{passive:true});
   $('#shop').addEventListener('touchmove',e=>{ if(!li) return; const mx=e.touches[0].clientX-x0, my=e.touches[0].clientY-y0;
-    if(!mode){ if(Math.abs(mx)<10&&Math.abs(my)<10) return; mode=(mx<0&&Math.abs(mx)>Math.abs(my))?'swipe':'scroll'; if(mode==='swipe') li.classList.add('swiping'); }
-    if(mode!=='swipe') return; e.preventDefault(); dx=Math.min(0,mx); li.style.setProperty('--dx',dx+'px'); li.classList.toggle('armed',dx<-110); },{passive:false});
-  const end=()=>{ if(!li) return; const l=li; li=null; if(mode!=='swipe') return;
-    if(dx<-110){ l.classList.add('gone'); const it=shop.items.find(i=>i.id===l.dataset.id); setTimeout(()=>{ if(it) delItem(it); },180); }
-    else { l.classList.remove('swiping','armed'); l.style.removeProperty('--dx'); } };
+    if(!mode){ if(Math.abs(mx)<10&&Math.abs(my)<10) return; mode=Math.abs(mx)>Math.abs(my)?(mx<0?'swipe':'move'):'scroll'; if(mode!=='scroll') li.classList.add(mode==='swipe'?'swiping':'moving'); }
+    if(mode==='scroll') return; e.preventDefault();
+    if(mode==='swipe'){ dx=Math.min(0,mx); li.classList.toggle('armed',dx<-110); }
+    else { dx=Math.max(0,mx); li.classList.toggle('armed',dx>90); }
+    li.style.setProperty('--dx',dx+'px'); },{passive:false});
+  const end=()=>{ if(!li) return; const l=li; li=null; if(mode==='scroll'||!mode) return;
+    const it=shop.items.find(i=>i.id===l.dataset.id);
+    if(mode==='swipe' && dx<-110){ l.classList.add('gone'); setTimeout(()=>{ if(it) delItem(it); },180); }
+    else if(mode==='move' && dx>90 && it){ l.classList.add('gone','goner'); setTimeout(()=>{
+        const from=storeOf(it), to=swipeTarget(it); moveStore(it,to); renderShop();
+        toast('„'+itemText(it)+'“ → '+storeName(to)+'. Gemerkt fürs nächste Mal.',null,'Rückgängig',()=>{ moveStore(it,from); renderShop(); }); },180); }
+    else { l.classList.remove('swiping','moving','armed'); l.style.removeProperty('--dx'); } };
   $('#shop').addEventListener('touchend',end); $('#shop').addEventListener('touchcancel',end);
 })();
 $('#shop').addEventListener('mousedown',e=>{ if(e.target.closest('.editacts')) e.preventDefault(); });
@@ -1564,7 +1624,7 @@ $('#shop').addEventListener('keydown',e=>{
   if(e.key==='Enter'){ e.preventDefault(); finishEdit(); }
   if(e.key==='Escape'){ editId=null; renderShop(); }
 });
-$('#shop').addEventListener('focusout',e=>{ if((e.target.id==='editIn'||e.target.id==='editSec') && editId!=null) setTimeout(()=>{ const a=(document.activeElement||{}).id; if(editId!=null && a!=='editIn' && a!=='editSec') finishEdit(); },0); });
+$('#shop').addEventListener('focusout',e=>{ if((e.target.id==='editIn'||e.target.id==='editSec'||e.target.id==='editStore') && editId!=null) setTimeout(()=>{ const a=(document.activeElement||{}).id; if(editId!=null && a!=='editIn' && a!=='editSec' && a!=='editStore') finishEdit(); },0); });
 
 /* ---------- Wochenplan ---------- */
 const PK='rz-plan-v1';
@@ -1759,7 +1819,7 @@ function openWeekShop(){
   openSheet('<div class="sh-head"><h2>Woche einkaufen</h2><button class="btn" type="button" data-close>Abbrechen</button></div>'+
     '<p style="margin:2px 0 0;color:var(--muted);font-size:.9rem">'+wEntries.length+(wEntries.length===1?' Gericht':' Gerichte')+(wEntries.length>1?' · gleiche Zutaten zusammengerechnet':'')+'. Was musst du kaufen?</p>'+
     '<div style="margin:6px 0;flex:none"><button class="linkbtn" type="button" data-wsel="all">Alle</button> · <button class="linkbtn" type="button" data-wsel="none">Keine</button></div>'+
-    '<div class="sh-body"><ul class="ing picking">'+wRows.map((x,i)=>'<li><label for="w'+i+'"><input type="checkbox" id="w'+i+'" data-wi="'+i+'"><span><span class="q">'+esc(txt(x))+'</span>'+esc(x.parts.length>1&&!x.u&&x.has&&x.sum>1?pluralize(x.name):x.name)+'</span></label></li>').join('')+'</ul></div>'+
+    '<div class="sh-body"><ul class="ing picking">'+wRows.map((x,i)=>'<li><label for="w'+i+'"><input type="checkbox" id="w'+i+'" data-wi="'+i+'"><span><span class="q">'+esc(txt(x))+'</span>'+esc(x.parts.length>1&&!x.u&&x.has&&x.sum>1?pluralize(x.name):x.name)+(prefStore(x.name)?' <span class="tag laden">'+esc(storeName(prefStore(x.name)))+'</span>':'')+'</span></label></li>').join('')+'</ul></div>'+
     '<div class="sbar"><button class="btn primary" type="button" id="wAdd" disabled>Zutaten auswählen</button></div>','wshop');
 }
 function updW(){ const b=$('#wAdd'), n=wSel.size; b.disabled=!n; b.textContent=n? n+(n===1?' Zutat':' Zutaten')+' auf die Einkaufsliste':'Zutaten auswählen'; }
