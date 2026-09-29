@@ -8688,5 +8688,197 @@ window.REZEPTE = [
   "notes": [
    "Die Vorlage nennt keine Portionszahl; bei 1 Hokkaido und 1 Glas Kichererbsen für ca. 4 Portionen gerechnet. Laut Vorlage gut zum Teilen."
   ]
+ },
+ {
+  "id": "veganes-butter-chicken",
+  "title": "Veganes Butter Chicken",
+  "cat": "Curry & Eintopf",
+  "tags": [
+   "vegan"
+  ],
+  "servings": 3,
+  "unit": "Portionen",
+  "difficulty": 1,
+  "min": 35,
+  "est": [
+   "difficulty",
+   "time"
+  ],
+  "endo": {
+   "status": "anpassbar",
+   "plus": [
+    "entzuendung"
+   ],
+   "grund": "wenig Gemüse (ca. 75 g pro Portion) und viel Kokosmilch (ca. 75 g Fett-Anteil pro Portion)",
+   "tipp": "Die Hälfte der Kokosmilch durch Hafer-Cuisine ersetzen und 200 g Spinat und 1 Paprika in der Sauce mitgaren."
+  },
+  "groups": [
+   {
+    "title": "Tofu",
+    "items": [
+     {
+      "m": 450,
+      "u": "g",
+      "t": "extra-fester Tofu (1 Block)"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Olivenöl"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Maisstärke"
+     },
+     {
+      "m": 0.25,
+      "u": "TL",
+      "t": "Salz"
+     }
+    ]
+   },
+   {
+    "title": "Sauce",
+    "items": [
+     {
+      "m": 2,
+      "u": "EL",
+      "t": "vegane Butter (oder Olivenöl)"
+     },
+     {
+      "m": 1,
+      "u": "",
+      "t": "große Zwiebel"
+     },
+     {
+      "m": 2,
+      "u": "TL",
+      "t": "Ingwer, gerieben"
+     },
+     {
+      "m": 2,
+      "u": "",
+      "t": "Knoblauchzehen"
+     },
+     {
+      "m": 1,
+      "u": "EL",
+      "t": "Garam Masala"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Currypulver"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Koriander, gemahlen"
+     },
+     {
+      "m": 1,
+      "u": "Prise",
+      "t": "Cayennepfeffer"
+     },
+     {
+      "m": 1,
+      "u": "TL",
+      "t": "Salz"
+     },
+     {
+      "m": 80,
+      "u": "g",
+      "t": "Tomatenmark"
+     },
+     {
+      "m": 400,
+      "u": "ml",
+      "t": "Kokosmilch, vollfett (1 Dose)"
+     }
+    ]
+   },
+   {
+    "title": "Zum Servieren",
+    "items": [
+     {
+      "m": 400,
+      "u": "g",
+      "t": "Reis (weiß oder braun), gekocht"
+     },
+     {
+      "t": "frischer Koriander"
+     }
+    ]
+   },
+   {
+    "title": "Optionale Toppings",
+    "items": [
+     {
+      "t": "geröstete Kürbiskerne"
+     },
+     {
+      "t": "Sojajoghurt"
+     },
+     {
+      "t": "eingelegte rote Zwiebeln"
+     }
+    ]
+   }
+  ],
+  "steps": [
+   "Backofen auf 200 °C vorheizen.",
+   "Tofu in mundgerechte Stücke reißen oder würfeln, mit Olivenöl, Maisstärke und Salz vermengen und auf ein Backblech legen.",
+   "Den Tofu 20 Minuten backen, bis er goldbraun und knusprig ist.",
+   "Währenddessen die Zwiebel fein würfeln, den Ingwer reiben und den Knoblauch fein hacken.",
+   "Vegane Butter in einer Pfanne erhitzen und die Zwiebel darin 3–4 Minuten anbraten.",
+   "Ingwer und Knoblauch 1 Minute mitbraten.",
+   "Gewürze, Salz, Tomatenmark und Kokosmilch hinzufügen, glatt rühren und 5 Minuten köcheln lassen.",
+   "Den gebackenen Tofu vorsichtig in die Sauce geben.",
+   "Mit Reis, frischem Koriander und nach Wunsch mit Kürbiskernen, Sojajoghurt und eingelegten roten Zwiebeln servieren."
+  ],
+  "stepItems": [
+   [],
+   [
+    0,
+    1,
+    2,
+    3
+   ],
+   [],
+   [
+    5,
+    6,
+    7
+   ],
+   [
+    4,
+    5
+   ],
+   [
+    6,
+    7
+   ],
+   [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+   ],
+   [
+    0
+   ],
+   [
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  ],
+  "notes": []
  }
 ];
